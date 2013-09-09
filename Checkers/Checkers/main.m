@@ -7,11 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Board.h"
+#import "Game.h"
 
 int main(int argc, const char * argv[])
 {
-    Board *board = [[Board alloc] initWithSize:10];
-    [board setup];
-    [board draw];
+    Game *game =[[Game alloc] init];
+    [game setup];
 }

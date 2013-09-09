@@ -24,8 +24,8 @@
 -(id)initWithColor:(NSString *)newColor Row:(int)newRow Column:(int)newColumn{
     if((self = [super init])){
     self.color = newColor;
-    self.row = newRow;
-    self.column = newColumn;
+    row = newRow;
+    column = newColumn;
     }
     return self;
 }

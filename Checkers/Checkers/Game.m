@@ -7,6 +7,7 @@
 //
 
 #import "Game.h"
+#import "Board.h"
 
 @implementation Game
 @synthesize board = _board;
@@ -17,6 +18,12 @@
 @synthesize turn = _turn;
 
 -(void)setup{
+    int size;
+    printf("welke size?");
+    scanf("%d", &size);
+    Board *board = [[Board alloc] initWithSize:size];
+    [board setup];
+    [board draw];
     
 }
 @end
