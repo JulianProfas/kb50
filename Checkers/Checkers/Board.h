@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Square.h"
+#import "Piece.h"
+
 
 @interface Board : NSObject
 {

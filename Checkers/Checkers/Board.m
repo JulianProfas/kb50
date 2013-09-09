@@ -19,10 +19,16 @@
     self.size = size;
 }
 -(void)setup{
-    
+    for (int tmpSize = self.size; tmpSize<1; tmpSize--){
+        if(tmpSize % 2){
+        Square *square = [[square alloc] initWithColor:@"black" Row:tmpSize Column:tmpSize];
+                          
+        }           
+    }
     
 }
 -(void)draw{
+    
     
 }
 
