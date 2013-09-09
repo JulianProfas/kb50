@@ -1,15 +1,13 @@
 //
-//  main.c
+//  Player.m
 //  Checkers
 //
 //  Created by Allard Soeters on 09-09-13.
 //  Copyright (c) 2013 HHS. All rights reserved.
 //
 
-#include <stdio.h>
+#import "Player.h"
 
-int main(int argc, const char * argv[])
-{
-    
+@implementation Player
 
-}
+@end

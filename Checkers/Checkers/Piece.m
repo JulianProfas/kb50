@@ -1,15 +1,13 @@
 //
-//  main.c
+//  Piece.m
 //  Checkers
 //
 //  Created by Allard Soeters on 09-09-13.
 //  Copyright (c) 2013 HHS. All rights reserved.
 //
 
-#include <stdio.h>
+#import "Piece.h"
 
-int main(int argc, const char * argv[])
-{
-    
+@implementation Piece
 
-}
+@end

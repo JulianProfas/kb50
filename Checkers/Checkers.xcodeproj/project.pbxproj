@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9513D0B017DDEA4B003CB08A /* Board.m in Sources */ = {isa = PBXBuildFile; fileRef = 9513D0AF17DDEA4B003CB08A /* Board.m */; };
+		9513D0B317DDEA56003CB08A /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 9513D0B217DDEA56003CB08A /* Game.m */; };
+		9513D0B617DDEA7F003CB08A /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 9513D0B517DDEA7F003CB08A /* Player.m */; };
+		9513D0B917DDEA8A003CB08A /* Square.m in Sources */ = {isa = PBXBuildFile; fileRef = 9513D0B817DDEA8A003CB08A /* Square.m */; };
+		9513D0BC17DDEA9B003CB08A /* Piece.m in Sources */ = {isa = PBXBuildFile; fileRef = 9513D0BB17DDEA9B003CB08A /* Piece.m */; };
 		95D2C73117DDDF9E002DA341 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 95D2C73017DDDF9E002DA341 /* main.c */; };
 		95D2C73317DDDF9E002DA341 /* Checkers.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 95D2C73217DDDF9E002DA341 /* Checkers.1 */; };
 /* End PBXBuildFile section */
@@ -25,6 +30,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9513D0AE17DDEA4B003CB08A /* Board.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Board.h; sourceTree = "<group>"; };
+		9513D0AF17DDEA4B003CB08A /* Board.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Board.m; sourceTree = "<group>"; };
+		9513D0B117DDEA56003CB08A /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		9513D0B217DDEA56003CB08A /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
+		9513D0B417DDEA7F003CB08A /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		9513D0B517DDEA7F003CB08A /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		9513D0B717DDEA8A003CB08A /* Square.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Square.h; sourceTree = "<group>"; };
+		9513D0B817DDEA8A003CB08A /* Square.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Square.m; sourceTree = "<group>"; };
+		9513D0BA17DDEA9B003CB08A /* Piece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Piece.h; sourceTree = "<group>"; };
+		9513D0BB17DDEA9B003CB08A /* Piece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Piece.m; sourceTree = "<group>"; };
 		95D2C72D17DDDF9E002DA341 /* Checkers */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Checkers; sourceTree = BUILT_PRODUCTS_DIR; };
 		95D2C73017DDDF9E002DA341 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		95D2C73217DDDF9E002DA341 /* Checkers.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Checkers.1; sourceTree = "<group>"; };
@@ -62,6 +77,16 @@
 			children = (
 				95D2C73017DDDF9E002DA341 /* main.c */,
 				95D2C73217DDDF9E002DA341 /* Checkers.1 */,
+				9513D0AE17DDEA4B003CB08A /* Board.h */,
+				9513D0AF17DDEA4B003CB08A /* Board.m */,
+				9513D0B117DDEA56003CB08A /* Game.h */,
+				9513D0B217DDEA56003CB08A /* Game.m */,
+				9513D0B417DDEA7F003CB08A /* Player.h */,
+				9513D0B517DDEA7F003CB08A /* Player.m */,
+				9513D0B717DDEA8A003CB08A /* Square.h */,
+				9513D0B817DDEA8A003CB08A /* Square.m */,
+				9513D0BA17DDEA9B003CB08A /* Piece.h */,
+				9513D0BB17DDEA9B003CB08A /* Piece.m */,
 			);
 			path = Checkers;
 			sourceTree = "<group>";
@@ -118,6 +143,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				95D2C73117DDDF9E002DA341 /* main.c in Sources */,
+				9513D0B017DDEA4B003CB08A /* Board.m in Sources */,
+				9513D0B317DDEA56003CB08A /* Game.m in Sources */,
+				9513D0B617DDEA7F003CB08A /* Player.m in Sources */,
+				9513D0B917DDEA8A003CB08A /* Square.m in Sources */,
+				9513D0BC17DDEA9B003CB08A /* Piece.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +244,7 @@
 				95D2C73817DDDF9E002DA341 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
