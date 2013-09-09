@@ -10,4 +10,22 @@
 
 @implementation Piece
 
+@synthesize isAlive = _isAlive;
+@synthesize rank = _rank;
+@synthesize row = _row;
+@synthesize column = _column;
+
++(int)numberOfPieces{
+    return 1;
+}
+-(void)initWithRow:(int)row Column:(int)column{
+    [self init];
+    self.row = row;
+    self.column = column;
+}
+
+-(void)promote{
+    
+}
+
 @end

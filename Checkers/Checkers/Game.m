@@ -9,7 +9,14 @@
 #import "Game.h"
 
 @implementation Game
+@synthesize board = _board;
+@synthesize player1 = _player1;
+@synthesize player2 = _player2;
+@synthesize blackPieces = _blackPieces;
+@synthesize whitePieces = _whitePieces;
+@synthesize turn = _turn;
 
-
-
+-(void)setup{
+    
+}
 @end
