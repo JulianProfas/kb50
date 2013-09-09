@@ -20,7 +20,7 @@
 @property(nonatomic) int column;
 
 +(int)numberOfPieces;
--(void)initWithRow:(int)row Columm:(int)column;
+-(id)initWithRow:(int)row Columm:(int)column;
 -(void)promote;
 
 @end

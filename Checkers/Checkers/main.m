@@ -6,10 +6,12 @@
 //  Copyright (c) 2013 HHS. All rights reserved.
 //
 
-#include <stdio.h>
+#import <Foundation/Foundation.h>
+#import "Board.h"
 
 int main(int argc, const char * argv[])
 {
-    
-
+    Board *board = [[Board alloc] initWithSize:10];
+    [board setup];
+    [board draw];
 }

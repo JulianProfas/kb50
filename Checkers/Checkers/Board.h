@@ -21,7 +21,7 @@
 @property(nonatomic,retain) NSMutableArray *pieces;
 @property(nonatomic,retain) NSMutableArray *squares;
 
--(void)initWithSize:(int)size;
+-(id)initWithSize:(int)size;
 -(void)setup;
 -(void)draw;
 

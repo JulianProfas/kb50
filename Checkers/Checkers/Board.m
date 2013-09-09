@@ -14,21 +14,28 @@
 @synthesize pieces = _pieces;
 @synthesize size = _size;
 
--(void)initWithSize:(int)size{
-    [self init];
-    self.size = size;
+-(id)initWithSize:(int)newSize{
+    if((self = [super init])){
+    size = newSize;
+    }
+    return self;
 }
+
 -(void)setup{
-    for (int tmpSize = self.size; tmpSize<1; tmpSize--){
-        if(tmpSize % 2){
-        Square *square = [[square alloc] initWithColor:@"black" Row:tmpSize Column:tmpSize];
-                          
-        }           
+    for (int x =0; x<size; x++){
+        for (int i = 0; i<size; i++){
+            if(i % 2){
+                Square *square = [[Square alloc] initWithColor:@"black" Row:i Column:x];
+                [squares addObject:square];
+            }else{
+                Square *square2 = [[Square alloc] initWithColor:@"white" Row:i Column:x];
+                [squares addObject:square2];
+            }
+        }
     }
     
 }
 -(void)draw{
-    
     
 }
 

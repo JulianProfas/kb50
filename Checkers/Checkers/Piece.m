@@ -18,10 +18,16 @@
 +(int)numberOfPieces{
     return 1;
 }
--(void)initWithRow:(int)row Column:(int)column{
-    [self init];
-    self.row = row;
-    self.column = column;
+
+-(id)initWithRow:(int)newRow Column:(int)newColumn{
+    
+    if((self = [super init])){
+        
+    self.row = newRow;
+    self.column = newColumn;
+        
+    }
+    return self;
 }
 
 -(void)promote{

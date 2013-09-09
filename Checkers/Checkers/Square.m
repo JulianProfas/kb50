@@ -17,20 +17,26 @@
 @synthesize adjacentSquares = _adjacentSquares;
 
 +(int)numberOfSquares{
-
+    
+    return 1;
 }
 
--(void)initWithColor:(NSString *)color Row:(int)row Column:(int)column{
-    [self init];
-    self.color = color;
-    self.row = row;
-    self.column = column;
+-(id)initWithColor:(NSString *)newColor Row:(int)newRow Column:(int)newColumn{
+    if((self = [super init])){
+    self.color = newColor;
+    self.row = newRow;
+    self.column = newColumn;
+    }
+    return self;
 }
 
--(void)initWithColor:(NSString *)color
+-(id)initWithColor:(NSString *)newColor
 {
-    [self init];
-    self.color = color;
+    if((self = [super init])){
+    self.color = newColor;
+
+    }
+    return self;
 }
 
 @end

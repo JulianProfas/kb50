@@ -12,9 +12,11 @@
 
 @synthesize color = _color;
 
--(void)initWithColor:(NSString *)color{
-    [self init];
-    self.color = color;
+-(id)initWithColor:(NSString *)newColor{
+     if((self = [super init])){
+    self.color = newColor;
+     }
+    return self;
 }
 
 -(void)move{

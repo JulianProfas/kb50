@@ -14,7 +14,7 @@
 }
 @property(nonatomic, retain) NSString *color;
 
--(void)initWithColor:(NSString *)color;
+-(id)initWithColor:(NSString *)color;
 -(void)move;
 -(void)capture;
 -(void)undo;
