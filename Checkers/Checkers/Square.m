@@ -9,11 +9,28 @@
 #import "Square.h"
 
 @implementation Square
-{
-    @synthesize NSString *color;
-    @synthesize int row;
-    @synthesize int column;
-    @synthesize BOOL hasPiece;
-    @synthesize NSArray *adjacentSquares;
+
+@synthesize color = _color;
+@synthesize row = _row;
+@synthesize column = _column;
+@synthesize hasPiece = _hasPiece;
+@synthesize adjacentSquares = _adjacentSquares;
+
++(int)numberOfSquares{
+
 }
+
+-(void)initWithColor:(NSString *)color Row:(int)row Column:(int)column{
+    [self init];
+    self.color = color;
+    self.row = row;
+    self.column = column;
+}
+
+-(void)initWithColor:(NSString *)color
+{
+    [self init];
+    self.color = color;
+}
+
 @end

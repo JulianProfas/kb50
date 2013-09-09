@@ -10,4 +10,26 @@
 
 @implementation Player
 
+@synthesize color = _color;
+
+-(void)initWithColor:(NSString *)color{
+    [self init];
+    self.color = color;
+}
+
+-(void)move{
+    
+}
+
+-(void)capture{
+    
+}
+
+-(void)undo{
+    
+}
+-(void)resign{
+    
+}
+
 @end
