@@ -33,11 +33,30 @@
             }
         }
     }
-    
+    for (Square *square in squares){
+        if([square.color isEqual: @"zwart"]){
+            NSMutableArray *adjecentSquares = [[NSMutableArray alloc] init];
+            for (Square *aSquare in squares){
+                if([[Square alloc] initWithColor:@"zwart" Row:square.row -1 Column:square.row -1] == aSquare){
+                    [adjecentSquares addObject:aSquare];
+                }
+                if([[Square alloc] initWithColor:@"zwart" Row:square.row -1 Column:square.row +1] == aSquare){
+                    [adjecentSquares addObject:aSquare];
+                }
+                if([[Square alloc] initWithColor:@"zwart" Row:square.row +1 Column:square.row +1] == aSquare){
+                    [adjecentSquares addObject:aSquare];
+                }
+                if([[Square alloc] initWithColor:@"zwart" Row:square.row +1 Column:square.row -1] == aSquare){
+                    [adjecentSquares addObject:aSquare];
+                }
+                
+            }
+            [square addAjacentSquares:adjecentSquares];
+        }
+    }
 }
 -(void)draw{
     
 }
-
 
 @end

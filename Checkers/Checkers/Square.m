@@ -39,4 +39,8 @@
     return self;
 }
 
+-(void)addAjacentSquares:(NSMutableArray*)newSquares{
+    self.adjacentSquares = newSquares;
+}
+
 @end
