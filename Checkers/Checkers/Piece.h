@@ -6,8 +6,21 @@
 //  Copyright (c) 2013 HHS. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-@interface Piece : NSObject
+@interface Piece : NSObject{
+    BOOL isAlive;
+    NSString *rank;
+    int row;
+    int column;
+}
+@property(nonatomic) BOOL isAlive;
+@property(nonatomic, retain) NSString *rank;
+@property(nonatomic) int row;
+@property(nonatomic) int column;
+
++(int)numberOfPieces;
+-(void)initWithRow:(int)row Columm:(int)column;
+-(void)promote;
 
 @end

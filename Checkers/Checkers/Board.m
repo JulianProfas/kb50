@@ -10,4 +10,21 @@
 
 @implementation Board
 
+@synthesize squares = _squares;
+@synthesize pieces = _pieces;
+@synthesize size = _size;
+
+-(void)initWithSize:(int)size{
+    [self init];
+    self.size = size;
+}
+-(void)setup{
+    
+    
+}
+-(void)draw{
+    
+}
+
+
 @end
