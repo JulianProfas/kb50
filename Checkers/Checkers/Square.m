@@ -10,11 +10,11 @@
 
 @implementation Square
 
-@synthesize color = _color;
-@synthesize row = _row;
-@synthesize column = _column;
-@synthesize hasPiece = _hasPiece;
-@synthesize adjacentSquares = _adjacentSquares;
+@synthesize color;
+@synthesize row ;
+@synthesize column;
+@synthesize hasPiece ;
+@synthesize adjacentSquares;
 
 +(int)numberOfSquares{
     

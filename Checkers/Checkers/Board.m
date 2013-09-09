@@ -7,12 +7,12 @@
 //
 
 #import "Board.h"
-
+#import "Square.h"
 @implementation Board
 
-@synthesize squares = _squares;
-@synthesize pieces = _pieces;
-@synthesize size = _size;
+@synthesize squares ;
+@synthesize pieces ;
+@synthesize size ;
 
 -(id)initWithSize:(int)newSize{
     if((self = [super init])){
@@ -34,20 +34,27 @@
             }
         }
     }
-    for (Square *square in self.squares){
+    
+ }
+-(void)addNeighbours{
+    for (Square *square in squares){
         if([square.color isEqual: [[NSString alloc]initWithFormat:@"black"]]){
             NSMutableArray *adjecentSquares = [[NSMutableArray alloc] init];
             for (Square *aSquare in squares){
-                if([[Square alloc] initWithColor:@"black" Row:square.row -1 Column:square.row -1] == aSquare){
+                Square *zSquare =[[Square alloc] initWithColor:@"black" Row:(square.row -1) Column:(square.column -1)];
+                Square *xSquare =[[Square alloc] initWithColor:@"black" Row:(square.row -1) Column:(square.column +1)];
+                Square *cSquare =[[Square alloc] initWithColor:@"black" Row:(square.row +1) Column:(square.column +1)];
+                Square *vSquare =[[Square alloc] initWithColor:@"black" Row:(square.row +1) Column:(square.column -1)];
+                if(zSquare.column == aSquare.column && zSquare.row == aSquare.row){
                     [adjecentSquares addObject:aSquare];
                 }
-                if([[Square alloc] initWithColor:@"black" Row:square.row -1 Column:square.row +1] == aSquare){
+                if(xSquare.column == aSquare.column && xSquare.row == aSquare.row){
                     [adjecentSquares addObject:aSquare];
                 }
-                if([[Square alloc] initWithColor:@"black" Row:square.row +1 Column:square.row +1] == aSquare){
+                if(cSquare.column == aSquare.column && cSquare.row == aSquare.row){
                     [adjecentSquares addObject:aSquare];
                 }
-                if([[Square alloc] initWithColor:@"black" Row:square.row +1 Column:square.row -1] == aSquare){
+                if(vSquare.column == aSquare.column && vSquare.row == aSquare.row){
                     [adjecentSquares addObject:aSquare];
                 }
                 
@@ -56,13 +63,18 @@
         }
     }
 }
+
 -(void)draw{
-    
-    Square *square = [squares objectAtIndex:5];
-    Square *square2 = [square.adjacentSquares objectAtIndex:0];
-    NSLog([[NSString alloc] initWithFormat:@"row: %d, column: %d",square.row,square.column]);
-    NSLog([[NSString alloc] initWithFormat:@"row: %d, column: %d",square2.row,square2.column]);
-    
+    for (Square *square in squares){
+        if ([square.color isEqual:[[NSString alloc] initWithFormat:@"black"]]) {
+            printf("[ ]");
+        }else{
+            printf("{ }");
+        }
+        if(square.row == 9){
+            printf("\n");
+        }
+    }
 }
 
 @end

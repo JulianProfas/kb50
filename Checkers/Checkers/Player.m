@@ -10,7 +10,7 @@
 
 @implementation Player
 
-@synthesize color = _color;
+@synthesize color;
 
 -(id)initWithColor:(NSString *)newColor{
      if((self = [super init])){

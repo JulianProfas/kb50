@@ -10,10 +10,10 @@
 
 @implementation Piece
 
-@synthesize isAlive = _isAlive;
-@synthesize rank = _rank;
-@synthesize row = _row;
-@synthesize column = _column;
+@synthesize isAlive;
+@synthesize rank;
+@synthesize row;
+@synthesize column;
 
 +(int)numberOfPieces{
     return 1;

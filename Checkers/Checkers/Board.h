@@ -24,5 +24,6 @@
 -(id)initWithSize:(int)size;
 -(void)setup;
 -(void)draw;
+-(void)addNeighbours;
 
 @end

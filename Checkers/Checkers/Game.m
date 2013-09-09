@@ -10,20 +10,22 @@
 #import "Board.h"
 
 @implementation Game
-@synthesize board = _board;
-@synthesize player1 = _player1;
-@synthesize player2 = _player2;
-@synthesize blackPieces = _blackPieces;
-@synthesize whitePieces = _whitePieces;
-@synthesize turn = _turn;
+@synthesize board;
+@synthesize player1 ;
+@synthesize player2 ;
+@synthesize blackPieces ;
+@synthesize whitePieces;
+@synthesize turn;
 
 -(void)setup{
     int size;
     printf("welke size?");
     scanf("%d", &size);
-    Board *board = [[Board alloc] initWithSize:size];
+    board = [[Board alloc] initWithSize:size];
     [board setup];
-    [board draw];
+
+    [board addNeighbours];
+        [board draw];
     
 }
 @end
