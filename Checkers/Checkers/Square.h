@@ -6,8 +6,23 @@
 //  Copyright (c) 2013 HHS. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 @interface Square : NSObject
+{
+    NSString *color;
+    int row;
+    int column;
+    BOOL hasPiece;
+    NSArray *adjacentSquares;
+}
+@property(nonatomic, retain) NSString *color;
+@property(nonatomic) int row;
+@property(nonatomic) int column;
+@property(nonatomic) BOOL hasPiece;
+@property(nonatomic, retain) NSArray *adjacentSquares;
 
++(int)numberOfSquares;
+-(void)initWithColor:(NSString *)color Row:(int)row Column:(int)column;
+-(void)initWithColor:(NSString *)color;
 @end

@@ -9,5 +9,11 @@
 #import "Square.h"
 
 @implementation Square
-
+{
+    @synthesize NSString *color;
+    @synthesize int row;
+    @synthesize int column;
+    @synthesize BOOL hasPiece;
+    @synthesize NSArray *adjacentSquares;
+}
 @end
