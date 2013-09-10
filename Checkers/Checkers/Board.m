@@ -99,6 +99,11 @@
 }
 
 -(void)draw{
+    printf("   ");
+    for(int i = 0; i<size; i++){
+        printf("%d  ",i);
+    }
+    printf("\n 0");
     for (Square *square in squares){
         if ([square.color isEqual:[[NSString alloc] initWithFormat:@"black"]]) {
             printf("[");
@@ -114,10 +119,19 @@
             printf("{ }");
         }
         if(square.row == size-1){
-            printf("\n");
+            printf("\n %d",(square.column +1));
         }
-    [square release];
     }
+}
+
+-(Square *)getSquareWithRow:(int)nRow Column:(int)nColumn{
+    for (int i = 0; i<squares.count;i++){
+        Square *square = [squares objectAtIndex:i];
+        if ((square.row == nRow) && (square.column == nColumn)) {
+            return square;
+        }
+    }
+    return nil;
 }
 
 @end

@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "Square.h"
 
-
 @interface Board : NSObject
 {
     int size;
@@ -24,5 +23,6 @@
 -(void)setup;
 -(void)draw;
 -(void)addNeighbours;
+-(Square *)getSquareWithRow:(int)nRow Column:(int)nColumn;
 
 @end

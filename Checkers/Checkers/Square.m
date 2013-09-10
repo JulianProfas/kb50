@@ -44,4 +44,13 @@
     self.adjacentSquares = newSquares;
 }
 
+-(Square *)isNeibourSquare:(Square*)nSquare{
+    for (Square *square in adjacentSquares) {
+        if(nSquare.row == square.row && nSquare.column == square.column){
+            return square;
+        }
+    }
+    return nil;
+}
+
 @end

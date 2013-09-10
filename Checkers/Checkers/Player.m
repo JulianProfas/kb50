@@ -7,6 +7,7 @@
 //
 
 #import "Player.h"
+#import "Square.h"
 
 @implementation Player
 
@@ -19,12 +20,35 @@
     return self;
 }
 
--(void)move{
-    
+-(void)moveOldSquare:(Square *)nSquare newSquare:(Square *)nNewSquare{
+    nSquare.hasPiece = NO;
+    nNewSquare.hasPiece = YES;
+    nNewSquare.pieceColor = nSquare.pieceColor;
+    nSquare.pieceColor = nil;
 }
 
--(void)capture{
+-(void)captureOldSquare:(Square *)nSquare newSquare:(Square *)nNewSquare{
+    nSquare.hasPiece = NO;
+    nNewSquare.hasPiece = NO;
+    nNewSquare.pieceColor = nil;
+    nSquare.pieceColor = nil;
     
+    if(nNewSquare.row > nSquare.row && nNewSquare.column > nSquare.column){
+        nSquare.row = nNewSquare.row + 1;
+        nSquare.column = nNewSquare.column + 1;
+    }
+    if(nNewSquare.row > nSquare.row && nNewSquare.column < nSquare.column){
+        nSquare.row = nNewSquare.row + 1;
+        nSquare.column = nNewSquare.column - 1;
+    }
+    if(nNewSquare.row < nSquare.row && nNewSquare.column < nSquare.column){
+        nSquare.row = nNewSquare.row - 1;
+        nSquare.column = nNewSquare.column - 1;
+    }
+    if(nNewSquare.row < nSquare.row && nNewSquare.column > nSquare.column){
+        nSquare.row = nNewSquare.row - 1;
+        nSquare.column = nNewSquare.column + 1;
+    }
 }
 
 -(void)undo{

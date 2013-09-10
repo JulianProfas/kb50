@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "Square.h"
 @interface Player : NSObject
 {
     NSString *color;
@@ -15,8 +15,8 @@
 @property(nonatomic, retain) NSString *color;
 
 -(id)initWithColor:(NSString *)color;
--(void)move;
--(void)capture;
+-(void)moveOldSquare:(Square *)nSquare newSquare:(Square *)nNewSquare;
+-(void)captureOldSquare:(Square *)nSquare newSquare:(Square *)nNewSquare;
 -(void)undo;
 -(void)resign;
 @end
