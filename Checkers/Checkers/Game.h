@@ -18,10 +18,9 @@
     NSMutableArray *whitePieces;
     int turn;
     int size;
-    NSString *player1Color;
-    NSString *player2Color;
     int coordinaatX;
     int coordinaatY;
+    Player *currentPlayer;
 
 }
 @property(nonatomic,retain) Board *board;
@@ -31,14 +30,14 @@
 @property(nonatomic,retain) NSMutableArray *whitePieces;
 @property(nonatomic) int turn;
 @property(nonatomic) int size;
-@property(nonatomic,retain) NSString *player1Color;
-@property(nonatomic,retain) NSString *player2Color;
 @property(nonatomic) int coordinaatX;
 @property(nonatomic) int coordinaatY;
+@property(nonatomic,retain) Player *currentPlayer;
 
+-(void)playPlayer:(Player *)nPlayer;
 -(void)setup;
 -(void)playerChoose;
--(void)squareChoose;
--(void)squareMoveSquare:(Square *)nSquare;
+-(BOOL)squareChoose;
+-(BOOL)squareMoveSquare:(Square *)nSquare;
 -(BOOL)validMoveSquare:(Square *)newSquare oldSquare:(Square *)nOldSquare;
 @end

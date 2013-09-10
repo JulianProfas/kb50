@@ -30,25 +30,9 @@
 -(void)captureOldSquare:(Square *)nSquare newSquare:(Square *)nNewSquare{
     nSquare.hasPiece = NO;
     nNewSquare.hasPiece = NO;
-    nNewSquare.pieceColor = nil;
+    nNewSquare.pieceColor = nSquare.pieceColor;
     nSquare.pieceColor = nil;
     
-    if(nNewSquare.row > nSquare.row && nNewSquare.column > nSquare.column){
-        nSquare.row = nNewSquare.row + 1;
-        nSquare.column = nNewSquare.column + 1;
-    }
-    if(nNewSquare.row > nSquare.row && nNewSquare.column < nSquare.column){
-        nSquare.row = nNewSquare.row + 1;
-        nSquare.column = nNewSquare.column - 1;
-    }
-    if(nNewSquare.row < nSquare.row && nNewSquare.column < nSquare.column){
-        nSquare.row = nNewSquare.row - 1;
-        nSquare.column = nNewSquare.column - 1;
-    }
-    if(nNewSquare.row < nSquare.row && nNewSquare.column > nSquare.column){
-        nSquare.row = nNewSquare.row - 1;
-        nSquare.column = nNewSquare.column + 1;
-    }
 }
 
 -(void)undo{

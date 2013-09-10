@@ -17,10 +17,9 @@
 @synthesize whitePieces;
 @synthesize turn;
 @synthesize size;
-@synthesize player1Color;
-@synthesize player2Color;
 @synthesize coordinaatX;
 @synthesize coordinaatY;
+@synthesize currentPlayer;
 
 -(void)setup{
     printf("welke size?\n");
@@ -30,37 +29,49 @@
     [board addNeighbours];
     [board draw];
     [self playerChoose];
-    [self squareChoose];
-    
+}
+
+-(void)play{
+    if([self squareChoose]){
+        if([currentPlayer isEqual:player1]){
+            currentPlayer = player2;
+        }else{
+            currentPlayer = player1;
+        }
+    [self play];
+    }
 }
 
 -(void)playerChoose{
+    player1 = [[Player alloc] init];
+    player2 = [[Player alloc] init];
+
     printf("Wie wil je zijn Y of X \n");
     char input[200];
     scanf("%s",input);
-    player1Color = [[NSString alloc] initWithUTF8String:input];
-    if ([player1Color isEqualToString:@"Y"]) {
-        player1Color = @"white";
-        player2Color = @"black";
-    }else if([player1Color isEqualToString:@"X"]){
-        player1Color = @"black";
-        player2Color = @"white";
+    player1.color = [[NSString alloc] initWithUTF8String:input];
+    if ([player1.color isEqualToString:@"Y"]) {
+        player1.color = @"white";
+        player2.color = @"black";
+    }else if([player1.color isEqualToString:@"X"]){
+        player1.color = @"black";
+        player2.color = @"white";
     }else{
         printf("Vul X of Y in en niks anders!\n");
         [self playerChoose];
     }
-    player1= [[Player alloc] initWithColor:player1Color];
-    player2= [[Player alloc] initWithColor:player2Color];
+    currentPlayer = player1;
+    [self play];
 }
 
--(void)squareChoose{
+-(BOOL)squareChoose{
     printf("Welk stuk wil je veranderen\n");
     printf("coordinaat X: \n");
     scanf("%d",&coordinaatX);
     printf("coordinaat Y: \n");
     scanf("%d",&coordinaatY);
     Square *square = [board getSquareWithRow:coordinaatX Column:coordinaatY];
-    if ([square isEqual:nil] || square.hasPiece != YES ) {
+    if ([square isEqual:nil] || square.hasPiece != YES || square.pieceColor != currentPlayer.color) {
         printf("Ongeldig stuk. of is niet van jou! kies opnieuw:\n");
         printf("Welk stuk wil je veranderen\n");
         printf("coordinaat X: \n");
@@ -75,59 +86,75 @@
     scanf("%d",&coordinaatX);
     printf("coordinaat Y: \n");
     scanf("%d",&coordinaatY);
-    [self squareMoveSquare:square];
+    if([self squareMoveSquare:square]){
+        return  YES;
+    }else{
+        return NO;
+    }
 }
 
--(void)squareMoveSquare:(Square *)nSquare{
+-(BOOL)squareMoveSquare:(Square *)nSquare{
     Square *newSquare = [board getSquareWithRow:coordinaatX Column:coordinaatY];
-    if([newSquare isEqual:nil] ){
+    if(newSquare.column == 0 ){
         printf("Ongeldig zet. kies opnieuw:\n");
-        printf("Welk stuk wil je veranderen\n");
-        printf("coordinaat X: \n");
-        scanf("%d",&coordinaatX);
-        printf("coordinaat Y: \n");
-        scanf("%d",&coordinaatY);
-        newSquare = [[Square alloc] initWithColor:@"black" Row:coordinaatX Column:coordinaatY];
+        [self squareChoose];
     }
     if(![self validMoveSquare:newSquare oldSquare:nSquare]){
-        [self squareMoveSquare:nSquare];
+        return NO;
     }
+    return YES;
 }
 
 -(BOOL)validMoveSquare:(Square *)newSquare oldSquare:(Square *)nOldSquare{
-    if(newSquare.hasPiece == YES && newSquare.pieceColor != player1Color){
-        [player1 captureOldSquare:nOldSquare newSquare:newSquare ];
+    if((newSquare.column == 0) || (newSquare.hasPiece == YES && newSquare.pieceColor != player1.color)){
+        [currentPlayer moveOldSquare:nOldSquare newSquare:newSquare];
         
         if(newSquare.row > nOldSquare.row && newSquare.column > nOldSquare.column){
-            nOldSquare.row = newSquare.row + 1;
-            nOldSquare.column = newSquare.column + 1;
-            [self validMoveSquare:nOldSquare oldSquare:newSquare];
+            int newRow = newSquare.row + 1;
+            int newColumn = newSquare.column +1;
+            nOldSquare.row = newRow;
+            nOldSquare.column = newColumn;
+            if([self validMoveSquare:nOldSquare oldSquare:newSquare]){
+                return YES;
+            }
         }
         if(newSquare.row > nOldSquare.row && newSquare.column < nOldSquare.column){
-            nOldSquare.row = newSquare.row + 1;
-            nOldSquare.column = newSquare.column - 1;
-            [self validMoveSquare:nOldSquare oldSquare:newSquare];
+            int newRow = newSquare.row + 1;
+            int newColumn = newSquare.column -1;
+            nOldSquare.row = newRow;
+            nOldSquare.column = newColumn;
+            if([self validMoveSquare:nOldSquare oldSquare:newSquare]){
+                return YES;
+            }
         }
         if(newSquare.row < nOldSquare.row && newSquare.column < nOldSquare.column){
-            nOldSquare.row = newSquare.row - 1;
-            nOldSquare.column = newSquare.column - 1;
-            [self validMoveSquare:nOldSquare oldSquare:newSquare];
+            int newRow = newSquare.row - 1;
+            int newColumn = newSquare.column - 1;
+            nOldSquare.row = newRow;
+            nOldSquare.column = newColumn;
+            if([self validMoveSquare:nOldSquare oldSquare:newSquare]){
+                return YES;
+            }
         }
         if(newSquare.row < nOldSquare.row && newSquare.column > nOldSquare.column){
-            nOldSquare.row = newSquare.row - 1;
-            nOldSquare.column = newSquare.column + 1;
-            [self validMoveSquare:nOldSquare oldSquare:newSquare];
+            int newRow = newSquare.row - 1;
+            int newColumn = newSquare.column +1;
+            nOldSquare.row = newRow;
+            nOldSquare.column = newColumn;
+            if([self validMoveSquare:nOldSquare oldSquare:newSquare]){
+                return YES;
+            }
         }
         [board draw];
         return YES;
-    }else if (newSquare.hasPiece == YES && newSquare.pieceColor == player1Color){
+    }else if (newSquare.column == 0 || (newSquare.hasPiece == YES && newSquare.pieceColor == player1.color)){
         printf("Ongeldig zet het is jouw eigen steen\n");
-        [self squareChoose];
-    }else{
-        [player1 moveOldSquare:nOldSquare newSquare:newSquare];
+        return NO;
+    }else {
+        [currentPlayer moveOldSquare:nOldSquare newSquare:newSquare];
         [board draw];
         return YES;
     }
-    
+return NO;  
 }
 @end
