@@ -25,12 +25,32 @@
 -(void)setup{
     for (int x =0; x<size; x++){
         for (int i = 0; i<size; i++){
-            if(i % 2){
-                Square *square = [[Square alloc] initWithColor:@"black" Row:i Column:x];
-                [squares addObject:square];
+            if (x % 2) {
+                if(i % 2){
+                    Square *square = [[Square alloc] initWithColor:@"black" Row:i Column:x];
+                    [squares addObject:square];
+                    if ((x < (size/2.6667)) || x > ((size-1)-(size/2.6667))) {
+                        square.hasPiece = YES;
+                    }
+                }else{
+                    Square *square2 = [[Square alloc] initWithColor:@"white" Row:i Column:x];
+                    [squares addObject:square2];
+                }
+
             }else{
-                Square *square2 = [[Square alloc] initWithColor:@"white" Row:i Column:x];
-                [squares addObject:square2];
+                if(i % 2){
+                    Square *square2 = [[Square alloc] initWithColor:@"white" Row:i Column:x];
+                    [squares addObject:square2];
+
+                }else{
+                    Square *square = [[Square alloc] initWithColor:@"black" Row:i Column:x];
+                    [squares addObject:square];
+                    if ((x < (size/2.6667)) || x > ((size-1)-(size/2.6667))) {
+                        square.hasPiece = YES;
+                    }
+
+                }
+
             }
         }
     }
@@ -67,11 +87,17 @@
 -(void)draw{
     for (Square *square in squares){
         if ([square.color isEqual:[[NSString alloc] initWithFormat:@"black"]]) {
-            printf("[ ]");
+            printf("[");
+            if (square.hasPiece) {
+                printf("X");
+            }else{
+                printf(" ");
+            }
+            printf("]");
         }else{
             printf("{ }");
         }
-        if(square.row == 9){
+        if(square.row == size-1){
             printf("\n");
         }
     }
