@@ -14,12 +14,14 @@
     int row;
     int column;
     BOOL hasPiece;
+    NSString *pieceColor;
     NSArray *adjacentSquares;
 }
 @property(nonatomic, retain) NSString *color;
 @property(nonatomic) int row;
 @property(nonatomic) int column;
 @property(nonatomic) BOOL hasPiece;
+@property(nonatomic,retain) NSString *pieceColor;
 @property(nonatomic, retain) NSArray *adjacentSquares;
 
 +(int)numberOfSquares;

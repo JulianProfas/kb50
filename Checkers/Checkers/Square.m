@@ -14,6 +14,7 @@
 @synthesize row ;
 @synthesize column;
 @synthesize hasPiece ;
+@synthesize pieceColor;
 @synthesize adjacentSquares;
 
 +(int)numberOfSquares{

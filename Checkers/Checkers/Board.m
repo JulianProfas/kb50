@@ -29,26 +29,39 @@
                 if(i % 2){
                     Square *square = [[Square alloc] initWithColor:@"black" Row:i Column:x];
                     [squares addObject:square];
-                    if ((x < (size/2.6667)) || x > ((size-1)-(size/2.6667))) {
+                    if ((x < (size/2.6667))) {
                         square.hasPiece = YES;
+                        square.pieceColor = @"white";
                     }
+                    if(x > ((size-1)-(size/2.6667))){
+                        square.hasPiece = YES;
+                        square.pieceColor = @"black";
+                    }
+                [square release];
                 }else{
                     Square *square2 = [[Square alloc] initWithColor:@"white" Row:i Column:x];
                     [squares addObject:square2];
+                    [square2 release];
                 }
 
             }else{
                 if(i % 2){
                     Square *square2 = [[Square alloc] initWithColor:@"white" Row:i Column:x];
                     [squares addObject:square2];
+                    [square2 release];
 
                 }else{
                     Square *square = [[Square alloc] initWithColor:@"black" Row:i Column:x];
                     [squares addObject:square];
-                    if ((x < (size/2.6667)) || x > ((size-1)-(size/2.6667))) {
+                    if ((x < (size/2.6667))) {
                         square.hasPiece = YES;
+                        square.pieceColor = @"white";
                     }
-
+                    if(x > ((size-1)-(size/2.6667))){
+                        square.hasPiece = YES;
+                        square.pieceColor = @"black";
+                    }
+                    [square release];
                 }
 
             }
@@ -77,10 +90,16 @@
                 if(vSquare.column == aSquare.column && vSquare.row == aSquare.row){
                     [adjecentSquares addObject:aSquare];
                 }
-                
+                [aSquare release];
+                [zSquare release];
+                [xSquare release];
+                [cSquare release];
+                [vSquare release];
             }
             [square addAjacentSquares:adjecentSquares];
+            [adjecentSquares release];
         }
+    [square release] ;
     }
 }
 
@@ -88,8 +107,10 @@
     for (Square *square in squares){
         if ([square.color isEqual:[[NSString alloc] initWithFormat:@"black"]]) {
             printf("[");
-            if (square.hasPiece) {
+            if (square.hasPiece && [square.pieceColor isEqualToString:@"black" ]) {
                 printf("X");
+            }else if(square.hasPiece && [square.pieceColor isEqualToString:@"white" ]){
+                printf("Y");
             }else{
                 printf(" ");
             }
@@ -100,6 +121,7 @@
         if(square.row == size-1){
             printf("\n");
         }
+    [square release];
     }
 }
 

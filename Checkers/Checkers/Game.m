@@ -25,7 +25,7 @@
     [board setup];
 
     [board addNeighbours];
-        [board draw];
+    [board draw];
     
 }
 @end
