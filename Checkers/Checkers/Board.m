@@ -8,6 +8,7 @@
 
 #import "Board.h"
 #import "Square.h"
+
 @implementation Board
 
 @synthesize squares ;
@@ -90,16 +91,10 @@
                 if(vSquare.column == aSquare.column && vSquare.row == aSquare.row){
                     [adjecentSquares addObject:aSquare];
                 }
-                [aSquare release];
-                [zSquare release];
-                [xSquare release];
-                [cSquare release];
-                [vSquare release];
             }
             [square addAjacentSquares:adjecentSquares];
             [adjecentSquares release];
         }
-    [square release] ;
     }
 }
 
