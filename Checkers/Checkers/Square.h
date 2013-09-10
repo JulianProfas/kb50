@@ -28,5 +28,5 @@
 -(id)initWithColor:(NSString *)color Row:(int)row Column:(int)column;
 -(id)initWithColor:(NSString *)color;
 -(void)addAjacentSquares:(NSMutableArray*)newSquares;
--(Square *)isNeibourSquare:(Square*)nSquare;
+-(Square *)isNeighboringSquare:(Square*)aSquare;
 @end

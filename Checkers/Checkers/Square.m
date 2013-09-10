@@ -44,9 +44,9 @@
     self.adjacentSquares = newSquares;
 }
 
--(Square *)isNeibourSquare:(Square*)nSquare{
+-(Square *)isNeighboringSquare:(Square*)aSquare{
     for (Square *square in adjacentSquares) {
-        if(nSquare.row == square.row && nSquare.column == square.column){
+        if(aSquare.row == square.row && aSquare.column == square.column){
             return square;
         }
     }

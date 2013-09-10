@@ -15,8 +15,7 @@
 @property(nonatomic, retain) NSString *color;
 
 -(id)initWithColor:(NSString *)color;
--(void)moveOldSquare:(Square *)nSquare newSquare:(Square *)nNewSquare;
--(void)captureOldSquare:(Square *)nSquare newSquare:(Square *)nNewSquare;
+-(void)moveFromSquare:(Square *)fromSquare toSquare:(Square *)toSquare;
 -(void)undo;
 -(void)resign;
 @end

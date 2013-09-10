@@ -22,7 +22,8 @@
 -(id)initWithSize:(int)size;
 -(void)setup;
 -(void)draw;
--(void)addNeighbours;
--(Square *)getSquareWithRow:(int)nRow Column:(int)nColumn;
+-(void)addNeighboringSquares;
+
+-(Square *)getSquareAtRow:(int)aRow Column:(int)aColumn;
 
 @end

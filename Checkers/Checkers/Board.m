@@ -11,66 +11,59 @@
 
 @implementation Board
 
-@synthesize squares ;
-@synthesize pieces ;
-@synthesize size ;
+@synthesize squares;
+@synthesize pieces;
+@synthesize size;
 
--(id)initWithSize:(int)newSize{
+-(id)initWithSize:(int)aSize{
     if((self = [super init])){
-    size = newSize;
+    size = aSize;
         squares =[[NSMutableArray alloc] init];
     }
     return self;
 }
 
 -(void)setup{
-    for (int x =0; x<size; x++){
-        for (int i = 0; i<size; i++){
-            if (x % 2) {
-                if(i % 2){
-                    Square *square = [[Square alloc] initWithColor:@"black" Row:i Column:x];
+    for (int column = 0; column<size; column++){
+        for (int row = 0; row<size; row++){
+            if (column % 2) {
+                if(row % 2){
+                    Square *square = [[Square alloc] initWithColor:@"black" Row:row Column:column];
                     [squares addObject:square];
-                    if ((x < (size/2.6667))) {
+                    if ((column < (size/2.6667))) {
                         square.hasPiece = YES;
                         square.pieceColor = @"white";
                     }
-                    if(x > ((size-1)-(size/2.6667))){
+                    if(column > ((size-1)-(size/2.6667))){
                         square.hasPiece = YES;
                         square.pieceColor = @"black";
                     }
-                [square release];
                 }else{
-                    Square *square2 = [[Square alloc] initWithColor:@"white" Row:i Column:x];
+                    Square *square2 = [[Square alloc] initWithColor:@"white" Row:row Column:column];
                     [squares addObject:square2];
-                    [square2 release];
                 }
-
             }else{
-                if(i % 2){
-                    Square *square2 = [[Square alloc] initWithColor:@"white" Row:i Column:x];
+                if(row % 2){
+                    Square *square2 = [[Square alloc] initWithColor:@"white" Row:row Column:column];
                     [squares addObject:square2];
-                    [square2 release];
-
                 }else{
-                    Square *square = [[Square alloc] initWithColor:@"black" Row:i Column:x];
+                    Square *square = [[Square alloc] initWithColor:@"black" Row:row Column:column];
                     [squares addObject:square];
-                    if ((x < (size/2.6667))) {
+                    if ((column < (size/2.6667))) {
                         square.hasPiece = YES;
                         square.pieceColor = @"white";
                     }
-                    if(x > ((size-1)-(size/2.6667))){
+                    if(column > ((size-1)-(size/2.6667))){
                         square.hasPiece = YES;
                         square.pieceColor = @"black";
                     }
-                    [square release];
                 }
 
             }
         }
     }
-    
  }
--(void)addNeighbours{
+-(void)addNeighboringSquares{
     for (Square *square in squares){
         if([square.color isEqual: [[NSString alloc]initWithFormat:@"black"]]){
             NSMutableArray *adjecentSquares = [[NSMutableArray alloc] init];
@@ -93,7 +86,6 @@
                 }
             }
             [square addAjacentSquares:adjecentSquares];
-            [adjecentSquares release];
         }
     }
 }
@@ -108,9 +100,9 @@
         if ([square.color isEqual:[[NSString alloc] initWithFormat:@"black"]]) {
             printf("[");
             if (square.hasPiece && [square.pieceColor isEqualToString:@"black" ]) {
-                printf("X");
+                printf("x");
             }else if(square.hasPiece && [square.pieceColor isEqualToString:@"white" ]){
-                printf("Y");
+                printf("o");
             }else{
                 printf(" ");
             }
@@ -119,15 +111,15 @@
             printf("{ }");
         }
         if(square.row == size-1){
-            printf("\n %d",(square.column +1));
+            printf("\n %d",(square.column+1));
         }
     }
 }
 
--(Square *)getSquareWithRow:(int)nRow Column:(int)nColumn{
+-(Square *)getSquareAtRow:(int)aRow Column:(int)aColumn{
     for (int i = 0; i<squares.count;i++){
         Square *square = [squares objectAtIndex:i];
-        if ((square.row == nRow) && (square.column == nColumn)) {
+        if ((square.row == aRow) && (square.column == aColumn)) {
             return square;
         }
     }

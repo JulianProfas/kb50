@@ -20,19 +20,16 @@
     return self;
 }
 
--(void)moveOldSquare:(Square *)nSquare newSquare:(Square *)nNewSquare{
-    nSquare.hasPiece = NO;
-    nNewSquare.hasPiece = YES;
-    nNewSquare.pieceColor = nSquare.pieceColor;
-    nSquare.pieceColor = nil;
-}
-
--(void)captureOldSquare:(Square *)nSquare newSquare:(Square *)nNewSquare{
-    nSquare.hasPiece = NO;
-    nNewSquare.hasPiece = NO;
-    nNewSquare.pieceColor = nSquare.pieceColor;
-    nSquare.pieceColor = nil;
+-(void)moveFromSquare:(Square *)fromSquare toSquare:(Square *)toSquare{
+    //remove piece from old location
+    fromSquare.hasPiece = NO;
+    fromSquare.pieceColor = nil;
     
+    //add piece to new location
+    toSquare.hasPiece = YES;
+    toSquare.pieceColor = fromSquare.pieceColor;
+    
+    //todo: check for multiple captures (combo)
 }
 
 -(void)undo{
