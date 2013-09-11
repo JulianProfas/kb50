@@ -23,11 +23,12 @@
     int toCoordinateX;
     int toCoordinateY;
     Player *currentPlayer;
-
+    
 }
 @property(nonatomic,retain) Board *board;
 @property(nonatomic,retain) Player *playerOne;
 @property(nonatomic,retain) Player *playerTwo;
+@property(nonatomic,retain) Player *currentPlayer;
 @property(nonatomic,retain) NSMutableArray *blackPieces;
 @property(nonatomic,retain) NSMutableArray *whitePieces;
 @property(nonatomic) int turn;
@@ -36,7 +37,6 @@
 @property(nonatomic) int fromCoordinateY;
 @property(nonatomic) int toCoordinateX;
 @property(nonatomic) int toCoordinateY;
-@property(nonatomic,retain) Player *currentPlayer;
 
 -(void)setup;
 -(void)selectPlayer;

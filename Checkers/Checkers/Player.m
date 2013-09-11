@@ -27,7 +27,9 @@
     
     //add piece to new location
     toSquare.hasPiece = YES;
-    toSquare.pieceColor = fromSquare.pieceColor;
+    toSquare.pieceColor = fromSquare.pieceColor; //!BUG: momenteel zijn beiden leeg (deze moeten black of white zijn)
+    NSLog(@"fromSquare piececolor is %@", fromSquare.pieceColor);
+    NSLog(@"toSquare piececolor is %@", toSquare.pieceColor);
     
     //todo: check for multiple captures (combo)
 }

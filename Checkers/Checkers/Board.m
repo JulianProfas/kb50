@@ -17,7 +17,7 @@
 
 -(id)initWithSize:(int)aSize{
     if((self = [super init])){
-    size = aSize;
+        size = aSize;
         squares =[[NSMutableArray alloc] init];
     }
     return self;
@@ -58,11 +58,11 @@
                         square.pieceColor = @"black";
                     }
                 }
-
+                
             }
         }
     }
- }
+}
 -(void)addNeighboringSquares{
     for (Square *square in squares){
         if([square.color isEqual: [[NSString alloc]initWithFormat:@"black"]]){

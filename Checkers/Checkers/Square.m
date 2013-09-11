@@ -11,9 +11,9 @@
 @implementation Square
 
 @synthesize color;
-@synthesize row ;
+@synthesize row;
 @synthesize column;
-@synthesize hasPiece ;
+@synthesize hasPiece;
 @synthesize pieceColor;
 @synthesize adjacentSquares;
 
@@ -22,26 +22,26 @@
     return 1;
 }
 
--(id)initWithColor:(NSString *)newColor Row:(int)newRow Column:(int)newColumn{
+-(id)initWithColor:(NSString *)newColor Row:(int)aRow Column:(int)aColumn{
     if((self = [super init])){
-    self.color = newColor;
-    row = newRow;
-    column = newColumn;
+        self.color = newColor;
+        row = aRow;
+        column = aColumn;
     }
     return self;
 }
 
--(id)initWithColor:(NSString *)newColor
+-(id)initWithColor:(NSString *)aColor
 {
     if((self = [super init])){
-    self.color = newColor;
-
+        self.color = aColor;
+        
     }
     return self;
 }
 
--(void)addAjacentSquares:(NSMutableArray*)newSquares{
-    self.adjacentSquares = newSquares;
+-(void)addAjacentSquares:(NSMutableArray*)squares{
+    self.adjacentSquares = squares;
 }
 
 -(Square *)isNeighboringSquare:(Square*)aSquare{

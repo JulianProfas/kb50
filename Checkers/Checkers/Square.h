@@ -17,16 +17,17 @@
     NSString *pieceColor;
     NSArray *adjacentSquares;
 }
-@property(nonatomic, retain) NSString *color;
+
 @property(nonatomic) int row;
 @property(nonatomic) int column;
 @property(nonatomic) BOOL hasPiece;
-@property(nonatomic,retain) NSString *pieceColor;
+@property(nonatomic, retain) NSString *color;
+@property(nonatomic, retain) NSString *pieceColor;
 @property(nonatomic, retain) NSArray *adjacentSquares;
 
 +(int)numberOfSquares;
 -(id)initWithColor:(NSString *)color Row:(int)row Column:(int)column;
 -(id)initWithColor:(NSString *)color;
--(void)addAjacentSquares:(NSMutableArray*)newSquares;
+-(void)addAjacentSquares:(NSMutableArray*)squares;
 -(Square *)isNeighboringSquare:(Square*)aSquare;
 @end
