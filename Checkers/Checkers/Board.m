@@ -58,7 +58,6 @@
                         square.pieceColor = @"black";
                     }
                 }
-                
             }
         }
     }
@@ -124,6 +123,32 @@
         }
     }
     return nil;
+}
+
+-(int)gameFinished{
+    BOOL black = NO;
+    BOOL white = NO;
+    
+    for(Square *square in squares){
+        if([square.pieceColor isEqualToString:@"black" ]){
+            black = YES;
+        }else if([square.pieceColor isEqualToString:@"white" ]){
+            white = YES;
+        }
+        
+        if(black && white){
+            break;
+        }
+    }
+    
+    // 0 : no winners  1 : black won 2 : white won
+    if(black && !white){
+        return 1;
+    }else if(!black && white){
+        return 2;
+    }
+    
+    return 0;
 }
 
 @end

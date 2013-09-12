@@ -23,6 +23,8 @@
 -(void)setup;
 -(void)draw;
 -(void)addNeighboringSquares;
+-(int)gameFinished;
+
 
 -(Square *)getSquareAtRow:(int)aRow Column:(int)aColumn;
 

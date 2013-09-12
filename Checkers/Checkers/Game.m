@@ -10,6 +10,10 @@
 #import "Board.h"
 #import "Player.h"
 
+#define kGameRunning  0
+#define kBlackWon  1
+#define kWhitewon  2
+
 @implementation Game
 @synthesize board;
 @synthesize playerOne;
@@ -24,6 +28,8 @@
 @synthesize toCoordinateY;
 @synthesize currentPlayer;
 
+
+
 -(void)setup{
     printf("Please enter a board size? ");
     scanf("%d", &size);
@@ -36,14 +42,21 @@
 }
 
 -(void)nextTurn{
-    if([currentPlayer isEqual:playerOne]){
-        currentPlayer = playerTwo;
-        [board draw];
+    [board draw];
+    int gameState = [board gameFinished];
+    
+    if(gameState == kGameRunning){
+        if([currentPlayer isEqual:playerOne]){
+            currentPlayer = playerTwo;
+        }else{
+            currentPlayer = playerOne;
+        }
+        
         [self makeMove];
+    }else if(gameState == kBlackWon){
+         printf("/n/n Black has won this match! ");
     }else{
-        currentPlayer = playerOne;
-        [board draw];
-        [self makeMove];
+         printf("/n/n White has won this match! ");
     }
 }
 
@@ -87,6 +100,7 @@
      fromSquare = [board getSquareAtRow:fromCoordinateX Column:fromCoordinateY];
      [self selectSquare];
      }*/
+    
     printf("To which coordinates would you like to move?\n");
     printf("coordinate X: ");
     scanf("%d",&toCoordinateX);
