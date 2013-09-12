@@ -21,17 +21,21 @@
 }
 
 -(void)moveFromSquare:(Square *)fromSquare toSquare:(Square *)toSquare{
-    //remove piece from old location
-    fromSquare.hasPiece = NO;
-    fromSquare.pieceColor = nil;
-    
     //add piece to new location
     toSquare.hasPiece = YES;
-    toSquare.pieceColor = fromSquare.pieceColor; //!BUG: momenteel zijn beiden leeg (deze moeten black of white zijn)
-    NSLog(@"fromSquare piececolor is %@", fromSquare.pieceColor);
-    NSLog(@"toSquare piececolor is %@", toSquare.pieceColor);
+    toSquare.pieceColor = fromSquare.pieceColor;
+    
+    //remove piece from old location
+    fromSquare.hasPiece = NO;
+    fromSquare.pieceColor = nil; 
+    NSString *moveNotifier = [[NSString alloc] initWithFormat:@"\n%@(%d, %d) moved to (%d, %d)\n\n", toSquare.pieceColor, fromSquare.row, fromSquare.column, toSquare.row, toSquare.column];
+    
+    printf("%s", [moveNotifier UTF8String]);
+    [moveNotifier release];
     
     //todo: check for multiple captures (combo)
+    
+    
 }
 
 -(void)undo{
