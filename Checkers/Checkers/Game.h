@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Board.h"
 #import "Player.h"
+#import "Move.h"
 
 @interface Game : NSObject{
     Board *board;
@@ -23,6 +24,7 @@
     int toCoordinateX;
     int toCoordinateY;
     Player *currentPlayer;
+    
     
 }
 @property(nonatomic,retain) Board *board;

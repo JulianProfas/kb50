@@ -8,14 +8,19 @@
 
 #import <Foundation/Foundation.h>
 #import "Square.h"
+
+
 @interface Player : NSObject
 {
     NSString *color;
+    NSMutableArray *moveList;
 }
 @property(nonatomic, retain) NSString *color;
+@property(nonatomic,retain) NSMutableArray *moveList;
 
 -(id)initWithColor:(NSString *)color;
 -(void)moveFromSquare:(Square *)fromSquare toSquare:(Square *)toSquare;
 -(void)undo;
 -(void)resign;
+-(id)init;
 @end

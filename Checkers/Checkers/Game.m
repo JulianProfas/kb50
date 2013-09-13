@@ -30,6 +30,7 @@
 
 
 
+
 -(void)setup{
     printf("Please enter a board size? ");
     scanf("%d", &size);
@@ -43,6 +44,16 @@
 
 -(void)nextTurn{
     [board draw];
+    printf("Would you like to undo your move?\n");
+    printf("Y(Yes) or N(No): ");
+    char input[200];
+    scanf("%s",input);
+    NSString *nInput = [[NSString alloc]initWithUTF8String:input];
+    if([nInput isEqualToString:@"Y"]){
+        [currentPlayer undo];
+        [board draw];
+        [self makeMove];
+    }else{
     int gameState = [board gameFinished];
     
     if(gameState == kGameRunning){
@@ -58,12 +69,12 @@
     }else{
          printf("/n/n White has won this match! ");
     }
+    }
 }
 
 -(void)selectPlayer{
     playerOne = [[Player alloc] init];
     playerTwo = [[Player alloc] init];
-    
     printf("Would you like to be black (x) or white (o)? ");
     char input[200];
     scanf("%s",input);
@@ -111,8 +122,12 @@
     if([self valididateMoveFromSquare:fromSquare toSquare:toSquare]){
         [currentPlayer moveFromSquare:fromSquare toSquare:toSquare];
         [self nextTurn];
+    }else{
+        printf("The move is not valid. please try again\n");
+        [self makeMove];
     }
 }
+
 
 -(BOOL)valididateMoveFromSquare:(Square *)fromSquare toSquare:(Square *)toSquare{
     //check for valid moves
