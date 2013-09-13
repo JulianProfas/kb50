@@ -23,3 +23,11 @@ build/
 # Backup files
 *~.nib
 Checkers/Checkers.xcodeproj/project.xcworkspace/xcuserdata/julianprofas.xcuserdatad/UserInterfaceState.xcuserstate
+
+*.xcuserstate
+
+*.xcbkptlist
+
+Checkers/Checkers.xcodeproj/project.xcworkspace/xcuserdata/julianprofas.xcuserdatad/UserInterfaceState.xcuserstate
+
+Checkers/Checkers.xcodeproj/xcuserdata/julianprofas.xcuserdatad/xcdebugger/Breakpoints.xcbkptlist
