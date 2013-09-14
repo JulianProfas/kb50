@@ -15,10 +15,10 @@
 @synthesize color;
 
 -(id)initWithColor:(NSString *)newColor{
-     if((self = [super init])){
-    self.color = newColor;
-         moveList = [[NSMutableArray alloc] init];
-     }
+    if((self = [super init])){
+        self.color = newColor;
+        moveList = [[NSMutableArray alloc] init];
+    }
     return self;
 }
 
@@ -36,7 +36,7 @@
     
     //remove piece from old location
     fromSquare.hasPiece = NO;
-    fromSquare.pieceColor = nil; 
+    fromSquare.pieceColor = nil;
     NSString *moveNotifier = [[NSString alloc] initWithFormat:@"\n%@(%d, %d) moved to (%d, %d)\n\n", toSquare.pieceColor, fromSquare.row, fromSquare.column, toSquare.row, toSquare.column];
     
     printf("%s", [moveNotifier UTF8String]);
@@ -45,7 +45,7 @@
     //add move to moveList
     Move *move = [[Move alloc] initWithPlayer:self OldSquare:fromSquare NewSquare:toSquare];
     [moveList addObject:move];
-
+    
     //todo: check for multiple captures (combo)
     
 }

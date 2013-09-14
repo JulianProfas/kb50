@@ -21,7 +21,7 @@
         self.newSquare = aNewSquare;
     }
     return self;
-
+    
 }
 
 

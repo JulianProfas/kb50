@@ -54,21 +54,21 @@
         [board draw];
         [self makeMove];
     }else{
-    int gameState = [board gameFinished];
-    
-    if(gameState == kGameRunning){
-        if([currentPlayer isEqual:playerOne]){
-            currentPlayer = playerTwo;
-        }else{
-            currentPlayer = playerOne;
-        }
+        int gameState = [board gameFinished];
         
-        [self makeMove];
-    }else if(gameState == kBlackWon){
-         printf("/n/n Black has won this match! ");
-    }else{
-         printf("/n/n White has won this match! ");
-    }
+        if(gameState == kGameRunning){
+            if([currentPlayer isEqual:playerOne]){
+                currentPlayer = playerTwo;
+            }else{
+                currentPlayer = playerOne;
+            }
+            
+            [self makeMove];
+        }else if(gameState == kBlackWon){
+            printf("/n/n Black has won this match! ");
+        }else{
+            printf("/n/n White has won this match! ");
+        }
     }
 }
 
