@@ -20,11 +20,10 @@
 @property(nonatomic,retain) NSMutableArray *squares;
 
 -(id)initWithSize:(int)size;
+-(int)checkWinConditions;
 -(void)setup;
 -(void)draw;
 -(void)addNeighboringSquares;
--(int)gameFinished;
-
 
 -(Square *)getSquareAtRow:(int)aRow Column:(int)aColumn;
 

@@ -11,14 +11,14 @@
 #import "Square.h"
 
 @interface Move : NSObject{
-    Square *oldSquare;
-    Square *newSquare;
+    Square *fromSquare;
+    Square *toSquare;
     Player *player;
 }
 @property(nonatomic,retain) Player *player;
-@property(nonatomic,retain) Square *oldSquare;
-@property(nonatomic,retain) Square *newSquare;
+@property(nonatomic,retain) Square *fromSquare;
+@property(nonatomic,retain) Square *toSquare;
 
--(id)initWithPlayer:(Player *)aPlayer OldSquare:(Square*)aOldSquare NewSquare:(Square *)aNewSquare;
+-(id)initWithPlayer:(Player *)aPlayer fromSquare:(Square*)aFromSquare toSquare:(Square *)aToSquare;
 
 @end

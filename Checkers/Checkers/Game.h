@@ -25,7 +25,6 @@
     int toCoordinateY;
     Player *currentPlayer;
     
-    
 }
 @property(nonatomic,retain) Board *board;
 @property(nonatomic,retain) Player *playerOne;
@@ -42,7 +41,10 @@
 
 -(void)setup;
 -(void)selectPlayer;
+-(void)giveTurnToOtherPlayer;
 -(void)nextTurn;
 -(void)makeMove;
+-(Square *)calculateCapturedSquare:(Square *)fromSquare toSquare:(Square*)toSquare;
+-(void)CheckForMoveOrCaptureFromSquare:(Square *)fromSquare toSquare:(Square *)toSquare;
 -(BOOL)valididateMoveFromSquare:(Square *)fromSquare toSquare:(Square *)toSquare;
 @end

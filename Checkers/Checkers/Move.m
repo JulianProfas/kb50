@@ -11,18 +11,17 @@
 @implementation Move
 
 @synthesize player;
-@synthesize oldSquare;
-@synthesize newSquare;
+@synthesize fromSquare;
+@synthesize toSquare;
 
--(id)initWithPlayer:(Player *)aPlayer OldSquare:(Square *)aOldSquare NewSquare:(Square *)aNewSquare{
+-(id)initWithPlayer:(Player *)aPlayer fromSquare:(Square *)aFromSquare toSquare:(Square *)aToSquare{
     if((self = [super init])){
         self.player = aPlayer;
-        self.oldSquare = aOldSquare;
-        self.newSquare = aNewSquare;
+        self.fromSquare = aFromSquare;
+        self.toSquare = aToSquare;
     }
     return self;
     
 }
-
 
 @end

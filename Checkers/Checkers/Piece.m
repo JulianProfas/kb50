@@ -10,6 +10,6 @@
 
 @implementation Piece
 
-@synthesize pieceColor;
+@synthesize color;
 @synthesize rank;
 @end

@@ -28,9 +28,6 @@
 @synthesize toCoordinateY;
 @synthesize currentPlayer;
 
-
-
-
 -(void)setup{
     printf("Please enter a board size? ");
     scanf("%d", &size);
@@ -42,41 +39,32 @@
     [self makeMove];
 }
 
+-(void)giveTurnToOtherPlayer{
+    if([currentPlayer isEqual:playerOne]){
+        currentPlayer = playerTwo;
+    }else{
+        currentPlayer = playerOne;
+    }
+}
+
 -(void)nextTurn{
-    [board draw];
-    printf("Would you like to undo your move?\n");
-    printf("Y(Yes) or N(No): ");
-    char input[200];
-    scanf("%s",input);
-    NSString *nInput = [[NSString alloc]initWithUTF8String:input];
-    if([nInput isEqualToString:@"Y"]){
-        [currentPlayer undo];
+    if ([board checkWinConditions] == kGameRunning) {
+        [self giveTurnToOtherPlayer];
         [board draw];
         [self makeMove];
+    } else if([board checkWinConditions] == kBlackWon){
+        printf("\n\nBlack has won this match!");
     }else{
-        int gameState = [board gameFinished];
-        
-        if(gameState == kGameRunning){
-            if([currentPlayer isEqual:playerOne]){
-                currentPlayer = playerTwo;
-            }else{
-                currentPlayer = playerOne;
-            }
-            
-            [self makeMove];
-        }else if(gameState == kBlackWon){
-            printf("/n/n Black has won this match! ");
-        }else{
-            printf("/n/n White has won this match! ");
-        }
+        printf("\n\nWhite has won this match!");
     }
 }
 
 -(void)selectPlayer{
     playerOne = [[Player alloc] init];
     playerTwo = [[Player alloc] init];
+    
     printf("Would you like to be black (x) or white (o)? ");
-    char input[200];
+    char input[2];
     scanf("%s",input);
     playerOne.color = [[NSString alloc] initWithUTF8String:input];
     if ([playerOne.color isEqualToString:@"o"]) {
@@ -86,7 +74,6 @@
         playerOne.color = @"black";
         playerTwo.color = @"white";
     }else{
-        printf("Please choose black (x) or white (o) ");
         [self selectPlayer];
     }
     //set first turn to Player 1
@@ -94,110 +81,132 @@
 }
 
 -(void)makeMove{
-    printf("Which piece would you like to move?\n");
-    printf("coordinate X: ");
-    scanf("%d",&fromCoordinateX);
-    printf("coordinate Y: ");
-    scanf("%d",&fromCoordinateY);
-    Square *fromSquare = [board getSquareAtRow:fromCoordinateX Column:fromCoordinateY];
+    printf("%s: Which piece would you like to move?[x-y] or[undo] ", [currentPlayer.color UTF8String]);
+    char input[5];
+    scanf("%s",input);
     
-    /*if ([fromSquare isEqual:nil] || fromSquare.hasPiece != YES || fromSquare.pieceColor != currentPlayer.color) {
-     printf("Invalid piece. or not yours! choose again:\n");
-     printf("Which piece would you like to move?\n");
-     printf("Coordinate X: ");
-     scanf("%d",&fromCoordinateX);
-     printf("Coordinate Y: ");
-     scanf("%d",&fromCoordinateY);
-     fromSquare = [board getSquareAtRow:fromCoordinateX Column:fromCoordinateY];
-     [self selectSquare];
-     }*/
+    NSString *inputString = [[NSString alloc] initWithUTF8String:input];
+    if ([inputString rangeOfString:@"-"].location != NSNotFound) {
+        NSArray *fromCoordinates = [inputString componentsSeparatedByString:@"-"];
+        fromCoordinateX = [fromCoordinates[0] intValue];
+        fromCoordinateY = [fromCoordinates[1] intValue];
+        
+        Square *fromSquare = [board getSquareAtRow: fromCoordinateY Column:fromCoordinateX];
+        
+        printf("%s: To which coordinates would you like to move? ", [currentPlayer.color UTF8String]);
+        char input[5];
+        scanf("%s",input);
+        
+        NSString *inputString = [[NSString alloc] initWithUTF8String:input];
+        if ([inputString rangeOfString:@"-"].location != NSNotFound) {
+            NSArray *toCoordinates = [inputString componentsSeparatedByString:@"-"];
+            toCoordinateX = [toCoordinates[0] intValue];
+            toCoordinateY = [toCoordinates[1] intValue];
+            
+            Square *toSquare = [board getSquareAtRow:toCoordinateY Column:toCoordinateX];
+            [self CheckForMoveOrCaptureFromSquare:fromSquare toSquare:toSquare];
+        }
+    }else {
+        if ([[[NSString alloc] initWithUTF8String:input] isEqualToString:@"undo"])
+        {
+            [self giveTurnToOtherPlayer];
+            [currentPlayer undo];
+            [board draw];
+            [self makeMove];
+        }
+        
+        printf("This coordinate is not valid. please try again\n");
+        [self makeMove];
+    }
     
-    printf("To which coordinates would you like to move?\n");
-    printf("coordinate X: ");
-    scanf("%d",&toCoordinateX);
-    printf("coordinate Y: ");
-    scanf("%d",&toCoordinateY);
-    Square *toSquare = [board getSquareAtRow:toCoordinateX Column:toCoordinateY];
+    printf("This coordinate is not valid. please try again\n");
+    [self makeMove];
+}
+
+-(void)CheckForMoveOrCaptureFromSquare:(Square *)fromSquare toSquare:(Square *)toSquare{
+    //Check for overlapping squares in neighbors, if so it's a capture
+    BOOL captureAllowed = NO;
+    for (Square *fromAdjacentSquare in fromSquare.adjacentSquares) {
+        for (Square *toAdjacentSquare in toSquare.adjacentSquares) {
+            if (fromAdjacentSquare.column == toAdjacentSquare.column &&
+                fromAdjacentSquare.row == toAdjacentSquare.row &&
+                toSquare.hasPiece == NO) {
+                captureAllowed = YES;
+            }
+        }
+    }
     
-    if([self valididateMoveFromSquare:fromSquare toSquare:toSquare]){
+    //calculate capturedSquare
+    Square *capturedSquare = [self calculateCapturedSquare:fromSquare toSquare:toSquare];
+    
+    //validate the move or capture
+    if (captureAllowed && ![self valididateMoveFromSquare:fromSquare toSquare:toSquare]) {
+        [currentPlayer captureFromSquare:fromSquare toSquare:toSquare capturedSquare:capturedSquare];
+        [self nextTurn];
+    } else if ([self valididateMoveFromSquare:fromSquare toSquare:toSquare]) {
         [currentPlayer moveFromSquare:fromSquare toSquare:toSquare];
         [self nextTurn];
-    }else{
-        printf("The move is not valid. please try again\n");
+    } else {
+        printf("%s: [%d-%d] to [%d-%d] is an invalid move.\n", [currentPlayer.color UTF8String], fromSquare.column, fromSquare.row, toSquare.column, toSquare.row);
         [self makeMove];
     }
 }
 
+-(Square *)calculateCapturedSquare:(Square *)fromSquare toSquare:(Square*)toSquare{
+    int captureRow = 0;
+    int captureColumn = 0;
+    
+    if ([currentPlayer.color isEqual: @"black"]){
+        if (fromSquare.row-1 == toSquare.row+1) {       //black can only capture upwards
+            captureRow = fromSquare.row-1;
+        }
+        
+        if (fromSquare.column+1 == toSquare.column-1) {
+            captureColumn = fromSquare.column+1;
+        }
+        
+        if (fromSquare.column-1 == toSquare.column+1) {
+            captureColumn = fromSquare.column-1;
+        }
+        Square *capturedSquare = [board getSquareAtRow:captureRow Column:captureColumn];
+        return capturedSquare;
+    } else {
+        if (fromSquare.row+1 == toSquare.row-1) {       //white can only capture downwards
+            captureRow = fromSquare.row+1;
+        }
+        
+        if (fromSquare.column+1 == toSquare.column-1) {
+            captureColumn = fromSquare.column+1;
+        }
+        
+        if (fromSquare.column-1 == toSquare.column+1) {
+            captureColumn = fromSquare.column-1;
+        }
+        Square *capturedSquare = [board getSquareAtRow:captureRow Column:captureColumn];
+        return capturedSquare;
+    }
+    return nil;
+}
 
 -(BOOL)valididateMoveFromSquare:(Square *)fromSquare toSquare:(Square *)toSquare{
-    //check for valid moves
+    
     if ([currentPlayer.color isEqual: @"black"])
     {
-        if(fromSquare.row < toSquare.row && (fromSquare.column-1 == toSquare.column || fromSquare.column+1 == toSquare.column))
+        if(fromSquare.row-1 == toSquare.row &&
+           (fromSquare.column-1 == toSquare.column || fromSquare.column+1 == toSquare.column) &&
+           toSquare.hasPiece == NO)                 //black move code
         {
             return YES;
         } else {
             return NO;
         }
-    } else if (fromSquare.row > toSquare.row && (fromSquare.column-1 == toSquare.column || fromSquare.column+1 == toSquare.column)) {
+    } else if (fromSquare.row+1 == toSquare.row &&
+               (fromSquare.column-1 == toSquare.column || fromSquare.column+1 == toSquare.column) &&
+               toSquare.hasPiece == NO)             //white move code
+    {
         return YES;
     } else {
         return NO;
     }
-    //todo: check for valid captures
 }
-
-/*
- -(BOOL)valididateMoveFromSquare:(Square *)newSquare toSquare:(Square *)nOldSquare{
- if((newSquare.column == 0) || (newSquare.hasPiece == YES && newSquare.pieceColor != playerOne.color)){
- [currentPlayer moveFromSquare:nOldSquare toSquare:newSquare];
- 
- if(newSquare.row > nOldSquare.row && newSquare.column > nOldSquare.column){
- int newRow = newSquare.row + 1;
- int newColumn = newSquare.column +1;
- nOldSquare.row = newRow;
- nOldSquare.column = newColumn;
- if([self valididateMoveFromSquare:nOldSquare toSquare:newSquare]){
- return YES;
- }
- }
- if(newSquare.row > nOldSquare.row && newSquare.column < nOldSquare.column){
- int newRow = newSquare.row + 1;
- int newColumn = newSquare.column -1;
- nOldSquare.row = newRow;
- nOldSquare.column = newColumn;
- if([self valididateMoveFromSquare:nOldSquare toSquare:newSquare]){
- return YES;
- }
- }
- if(newSquare.row < nOldSquare.row && newSquare.column < nOldSquare.column){
- int newRow = newSquare.row - 1;
- int newColumn = newSquare.column - 1;
- nOldSquare.row = newRow;
- nOldSquare.column = newColumn;
- if([self valididateMoveFromSquare:nOldSquare toSquare:newSquare]){
- return YES;
- }
- }
- if(newSquare.row < nOldSquare.row && newSquare.column > nOldSquare.column){
- int newRow = newSquare.row - 1;
- int newColumn = newSquare.column +1;
- nOldSquare.row = newRow;
- nOldSquare.column = newColumn;
- if([self valididateMoveFromSquare:nOldSquare toSquare:newSquare]){
- return YES;
- }
- }
- [board draw];
- return YES;
- }else if (newSquare.column == 0 || (newSquare.hasPiece == YES && newSquare.pieceColor == playerOne.color)){
- printf("Invalid move (Own piece)\n");
- return NO;
- }else {
- [currentPlayer moveFromSquare:nOldSquare toSquare:newSquare];
- [board draw];
- return YES;
- }
- return NO;
- }*/
 @end

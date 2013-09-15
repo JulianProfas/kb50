@@ -13,6 +13,6 @@
     NSString *color;
     NSString *rank;
 }
-@property(nonatomic,retain) NSString *pieceColor;
+@property(nonatomic,retain) NSString *color;
 @property(nonatomic,retain) NSString *rank;
 @end

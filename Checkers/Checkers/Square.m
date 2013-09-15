@@ -17,14 +17,9 @@
 @synthesize pieceColor;
 @synthesize adjacentSquares;
 
-+(int)numberOfSquares{
-    
-    return 1;
-}
-
--(id)initWithColor:(NSString *)newColor Row:(int)aRow Column:(int)aColumn{
+-(id)initWithColor:(NSString *)aColor Row:(int)aRow Column:(int)aColumn{
     if((self = [super init])){
-        self.color = newColor;
+        self.color = aColor;
         row = aRow;
         column = aColumn;
     }

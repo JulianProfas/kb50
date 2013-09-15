@@ -24,17 +24,17 @@
 }
 
 -(void)setup{
-    for (int column = 0; column<size; column++){
-        for (int row = 0; row<size; row++){
-            if (column % 2) {
-                if(row % 2){
+    for (int row = 0; row<size; row++){
+        for (int column = 0; column<size; column++){
+            if (row % 2) {
+                if(column % 2){
                     Square *square = [[Square alloc] initWithColor:@"black" Row:row Column:column];
                     [squares addObject:square];
-                    if ((column < (size/2.6667))) {
+                    if ((row < (size/2.6667))) {
                         square.hasPiece = YES;
                         square.pieceColor = @"white";
                     }
-                    if(column > ((size-1)-(size/2.6667))){
+                    if(row > ((size-1)-(size/2.6667))){
                         square.hasPiece = YES;
                         square.pieceColor = @"black";
                     }
@@ -43,21 +43,22 @@
                     [squares addObject:square2];
                 }
             }else{
-                if(row % 2){
+                if(column % 2){
                     Square *square2 = [[Square alloc] initWithColor:@"white" Row:row Column:column];
                     [squares addObject:square2];
                 }else{
                     Square *square = [[Square alloc] initWithColor:@"black" Row:row Column:column];
                     [squares addObject:square];
-                    if ((column < (size/2.6667))) {
+                    if ((row < (size/2.6667))) {
                         square.hasPiece = YES;
                         square.pieceColor = @"white";
                     }
-                    if(column > ((size-1)-(size/2.6667))){
+                    if(row > ((size-1)-(size/2.6667))){
                         square.hasPiece = YES;
                         square.pieceColor = @"black";
                     }
                 }
+                
             }
         }
     }
@@ -67,20 +68,20 @@
         if([square.color isEqual: [[NSString alloc]initWithFormat:@"black"]]){
             NSMutableArray *adjecentSquares = [[NSMutableArray alloc] init];
             for (Square *aSquare in squares){
-                Square *zSquare =[[Square alloc] initWithColor:@"black" Row:(square.row -1) Column:(square.column -1)];
-                Square *xSquare =[[Square alloc] initWithColor:@"black" Row:(square.row -1) Column:(square.column +1)];
-                Square *cSquare =[[Square alloc] initWithColor:@"black" Row:(square.row +1) Column:(square.column +1)];
-                Square *vSquare =[[Square alloc] initWithColor:@"black" Row:(square.row +1) Column:(square.column -1)];
-                if(zSquare.column == aSquare.column && zSquare.row == aSquare.row){
+                Square *upperLeftSquare =[[Square alloc] initWithColor:@"black" Row:(square.row -1) Column:(square.column -1)];
+                Square *upperRightSquare =[[Square alloc] initWithColor:@"black" Row:(square.row -1) Column:(square.column +1)];
+                Square *lowerRightSquare =[[Square alloc] initWithColor:@"black" Row:(square.row +1) Column:(square.column +1)];
+                Square *lowerLeftSquare =[[Square alloc] initWithColor:@"black" Row:(square.row +1) Column:(square.column -1)];
+                if(upperLeftSquare.column == aSquare.column && upperLeftSquare.row == aSquare.row){
                     [adjecentSquares addObject:aSquare];
                 }
-                if(xSquare.column == aSquare.column && xSquare.row == aSquare.row){
+                if(upperRightSquare.column == aSquare.column && upperRightSquare.row == aSquare.row){
                     [adjecentSquares addObject:aSquare];
                 }
-                if(cSquare.column == aSquare.column && cSquare.row == aSquare.row){
+                if(lowerRightSquare.column == aSquare.column && lowerRightSquare.row == aSquare.row){
                     [adjecentSquares addObject:aSquare];
                 }
-                if(vSquare.column == aSquare.column && vSquare.row == aSquare.row){
+                if(lowerLeftSquare.column == aSquare.column && lowerLeftSquare.row == aSquare.row){
                     [adjecentSquares addObject:aSquare];
                 }
             }
@@ -90,17 +91,13 @@
 }
 
 -(void)draw{
-    printf("   ");
-    for(int i = 0; i<size; i++){
-        printf("%d  ",i);
-    }
-    printf("\n 0");
+    printf("\n 0 ");
     for (Square *square in squares){
         if ([square.color isEqual:[[NSString alloc] initWithFormat:@"black"]]) {
             printf("[");
-            if (square.hasPiece && [square.pieceColor isEqualToString:@"black" ]) {
+            if (square.hasPiece && [square.pieceColor isEqualToString:@"black"]) {
                 printf("x");
-            }else if(square.hasPiece && [square.pieceColor isEqualToString:@"white" ]){
+            }else if(square.hasPiece && [square.pieceColor isEqualToString:@"white"]){
                 printf("o");
             }else{
                 printf(" ");
@@ -109,10 +106,15 @@
         }else{
             printf("{ }");
         }
-        if(square.row == size-1){
-            printf("\n %d",(square.column+1));
+        if(square.column == size - 1 && square.row < size - 1){
+            printf("\n %d ",(square.row+1));
         }
     }
+    printf("\n    ");
+    for(int i = 0; i < size; i++){
+        printf("%d  ",i);
+    }
+    printf("\n\n");
 }
 
 -(Square *)getSquareAtRow:(int)aRow Column:(int)aColumn{
@@ -125,14 +127,14 @@
     return nil;
 }
 
--(int)gameFinished{
+-(int)checkWinConditions{
     BOOL black = NO;
     BOOL white = NO;
     
     for(Square *square in squares){
-        if([square.pieceColor isEqualToString:@"black" ]){
+        if([square.pieceColor isEqualToString:@"black"]){
             black = YES;
-        }else if([square.pieceColor isEqualToString:@"white" ]){
+        }else if([square.pieceColor isEqualToString:@"white"]){
             white = YES;
         }
         
