@@ -114,7 +114,6 @@
             [board draw];
             [self makeMove];
         }
-        
         printf("This coordinate is not valid. please try again\n");
         [self makeMove];
     }
@@ -138,9 +137,9 @@
     
     //calculate capturedSquare
     Square *capturedSquare = [self calculateCapturedSquare:fromSquare toSquare:toSquare];
-    
+
     //validate the move or capture
-    if (captureAllowed && ![self valididateMoveFromSquare:fromSquare toSquare:toSquare]) {
+    if (captureAllowed && ![self valididateMoveFromSquare:fromSquare toSquare:toSquare] && [self valididateCaptureFromSquare:fromSquare toSquare:toSquare capturedSquare:capturedSquare]) {
         [currentPlayer captureFromSquare:fromSquare toSquare:toSquare capturedSquare:capturedSquare];
         [self nextTurn];
     } else if ([self valididateMoveFromSquare:fromSquare toSquare:toSquare]) {
@@ -186,6 +185,14 @@
         return capturedSquare;
     }
     return nil;
+}
+
+-(BOOL)valididateCaptureFromSquare:(Square *)fromSquare toSquare:(Square *)toSquare capturedSquare:(Square *)capturedSquare{
+    if (capturedSquare.hasPiece && capturedSquare.pieceColor != currentPlayer.color)
+    {
+        return YES;
+    }
+    return NO;
 }
 
 -(BOOL)valididateMoveFromSquare:(Square *)fromSquare toSquare:(Square *)toSquare{

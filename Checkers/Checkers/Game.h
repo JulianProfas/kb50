@@ -47,4 +47,5 @@
 -(Square *)calculateCapturedSquare:(Square *)fromSquare toSquare:(Square*)toSquare;
 -(void)CheckForMoveOrCaptureFromSquare:(Square *)fromSquare toSquare:(Square *)toSquare;
 -(BOOL)valididateMoveFromSquare:(Square *)fromSquare toSquare:(Square *)toSquare;
+-(BOOL)valididateCaptureFromSquare:(Square *)fromSquare toSquare:(Square *)toSquare capturedSquare:(Square *)capturedSquare;
 @end
