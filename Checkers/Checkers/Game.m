@@ -140,10 +140,7 @@
     Square *capturedSquare = [self calculateCapturedSquare:fromSquare toSquare:toSquare];
     
     //validate the move or capture
-    if (captureAllowed &&
-        ![self valididateMoveFromSquare:fromSquare toSquare:toSquare]
-        && capturedSquare.hasPiece == YES
-        && capturedSquare.color != currentPlayer.color) {
+    if (captureAllowed && ![self valididateMoveFromSquare:fromSquare toSquare:toSquare]) {
         [currentPlayer captureFromSquare:fromSquare toSquare:toSquare capturedSquare:capturedSquare];
         [self nextTurn];
     } else if ([self valididateMoveFromSquare:fromSquare toSquare:toSquare]) {
