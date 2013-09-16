@@ -1,0 +1,309 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		95449DEC17E714F9001FA52D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95449DEB17E714F9001FA52D /* UIKit.framework */; };
+		95449DEE17E714F9001FA52D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95449DED17E714F9001FA52D /* Foundation.framework */; };
+		95449DF017E714F9001FA52D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95449DEF17E714F9001FA52D /* CoreGraphics.framework */; };
+		95449DF617E714F9001FA52D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95449DF417E714F9001FA52D /* InfoPlist.strings */; };
+		95449DF817E714F9001FA52D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 95449DF717E714F9001FA52D /* main.m */; };
+		95449DFC17E714F9001FA52D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 95449DFB17E714F9001FA52D /* AppDelegate.m */; };
+		95449DFE17E714F9001FA52D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 95449DFD17E714F9001FA52D /* Default.png */; };
+		95449E0017E714F9001FA52D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95449DFF17E714F9001FA52D /* Default@2x.png */; };
+		95449E0217E714F9001FA52D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95449E0117E714F9001FA52D /* Default-568h@2x.png */; };
+		95449E0917E7152F001FA52D /* Window.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95449E0817E7152F001FA52D /* Window.xib */; };
+		95449E0E17E71585001FA52D /* Game.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95449E0D17E71585001FA52D /* Game.xib */; };
+		95449E1017E71599001FA52D /* Settings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95449E0F17E71599001FA52D /* Settings.xib */; };
+		95449E1317E715C0001FA52D /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95449E1217E715C0001FA52D /* GameViewController.m */; };
+		95449E1617E715D8001FA52D /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95449E1517E715D7001FA52D /* SettingsViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		95449DE817E714F9001FA52D /* Dartboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dartboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		95449DEB17E714F9001FA52D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		95449DED17E714F9001FA52D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		95449DEF17E714F9001FA52D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		95449DF317E714F9001FA52D /* Dartboard-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Dartboard-Info.plist"; sourceTree = "<group>"; };
+		95449DF517E714F9001FA52D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		95449DF717E714F9001FA52D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		95449DF917E714F9001FA52D /* Dartboard-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dartboard-Prefix.pch"; sourceTree = "<group>"; };
+		95449DFA17E714F9001FA52D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		95449DFB17E714F9001FA52D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		95449DFD17E714F9001FA52D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		95449DFF17E714F9001FA52D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		95449E0117E714F9001FA52D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		95449E0817E7152F001FA52D /* Window.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Window.xib; sourceTree = "<group>"; };
+		95449E0D17E71585001FA52D /* Game.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Game.xib; sourceTree = "<group>"; };
+		95449E0F17E71599001FA52D /* Settings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Settings.xib; sourceTree = "<group>"; };
+		95449E1117E715C0001FA52D /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameViewController.h; path = ../GameViewController.h; sourceTree = "<group>"; };
+		95449E1217E715C0001FA52D /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameViewController.m; path = ../GameViewController.m; sourceTree = "<group>"; };
+		95449E1417E715D7001FA52D /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		95449E1517E715D7001FA52D /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		95449DE517E714F9001FA52D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95449DEC17E714F9001FA52D /* UIKit.framework in Frameworks */,
+				95449DEE17E714F9001FA52D /* Foundation.framework in Frameworks */,
+				95449DF017E714F9001FA52D /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		95449DDF17E714F9001FA52D = {
+			isa = PBXGroup;
+			children = (
+				95449DF117E714F9001FA52D /* Dartboard */,
+				95449DEA17E714F9001FA52D /* Frameworks */,
+				95449DE917E714F9001FA52D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		95449DE917E714F9001FA52D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				95449DE817E714F9001FA52D /* Dartboard.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		95449DEA17E714F9001FA52D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				95449DEB17E714F9001FA52D /* UIKit.framework */,
+				95449DED17E714F9001FA52D /* Foundation.framework */,
+				95449DEF17E714F9001FA52D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		95449DF117E714F9001FA52D /* Dartboard */ = {
+			isa = PBXGroup;
+			children = (
+				95449E1117E715C0001FA52D /* GameViewController.h */,
+				95449E1217E715C0001FA52D /* GameViewController.m */,
+				95449DFA17E714F9001FA52D /* AppDelegate.h */,
+				95449DFB17E714F9001FA52D /* AppDelegate.m */,
+				95449DF217E714F9001FA52D /* Supporting Files */,
+				95449E0817E7152F001FA52D /* Window.xib */,
+				95449E0D17E71585001FA52D /* Game.xib */,
+				95449E0F17E71599001FA52D /* Settings.xib */,
+				95449E1417E715D7001FA52D /* SettingsViewController.h */,
+				95449E1517E715D7001FA52D /* SettingsViewController.m */,
+			);
+			path = Dartboard;
+			sourceTree = "<group>";
+		};
+		95449DF217E714F9001FA52D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				95449DF317E714F9001FA52D /* Dartboard-Info.plist */,
+				95449DF417E714F9001FA52D /* InfoPlist.strings */,
+				95449DF717E714F9001FA52D /* main.m */,
+				95449DF917E714F9001FA52D /* Dartboard-Prefix.pch */,
+				95449DFD17E714F9001FA52D /* Default.png */,
+				95449DFF17E714F9001FA52D /* Default@2x.png */,
+				95449E0117E714F9001FA52D /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		95449DE717E714F9001FA52D /* Dartboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95449E0517E714F9001FA52D /* Build configuration list for PBXNativeTarget "Dartboard" */;
+			buildPhases = (
+				95449DE417E714F9001FA52D /* Sources */,
+				95449DE517E714F9001FA52D /* Frameworks */,
+				95449DE617E714F9001FA52D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Dartboard;
+			productName = Dartboard;
+			productReference = 95449DE817E714F9001FA52D /* Dartboard.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		95449DE017E714F9001FA52D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = HHS;
+			};
+			buildConfigurationList = 95449DE317E714F9001FA52D /* Build configuration list for PBXProject "Dartboard" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 95449DDF17E714F9001FA52D;
+			productRefGroup = 95449DE917E714F9001FA52D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				95449DE717E714F9001FA52D /* Dartboard */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		95449DE617E714F9001FA52D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95449DF617E714F9001FA52D /* InfoPlist.strings in Resources */,
+				95449DFE17E714F9001FA52D /* Default.png in Resources */,
+				95449E0017E714F9001FA52D /* Default@2x.png in Resources */,
+				95449E0217E714F9001FA52D /* Default-568h@2x.png in Resources */,
+				95449E0917E7152F001FA52D /* Window.xib in Resources */,
+				95449E0E17E71585001FA52D /* Game.xib in Resources */,
+				95449E1017E71599001FA52D /* Settings.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		95449DE417E714F9001FA52D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95449DF817E714F9001FA52D /* main.m in Sources */,
+				95449DFC17E714F9001FA52D /* AppDelegate.m in Sources */,
+				95449E1317E715C0001FA52D /* GameViewController.m in Sources */,
+				95449E1617E715D8001FA52D /* SettingsViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		95449DF417E714F9001FA52D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				95449DF517E714F9001FA52D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		95449E0317E714F9001FA52D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		95449E0417E714F9001FA52D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		95449E0617E714F9001FA52D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Dartboard/Dartboard-Prefix.pch";
+				INFOPLIST_FILE = "Dartboard/Dartboard-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		95449E0717E714F9001FA52D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Dartboard/Dartboard-Prefix.pch";
+				INFOPLIST_FILE = "Dartboard/Dartboard-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		95449DE317E714F9001FA52D /* Build configuration list for PBXProject "Dartboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95449E0317E714F9001FA52D /* Debug */,
+				95449E0417E714F9001FA52D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		95449E0517E714F9001FA52D /* Build configuration list for PBXNativeTarget "Dartboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95449E0617E714F9001FA52D /* Debug */,
+				95449E0717E714F9001FA52D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 95449DE017E714F9001FA52D /* Project object */;
+}
