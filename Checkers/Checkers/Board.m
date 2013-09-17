@@ -12,7 +12,6 @@
 @implementation Board
 
 @synthesize squares;
-@synthesize pieces;
 @synthesize size;
 
 -(id)initWithSize:(int)aSize{

@@ -12,11 +12,9 @@
 @interface Board : NSObject
 {
     int size;
-    NSMutableArray *pieces;
     NSMutableArray *squares;
 }
 @property(nonatomic) int size;
-@property(nonatomic,retain) NSMutableArray *pieces;
 @property(nonatomic,retain) NSMutableArray *squares;
 
 -(id)initWithSize:(int)size;

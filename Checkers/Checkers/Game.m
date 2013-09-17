@@ -18,8 +18,6 @@
 @synthesize board;
 @synthesize playerOne;
 @synthesize playerTwo;
-@synthesize blackPieces;
-@synthesize whitePieces;
 @synthesize turn;
 @synthesize size;
 @synthesize fromCoordinateX;

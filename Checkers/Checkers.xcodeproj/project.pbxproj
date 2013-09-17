@@ -13,7 +13,6 @@
 		55F9C27717E45D1600C2B07A /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F9C27617E45D1600C2B07A /* Game.m */; };
 		55F9C27A17E45D2B00C2B07A /* Board.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F9C27917E45D2B00C2B07A /* Board.m */; };
 		55F9C27D17E45D4900C2B07A /* Move.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F9C27C17E45D4900C2B07A /* Move.m */; };
-		55F9C28017E45D5D00C2B07A /* Piece.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F9C27F17E45D5D00C2B07A /* Piece.m */; };
 		55F9C28317E45D6B00C2B07A /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F9C28217E45D6B00C2B07A /* Player.m */; };
 		55F9C28617E45D7600C2B07A /* Square.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F9C28517E45D7600C2B07A /* Square.m */; };
 /* End PBXBuildFile section */
@@ -43,8 +42,6 @@
 		55F9C27917E45D2B00C2B07A /* Board.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Board.m; sourceTree = "<group>"; };
 		55F9C27B17E45D4900C2B07A /* Move.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Move.h; sourceTree = "<group>"; };
 		55F9C27C17E45D4900C2B07A /* Move.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Move.m; sourceTree = "<group>"; };
-		55F9C27E17E45D5C00C2B07A /* Piece.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Piece.h; sourceTree = "<group>"; };
-		55F9C27F17E45D5D00C2B07A /* Piece.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Piece.m; sourceTree = "<group>"; };
 		55F9C28117E45D6B00C2B07A /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		55F9C28217E45D6B00C2B07A /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		55F9C28417E45D7600C2B07A /* Square.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Square.h; sourceTree = "<group>"; };
@@ -100,8 +97,6 @@
 				55F9C27917E45D2B00C2B07A /* Board.m */,
 				55F9C27B17E45D4900C2B07A /* Move.h */,
 				55F9C27C17E45D4900C2B07A /* Move.m */,
-				55F9C27E17E45D5C00C2B07A /* Piece.h */,
-				55F9C27F17E45D5D00C2B07A /* Piece.m */,
 				55F9C28117E45D6B00C2B07A /* Player.h */,
 				55F9C28217E45D6B00C2B07A /* Player.m */,
 				55F9C28417E45D7600C2B07A /* Square.h */,
@@ -173,7 +168,6 @@
 				55F9C27717E45D1600C2B07A /* Game.m in Sources */,
 				55F9C27A17E45D2B00C2B07A /* Board.m in Sources */,
 				55F9C27D17E45D4900C2B07A /* Move.m in Sources */,
-				55F9C28017E45D5D00C2B07A /* Piece.m in Sources */,
 				55F9C28317E45D6B00C2B07A /* Player.m in Sources */,
 				55F9C28617E45D7600C2B07A /* Square.m in Sources */,
 			);
@@ -276,6 +270,7 @@
 				55F9C27417E45CF700C2B07A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
