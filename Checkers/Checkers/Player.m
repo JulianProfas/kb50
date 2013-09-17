@@ -66,7 +66,6 @@
 }
 
 -(void)undo{
-    //Move *move = [moveList objectAtIndex:moveList.count-1];
     Move *move = [moveList lastObject];
     move.fromSquare.hasPiece = YES;
     move.fromSquare.pieceColor = move.toSquare.pieceColor;

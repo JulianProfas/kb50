@@ -15,7 +15,6 @@
     Board *board;
     Player *playerOne;
     Player *playerTwo;
-    int turn;
     int size;
     int fromCoordinateX;
     int fromcoordinateY;
@@ -27,7 +26,6 @@
 @property(nonatomic,retain) Player *playerOne;
 @property(nonatomic,retain) Player *playerTwo;
 @property(nonatomic,retain) Player *currentPlayer;
-@property(nonatomic) int turn;
 @property(nonatomic) int size;
 @property(nonatomic) int fromCoordinateX;
 @property(nonatomic) int fromCoordinateY;
@@ -42,5 +40,5 @@
 -(Square *)calculateCapturedSquare:(Square *)fromSquare toSquare:(Square*)toSquare;
 -(void)CheckForMoveOrCaptureFromSquare:(Square *)fromSquare toSquare:(Square *)toSquare;
 -(BOOL)valididateMoveFromSquare:(Square *)fromSquare toSquare:(Square *)toSquare;
--(BOOL)valididateCaptureFromSquare:(Square *)fromSquare toSquare:(Square *)toSquare capturedSquare:(Square *)capturedSquare;
+-(BOOL)valididateCaptureAtSquare:(Square *)capturedSquare;
 @end

@@ -84,7 +84,7 @@
                     [adjecentSquares addObject:aSquare];
                 }
             }
-            [square addAjacentSquares:adjecentSquares];
+            [square addAdjacentSquares:adjecentSquares];
         }
     }
 }

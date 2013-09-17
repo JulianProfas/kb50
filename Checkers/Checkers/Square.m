@@ -26,26 +26,8 @@
     return self;
 }
 
--(id)initWithColor:(NSString *)aColor
-{
-    if((self = [super init])){
-        self.color = aColor;
-        
-    }
-    return self;
-}
-
--(void)addAjacentSquares:(NSMutableArray*)squares{
+-(void)addAdjacentSquares:(NSMutableArray*)squares{
     self.adjacentSquares = squares;
-}
-
--(Square *)isNeighboringSquare:(Square*)aSquare{
-    for (Square *square in adjacentSquares) {
-        if(aSquare.row == square.row && aSquare.column == square.column){
-            return square;
-        }
-    }
-    return nil;
 }
 
 @end

@@ -18,7 +18,6 @@
 @synthesize board;
 @synthesize playerOne;
 @synthesize playerTwo;
-@synthesize turn;
 @synthesize size;
 @synthesize fromCoordinateX;
 @synthesize fromCoordinateY;
@@ -137,7 +136,8 @@
     Square *capturedSquare = [self calculateCapturedSquare:fromSquare toSquare:toSquare];
 
     //validate the move or capture
-    if (captureAllowed && ![self valididateMoveFromSquare:fromSquare toSquare:toSquare] && [self valididateCaptureFromSquare:fromSquare toSquare:toSquare capturedSquare:capturedSquare]) {
+    if (captureAllowed && ![self valididateMoveFromSquare:fromSquare toSquare:toSquare] &&
+        [self valididateCaptureAtSquare:capturedSquare]) {
         [currentPlayer captureFromSquare:fromSquare toSquare:toSquare capturedSquare:capturedSquare];
         [self nextTurn];
     } else if ([self valididateMoveFromSquare:fromSquare toSquare:toSquare]) {
@@ -185,7 +185,7 @@
     return nil;
 }
 
--(BOOL)valididateCaptureFromSquare:(Square *)fromSquare toSquare:(Square *)toSquare capturedSquare:(Square *)capturedSquare{
+-(BOOL)valididateCaptureAtSquare:(Square *)capturedSquare{
     if (capturedSquare.hasPiece && capturedSquare.pieceColor != currentPlayer.color)
     {
         return YES;
