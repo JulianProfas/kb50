@@ -7,20 +7,22 @@
 //
 
 #import "AppDelegate.h"
-
+#import "SwitchViewController.h"
 @implementation AppDelegate
+
+@synthesize window;
+@synthesize switchViewController;
 
 - (void)dealloc
 {
-    [_window release];
+    [window release];
+    [switchViewController release];
     [super dealloc];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window addSubview:switchViewController.view];
     [self.window makeKeyAndVisible];
     return YES;
 }

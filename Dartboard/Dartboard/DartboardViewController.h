@@ -1,5 +1,5 @@
 //
-//  SettingsViewController.h
+//  DartboardViewController.h
 //  Dartboard
 //
 //  Created by HHs on 9/18/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SettingsViewController : UIViewController
+@interface DartboardViewController : UIViewController
 
 @end

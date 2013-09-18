@@ -1,18 +1,18 @@
 //
-//  SettingsViewController.m
+//  DartboardViewController.m
 //  Dartboard
 //
 //  Created by HHs on 9/18/13.
 //  Copyright (c) 2013 HHS. All rights reserved.
 //
 
-#import "SettingsViewController.h"
+#import "DartboardViewController.h"
 
-@interface SettingsViewController ()
+@interface DartboardViewController ()
 
 @end
 
-@implementation SettingsViewController
+@implementation DartboardViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

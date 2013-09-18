@@ -16,11 +16,12 @@
 		95449DFE17E714F9001FA52D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 95449DFD17E714F9001FA52D /* Default.png */; };
 		95449E0017E714F9001FA52D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95449DFF17E714F9001FA52D /* Default@2x.png */; };
 		95449E0217E714F9001FA52D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95449E0117E714F9001FA52D /* Default-568h@2x.png */; };
-		95449E0917E7152F001FA52D /* Window.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95449E0817E7152F001FA52D /* Window.xib */; };
-		95449E0E17E71585001FA52D /* Game.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95449E0D17E71585001FA52D /* Game.xib */; };
-		95449E1017E71599001FA52D /* Settings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95449E0F17E71599001FA52D /* Settings.xib */; };
-		95449E1317E715C0001FA52D /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95449E1217E715C0001FA52D /* GameViewController.m */; };
-		95449E1617E715D8001FA52D /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95449E1517E715D7001FA52D /* SettingsViewController.m */; };
+		95449E0917E7152F001FA52D /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95449E0817E7152F001FA52D /* MainWindow.xib */; };
+		AF89D95217E9EB140020D9C5 /* DartboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF89D95117E9EB140020D9C5 /* DartboardViewController.m */; };
+		AF89D95717E9EB530020D9C5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF89D95617E9EB530020D9C5 /* SettingsViewController.m */; };
+		AF89D95A17E9EB850020D9C5 /* SwitchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF89D95917E9EB850020D9C5 /* SwitchViewController.m */; };
+		AF89D95E17E9EBEC0020D9C5 /* DartboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF89D95D17E9EBEC0020D9C5 /* DartboardView.xib */; };
+		AF89D96017E9EBFB0020D9C5 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF89D95F17E9EBFA0020D9C5 /* SettingsView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,13 +38,15 @@
 		95449DFD17E714F9001FA52D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		95449DFF17E714F9001FA52D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		95449E0117E714F9001FA52D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		95449E0817E7152F001FA52D /* Window.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Window.xib; sourceTree = "<group>"; };
-		95449E0D17E71585001FA52D /* Game.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Game.xib; sourceTree = "<group>"; };
-		95449E0F17E71599001FA52D /* Settings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Settings.xib; sourceTree = "<group>"; };
-		95449E1117E715C0001FA52D /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameViewController.h; path = ../GameViewController.h; sourceTree = "<group>"; };
-		95449E1217E715C0001FA52D /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameViewController.m; path = ../GameViewController.m; sourceTree = "<group>"; };
-		95449E1417E715D7001FA52D /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
-		95449E1517E715D7001FA52D /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		95449E0817E7152F001FA52D /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		AF89D95017E9EB140020D9C5 /* DartboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DartboardViewController.h; sourceTree = "<group>"; };
+		AF89D95117E9EB140020D9C5 /* DartboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DartboardViewController.m; sourceTree = "<group>"; };
+		AF89D95517E9EB530020D9C5 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		AF89D95617E9EB530020D9C5 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		AF89D95817E9EB850020D9C5 /* SwitchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchViewController.h; sourceTree = "<group>"; };
+		AF89D95917E9EB850020D9C5 /* SwitchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchViewController.m; sourceTree = "<group>"; };
+		AF89D95D17E9EBEC0020D9C5 /* DartboardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DartboardView.xib; sourceTree = "<group>"; };
+		AF89D95F17E9EBFA0020D9C5 /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,16 +93,18 @@
 		95449DF117E714F9001FA52D /* Dartboard */ = {
 			isa = PBXGroup;
 			children = (
-				95449E1117E715C0001FA52D /* GameViewController.h */,
-				95449E1217E715C0001FA52D /* GameViewController.m */,
+				95449E0817E7152F001FA52D /* MainWindow.xib */,
 				95449DFA17E714F9001FA52D /* AppDelegate.h */,
 				95449DFB17E714F9001FA52D /* AppDelegate.m */,
 				95449DF217E714F9001FA52D /* Supporting Files */,
-				95449E0817E7152F001FA52D /* Window.xib */,
-				95449E0D17E71585001FA52D /* Game.xib */,
-				95449E0F17E71599001FA52D /* Settings.xib */,
-				95449E1417E715D7001FA52D /* SettingsViewController.h */,
-				95449E1517E715D7001FA52D /* SettingsViewController.m */,
+				AF89D95017E9EB140020D9C5 /* DartboardViewController.h */,
+				AF89D95117E9EB140020D9C5 /* DartboardViewController.m */,
+				AF89D95517E9EB530020D9C5 /* SettingsViewController.h */,
+				AF89D95617E9EB530020D9C5 /* SettingsViewController.m */,
+				AF89D95817E9EB850020D9C5 /* SwitchViewController.h */,
+				AF89D95917E9EB850020D9C5 /* SwitchViewController.m */,
+				AF89D95D17E9EBEC0020D9C5 /* DartboardView.xib */,
+				AF89D95F17E9EBFA0020D9C5 /* SettingsView.xib */,
 			);
 			path = Dartboard;
 			sourceTree = "<group>";
@@ -173,9 +178,9 @@
 				95449DFE17E714F9001FA52D /* Default.png in Resources */,
 				95449E0017E714F9001FA52D /* Default@2x.png in Resources */,
 				95449E0217E714F9001FA52D /* Default-568h@2x.png in Resources */,
-				95449E0917E7152F001FA52D /* Window.xib in Resources */,
-				95449E0E17E71585001FA52D /* Game.xib in Resources */,
-				95449E1017E71599001FA52D /* Settings.xib in Resources */,
+				95449E0917E7152F001FA52D /* MainWindow.xib in Resources */,
+				AF89D95E17E9EBEC0020D9C5 /* DartboardView.xib in Resources */,
+				AF89D96017E9EBFB0020D9C5 /* SettingsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,8 +193,9 @@
 			files = (
 				95449DF817E714F9001FA52D /* main.m in Sources */,
 				95449DFC17E714F9001FA52D /* AppDelegate.m in Sources */,
-				95449E1317E715C0001FA52D /* GameViewController.m in Sources */,
-				95449E1617E715D8001FA52D /* SettingsViewController.m in Sources */,
+				AF89D95217E9EB140020D9C5 /* DartboardViewController.m in Sources */,
+				AF89D95717E9EB530020D9C5 /* SettingsViewController.m in Sources */,
+				AF89D95A17E9EB850020D9C5 /* SwitchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +308,7 @@
 				95449E0717E714F9001FA52D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
