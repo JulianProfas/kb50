@@ -7,13 +7,14 @@
 //
 
 #import "DartboardViewController.h"
-#define DEGREES_TO_RADIANS(angle) ((angle) /180 * M_PI)
 
 @implementation DartboardViewController
 @synthesize horizontalSlider;
 @synthesize verticalSlider;
 @synthesize croshairView;
 @synthesize fireDart;
+
+#define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
 
 - (void)viewDidLoad
 {
@@ -57,12 +58,19 @@
 }
 
 - (void)setupVerticalSlider{
-    CGAffineTransform transform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(90));
+    //Create a transformation with just the rotation
+    CGAffineTransform transform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(-90));
     
+    //Now apply our scale
     transform = CGAffineTransformScale(transform, 1, 1);
     
-    [self.verticalSlider setTransform:transform];
+    //Now set the transform on the object to the combined rotation/scale transform.
+    [self.verticalSlider setTransform: transform];
     
+    CGAffineTransform sliderRotation = CGAffineTransformIdentity;
+    sliderRotation = CGAffineTransformRotate(sliderRotation, -DEGREES_TO_RADIANS(-90));
+    
+    self.verticalSlider.transform = sliderRotation;
 }
 
 @end
