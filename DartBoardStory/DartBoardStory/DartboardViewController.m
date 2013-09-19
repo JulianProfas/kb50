@@ -28,8 +28,10 @@
 
 - (IBAction)verticalChange:(id)sender {
     int temp = (int)(verticalSlider.value+0.5f);
-    croshairView
+    croshairView.center = CGPointMake(croshairView.center.x, temp+89);
 }
 - (IBAction)horizontalChange:(id)sender {
+    int temp = (int)(horizontalSlider.value+0.5f);
+    croshairView.center =CGPointMake(temp+48, croshairView.center.y);
 }
 @end

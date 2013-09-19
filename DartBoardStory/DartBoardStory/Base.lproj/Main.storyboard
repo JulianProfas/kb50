@@ -39,12 +39,9 @@
                                     <action selector="horizontalChange:" destination="MPL-qb-hlB" eventType="valueChanged" id="0bC-pm-2hz"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Syf-yf-L6q">
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" value="123" minValue="0.0" maxValue="246" translatesAutoresizingMaskIntoConstraints="NO" id="Syf-yf-L6q">
                                 <rect key="frame" x="18" y="41" width="284" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.transform.rotation.z" value="-1.570795&quot; (-π/2)"/>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="verticalChange:" destination="MPL-qb-hlB" eventType="valueChanged" id="MXl-96-ckt"/>
                                 </connections>
@@ -58,7 +55,7 @@
                                 </state>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="crosshair.png" translatesAutoresizingMaskIntoConstraints="NO" id="ufv-aL-2Vk">
-                                <rect key="frame" x="131" y="167" width="99" height="88"/>
+                                <rect key="frame" x="266" y="167" width="99" height="88"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
