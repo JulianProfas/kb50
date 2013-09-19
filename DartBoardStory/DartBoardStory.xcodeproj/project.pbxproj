@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		955CF87817EB01AA00086171 /* crosshair.png in Resources */ = {isa = PBXBuildFile; fileRef = 955CF87717EB01AA00086171 /* crosshair.png */; };
+		955CF87A17EB01BE00086171 /* dartboard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 955CF87917EB01BE00086171 /* dartboard.jpg */; };
+		955CF87D17EB0A8A00086171 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 955CF87C17EB0A8A00086171 /* Settings.m */; };
 		957474E817EAF7710015CA09 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957474E717EAF7710015CA09 /* Foundation.framework */; };
 		957474EA17EAF7710015CA09 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957474E917EAF7710015CA09 /* CoreGraphics.framework */; };
 		957474EC17EAF7710015CA09 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957474EB17EAF7710015CA09 /* UIKit.framework */; };
@@ -22,7 +25,6 @@
 		9574751117EAF7710015CA09 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9574750F17EAF7710015CA09 /* InfoPlist.strings */; };
 		9574751317EAF7710015CA09 /* DartBoardStoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9574751217EAF7710015CA09 /* DartBoardStoryTests.m */; };
 		9574752217EAF94E0015CA09 /* DartboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9574752117EAF94E0015CA09 /* DartboardViewController.m */; };
-		9574752417EAFCF20015CA09 /* dartboard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9574752317EAFCF10015CA09 /* dartboard.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		955CF87717EB01AA00086171 /* crosshair.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crosshair.png; sourceTree = "<group>"; };
+		955CF87917EB01BE00086171 /* dartboard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = dartboard.jpg; path = ../dartboard.jpg; sourceTree = "<group>"; };
+		955CF87B17EB0A8A00086171 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		955CF87C17EB0A8A00086171 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		957474E417EAF7710015CA09 /* DartBoardStory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DartBoardStory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		957474E717EAF7710015CA09 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		957474E917EAF7710015CA09 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -57,7 +63,6 @@
 		9574751217EAF7710015CA09 /* DartBoardStoryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DartBoardStoryTests.m; sourceTree = "<group>"; };
 		9574752017EAF94E0015CA09 /* DartboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DartboardViewController.h; sourceTree = "<group>"; };
 		9574752117EAF94E0015CA09 /* DartboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DartboardViewController.m; sourceTree = "<group>"; };
-		9574752317EAFCF10015CA09 /* dartboard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = dartboard.jpg; path = ../../../Downloads/dartboard.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,14 +122,17 @@
 		957474ED17EAF7710015CA09 /* DartBoardStory */ = {
 			isa = PBXGroup;
 			children = (
+				955CF87917EB01BE00086171 /* dartboard.jpg */,
 				957474F617EAF7710015CA09 /* AppDelegate.h */,
 				957474F717EAF7710015CA09 /* AppDelegate.m */,
 				957474F917EAF7710015CA09 /* Main.storyboard */,
-				9574752317EAFCF10015CA09 /* dartboard.jpg */,
+				955CF87717EB01AA00086171 /* crosshair.png */,
 				9574752017EAF94E0015CA09 /* DartboardViewController.h */,
 				9574752117EAF94E0015CA09 /* DartboardViewController.m */,
 				957474FC17EAF7710015CA09 /* ViewController.h */,
 				957474FD17EAF7710015CA09 /* ViewController.m */,
+				955CF87B17EB0A8A00086171 /* Settings.h */,
+				955CF87C17EB0A8A00086171 /* Settings.m */,
 				957474FF17EAF7710015CA09 /* Images.xcassets */,
 				957474EE17EAF7710015CA09 /* Supporting Files */,
 			);
@@ -207,6 +215,16 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = HHS;
 				TargetAttributes = {
+					957474E317EAF7710015CA09 = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+							com.apple.iOS = {
+								enabled = 0;
+							};
+						};
+					};
 					9574750417EAF7710015CA09 = {
 						TestTargetID = 957474E317EAF7710015CA09;
 					};
@@ -237,9 +255,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9574750017EAF7710015CA09 /* Images.xcassets in Resources */,
+				955CF87A17EB01BE00086171 /* dartboard.jpg in Resources */,
 				957474F217EAF7710015CA09 /* InfoPlist.strings in Resources */,
 				957474FB17EAF7710015CA09 /* Main.storyboard in Resources */,
-				9574752417EAFCF20015CA09 /* dartboard.jpg in Resources */,
+				955CF87817EB01AA00086171 /* crosshair.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +279,7 @@
 			files = (
 				957474FE17EAF7710015CA09 /* ViewController.m in Sources */,
 				957474F817EAF7710015CA09 /* AppDelegate.m in Sources */,
+				955CF87D17EB0A8A00086171 /* Settings.m in Sources */,
 				9574752217EAF94E0015CA09 /* DartboardViewController.m in Sources */,
 				957474F417EAF7710015CA09 /* main.m in Sources */,
 			);
@@ -470,6 +490,7 @@
 				9574751817EAF7710015CA09 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9574751917EAF7710015CA09 /* Build configuration list for PBXNativeTarget "DartBoardStoryTests" */ = {
 			isa = XCConfigurationList;
@@ -478,6 +499,7 @@
 				9574751B17EAF7710015CA09 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

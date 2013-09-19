@@ -9,6 +9,9 @@
 #import "DartboardViewController.h"
 
 @implementation DartboardViewController
+@synthesize horizontalSlider;
+@synthesize verticalSlider;
+@synthesize croshairView;
 
 - (void)viewDidLoad
 {
@@ -22,4 +25,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (IBAction)verticalChange:(id)sender {
+    int temp = (int)(verticalSlider.value+0.5f);
+    croshairView
+}
+- (IBAction)horizontalChange:(id)sender {
+}
 @end

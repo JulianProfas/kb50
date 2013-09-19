@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DartboardViewController : UIViewController
+@interface DartboardViewController : UIViewController{
+    UISlider *verticalSlider;
+    UISlider *horizontalSlider;
+    UIImageView *croshairView;
+}
 
+
+@property (retain, nonatomic) IBOutlet UIImageView *croshairView;
+@property (retain, nonatomic) IBOutlet UISlider *verticalSlider;
+@property (retain, nonatomic) IBOutlet UISlider *horizontalSlider;
+- (IBAction)horizontalChange:(id)sender;
+- (IBAction)verticalChange:(id)sender;
 @end
