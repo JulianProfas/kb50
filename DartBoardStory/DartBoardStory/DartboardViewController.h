@@ -12,12 +12,14 @@
     UISlider *verticalSlider;
     UISlider *horizontalSlider;
     UIImageView *croshairView;
+    UILabel *fireDart;
 }
 
-
+@property (strong, nonatomic) IBOutlet UILabel *fireDart;
 @property (retain, nonatomic) IBOutlet UIImageView *croshairView;
 @property (retain, nonatomic) IBOutlet UISlider *verticalSlider;
 @property (retain, nonatomic) IBOutlet UISlider *horizontalSlider;
 - (IBAction)horizontalChange:(id)sender;
 - (IBAction)verticalChange:(id)sender;
+- (IBAction)fireButtonPressed:(id)sender;
 @end

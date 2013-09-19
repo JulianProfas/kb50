@@ -12,9 +12,11 @@
 @synthesize horizontalSlider;
 @synthesize verticalSlider;
 @synthesize croshairView;
+@synthesize fireDart;
 
 - (void)viewDidLoad
 {
+    [self.fireDart setHidden:YES];
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 }
@@ -30,8 +32,17 @@
     int temp = (int)(verticalSlider.value+0.5f);
     croshairView.center = CGPointMake(croshairView.center.x, temp+89);
 }
+
+- (IBAction)fireButtonPressed:(id)sender {
+    int randomFromTo = -3 + arc4random() % (3 - -3);
+    [self.fireDart setHidden:NO];
+    self.fireDart.center = CGPointMake(croshairView.center.x+randomFromTo, croshairView.center.y+randomFromTo);
+    
+    
+}
 - (IBAction)horizontalChange:(id)sender {
     int temp = (int)(horizontalSlider.value+0.5f);
-    croshairView.center =CGPointMake(temp+48, croshairView.center.y);
+    croshairView.center =CGPointMake(temp+28, croshairView.center.y);
 }
+
 @end
