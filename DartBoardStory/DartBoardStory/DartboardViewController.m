@@ -7,6 +7,7 @@
 //
 
 #import "DartboardViewController.h"
+#define DEGREES_TO_RADIANS(angle) ((angle) /180 * M_PI)
 
 @implementation DartboardViewController
 @synthesize horizontalSlider;
@@ -16,6 +17,7 @@
 
 - (void)viewDidLoad
 {
+    [self setupVerticalSlider];
     [self.fireDart setHidden:YES];
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
@@ -34,15 +36,33 @@
 }
 
 - (IBAction)fireButtonPressed:(id)sender {
-    int randomFromTo = -3 + arc4random() % (3 - -3);
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    int dificulty = (int)[prefs integerForKey:@"dificulty"];
+    int randomFromTo = 0;
+    if(dificulty == 0){
+        randomFromTo = -3 + arc4random() % (3 - -3);
+    }else if(dificulty == 1){
+        randomFromTo = -10 + arc4random() % (10 - -10);
+    }else if(dificulty == 2){
+        randomFromTo = -30 + arc4random() % (30 - -30);
+    }
+    
     [self.fireDart setHidden:NO];
     self.fireDart.center = CGPointMake(croshairView.center.x+randomFromTo, croshairView.center.y+randomFromTo);
-    
     
 }
 - (IBAction)horizontalChange:(id)sender {
     int temp = (int)(horizontalSlider.value+0.5f);
     croshairView.center =CGPointMake(temp+28, croshairView.center.y);
+}
+
+- (void)setupVerticalSlider{
+    CGAffineTransform transform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(90));
+    
+    transform = CGAffineTransformScale(transform, 1, 1);
+    
+    [self.verticalSlider setTransform:transform];
+    
 }
 
 @end

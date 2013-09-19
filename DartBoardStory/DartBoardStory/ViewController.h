@@ -7,17 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-@class Settings;
 
 @interface ViewController : UIViewController{
     UIPickerView *settingPicker;
     NSArray *settingPickerArray;
-    Settings *settings;
+    int dificulty;
 }
 @property (retain, nonatomic) IBOutlet UIPickerView *settingPicker;
 @property (retain, nonatomic) IBOutlet NSArray *settingPickerArray;
-@property (retain, nonatomic) Settings *settings;
-
+@property (nonatomic) int dificulty;
 - (IBAction)CloseView:(id)sender;
 
 @end

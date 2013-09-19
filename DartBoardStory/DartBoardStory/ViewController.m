@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "Settings.h"
+
 
 @interface ViewController ()
 
@@ -16,16 +16,15 @@
 @implementation ViewController
 @synthesize settingPicker;
 @synthesize settingPickerArray;
-@synthesize settings;
+@synthesize dificulty;
 
 - (void)viewDidLoad
 {
-    Settings *settings = [[Settings alloc] init];
     settingPickerArray = [[NSArray alloc] init];
     NSArray *temp = [[NSArray alloc] initWithObjects:@"Makkelijk",@"Redelijk moeilijk",@"Moeilijk", nil];
     self.settingPickerArray = temp;
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,6 +49,10 @@
 - (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     int temp = 0;
     temp = row;
-    settings.dificulty = temp;
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setInteger:temp forKey:@"dificulty"];
+    [prefs synchronize];
+    
 }
+
 @end
