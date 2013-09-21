@@ -24,6 +24,8 @@
 		9574751117EAF7710015CA09 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9574750F17EAF7710015CA09 /* InfoPlist.strings */; };
 		9574751317EAF7710015CA09 /* DartBoardStoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9574751217EAF7710015CA09 /* DartBoardStoryTests.m */; };
 		9574752217EAF94E0015CA09 /* DartboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9574752117EAF94E0015CA09 /* DartboardViewController.m */; };
+		AF89CBD817EDCD850012CEDA /* Dartboard.m in Sources */ = {isa = PBXBuildFile; fileRef = AF89CBD717EDCD850012CEDA /* Dartboard.m */; };
+		AF89CBDB17EDD83E0012CEDA /* Score.m in Sources */ = {isa = PBXBuildFile; fileRef = AF89CBDA17EDD83E0012CEDA /* Score.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,10 @@
 		9574751217EAF7710015CA09 /* DartBoardStoryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DartBoardStoryTests.m; sourceTree = "<group>"; };
 		9574752017EAF94E0015CA09 /* DartboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DartboardViewController.h; sourceTree = "<group>"; };
 		9574752117EAF94E0015CA09 /* DartboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DartboardViewController.m; sourceTree = "<group>"; };
+		AF89CBD617EDCD850012CEDA /* Dartboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dartboard.h; sourceTree = "<group>"; };
+		AF89CBD717EDCD850012CEDA /* Dartboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dartboard.m; sourceTree = "<group>"; };
+		AF89CBD917EDD83E0012CEDA /* Score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Score.h; sourceTree = "<group>"; };
+		AF89CBDA17EDD83E0012CEDA /* Score.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Score.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +136,10 @@
 				957474FD17EAF7710015CA09 /* ViewController.m */,
 				957474FF17EAF7710015CA09 /* Images.xcassets */,
 				957474EE17EAF7710015CA09 /* Supporting Files */,
+				AF89CBD617EDCD850012CEDA /* Dartboard.h */,
+				AF89CBD717EDCD850012CEDA /* Dartboard.m */,
+				AF89CBD917EDD83E0012CEDA /* Score.h */,
+				AF89CBDA17EDD83E0012CEDA /* Score.m */,
 			);
 			path = DartBoardStory;
 			sourceTree = "<group>";
@@ -272,7 +282,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF89CBDB17EDD83E0012CEDA /* Score.m in Sources */,
 				957474FE17EAF7710015CA09 /* ViewController.m in Sources */,
+				AF89CBD817EDCD850012CEDA /* Dartboard.m in Sources */,
 				957474F817EAF7710015CA09 /* AppDelegate.m in Sources */,
 				9574752217EAF94E0015CA09 /* DartboardViewController.m in Sources */,
 				957474F417EAF7710015CA09 /* main.m in Sources */,
