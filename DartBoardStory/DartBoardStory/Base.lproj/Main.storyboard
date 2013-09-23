@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="MPL-qb-hlB">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <scenes>
+        <!--Dartboard View Controller-->
+        <scene sceneID="9Sb-Sa-5Vb">
+            <objects>
+                <viewController id="MPL-qb-hlB" customClass="DartboardViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UHj-M4-jen">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="C4k-Ax-oxl">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Settings" id="O1L-4S-Mzd">
+                                        <connections>
+                                            <action selector="CloseView:" destination="MPL-qb-hlB" id="AAk-rJ-KgK"/>
+                                            <segue destination="9Uq-Fi-nn5" kind="modal" id="pcT-Uk-Ddx"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dartboard.jpg" id="scG-la-8Jl">
+                                <rect key="frame" x="20" y="82" width="280" height="257"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="133" minValue="0.0" maxValue="266" id="tGS-ob-SkY">
+                                <rect key="frame" x="18" y="347" width="284" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="horizontalChange:" destination="MPL-qb-hlB" eventType="valueChanged" id="0bC-pm-2hz"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" value="123" minValue="0.0" maxValue="246" id="Syf-yf-L6q">
+                                <rect key="frame" x="-124" y="194" width="284" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="verticalChange:" destination="MPL-qb-hlB" eventType="valueChanged" id="MXl-96-ckt"/>
+                                </connections>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xDf-ZZ-aa3">
+                                <rect key="frame" x="109" y="465" width="103" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <state key="normal" title="Fire!">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="fireButtonPressed:" destination="MPL-qb-hlB" eventType="touchUpInside" id="Yzn-aA-KnU"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crosshair.png" id="ufv-aL-2Vk">
+                                <rect key="frame" x="109" y="167" width="99" height="88"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="N2E-Xc-qPU">
+                                <rect key="frame" x="289" y="23" width="11" height="10"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.55284052309999998" green="0.15758469380000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="QAp-mq-q30"/>
+                    <connections>
+                        <outlet property="croshairView" destination="ufv-aL-2Vk" id="sQq-ek-MK1"/>
+                        <outlet property="fireDart" destination="N2E-Xc-qPU" id="5P3-8C-eSB"/>
+                        <outlet property="horizontalSlider" destination="tGS-ob-SkY" id="ggm-mH-ReW"/>
+                        <outlet property="verticalSlider" destination="Syf-yf-L6q" id="thB-Xh-9dK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R7C-MF-BIh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="299" y="168"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="7kT-a5-Knx">
+            <objects>
+                <viewController id="9Uq-Fi-nn5" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Nz9-Sv-sut">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="ovC-I1-RO5">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Back" id="aYA-wZ-MXQ">
+                                        <connections>
+                                            <action selector="CloseView:" destination="9Uq-Fi-nn5" id="UI9-EK-lN4"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <pickerView contentMode="scaleToFill" id="OFA-ST-iF8">
+                                <rect key="frame" x="0.0" y="336" width="320" height="162"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="9Uq-Fi-nn5" id="Ey4-dG-vtF"/>
+                                    <outlet property="delegate" destination="9Uq-Fi-nn5" id="MyF-C4-ogL"/>
+                                </connections>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="J8b-8I-aTd"/>
+                    <connections>
+                        <outlet property="settingPicker" destination="OFA-ST-iF8" id="a2O-Rq-QfO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ntp-Q7-Yf7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1026" y="155"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="crosshair.png" width="1070" height="1067"/>
+        <image name="dartboard.jpg" width="893" height="896"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
