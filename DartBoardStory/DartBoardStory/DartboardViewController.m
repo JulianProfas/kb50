@@ -7,12 +7,16 @@
 //
 
 #import "DartboardViewController.h"
+#import "Dartboard.h"
 
 @implementation DartboardViewController
 @synthesize horizontalSlider;
 @synthesize verticalSlider;
 @synthesize croshairView;
+@synthesize dartboardView;
 @synthesize fireDart;
+@synthesize dartboard;
+@synthesize lblScore;
 
 #define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
 
@@ -22,6 +26,8 @@
     [self.fireDart setHidden:YES];
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    CGPoint dartboardPosition = dartboardView.center;
+    dartboard = [[Dartboard alloc] initWithDartboardViewController:self centerYPosition:dartboardPosition.y centerXPosition:dartboardPosition.x];
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,21 +43,20 @@
 }
 
 - (IBAction)fireButtonPressed:(id)sender {
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    int dificulty = (int)[prefs integerForKey:@"dificulty"];
-    int randomFromTo = 0;
-    if(dificulty == 0){
-        randomFromTo = -3 + arc4random() % (3 - -3);
-    }else if(dificulty == 1){
-        randomFromTo = -10 + arc4random() % (10 - -10);
-    }else if(dificulty == 2){
-        randomFromTo = -30 + arc4random() % (30 - -30);
-    }
+    int dartXPosition = croshairView.center.x+[dartboard getRandomDartCoordinate];
+    int dartYPosition = croshairView.center.y+[dartboard getRandomDartCoordinate];
     
     [self.fireDart setHidden:NO];
-    self.fireDart.center = CGPointMake(croshairView.center.x+randomFromTo, croshairView.center.y+randomFromTo);
+    self.fireDart.center = CGPointMake(dartXPosition, dartYPosition);
+    int score = [dartboard getScoreXPosition:dartXPosition dartYPostion:dartYPosition];
     
+    if(score > 0){
+        self.lblScore.text = [NSString stringWithFormat:@"%d",score];
+    }else{
+        self.lblScore.text = @"MISS";
+    }
 }
+
 - (IBAction)horizontalChange:(id)sender {
     int temp = (int)(horizontalSlider.value+0.5f);
     croshairView.center =CGPointMake(temp+28, croshairView.center.y);

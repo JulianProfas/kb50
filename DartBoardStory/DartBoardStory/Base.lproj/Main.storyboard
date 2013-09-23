@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="MPL-qb-hlB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="MPL-qb-hlB">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
@@ -64,14 +64,23 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="lblScore" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cVW-e9-cmI">
+                                <rect key="frame" x="137" y="53" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="QAp-mq-q30"/>
                     <connections>
                         <outlet property="croshairView" destination="ufv-aL-2Vk" id="sQq-ek-MK1"/>
+                        <outlet property="dartboardView" destination="scG-la-8Jl" id="2Yk-79-GUX"/>
                         <outlet property="fireDart" destination="N2E-Xc-qPU" id="5P3-8C-eSB"/>
                         <outlet property="horizontalSlider" destination="tGS-ob-SkY" id="ggm-mH-ReW"/>
+                        <outlet property="lblScore" destination="cVW-e9-cmI" id="hqc-Ph-a3G"/>
                         <outlet property="verticalSlider" destination="Syf-yf-L6q" id="thB-Xh-9dK"/>
                     </connections>
                 </viewController>

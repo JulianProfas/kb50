@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "Dartboard.h"
 
 @interface ViewController ()
 
@@ -53,6 +53,7 @@
     [prefs setInteger:temp forKey:@"dificulty"];
     [prefs synchronize];
     
+    [Dartboard setDificulty:temp];
 }
 
 @end
