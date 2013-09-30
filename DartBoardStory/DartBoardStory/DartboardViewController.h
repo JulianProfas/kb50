@@ -13,6 +13,7 @@
     UISlider *horizontalSlider;
     UIImageView *croshairView;
     UIImageView *dartboardView;
+    UIButton *fireButton;
     UILabel *fireDart;
     UILabel *lblScore;
     Dartboard *dartboard;
@@ -22,6 +23,7 @@
 @property (retain, nonatomic) IBOutlet UILabel *lblScore;
 @property (retain, nonatomic) IBOutlet UIImageView *croshairView;
 @property (retain, nonatomic) IBOutlet UIImageView *dartboardView;
+@property (retain, nonatomic) IBOutlet UIButton *fireButton;
 @property (retain, nonatomic) IBOutlet UISlider *verticalSlider;
 @property (retain, nonatomic) IBOutlet UISlider *horizontalSlider;
 @property (nonatomic) int dificulty;

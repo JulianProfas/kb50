@@ -14,6 +14,7 @@
 @synthesize verticalSlider;
 @synthesize croshairView;
 @synthesize dartboardView;
+@synthesize fireButton;
 @synthesize fireDart;
 @synthesize dartboard;
 @synthesize lblScore;
@@ -36,10 +37,58 @@
     // Dispose of any resources that can be recreated.
 }
 
+// Override to allow orientations other than the default portrait orientation.
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    // Return YES for supported orientations
+    return YES;
+}
+
+
+//Override to change the size of the images when rotating to landscape view.
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
+        toInterfaceOrientation == UIInterfaceOrientationLandscapeRight)
+    {
+        dartboardView.frame = CGRectMake(self.view.center.y - 125, self.view.center.x - 125, 250, 250);
+        croshairView.frame = CGRectMake(self.view.center.y - 25, self.view.center.x - 25, 50, 50);
+        verticalSlider.frame = CGRectMake(self.view.center.y - 150, self.view.center.x - 125, 0, 250);
+        horizontalSlider.frame = CGRectMake(self.view.center.y - 125, self.view.center.x + 125, 250, 0);
+        lblScore.frame = CGRectMake(self.view.center.y - 200, self.view.center.x - 10, 50, 20);
+        fireButton.frame = CGRectMake(self.view.center.y + 150, self.view.center.x - 25, 100, 50);
+        horizontalSlider.value = 125;
+        verticalSlider.value = 125;
+    }
+    else{
+        dartboardView.frame = CGRectMake(self.view.center.x - 125, self.view.center.y - 125, 250, 250);
+        croshairView.frame = CGRectMake(self.view.center.x - 25, self.view.center.y - 25, 50, 50);
+        verticalSlider.frame = CGRectMake(self.view.center.x - 150, self.view.center.y - 125, 0, 250);
+        horizontalSlider.frame = CGRectMake(self.view.center.x - 125, self.view.center.y + 125, 250, 0);
+        lblScore.frame = CGRectMake(self.view.center.x - 25, self.view.center.y - 200, 50, 20);
+        fireButton.frame = CGRectMake(self.view.center.x - 50, self.view.center.y + 150, 100, 50);
+        horizontalSlider.value = 125;
+        verticalSlider.value = 125;
+    }
+}
 
 - (IBAction)verticalChange:(id)sender {
     int temp = (int)(verticalSlider.value+0.5f);
-    croshairView.center = CGPointMake(croshairView.center.x, temp+89);
+    if([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationLandscapeLeft || [UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationLandscapeRight){
+        croshairView.center = CGPointMake(croshairView.center.x, temp + 35);
+    }
+    else{
+        croshairView.center = CGPointMake(croshairView.center.x, temp + 159);
+    }
+}
+
+- (IBAction)horizontalChange:(id)sender {
+    int temp = (int)(horizontalSlider.value+0.5f);
+    if([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationLandscapeLeft || [UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationLandscapeRight){
+        croshairView.center = CGPointMake(temp + 159, croshairView.center.y);
+    }
+    else{
+        croshairView.center = CGPointMake(temp + 35, croshairView.center.y);
+    }
 }
 
 - (IBAction)fireButtonPressed:(id)sender {
@@ -55,11 +104,6 @@
     }else{
         self.lblScore.text = @"MISS";
     }
-}
-
-- (IBAction)horizontalChange:(id)sender {
-    int temp = (int)(horizontalSlider.value+0.5f);
-    croshairView.center =CGPointMake(temp+28, croshairView.center.y);
 }
 
 - (void)setupVerticalSlider{
