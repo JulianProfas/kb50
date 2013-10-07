@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		95BC8AA01802B6DF00FE94EE /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95BC8A9F1802B6DF00FE94EE /* GPUImage.framework */; };
+		95BC8AA31802C37900FE94EE /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BC8AA21802C37900FE94EE /* MainViewController.m */; };
 		95E9D03B17FEC28D00F4FEA2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E9D03A17FEC28D00F4FEA2 /* Foundation.framework */; };
 		95E9D03D17FEC28D00F4FEA2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E9D03C17FEC28D00F4FEA2 /* CoreGraphics.framework */; };
 		95E9D03F17FEC28D00F4FEA2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E9D03E17FEC28D00F4FEA2 /* UIKit.framework */; };
@@ -36,6 +37,8 @@
 
 /* Begin PBXFileReference section */
 		95BC8A9F1802B6DF00FE94EE /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GPUImage.framework; sourceTree = "<group>"; };
+		95BC8AA11802C37900FE94EE /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		95BC8AA21802C37900FE94EE /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		95E9D03717FEC28D00F4FEA2 /* I Spy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "I Spy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E9D03A17FEC28D00F4FEA2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		95E9D03C17FEC28D00F4FEA2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -119,6 +122,8 @@
 				95E9D04917FEC28D00F4FEA2 /* AppDelegate.h */,
 				95E9D04A17FEC28D00F4FEA2 /* AppDelegate.m */,
 				95E9D04C17FEC28D00F4FEA2 /* Main.storyboard */,
+				95BC8AA11802C37900FE94EE /* MainViewController.h */,
+				95BC8AA21802C37900FE94EE /* MainViewController.m */,
 				95E9D04F17FEC28D00F4FEA2 /* ViewController.h */,
 				95E9D05017FEC28D00F4FEA2 /* ViewController.m */,
 				95E9D05217FEC28D00F4FEA2 /* Images.xcassets */,
@@ -256,6 +261,7 @@
 				95E9D05117FEC28D00F4FEA2 /* ViewController.m in Sources */,
 				95E9D04B17FEC28D00F4FEA2 /* AppDelegate.m in Sources */,
 				95E9D04717FEC28D00F4FEA2 /* main.m in Sources */,
+				95BC8AA31802C37900FE94EE /* MainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,10 +11,12 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 
 @interface ViewController : UIViewController{
-    UIImage *filteredImage;
+    UIImageView *displayImage;
+    NSArray *positions;
+    UIImage *filterdImage;
 }
-@property (strong, nonatomic) IBOutlet UIImageView *filterdImage;
-- (IBAction)takePhoto:(id)sender;
-- (IBAction)pixalate:(id)sender;
+@property (strong, nonatomic) IBOutlet UIImageView *displayImage;
+@property(retain, nonatomic) NSArray *position;
+@property (strong, nonatomic)UIImage *filterdImage;
 
 @end
