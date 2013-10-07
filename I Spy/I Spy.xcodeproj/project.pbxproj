@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		95BC8AA01802B6DF00FE94EE /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95BC8A9F1802B6DF00FE94EE /* GPUImage.framework */; };
 		95E9D03B17FEC28D00F4FEA2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E9D03A17FEC28D00F4FEA2 /* Foundation.framework */; };
 		95E9D03D17FEC28D00F4FEA2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E9D03C17FEC28D00F4FEA2 /* CoreGraphics.framework */; };
 		95E9D03F17FEC28D00F4FEA2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E9D03E17FEC28D00F4FEA2 /* UIKit.framework */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		95BC8A9F1802B6DF00FE94EE /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GPUImage.framework; sourceTree = "<group>"; };
 		95E9D03717FEC28D00F4FEA2 /* I Spy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "I Spy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95E9D03A17FEC28D00F4FEA2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		95E9D03C17FEC28D00F4FEA2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -61,6 +63,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95E9D03D17FEC28D00F4FEA2 /* CoreGraphics.framework in Frameworks */,
+				95BC8AA01802B6DF00FE94EE /* GPUImage.framework in Frameworks */,
 				95E9D03F17FEC28D00F4FEA2 /* UIKit.framework in Frameworks */,
 				95E9D03B17FEC28D00F4FEA2 /* Foundation.framework in Frameworks */,
 			);
@@ -101,6 +104,7 @@
 		95E9D03917FEC28D00F4FEA2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				95BC8A9F1802B6DF00FE94EE /* GPUImage.framework */,
 				95E9D03A17FEC28D00F4FEA2 /* Foundation.framework */,
 				95E9D03C17FEC28D00F4FEA2 /* CoreGraphics.framework */,
 				95E9D03E17FEC28D00F4FEA2 /* UIKit.framework */,
@@ -468,6 +472,7 @@
 				95E9D06B17FEC28D00F4FEA2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		95E9D06C17FEC28D00F4FEA2 /* Build configuration list for PBXNativeTarget "I SpyTests" */ = {
 			isa = XCConfigurationList;
@@ -476,6 +481,7 @@
 				95E9D06E17FEC28D00F4FEA2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GPUImage/GPUImage.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController{
+    UIImage *filteredImage;
+}
+@property (strong, nonatomic) IBOutlet UIImageView *filterdImage;
+- (IBAction)takePhoto:(id)sender;
+- (IBAction)pixalate:(id)sender;
 
 @end
