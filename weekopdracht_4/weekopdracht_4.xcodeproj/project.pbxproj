@@ -22,7 +22,6 @@
 		D0813B951801BB30007EB532 /* weekopdracht_4Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0813B941801BB30007EB532 /* weekopdracht_4Tests.m */; };
 		D0813BA01801BD79007EB532 /* GameTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0813B9F1801BD79007EB532 /* GameTableViewController.m */; };
 		D0813BA31801BDC2007EB532 /* GameTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D0813BA21801BDC2007EB532 /* GameTableViewCell.m */; };
-		D0813BA51801BF6A007EB532 /* Games-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D0813BA41801BF6A007EB532 /* Games-icon.png */; };
 		D084D78D18040A7A00E8D550 /* WereldTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D084D78C18040A7A00E8D550 /* WereldTableViewController.m */; };
 		D084D790180418DB00E8D550 /* LevelTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D084D78F180418DB00E8D550 /* LevelTableViewController.m */; };
 		D084D7931804190700E8D550 /* VijandTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D084D7921804190700E8D550 /* VijandTableViewController.m */; };
@@ -60,7 +59,6 @@
 		D0813B9F1801BD79007EB532 /* GameTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameTableViewController.m; sourceTree = "<group>"; };
 		D0813BA11801BDC2007EB532 /* GameTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameTableViewCell.h; sourceTree = "<group>"; };
 		D0813BA21801BDC2007EB532 /* GameTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameTableViewCell.m; sourceTree = "<group>"; };
-		D0813BA41801BF6A007EB532 /* Games-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Games-icon.png"; path = "../../../Downloads/Games-icon.png"; sourceTree = "<group>"; };
 		D084D78B18040A7A00E8D550 /* WereldTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WereldTableViewController.h; sourceTree = "<group>"; };
 		D084D78C18040A7A00E8D550 /* WereldTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WereldTableViewController.m; sourceTree = "<group>"; };
 		D084D78E180418DB00E8D550 /* LevelTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelTableViewController.h; sourceTree = "<group>"; };
@@ -148,7 +146,6 @@
 		D0813B701801BB30007EB532 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D0813BA41801BF6A007EB532 /* Games-icon.png */,
 				D0813B711801BB30007EB532 /* weekopdracht_4-Info.plist */,
 				D0813B721801BB30007EB532 /* InfoPlist.strings */,
 				D0813B751801BB30007EB532 /* main.m */,
@@ -251,7 +248,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0813BA51801BF6A007EB532 /* Games-icon.png in Resources */,
 				D0813B821801BB30007EB532 /* Images.xcassets in Resources */,
 				D0813B741801BB30007EB532 /* InfoPlist.strings in Resources */,
 				D0813B7D1801BB30007EB532 /* Main.storyboard in Resources */,
