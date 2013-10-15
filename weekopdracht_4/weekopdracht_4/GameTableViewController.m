@@ -10,15 +10,17 @@
 #import "GameTableViewCell.h"
 #import "WereldTableViewController.h"
 
-@interface GameTableViewController ()
+@interface GameTableViewController () <UIAlertViewDelegate>
 
 @end
 
 @implementation GameTableViewController
-@synthesize gameNames = _gameNames;
+@synthesize gameNames;
+@synthesize filePath;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
+    
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
@@ -28,18 +30,24 @@
 
 - (void)viewDidLoad
 {
+    gameNames = [[NSMutableArray alloc] init];
+    filePath = @"objects.plist";
+    
+    NSString * path = [self givePath];
+    if([[NSFileManager defaultManager] fileExistsAtPath:path])
+    {
+        NSArray * array = [[NSArray alloc] initWithContentsOfFile:path];
+        self.gameNames = [array objectAtIndex:0];
+    }
+    
     [super viewDidLoad];
     
-    self.gameNames = [[NSMutableArray alloc]
-                      initWithObjects:@"GTA 5",
-                      @"My little pony",
-                      @"COD", nil];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    UIBarButtonItem * button = [[UIBarButtonItem alloc] initWithTitle:@" Edit"  style:UIBarButtonItemStyleBordered target:self action:@selector(edit)];
+    self.navigationItem.rightBarButtonItem = button;
+    
+    UIBarButtonItem * leftButton = [[UIBarButtonItem alloc] initWithTitle:@""  style:UIBarButtonItemStyleBordered target:self action:@selector(add)];
+    self.navigationItem.leftBarButtonItem = leftButton;
+    [self.navigationItem.leftBarButtonItem setEnabled:NO];
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,6 +67,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
+    
     return [self.gameNames count];
 }
 
@@ -79,6 +88,52 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
+}
+
+- (IBAction)edit
+    {
+        
+        [self.tableView setEditing:!self.tableView.editing animated:YES];
+        if(self.tableView.editing){
+            [self.navigationItem.rightBarButtonItem setTitle:@"Done"];
+            [self.navigationItem.leftBarButtonItem setTitle:@"+"];
+            [self.navigationItem.leftBarButtonItem setEnabled:YES];
+        }else
+        {
+            [self.navigationItem.rightBarButtonItem setTitle:@"Edit"];
+            [self.navigationItem.leftBarButtonItem setTitle:@""];
+            [self.navigationItem.leftBarButtonItem setEnabled:NO];
+        }
+        [self save];
+    }
+
+- (IBAction)add
+{
+    //NSString *game = @"hoi";
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"New Game:" message:@"Please enter a name for your new Game:" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alert addButtonWithTitle:@"Enter"];
+    [alert show];
+    
+    //[self.gameNames addObject:game];
+    
+    
+}
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 1){
+        NSString *name = [alertView textFieldAtIndex:0].text;
+        [self.gameNames addObject:name];
+        [self.tableView reloadData];
+    }
+    
+}
+
+-(void)save
+{
+    NSMutableArray *save = [[NSMutableArray alloc] init];
+    [save addObject:self.gameNames];
+    [save writeToFile:[self givePath] atomically:YES];
 }
 
 /*
@@ -128,7 +183,7 @@
     NSIndexPath *myIndexPath = [self.tableView
                                 indexPathForSelectedRow];
     
-    detailViewController.werelden = [[NSArray alloc]
+    detailViewController.werelden = [[NSMutableArray alloc]
                                            initWithObjects:
                                       [self.gameNames objectAtIndex: [myIndexPath row]],
                                            nil];
@@ -153,6 +208,13 @@
     }
     
     [tableView reloadData];
+}
+
+-(NSString *)givePath
+{
+    NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString*docDir = [path objectAtIndex:0];
+    return [docDir stringByAppendingPathComponent:filePath];
 }
 
 
