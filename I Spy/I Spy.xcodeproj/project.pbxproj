@@ -390,7 +390,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/asoeters/kb50/I\\ Spy",
+					"/users/asoeters/kb50/I\\ Spy",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "I Spy/I Spy-Prefix.pch";
@@ -407,7 +407,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/asoeters/kb50/I\\ Spy",
+					"/users/asoeters/kb50/I\\ Spy",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "I Spy/I Spy-Prefix.pch";
