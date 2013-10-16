@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface VijandTableViewController : UITableViewController
-@property (nonatomic, strong) NSMutableArray *vijanden;
+@property (nonatomic, strong) NSMutableDictionary *allEnemies;
+@property (nonatomic, strong) NSString *Level;
+@property (nonatomic) NSString *filePath;
+@property (nonatomic, strong) NSMutableArray *correctEnemies;
 
 @end

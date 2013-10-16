@@ -14,7 +14,11 @@
 @end
 
 @implementation VijandTableViewController
-@synthesize vijanden;
+@synthesize allEnemies;
+@synthesize Level;
+@synthesize filePath;
+@synthesize correctEnemies;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -27,17 +31,35 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    self.vijanden = [[NSMutableArray alloc]
-                      initWithObjects:@"vijand1",
-                     @"vijand2",
-                     nil];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [super viewDidLoad];
+    
+    allEnemies = nil;
+    correctEnemies = nil;
+    filePath = @"enemies.plist";
+    
+    NSString * path = [self givePath];
+    if([[NSFileManager defaultManager] fileExistsAtPath:path])
+    {
+        NSArray * array = [[NSArray alloc] initWithContentsOfFile:path];
+        self.allEnemies = [array objectAtIndex:0];
+    }
+    if(allEnemies == nil)
+    {
+        allEnemies = [[NSMutableDictionary alloc] init];
+    }
+    
+    if([self.allEnemies objectForKey:Level]){
+        correctEnemies = [self.allEnemies objectForKey:Level];
+    }else{
+        correctEnemies = [[NSMutableArray alloc] init];
+    }
+    
+    UIBarButtonItem * button = [[UIBarButtonItem alloc] initWithTitle:@" Edit"  style:UIBarButtonItemStyleBordered target:self action:@selector(edit)];
+    self.navigationItem.rightBarButtonItem = button;
+    
+    UIBarButtonItem * leftButton = [[UIBarButtonItem alloc] initWithTitle:@"Level"  style:UIBarButtonItemStyleBordered target:self action:@selector(goBack)];
+    self.navigationItem.leftBarButtonItem = leftButton;
+    [self.navigationItem.leftBarButtonItem setEnabled:YES];
 
 }
 
@@ -60,7 +82,7 @@
 {
 
     // Return the number of rows in the section.
-    return [vijanden count];
+    return [correctEnemies count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -74,7 +96,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    cell.textLabel.text = [self.vijanden objectAtIndex:
+    cell.textLabel.text = [self.correctEnemies objectAtIndex:
                            [indexPath row]];
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -82,63 +104,65 @@
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+-(IBAction)goBack
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
- */
+- (IBAction)edit
+{
+    
+    [self.tableView setEditing:!self.tableView.editing animated:YES];
+    if(self.tableView.editing){
+        [self.navigationItem.rightBarButtonItem setTitle:@"Done"];
+        [self.navigationItem.leftBarButtonItem setTitle:@"+"];
+        [self.navigationItem.leftBarButtonItem setAction:@selector(add)];
+    }else
+    {
+        [self.navigationItem.rightBarButtonItem setTitle:@"Edit"];
+        [self.navigationItem.leftBarButtonItem setTitle:@"Level"];
+        [self.navigationItem.leftBarButtonItem setAction:@selector(goBack)];
+        [self save];
+    }
+    
+}
+
+- (IBAction)add
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"New Enemy:" message:@"Please enter a name for your new Enemy:" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alert addButtonWithTitle:@"Enter"];
+    [alert show];
+    
+    
+    
+}
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 1){
+        NSString *name = [alertView textFieldAtIndex:0].text;
+        [self.correctEnemies addObject:name];
+        [self.tableView reloadData];
+    }
+    
+}
+
+-(void)save
+{
+    NSMutableArray *save = [[NSMutableArray alloc] init];
+    
+    [self.allEnemies setObject:correctEnemies forKey:Level];
+    [save addObject:self.allEnemies];
+    
+    [save writeToFile:[self givePath] atomically:YES];
+}
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         
-        [self.vijanden removeObjectAtIndex: indexPath.row];
+        [self.correctEnemies removeObjectAtIndex: indexPath.row];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
     }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
@@ -146,6 +170,13 @@
     }
     
     [tableView reloadData];
+}
+
+-(NSString *)givePath
+{
+    NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString*docDir = [path objectAtIndex:0];
+    return [docDir stringByAppendingPathComponent:filePath];
 }
 
 @end
