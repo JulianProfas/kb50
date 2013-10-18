@@ -14,6 +14,8 @@ static NSUInteger dificulty = 0;
 @implementation Dartboard
 
 @synthesize dartboardViewController;
+@synthesize dartboardCenterXPosition;
+@synthesize dartboardCenterYPosition;
 
 -(id) initWithDartboardViewController:(DartboardViewController *)viewController centerYPosition:(int)centerYPosition centerXPosition:(int)centerXPosition
 {

@@ -18,6 +18,8 @@
     int dartboardCenterXPosition;
 }
 @property (nonatomic, retain) DartboardViewController *dartboardViewController;
+@property (nonatomic) int dartboardCenterYPosition;
+@property (nonatomic) int dartboardCenterXPosition;
 
 -(id)initWithDartboardViewController:(DartboardViewController *)viewController centerYPosition:(int)centerYPosition centerXPosition:(int)centerXPosition;
 -(int)getRandomDartCoordinate;

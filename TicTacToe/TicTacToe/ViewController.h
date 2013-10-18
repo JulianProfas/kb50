@@ -14,7 +14,15 @@
     NSArray *buttons;
     int counter;
     BOOL gameOver;
-    
+    UIButton *btn1;
+    UIButton *btn2;
+    UIButton *btn3;
+    UIButton *btn4;
+    UIButton *btn5;
+    UIButton *btn6;
+    UIButton *btn7;
+    UIButton *btn8;
+    UIButton *btn9;
 }
 @property (nonatomic, retain) IBOutlet UILabel *lblInfo;
 @property (nonatomic, retain) IBOutlet UIButton *btn1;
@@ -29,5 +37,5 @@
 - (IBAction)resetButton:(id)sender;
 - (IBAction)changeChar:(id)sender;
 - (void) computerStep;
-- (BOOL) checkWin;
+- (int) checkWin;
 @end

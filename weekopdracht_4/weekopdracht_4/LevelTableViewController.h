@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface LevelTableViewController : UITableViewController
-@property (nonatomic, strong) NSMutableArray *levels;
+@property (nonatomic, strong) NSMutableDictionary *allLevels;
+@property (nonatomic, strong) NSString *world;
+@property (nonatomic) NSString *filePath;
+@property (nonatomic, strong) NSMutableArray *correctLevels;
 
 @end

@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface WereldTableViewController : UITableViewController
-@property (nonatomic, strong) NSMutableArray *werelden;
+@property (nonatomic, strong) NSMutableDictionary *allWorlds;
+@property (nonatomic, strong) NSString *game;
+@property (nonatomic) NSString *filePath;
+@property (nonatomic, strong) NSMutableArray *correctWorlds;
 
 @end

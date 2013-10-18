@@ -11,5 +11,6 @@
 @interface GameTableViewController : UITableViewController
 
 @property (nonatomic, strong) NSMutableArray *gameNames;
+@property (nonatomic) NSString *filePath;
 
 @end

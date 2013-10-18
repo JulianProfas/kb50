@@ -69,6 +69,10 @@
         horizontalSlider.value = 125;
         verticalSlider.value = 125;
     }
+    
+    CGPoint dartboardPosition = dartboardView.center;
+    dartboard.dartboardCenterXPosition = dartboardPosition.x;
+    dartboard.dartboardCenterYPosition = dartboardPosition.y;
 }
 
 - (IBAction)verticalChange:(id)sender {
