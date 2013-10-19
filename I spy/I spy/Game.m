@@ -36,6 +36,8 @@ static Game *sharedGameManager = nil;
 #pragma mark - Game Class Methods
 -(void)highlightAnswer {
     //circle correct answer
+    
+    
 }
 
 -(void)checkAnswer: (CGPoint)guess {
@@ -57,6 +59,7 @@ static Game *sharedGameManager = nil;
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
+    [self highlightAnswer];
 
 }
 

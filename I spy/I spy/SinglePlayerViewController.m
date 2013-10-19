@@ -19,6 +19,7 @@
 @synthesize touchMoved;
 @synthesize currentPhoto;
 
+#pragma standard iOS Methods
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -32,6 +33,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Game related Methods
+
 - (void) setupGame {
     Game *iSpyWithMyLittleEye = [Game sharedManager];
     
@@ -42,6 +45,8 @@
     
     [iSpyWithMyLittleEye startGame];
 }
+
+#pragma mark - IBAction Methods
 
 - (IBAction)submitGuess:(id)sender {
     Player *player = [Player sharedManager];
@@ -80,14 +85,12 @@
         CGPoint location = [touch locationInView:self.view];
         
         //get the location of the square that the player clicked on
-        int chosenSquareX = location.x / 10.7;
-        int chosenSquareY = location.y / 14.2;
+        int guessedXcoordinate = location.x / 10.7;
+        int guessedYcoordinate = location.y / 14.2;
         
-        [[currentPhoto.matrix objectAtIndex:chosenSquareX] objectAtIndex:chosenSquareY];
-        //NSMutableArray *gridY = [gridX objectAtIndex:chosenSquareX];
-        //[gridY objectAtIndex:chosenSquareY];
+        [[currentPhoto.matrix objectAtIndex:guessedXcoordinate] objectAtIndex:guessedYcoordinate];
         
-        CGPoint guessCoordinates = {chosenSquareX, chosenSquareY};
+        CGPoint guessCoordinates = {guessedXcoordinate, guessedYcoordinate};
         NSLog(@"pt: %@", NSStringFromCGPoint(guessCoordinates));
         
         [[Game sharedManager] checkAnswer: guessCoordinates];

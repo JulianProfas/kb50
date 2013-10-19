@@ -9,13 +9,14 @@
 /* Begin PBXBuildFile section */
 		55CB8CEF181116BF00576A60 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 55CB8CEE181116BF00576A60 /* Photo.m */; };
 		55CB8CF4181123F900576A60 /* kleuren.png in Resources */ = {isa = PBXBuildFile; fileRef = 55CB8CF3181123F900576A60 /* kleuren.png */; };
-		55CB8CF61811525500576A60 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55CB8CF51811525500576A60 /* GPUImage.framework */; };
 		55CB8CFB1811695400576A60 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55CB8CF91811695400576A60 /* Main_iPhone.storyboard */; };
 		55CB8CFF18117B1B00576A60 /* kleuren3.png in Resources */ = {isa = PBXBuildFile; fileRef = 55CB8CFE18117B1B00576A60 /* kleuren3.png */; };
 		55CB8D011811854A00576A60 /* testphoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 55CB8D001811854A00576A60 /* testphoto.png */; };
 		55CB8D031811955400576A60 /* appleLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 55CB8D021811955400576A60 /* appleLogo.png */; };
 		55D952491811B00600F2647A /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D952481811B00600F2647A /* Player.m */; };
 		55D9524C1811B01F00F2647A /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D9524B1811B01F00F2647A /* Game.m */; };
+		55DF585C18120DD900EFCC8A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55DF585B18120DD900EFCC8A /* QuartzCore.framework */; };
+		55DF58661812B0FC00EFCC8A /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55DF58651812B0FC00EFCC8A /* GPUImage.framework */; };
 		55F7D8551802CA680050876C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F7D8541802CA680050876C /* Foundation.framework */; };
 		55F7D8571802CA680050876C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F7D8561802CA680050876C /* CoreGraphics.framework */; };
 		55F7D8591802CA680050876C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F7D8581802CA680050876C /* UIKit.framework */; };
@@ -46,7 +47,6 @@
 		55CB8CEE181116BF00576A60 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 		55CB8CF0181116DE00576A60 /* UIColoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColoring.h; sourceTree = "<group>"; };
 		55CB8CF3181123F900576A60 /* kleuren.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kleuren.png; sourceTree = "<group>"; };
-		55CB8CF51811525500576A60 /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GPUImage.framework; path = "../../../Desktop/GPUImage-master/build/GPUImage.framework"; sourceTree = "<group>"; };
 		55CB8CFA1811695400576A60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		55CB8CFE18117B1B00576A60 /* kleuren3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kleuren3.png; sourceTree = "<group>"; };
 		55CB8D001811854A00576A60 /* testphoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testphoto.png; sourceTree = "<group>"; };
@@ -55,6 +55,8 @@
 		55D952481811B00600F2647A /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		55D9524A1811B01F00F2647A /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		55D9524B1811B01F00F2647A /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
+		55DF585B18120DD900EFCC8A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = ../../../../../../../../../../Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55DF58651812B0FC00EFCC8A /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GPUImage.framework; sourceTree = "<group>"; };
 		55F7D8511802CA680050876C /* I spy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "I spy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55F7D8541802CA680050876C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		55F7D8561802CA680050876C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -80,7 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55CB8CF61811525500576A60 /* GPUImage.framework in Frameworks */,
+				55DF58661812B0FC00EFCC8A /* GPUImage.framework in Frameworks */,
+				55DF585C18120DD900EFCC8A /* QuartzCore.framework in Frameworks */,
 				55F7D8571802CA680050876C /* CoreGraphics.framework in Frameworks */,
 				55F7D8591802CA680050876C /* UIKit.framework in Frameworks */,
 				55F7D8551802CA680050876C /* Foundation.framework in Frameworks */,
@@ -122,7 +125,8 @@
 		55F7D8531802CA680050876C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				55CB8CF51811525500576A60 /* GPUImage.framework */,
+				55DF58651812B0FC00EFCC8A /* GPUImage.framework */,
+				55DF585B18120DD900EFCC8A /* QuartzCore.framework */,
 				55F7D8541802CA680050876C /* Foundation.framework */,
 				55F7D8561802CA680050876C /* CoreGraphics.framework */,
 				55F7D8581802CA680050876C /* UIKit.framework */,
@@ -421,8 +425,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "";
-				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "/Users/julianprofas/Desktop/GPUImage-master/build";
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)";
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(SRCROOT)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "I spy/I spy-Prefix.pch";
 				INFOPLIST_FILE = "I spy/I spy-Info.plist";
@@ -438,10 +442,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/julianprofas/Desktop/GPUImage-master/build",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "I spy/I spy-Prefix.pch";
 				INFOPLIST_FILE = "I spy/I spy-Info.plist";
