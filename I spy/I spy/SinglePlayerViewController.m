@@ -53,11 +53,11 @@
 #pragma mark - IBAction Methods
 
 - (IBAction)toggleImage:(id)sender {
-    if (presentedImage.image != [UIImage imageNamed:@"kleuren3.png"]){
-        presentedImage.image = [UIImage imageNamed:@"kleuren3.png"];
+    if (presentedImage.image != [UIImage imageNamed:@"appleLogo.png"]){
+        presentedImage.image = [UIImage imageNamed:@"appleLogo.png"];
     } else {
         Photo *aPhoto = [[Photo alloc] init];
-        presentedImage.image = [aPhoto generateColorGrid:[UIImage imageNamed:@"kleuren3.png"] fractionalWidthOfPixel:0.025f];
+        presentedImage.image = [aPhoto generateColorGrid:[UIImage imageNamed:@"appleLogo.png"] fractionalWidthOfPixel:0.025f];
     }
 }
 
@@ -89,6 +89,9 @@
         
         CGPoint guessCoordinates = {guessedXcoordinate, guessedYcoordinate};
         NSLog(@"pt: %@", NSStringFromCGPoint(guessCoordinates));
+        UIColor *selectedColor = [currentPhoto getPixelColor:[UIImage imageNamed:@"appleLogo.png"] xCoordinate:guessedXcoordinate yCoordinate:guessedYcoordinate];
+        //NSLog(@"answerColor")[currentPhoto answerColor];
+        NSLog(@"color clicked on: %@", [currentPhoto getColorName:selectedColor]);
         
         [[Game sharedManager] checkAnswer: guessCoordinates];
     }

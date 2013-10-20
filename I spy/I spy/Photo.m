@@ -69,26 +69,26 @@
     CGFloat alpha;
     
     [color getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
-    //printf("Hue: %f. Saturation: %f. Brightness: %f.",hue,saturation,brightness);
+    printf("Hue: %f. Saturation: %f. Brightness: %f.",hue,saturation,brightness);
     
-    if(hue > 0.5 && hue < 0.7 && saturation > 0.5 && brightness > 0.5){
-        return @"Blue";
+    if((hue > 0.51389 && hue < 0.7083) && saturation > 0.5 && brightness > 0.375){          //h185-255, s0.5, b3/8
+        return @"Blue"; //
     } else if(hue > 0.10 && hue < 0.20 && saturation > 0.5 && brightness > 0.75){
         return @"Yellow";
-    } else if(hue > 0.99 && hue <= 1 && saturation > 0.5 && brightness > 0.5){
-        return @"Red"; //TODO: tweak
-    } else if(hue > 0.07 && hue < 0.12 && saturation > 0.75 && brightness > 0.85){
-        return @"Orange"; //TODO: tweak
-    }else if(hue > 0.7 && hue < 0.85 && saturation > 0.5 && brightness > 0.375){
-        return @"Purple"; //TODO: tweak
+    } else if((hue < 0.0278 || hue > 0.94) && saturation > 0.75 && brightness > 0.5){       //h340-10, s3/4, b1/2
+        return @"Red";
+    } else if(hue > 0.05 && hue < 0.11 && saturation > 0.5 && brightness > 0.625){          //h20-40, s0.5, b5/8
+        return @"Orange";
+    }else if(hue > 0.7361 && hue < 0.9 && saturation > 0.5 && brightness > 0.28){           //h265-280, s0.5, b3/8
+        return @"Purple"; //
     }else if(hue > 0.2 && hue < 0.45 && saturation > 0.5 && brightness > 0.25){
         return @"Green";
     }else if(hue >0.05 && hue < 0.12 && saturation > 0.75 && brightness > 0.25 && brightness < 0.63){
         return @"Brown";
     }else if(hue <= 1 && saturation == 0 && brightness > 0.25 && brightness < 0.9){
-        return @"Gray"; //TODO: zwart wordt nu als Gray gezien
+        return @"Gray";
     }else if (hue <= 1 && saturation == 0 && brightness > 0.9){
-        return @"White"; //TODO: wit wordt nu als bruin gezien
+        return @"White";
     }else if (hue <= 1 && saturation <= 1 && brightness < 0.125){
         return @"Black";
     } else {
@@ -115,17 +115,17 @@
     NSLog(@"\nprinting answer coords: %i, %i\n", randomRow, randomColumn);
     NSLog(@"\nprinting answer color: %@\n", generatedColor);
     
-    if (![generatedColor isEqualToString:@"None"]) {
-        if ([difficulty isEqual: @"easy"]) {        //easy: 120 answers == 10% of the screen
+    if (![generatedColor isEqualToString:@"None"] && ![generatedColor isEqualToString:@"Black"]) {
+        if ([difficulty isEqual: @"easy"]) {        //easy: 60 answers == area 5% of the screen
             [self GenerateColorBlob:generatedColor xCoordinate:randomRow yCoordinate:randomColumn];
-            if ([answerMatrix count] > 120) {
+            if ([answerMatrix count] > 60) {
                 answerColor = generatedColor;
                 [self printAnswerSet];
                 return answerMatrix;
             } else {
                 [self generateAnswer:difficulty];
             }
-        } else if ([difficulty isEqual:@"hard"]) {  //hard: 30 answers == 2.5% of the screen
+        } else if ([difficulty isEqual:@"hard"]) {  //hard: 30 answers == area 2.5% of the screen
             [self GenerateColorBlob:generatedColor xCoordinate:randomRow yCoordinate:randomColumn];
             if ([answerMatrix count] > 30) { //3x3
                 answerColor = generatedColor;
@@ -134,9 +134,9 @@
             } else {
                 [self generateAnswer:difficulty];
             }
-        } else {                                    //medium: 60 answers == 5% of the screen
+        } else {                                    //medium: 45 answers == area 3.75% of the screen
             [self GenerateColorBlob:generatedColor xCoordinate:randomRow yCoordinate:randomColumn];
-            if ([answerMatrix count] > 60) {
+            if ([answerMatrix count] > 45) {
                 answerColor = generatedColor;
                 [self printAnswerSet];
                 return answerMatrix;

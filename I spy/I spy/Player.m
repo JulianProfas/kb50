@@ -41,7 +41,7 @@ static Player *sharedPlayerManager = nil;
     Photo *photo = [[Photo alloc] init];
     
     UIImage *image = [[UIImage alloc]init];
-    image = [photo generateColorGrid:[UIImage imageNamed:@"kleuren3.png"] fractionalWidthOfPixel:0.025f];
+    image = [photo generateColorGrid:[UIImage imageNamed:@"appleLogo.png"] fractionalWidthOfPixel:0.025f];
     
     answer = [photo generateAnswer:@"medium"];
     
