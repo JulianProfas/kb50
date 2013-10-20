@@ -18,8 +18,10 @@
 @synthesize presentedImage;
 @synthesize touchMoved;
 @synthesize currentPhoto;
+@synthesize colorLabel;
 
 #pragma standard iOS Methods
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -36,29 +38,26 @@
 #pragma mark - Game related Methods
 
 - (void) setupGame {
+    Player *player = [Player sharedManager];
     Game *iSpyWithMyLittleEye = [Game sharedManager];
     
-    Player *player = [Player sharedManager];
     [iSpyWithMyLittleEye setCurrentPlayer:player];
     
     currentPhoto = [player takePicture];
+    
+    colorLabel.text = [currentPhoto answerColor];
     
     [iSpyWithMyLittleEye startGame];
 }
 
 #pragma mark - IBAction Methods
 
-- (IBAction)submitGuess:(id)sender {
-    Player *player = [Player sharedManager];
-    [player submitGuess];
-}
-
 - (IBAction)toggleImage:(id)sender {
-    if (presentedImage.image != [UIImage imageNamed:@"appleLogo.png"]){
-        presentedImage.image = [UIImage imageNamed:@"appleLogo.png"];
+    if (presentedImage.image != [UIImage imageNamed:@"kleuren3.png"]){
+        presentedImage.image = [UIImage imageNamed:@"kleuren3.png"];
     } else {
         Photo *aPhoto = [[Photo alloc] init];
-        presentedImage.image = [aPhoto generateColorGrid:[UIImage imageNamed:@"appleLogo.png"] fractionalWidthOfPixel:0.025f gradation:@"normal"];
+        presentedImage.image = [aPhoto generateColorGrid:[UIImage imageNamed:@"kleuren3.png"] fractionalWidthOfPixel:0.025f];
     }
 }
 
@@ -87,8 +86,6 @@
         //get the location of the square that the player clicked on
         int guessedXcoordinate = location.x / 10.7;
         int guessedYcoordinate = location.y / 14.2;
-        
-        [[currentPhoto.matrix objectAtIndex:guessedXcoordinate] objectAtIndex:guessedYcoordinate];
         
         CGPoint guessCoordinates = {guessedXcoordinate, guessedYcoordinate};
         NSLog(@"pt: %@", NSStringFromCGPoint(guessCoordinates));

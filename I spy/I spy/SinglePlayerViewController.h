@@ -13,8 +13,11 @@
 @property (weak, nonatomic) IBOutlet UIImageView *presentedImage;
 @property (nonatomic) BOOL touchMoved;
 @property (nonatomic) Photo *currentPhoto;
+@property (weak, nonatomic) IBOutlet UILabel *colorLabel;
 
+#pragma mark - Game related Methods
 - (void) setupGame;
 
+#pragma mark - IBAction Methods
 - (IBAction)toggleImage:(id)sender;
 @end

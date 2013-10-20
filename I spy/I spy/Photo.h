@@ -12,9 +12,15 @@
 
 @interface Photo : NSObject <UIColoring>
 @property (strong, nonatomic) NSMutableArray *matrix;
+@property (strong, nonatomic) NSMutableOrderedSet *answerMatrix;
 @property UIImage *filteredImage;
+@property NSString *answerColor;
 
 #pragma mark - Photo Class Methods
 -(void)pixalateImage:(UIImage *)image;
--(CGPoint)generateAnswer;
+-(NSMutableOrderedSet *)generateAnswer:(NSString *)difficulty;
+
+#pragma mark - Recursion Methods
+-(void)GenerateColorBlob:(NSString *)color xCoordinate:(int)x yCoordinate:(int)y;
+-(void) printAnswerSet;
 @end

@@ -13,6 +13,7 @@
 @synthesize currentPlayer;
 
 #pragma mark - Game Singleton Methods
+
 static Game *sharedGameManager = nil;
 
 + (Game*)sharedManager
@@ -34,17 +35,19 @@ static Game *sharedGameManager = nil;
 }
 
 #pragma mark - Game Class Methods
+
 -(void)highlightAnswer {
     //circle correct answer
-    
-    
 }
 
--(void)checkAnswer: (CGPoint)guess {
-    if (!CGPointEqualToPoint(guess,[[Player sharedManager] answer])) {
+-(void)checkAnswer: (CGPoint)guess {    
+    NSMutableOrderedSet *myAnswer = [[Player sharedManager] answer];
+    
+    if (![myAnswer containsObject:[NSValue valueWithCGPoint:guess]]) {
         NSLog(@"Guess again!");
     } else {
         NSLog(@"You've won!");
+        [self highlightAnswer];
         [self displayWinAlert];
     }
 }
@@ -70,7 +73,6 @@ static Game *sharedGameManager = nil;
 }
 
 -(void)startGame {
-    [currentPlayer takePicture];
     
     //start timer
 }

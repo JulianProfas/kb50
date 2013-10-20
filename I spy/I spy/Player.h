@@ -12,10 +12,10 @@
 @interface Player : NSObject
 {
     int score;
-    CGPoint answer;
+    NSMutableOrderedSet *answer;
 }
 @property int score;
-@property CGPoint answer;
+@property NSMutableOrderedSet *answer;
 
 #pragma mark - Player Singleton Methods
 + (Player*)sharedManager;

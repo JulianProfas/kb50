@@ -12,7 +12,9 @@
 @implementation Player
 @synthesize score;
 @synthesize answer;
+
 #pragma mark - Player Singleton Methods
+
 static Player *sharedPlayerManager = nil;
 
 + (Player*)sharedManager
@@ -39,10 +41,9 @@ static Player *sharedPlayerManager = nil;
     Photo *photo = [[Photo alloc] init];
     
     UIImage *image = [[UIImage alloc]init];
-    image = [photo generateColorGrid:[UIImage imageNamed:@"appleLogo.png"] fractionalWidthOfPixel:0.025f gradation:@"normal"];
+    image = [photo generateColorGrid:[UIImage imageNamed:@"kleuren3.png"] fractionalWidthOfPixel:0.025f];
     
-    //[Game sharedPlayerManager] setAns
-    answer = [photo generateAnswer];
+    answer = [photo generateAnswer:@"medium"];
     
     return photo;
 }
