@@ -11,7 +11,6 @@
 
 @implementation Player
 @synthesize score;
-@synthesize answer;
 
 #pragma mark - Player Singleton Methods
 
@@ -33,22 +32,6 @@ static Player *sharedPlayerManager = nil;
 - (id)copyWithZone:(NSZone *)zone
 {
     return self;
-}
-
-#pragma mark - Player Class Methods
-
--(Photo *)takePicture {
-    Photo *photo = [[Photo alloc] init];
-    
-    UIImage *image = [[UIImage alloc]init];
-    image = [photo generateColorGrid:[UIImage imageNamed:@"appleLogo.png"] fractionalWidthOfPixel:0.025f];
-    
-    answer = [photo generateAnswer:@"medium"];
-    
-    return photo;
-}
--(void)submitGuess {
-    
 }
 
 @end

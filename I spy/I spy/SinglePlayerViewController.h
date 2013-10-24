@@ -7,17 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Photo.h"
+#import "ISpyProgressView.h"
+#import "UICountingLabel.h"
 
 @interface SinglePlayerViewController : UIViewController
+{
+    ISpyProgressView *progressBar;
+    UICountingLabel *scoreLabel;
+    UIImage *capturedImage;
+}
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (weak, nonatomic) IBOutlet UIImageView *presentedImage;
 @property (nonatomic) BOOL touchMoved;
-@property (nonatomic) Photo *currentPhoto;
-@property (weak, nonatomic) IBOutlet UILabel *colorLabel;
+@property (nonatomic, strong) IBOutlet UICountingLabel *scoreLabel;
+@property (nonatomic, strong) UIImage *capturedImage;
 
-#pragma mark - Game related Methods
-- (void) setupGame;
-
-#pragma mark - IBAction Methods
-- (IBAction)toggleImage:(id)sender;
 @end

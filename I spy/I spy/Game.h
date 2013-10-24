@@ -8,14 +8,25 @@
 
 #import <Foundation/Foundation.h>
 #import "Player.h"
+#import "ISpyProgressView.h"
 
 @interface Game : NSObject
 {
     int numberOfAttempts;
     Player *currentPlayer;
+    ISpyProgressView *progressBar;
+    UICountingLabel *scoreLabel;
+    UIImage *capturedImage;
+    UINavigationBar *navigationBar;
 }
 
 @property (nonatomic, retain) Player *currentPlayer;
+@property (nonatomic, retain) Photo *currentPhoto;
+@property (nonatomic, strong) ISpyProgressView *progressBar;
+@property (nonatomic, strong) UICountingLabel *scoreLabel;
+@property (nonatomic, strong) UIImage *capturedImage;
+@property (nonatomic, retain) Photo *photo;
+@property (nonatomic, strong) UINavigationBar *navigationBar;
 
 #pragma mark - Game Singleton Methods
 + (Game*)sharedManager;
@@ -23,12 +34,17 @@
 - (id)copyWithZone:(NSZone *)zone;
 
 #pragma mark - Game Class Methods
+-(void)setupGame;
 -(void)highlightAnswer;
 -(void)checkAnswer: (CGPoint)guess;
 -(void)displayWinAlert;
--(void)updateStatus;
 -(void)startGame;
--(void)endGame;
+-(void)gameOver;
 -(void)nextRound;
+-(Photo *)takePicture;
+
+#pragma mark - Score related Methods
 -(void)updateScore;
+-(int)getScoreByDifficulty;
+
 @end

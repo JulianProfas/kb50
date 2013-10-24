@@ -10,8 +10,8 @@
 
 @protocol UIColoring
 
-- (UIImage *)generateColorGrid: (UIImage *)image fractionalWidthOfPixel: (float)aFloat;
-- (UIColor *)getPixelColor:(UIImage *)image xCoordinate:(int)x yCoordinate:(int)y;
+- (void)generateColorMatrix: (UIImage *)image fractionalWidthOfPixel: (float)aFloat;
+- (UIColor *)getPixelColor:(int)x yCoordinate:(int)y;
 - (NSString *)getColorName:(UIColor *)color;
 
 @end

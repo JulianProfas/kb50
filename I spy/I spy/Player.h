@@ -8,21 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import "Photo.h"
+#import <MobileCoreServices/MobileCoreServices.h>
 
 @interface Player : NSObject
 {
     int score;
-    NSMutableOrderedSet *answer;
 }
 @property int score;
-@property NSMutableOrderedSet *answer;
 
 #pragma mark - Player Singleton Methods
 + (Player*)sharedManager;
 + (id)allocWithZone:(NSZone *)zone;
 - (id)copyWithZone:(NSZone *)zone;
 
-#pragma mark - Player Class Methods
--(Photo *)takePicture;
--(void)submitGuess;
 @end

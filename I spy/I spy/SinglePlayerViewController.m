@@ -7,58 +7,54 @@
 //
 
 #import "SinglePlayerViewController.h"
-#import "Photo.h"
 #import "Game.h"
+#import "Player.h"
 
 @interface SinglePlayerViewController ()
-
 @end
 
 @implementation SinglePlayerViewController
 @synthesize presentedImage;
 @synthesize touchMoved;
-@synthesize currentPhoto;
-@synthesize colorLabel;
+@synthesize scoreLabel;
+@synthesize navigationBar;
+@synthesize capturedImage;
 
 #pragma standard iOS Methods
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    [self setupGame];
+	
+    Game *iSpyWithMyLittleEye = [Game sharedManager];
+    [iSpyWithMyLittleEye setCapturedImage:capturedImage];
+    [iSpyWithMyLittleEye setScoreLabel:scoreLabel];
+    [iSpyWithMyLittleEye setNavigationBar:navigationBar];
+    
+    [iSpyWithMyLittleEye setupGame];
+    
+    CGRect barFrame = CGRectMake(0,42,320,20); //todo: remove off screen counter, no need for the counter
+    progressBar = [[ISpyProgressView alloc] initWithTimerLabel:YES LabelPosition:UILabelRight Frame:&barFrame];
+    [iSpyWithMyLittleEye setProgressBar:progressBar];
+    [self.view addSubview:progressBar];
+    
+    scoreLabel.text = [NSString stringWithFormat:@"%d", [[Player sharedManager] score]];
+    presentedImage.image = [[iSpyWithMyLittleEye currentPhoto] pixelatedImage];
+    [progressBar setTime:10.0f];
+    
+    
+    [iSpyWithMyLittleEye startGame];
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Game related Methods
-
-- (void) setupGame {
-    Player *player = [Player sharedManager];
-    Game *iSpyWithMyLittleEye = [Game sharedManager];
-    
-    [iSpyWithMyLittleEye setCurrentPlayer:player];
-    
-    currentPhoto = [player takePicture];
-    
-    colorLabel.text = [currentPhoto answerColor];
-    
-    [iSpyWithMyLittleEye startGame];
-}
-
-#pragma mark - IBAction Methods
-
-- (IBAction)toggleImage:(id)sender {
-    if (presentedImage.image != [UIImage imageNamed:@"appleLogo.png"]){
-        presentedImage.image = [UIImage imageNamed:@"appleLogo.png"];
-    } else {
-        Photo *aPhoto = [[Photo alloc] init];
-        presentedImage.image = [aPhoto generateColorGrid:[UIImage imageNamed:@"appleLogo.png"] fractionalWidthOfPixel:0.025f];
-    }
 }
 
 #pragma mark - Touch Methods
@@ -81,19 +77,30 @@
     if(!touchMoved)
     {
         //location of where the player touched the screen
-        CGPoint location = [touch locationInView:self.view];
+        CGPoint location = [touch locationInView:self.presentedImage];
         
-        //get the location of the square that the player clicked on
-        int guessedXcoordinate = location.x / 10.7;
-        int guessedYcoordinate = location.y / 14.2;
+        double MatrixHeight = 1 / 0.025f;
+        double MatrixWidth = MatrixHeight * 3 / 4;
         
-        CGPoint guessCoordinates = {guessedXcoordinate, guessedYcoordinate};
-        NSLog(@"pt: %@", NSStringFromCGPoint(guessCoordinates));
-        UIColor *selectedColor = [currentPhoto getPixelColor:[UIImage imageNamed:@"appleLogo.png"] xCoordinate:guessedXcoordinate yCoordinate:guessedYcoordinate];
-        //NSLog(@"answerColor")[currentPhoto answerColor];
+        double squareWidth = 320 / MatrixWidth;
+        double squareHeight = 480 / MatrixHeight;
+        
+        int boxXcoordinate = location.x / squareWidth;
+        int boxYcoordinate = location.y / squareHeight;
+        
+        NSLog(@"location.x: %f", location.x);
+        NSLog(@"location.y: %f", location.y);
+        
+        CGPoint guessCoordinates = {boxXcoordinate, boxYcoordinate};
+        NSLog(@"Guess coordinates: %@", NSStringFromCGPoint(guessCoordinates));
+        
+        Game *iSpyWithMyLittleEye = [Game sharedManager];
+        Photo *currentPhoto = [iSpyWithMyLittleEye currentPhoto];
+        
+        UIColor *selectedColor = [currentPhoto getPixelColor:(boxXcoordinate * squareWidth) + (squareWidth / 2) yCoordinate:(boxYcoordinate * squareWidth) + (squareWidth / 2)];
         NSLog(@"color clicked on: %@", [currentPhoto getColorName:selectedColor]);
         
-        [[Game sharedManager] checkAnswer: guessCoordinates];
+        [iSpyWithMyLittleEye checkAnswer: guessCoordinates];
     }
 }
 

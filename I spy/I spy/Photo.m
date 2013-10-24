@@ -11,21 +11,39 @@
 
 @implementation Photo
 @synthesize matrix;
-@synthesize filteredImage;
+@synthesize pixelatedImage;
 @synthesize answerMatrix;
 @synthesize answerColor;
+@synthesize capturedImage;
+
+#pragma mark - Initialization Methods
+
+- (id)initWithImage:(UIImage *)image difficulty:(NSString *)difficulty {
+    if ( self = [super init] ) {
+        [self pixalateImage:image];
+        [self generateColorMatrix:pixelatedImage fractionalWidthOfPixel:0.025f];
+
+        answerMatrix = [[NSMutableSet alloc] init];
+        
+        [self generateAnswerMatrix:difficulty];
+        capturedImage = image;
+        //[self printAnswerSet];
+        return self;
+    } else {
+        return nil;
+    }
+}
 
 #pragma mark - UIColoring Protocol Methods
 
 //todo: constants!?
-- (UIImage *)generateColorGrid: (UIImage *)image fractionalWidthOfPixel: (float)aFloat {
-    [self pixalateImage:image];
+- (void)generateColorMatrix: (UIImage *)image fractionalWidthOfPixel: (float)aFloat {
     
     double MatrixHeight = 1 / aFloat;
     double MatrixWidth = MatrixHeight * 3 / 4;
     
     double squareWidth = 320 / MatrixWidth;
-    double squareHeight = 568 / MatrixHeight;
+    double squareHeight = 480 / MatrixHeight;
     
     matrix = [[NSMutableArray alloc] init];
     
@@ -38,16 +56,16 @@
             double centerXcoordinate = (x * squareWidth) + (squareWidth / 2);
             double centerYcoordinate = (y * squareHeight) + (squareHeight / 2);
             
-            UIColor *pixelColor = [self getPixelColor:filteredImage xCoordinate:centerXcoordinate yCoordinate:centerYcoordinate];
+            UIColor *pixelColor = [self getPixelColor:centerXcoordinate yCoordinate:centerYcoordinate];
             NSString *colorName = [self getColorName:pixelColor];
             
             [column addObject:colorName];
         }
     }
-    return filteredImage;
 }
 
--(UIColor *)getPixelColor:(UIImage *)image xCoordinate:(int)x yCoordinate:(int)y{
+-(UIColor *)getPixelColor:(int)x yCoordinate:(int)y {
+    UIImage *image = pixelatedImage;
     CFDataRef pixelData = CGDataProviderCopyData(CGImageGetDataProvider(image.CGImage));
     const UInt8* data = CFDataGetBytePtr(pixelData);
     
@@ -62,6 +80,7 @@
     return color;
 }
 
+//TODO: tweak colors
 -(NSString *)getColorName:(UIColor *)color{
     CGFloat hue;
     CGFloat saturation;
@@ -69,7 +88,7 @@
     CGFloat alpha;
     
     [color getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
-    printf("Hue: %f. Saturation: %f. Brightness: %f.",hue,saturation,brightness);
+    //printf("Hue: %f. Saturation: %f. Brightness: %f.",hue,saturation,brightness);
     
     if((hue > 0.51389 && hue < 0.7083) && saturation > 0.5 && brightness > 0.375){          //h185-255, s0.5, b3/8
         return @"Blue"; //
@@ -81,7 +100,7 @@
         return @"Orange";
     }else if(hue > 0.7361 && hue < 0.9 && saturation > 0.5 && brightness > 0.28){           //h265-280, s0.5, b3/8
         return @"Purple"; //
-    }else if(hue > 0.2 && hue < 0.45 && saturation > 0.5 && brightness > 0.25){
+    }else if(hue > 0.2 && hue < 0.45 && saturation > 0.5 && brightness > 0.25){             //tweak
         return @"Green";
     }else if(hue >0.05 && hue < 0.12 && saturation > 0.75 && brightness > 0.25 && brightness < 0.63){
         return @"Brown";
@@ -101,82 +120,198 @@
 -(void)pixalateImage:(UIImage *)image {
     GPUImageFilter *selectedFilter = [[GPUImagePixellateFilter alloc] init];
     [(GPUImagePixellateFilter *)selectedFilter setFractionalWidthOfAPixel:0.025f];
-    filteredImage = [selectedFilter imageByFilteringImage:image];
+    pixelatedImage = [selectedFilter imageByFilteringImage:image];
 }
 
-//TODO: Prioritize colors
--(NSMutableOrderedSet *)generateAnswer:(NSString *)difficulty {
-    answerMatrix = [[NSMutableOrderedSet alloc] init];
-    int randomRow = arc4random() % 30;
-    int randomColumn = arc4random() % 40;
+//todo: integrate difficulty
+//todo: add prioritization of certain colors
+//todo: tweak blob size (currently 8 squares)
+-(NSMutableSet *)generateAnswerMatrix:(NSString *)difficulty {
+    NSMutableSet *blueMatrix = [[NSMutableSet alloc] init];
+    NSMutableSet *yellowMatrix = [[NSMutableSet alloc] init];
+    NSMutableSet *redMatrix = [[NSMutableSet alloc] init];
+    NSMutableSet *orangeMatrix = [[NSMutableSet alloc] init];
+    NSMutableSet *purpleMatrix = [[NSMutableSet alloc] init];
+    NSMutableSet *greenMatrix = [[NSMutableSet alloc] init];
+    NSMutableSet *brownMatrix = [[NSMutableSet alloc] init];
+    NSMutableSet *grayMatrix = [[NSMutableSet alloc] init];
+    NSMutableSet *whiteMatrix = [[NSMutableSet alloc] init];
+    NSMutableSet *blackMatrix = [[NSMutableSet alloc] init];
     
-    NSString *generatedColor = [[matrix objectAtIndex:randomRow] objectAtIndex:randomColumn];
+    NSMutableSet *allBlueMatrix = [[NSMutableSet alloc] init];
+    NSMutableSet *allyellowMatrix = [[NSMutableSet alloc] init];
+    NSMutableSet *allredMatrix = [[NSMutableSet alloc] init];
+    NSMutableSet *allOrangeMatrix = [[NSMutableSet alloc] init];
+    NSMutableSet *allpurpleMatrix = [[NSMutableSet alloc] init];
+    NSMutableSet *allgreenMatrix = [[NSMutableSet alloc] init];
+    NSMutableSet *allbrownMatrix = [[NSMutableSet alloc] init];
+    NSMutableSet *allgrayMatrix = [[NSMutableSet alloc] init];
+    NSMutableSet *allwhiteMatrix = [[NSMutableSet alloc] init];
+    NSMutableSet *allblackMatrix = [[NSMutableSet alloc] init];
     
-    NSLog(@"\nprinting answer coords: %i, %i\n", randomRow, randomColumn);
-    NSLog(@"\nprinting answer color: %@\n", generatedColor);
-    
-    if (![generatedColor isEqualToString:@"None"] && ![generatedColor isEqualToString:@"Black"]) {
-        if ([difficulty isEqual: @"easy"]) {        //easy: 60 answers == area 5% of the screen
-            [self GenerateColorBlob:generatedColor xCoordinate:randomRow yCoordinate:randomColumn];
-            if ([answerMatrix count] > 60) {
-                answerColor = generatedColor;
-                [self printAnswerSet];
-                return answerMatrix;
-            } else {
-                [self generateAnswer:difficulty];
-            }
-        } else if ([difficulty isEqual:@"hard"]) {  //hard: 30 answers == area 2.5% of the screen
-            [self GenerateColorBlob:generatedColor xCoordinate:randomRow yCoordinate:randomColumn];
-            if ([answerMatrix count] > 30) { //3x3
-                answerColor = generatedColor;
-                [self printAnswerSet];
-                return answerMatrix;
-            } else {
-                [self generateAnswer:difficulty];
-            }
-        } else {                                    //medium: 45 answers == area 3.75% of the screen
-            [self GenerateColorBlob:generatedColor xCoordinate:randomRow yCoordinate:randomColumn];
-            if ([answerMatrix count] > 45) {
-                answerColor = generatedColor;
-                [self printAnswerSet];
-                return answerMatrix;
-            } else {
-                [self generateAnswer:difficulty];
-            }
+    NSMutableSet *uniqueColors = [[NSMutableSet alloc] init];
+    for (int x = 0; x<30; x++) {
+        for (int y = 0; y<40; y++) {
+            [uniqueColors addObject:[[matrix objectAtIndex:x] objectAtIndex:y]];
         }
-    } else {
-        [self generateAnswer:difficulty];
     }
     
-    return answerMatrix;
+    NSLog(@"Number of colors: %u", uniqueColors.count-1);
+    NSLog(@"Colors: %@", uniqueColors);
+    
+    NSMutableSet *numberOfColorsMatrix = [[NSMutableSet alloc]init];
+    
+    for (int x = 0; x<30; x++) {
+        for (int y = 0; y<40; y++) {
+            if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"Blue"]) {
+                [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:blueMatrix];
+                [allBlueMatrix addObject: blueMatrix];
+                
+            } else if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"Yellow"]) {
+                [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:yellowMatrix];
+                [allyellowMatrix addObject: yellowMatrix];
+                
+            } else if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"Red"]) {
+                [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:redMatrix];
+                [allredMatrix addObject: redMatrix];
+                
+            }else if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"Orange"]) {
+                [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:orangeMatrix];
+                [allOrangeMatrix addObject: orangeMatrix];
+                
+            }else if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"Purple"]) {
+                [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:purpleMatrix];
+                [allpurpleMatrix addObject: purpleMatrix];
+                
+            }else if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"Green"]) {
+                [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:greenMatrix];
+                [allgreenMatrix addObject: greenMatrix];
+                
+            }else if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"Brown"]) {
+                [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:brownMatrix];
+                [allbrownMatrix addObject: brownMatrix];
+                
+            }else if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"Gray"]) {
+                [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:grayMatrix];
+                [allgrayMatrix addObject: grayMatrix];
+                
+            }else if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"White"]) {
+                [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:whiteMatrix];
+                [allwhiteMatrix addObject: whiteMatrix];
+                
+            }else if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"Black"]) {
+                [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:blackMatrix];
+                [allblackMatrix addObject: blackMatrix];
+                
+            }
+        }
+    }
+    
+    [numberOfColorsMatrix addObject:allBlueMatrix];
+    [numberOfColorsMatrix addObject:allyellowMatrix];
+    [numberOfColorsMatrix addObject:allredMatrix];
+    [numberOfColorsMatrix addObject: allOrangeMatrix];
+    [numberOfColorsMatrix addObject: allpurpleMatrix];
+    [numberOfColorsMatrix addObject: allgreenMatrix];
+    [numberOfColorsMatrix addObject: allbrownMatrix];
+    [numberOfColorsMatrix addObject: allgrayMatrix];
+    [numberOfColorsMatrix addObject: allwhiteMatrix];
+    [numberOfColorsMatrix addObject: allblackMatrix];
+    
+    NSLog(@"Number of blobs total: %lu", (unsigned long)numberOfColorsMatrix.count-1);
+    
+    NSLog(@"Number of blue blobs: %lu", (unsigned long)allBlueMatrix.count);
+    NSLog(@"Number of yellow blobs: %lu", (unsigned long)allyellowMatrix.count);
+    NSLog(@"Number of red blobs: %lu", (unsigned long)allredMatrix.count);
+    NSLog(@"Number of orange blobs: %lu", (unsigned long)allOrangeMatrix.count);
+    NSLog(@"Number of purple blobs: %lu", (unsigned long)allpurpleMatrix.count);
+    NSLog(@"Number of green blobs: %lu", (unsigned long)allgreenMatrix.count);
+    NSLog(@"Number of brown blobs: %lu", (unsigned long)allbrownMatrix.count);
+    NSLog(@"Number of gray blobs: %lu", (unsigned long)allgrayMatrix.count);
+    NSLog(@"Number of white blobs: %lu", (unsigned long)allwhiteMatrix.count);
+    NSLog(@"Number of black blobs: %lu", (unsigned long)allblackMatrix.count);
+    
+    NSMutableArray *array = [NSMutableArray arrayWithObjects: allBlueMatrix, allyellowMatrix, allredMatrix, allOrangeMatrix, allpurpleMatrix, allgreenMatrix, allbrownMatrix, allgrayMatrix, allwhiteMatrix, allblackMatrix, nil];
+    
+    uint32_t rnd = arc4random_uniform([array count]);
+    NSMutableSet *randomObject = [array objectAtIndex:rnd];
+    
+    while ([randomObject count] < 1) {
+        rnd = arc4random_uniform([array count]);
+        randomObject = [array objectAtIndex:rnd];
+        //TODO: prevent infinite loop if there's no colors found
+    }
+    
+    switch (rnd) {
+        case 0:
+            answerColor = @"Blue";
+            break;
+        case 1:
+            answerColor = @"Yellow";
+            break;
+        case 2:
+            answerColor = @"Red";
+            break;
+        case 3:
+            answerColor = @"Orange";
+            break;
+        case 4:
+            answerColor = @"Purple";
+            break;
+        case 5:
+            answerColor = @"Green";
+            break;
+        case 6:
+            answerColor = @"Brown";
+            break;
+        case 7:
+            answerColor = @"Gray";
+            break;
+        case 8:
+            answerColor = @"White";
+            break;
+        case 9:
+            answerColor = @"Black";
+            break;
+            
+        default:
+            answerColor = @"Not Found";
+            break;
+    }
+    
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF[SIZE] > 9"]; //TODO: what to do if there's no blobs of > 9
+    [randomObject filterUsingPredicate:pred];
+
+    answerMatrix = [randomObject anyObject]; //TODO: anyObject doesn't return a random object
+    return [randomObject anyObject];
 }
 
 #pragma mark - Color Blob Methods
 
--(void)GenerateColorBlob:(NSString *)color xCoordinate:(int)x yCoordinate:(int)y {
+-(void)generateColorBlob:(NSString *)color xCoordinate:(int)x yCoordinate:(int)y matrix:(NSMutableSet *)colorMatrix {
     
-        if (x > 0 && [color isEqual: [[matrix objectAtIndex:x-1] objectAtIndex:y]] && ![answerMatrix containsObject:[NSValue valueWithCGPoint:CGPointMake(x-1, y)]]) {
-            [answerMatrix addObject: [NSValue valueWithCGPoint:CGPointMake(x-1, y)]];
+        if (x > 0 && [color isEqual: [[matrix objectAtIndex:x-1] objectAtIndex:y]] && ![colorMatrix containsObject:[NSValue valueWithCGPoint:CGPointMake(x-1, y)]]) {
+            [colorMatrix addObject: [NSValue valueWithCGPoint:CGPointMake(x-1, y)]];
             
-            [self GenerateColorBlob:color xCoordinate:x-1 yCoordinate:y];
+            [self generateColorBlob:color xCoordinate:x-1 yCoordinate:y matrix:colorMatrix];
         }
     
-        if (x < 29 && [color isEqual: [[matrix objectAtIndex:x+1] objectAtIndex:y]] && ![answerMatrix containsObject:[NSValue valueWithCGPoint:CGPointMake(x+1, y)]]) {
-            [answerMatrix addObject: [NSValue valueWithCGPoint:CGPointMake(x+1, y)]];
+        if (x < 29 && [color isEqual: [[matrix objectAtIndex:x+1] objectAtIndex:y]] && ![colorMatrix containsObject:[NSValue valueWithCGPoint:CGPointMake(x+1, y)]]) {
+            [colorMatrix addObject: [NSValue valueWithCGPoint:CGPointMake(x+1, y)]];
             
-            [self GenerateColorBlob:color xCoordinate:x+1 yCoordinate:y];
+            [self generateColorBlob:color xCoordinate:x+1 yCoordinate:y matrix:colorMatrix];
         }
     
-        if (y > 0 && [color isEqual: [[matrix objectAtIndex:x] objectAtIndex:y-1]] && ![answerMatrix containsObject:[NSValue valueWithCGPoint:CGPointMake(x, y-1)]]) {
-            [answerMatrix addObject: [NSValue valueWithCGPoint:CGPointMake(x, y-1)]];
+        if (y > 0 && [color isEqual: [[matrix objectAtIndex:x] objectAtIndex:y-1]] && ![colorMatrix containsObject:[NSValue valueWithCGPoint:CGPointMake(x, y-1)]]) {
+            [colorMatrix addObject: [NSValue valueWithCGPoint:CGPointMake(x, y-1)]];
             
-            [self GenerateColorBlob:color xCoordinate:x yCoordinate:y-1];
+            [self generateColorBlob:color xCoordinate:x yCoordinate:y-1 matrix:colorMatrix];
         }
     
-        if (y < 39 && [color isEqual: [[matrix objectAtIndex:x] objectAtIndex:y+1]] && ![answerMatrix containsObject:[NSValue valueWithCGPoint:CGPointMake(x, y+1)]]) {
-            [answerMatrix addObject: [NSValue valueWithCGPoint:CGPointMake(x, y+1)]];
+        if (y < 39 && [color isEqual: [[matrix objectAtIndex:x] objectAtIndex:y+1]] && ![colorMatrix containsObject:[NSValue valueWithCGPoint:CGPointMake(x, y+1)]]) {
+            [colorMatrix addObject: [NSValue valueWithCGPoint:CGPointMake(x, y+1)]];
             
-            [self GenerateColorBlob:color xCoordinate:x yCoordinate:y+1];
+            [self generateColorBlob:color xCoordinate:x yCoordinate:y+1 matrix:colorMatrix];
         }
 }
 

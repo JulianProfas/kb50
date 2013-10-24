@@ -8,9 +8,19 @@
 
 #import "Game.h"
 #import "Player.h"
+#import "ISpyProgressView.h"
+#import "Photo.h"
 
 @implementation Game
 @synthesize currentPlayer;
+@synthesize currentPhoto;
+@synthesize progressBar;
+@synthesize scoreLabel;
+@synthesize capturedImage;
+@synthesize navigationBar;
+
+#define GOOD_GUESS 10
+#define BAD_GUESS 5
 
 #pragma mark - Game Singleton Methods
 
@@ -36,57 +46,123 @@ static Game *sharedGameManager = nil;
 
 #pragma mark - Game Class Methods
 
+-(void)setupGame {
+    currentPhoto = [self takePicture];
+    navigationBar.topItem.title = [NSString stringWithFormat:@"%@", [currentPhoto answerColor]];
+}
+
 -(void)highlightAnswer {
     //circle correct answer
 }
 
--(void)checkAnswer: (CGPoint)guess {    
-    NSMutableOrderedSet *myAnswer = [[Player sharedManager] answer];
+-(void)checkAnswer: (CGPoint)guess {
+    NSMutableSet *allAnswers = [currentPhoto answerMatrix];
     
-    if (![myAnswer containsObject:[NSValue valueWithCGPoint:guess]]) {
-        NSLog(@"Guess again!");
+    if (![allAnswers containsObject:[NSValue valueWithCGPoint:guess]]) {
+        //bad guess
+        if(![progressBar decreaseTime:BAD_GUESS]){
+            //[self gameOver];
+            
+            //NSLog(@"Guess again!");
+            //temp:
+            //[self highlightAnswer];
+            //[self displayWinAlert];
+        }
     } else {
+        //good guess
         NSLog(@"You've won!");
+        
+        [self updateScore];
+        [progressBar addTime:GOOD_GUESS];
+        
         [self highlightAnswer];
         [self displayWinAlert];
     }
 }
 
 -(void)displayWinAlert {
-    //stop timer
+    [progressBar stopTimer];
     
     //display alert
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You've won the game!"
                                                     message:@"You gained 10 seconds."
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
+                                                   delegate:self
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:@"Next round", nil];
     [alert show];
-    [self highlightAnswer];
-
-}
-
--(void)updateStatus {
-    //good guess
-    
-    //bad guess
 }
 
 -(void)startGame {
-    
-    //start timer
+    [progressBar setTime:10.0f];
+    [progressBar resetTimer];
+    [progressBar startTimer];
 }
 
--(void)endGame {
-    //stop timer
+-(void)gameOver {
+    [self highlightAnswer];
+    [progressBar stopTimer];
 }
 
 -(void)nextRound {
-    
+    [progressBar stopTimer];
+    [self setupGame];
+    [self startGame];
 }
 
+-(Photo *)takePicture {
+    return [[Photo alloc]initWithImage:capturedImage difficulty:@"hard"];
+}
+
+#pragma mark - Score related Methods
+
 -(void)updateScore {
+    int previousScore = [[Player sharedManager] score];
+    [[Player sharedManager] setScore:[self getScoreByDifficulty]];
     
+    // count up using a string that uses a number formatter
+    
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    formatter.numberStyle = kCFNumberFormatterDecimalStyle;
+    scoreLabel.formatBlock = ^NSString* (float value)
+    {
+        NSString* formatted = [formatter stringFromNumber:@((int)value)];
+        return [NSString stringWithFormat:@"%@",formatted];
+    };
+    scoreLabel.method = UILabelCountingMethodEaseOut;
+    [scoreLabel countFrom:previousScore to:[[Player sharedManager] score] withDuration:2];
+    
+    //[label setText:[NSString stringWithFormat:@"Score : %d",[player score]]];
+}
+
+-(int)getScoreByDifficulty
+{
+    int difficulty = 0; //ophalen uit settings class
+    int score = 0;
+    
+    switch (difficulty) {
+        case 0: //Easy
+            score = 100;
+            break;
+        case 1: //Medium
+            score = 75;
+            break;
+        case 2: //Hard
+            score = 50;
+            break;
+        default:
+            score = 100;
+            break;
+    }
+    
+    return score;
+}
+
+- (void)alertView:(UIAlertView *)theAlert clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [self nextRound];
+    //TODO: display correct color question again
+    
+    //NSLog(@"The %@ button was tapped.", [theAlert buttonTitleAtIndex:buttonIndex]);
 }
 
 @end
