@@ -12,7 +12,7 @@
 
 @interface Photo : NSObject <UIColoring>
 @property (strong, nonatomic) NSMutableArray *matrix;
-@property (strong, nonatomic) NSMutableSet *answerMatrix;
+@property (strong, nonatomic) NSMutableOrderedSet *answerMatrix;
 @property UIImage *pixelatedImage;
 @property NSString *answerColor;
 @property UIImage *capturedImage;

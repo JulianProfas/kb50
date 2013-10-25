@@ -23,7 +23,7 @@
         [self pixalateImage:image];
         [self generateColorMatrix:pixelatedImage fractionalWidthOfPixel:0.025f];
 
-        answerMatrix = [[NSMutableSet alloc] init];
+        answerMatrix = [[NSMutableOrderedSet alloc] init];
         
         [self generateAnswerMatrix:difficulty];
         capturedImage = image;
@@ -123,31 +123,19 @@
     pixelatedImage = [selectedFilter imageByFilteringImage:image];
 }
 
-//todo: integrate difficulty
-//todo: add prioritization of certain colors
-//todo: tweak blob size (currently 8 squares)
--(NSMutableSet *)generateAnswerMatrix:(NSString *)difficulty {
-    NSMutableSet *blueMatrix = [[NSMutableSet alloc] init];
-    NSMutableSet *yellowMatrix = [[NSMutableSet alloc] init];
-    NSMutableSet *redMatrix = [[NSMutableSet alloc] init];
-    NSMutableSet *orangeMatrix = [[NSMutableSet alloc] init];
-    NSMutableSet *purpleMatrix = [[NSMutableSet alloc] init];
-    NSMutableSet *greenMatrix = [[NSMutableSet alloc] init];
-    NSMutableSet *brownMatrix = [[NSMutableSet alloc] init];
-    NSMutableSet *grayMatrix = [[NSMutableSet alloc] init];
-    NSMutableSet *whiteMatrix = [[NSMutableSet alloc] init];
-    NSMutableSet *blackMatrix = [[NSMutableSet alloc] init];
-    
-    NSMutableSet *allBlueMatrix = [[NSMutableSet alloc] init];
-    NSMutableSet *allyellowMatrix = [[NSMutableSet alloc] init];
-    NSMutableSet *allredMatrix = [[NSMutableSet alloc] init];
-    NSMutableSet *allOrangeMatrix = [[NSMutableSet alloc] init];
-    NSMutableSet *allpurpleMatrix = [[NSMutableSet alloc] init];
-    NSMutableSet *allgreenMatrix = [[NSMutableSet alloc] init];
-    NSMutableSet *allbrownMatrix = [[NSMutableSet alloc] init];
-    NSMutableSet *allgrayMatrix = [[NSMutableSet alloc] init];
-    NSMutableSet *allwhiteMatrix = [[NSMutableSet alloc] init];
-    NSMutableSet *allblackMatrix = [[NSMutableSet alloc] init];
+//todo: add prioritization of certain colors?
+//todo: tweak blob size & difficulty
+-(NSMutableOrderedSet *)generateAnswerMatrix:(NSString *)difficulty {
+    NSMutableOrderedSet *allBlueMatrix = [[NSMutableOrderedSet alloc] init];
+    NSMutableOrderedSet *allyellowMatrix = [[NSMutableOrderedSet alloc] init];
+    NSMutableOrderedSet *allredMatrix = [[NSMutableOrderedSet alloc] init];
+    NSMutableOrderedSet *allOrangeMatrix = [[NSMutableOrderedSet alloc] init];
+    NSMutableOrderedSet *allpurpleMatrix = [[NSMutableOrderedSet alloc] init];
+    NSMutableOrderedSet *allgreenMatrix = [[NSMutableOrderedSet alloc] init];
+    NSMutableOrderedSet *allbrownMatrix = [[NSMutableOrderedSet alloc] init];
+    NSMutableOrderedSet *allgrayMatrix = [[NSMutableOrderedSet alloc] init];
+    NSMutableOrderedSet *allwhiteMatrix = [[NSMutableOrderedSet alloc] init];
+    NSMutableOrderedSet *allblackMatrix = [[NSMutableOrderedSet alloc] init];
     
     NSMutableSet *uniqueColors = [[NSMutableSet alloc] init];
     for (int x = 0; x<30; x++) {
@@ -159,66 +147,67 @@
     NSLog(@"Number of colors: %u", uniqueColors.count-1);
     NSLog(@"Colors: %@", uniqueColors);
     
-    NSMutableSet *numberOfColorsMatrix = [[NSMutableSet alloc]init];
-    
     for (int x = 0; x<30; x++) {
         for (int y = 0; y<40; y++) {
             if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"Blue"]) {
+                NSMutableSet *blueMatrix = [[NSMutableSet alloc] init];
                 [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:blueMatrix];
+                /*if ([difficulty isEqualToString:@"hard"] && blueMatrix.count > 100) {
+                 //[allBlueMatrix addObject: blueMatrix];
+                 } else if ([difficulty isEqualToString:@"easy"] && blueMatrix.count > 100) {
+                 //[allBlueMatrix addObject: blueMatrix];
+                 }else if (blueMatrix.count > 100) { //normal difficulty
+                 //[allBlueMatrix addObject: blueMatrix];
+                 }*/
                 [allBlueMatrix addObject: blueMatrix];
                 
             } else if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"Yellow"]) {
+                NSMutableSet *yellowMatrix = [[NSMutableSet alloc] init];
                 [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:yellowMatrix];
                 [allyellowMatrix addObject: yellowMatrix];
                 
             } else if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"Red"]) {
+                NSMutableSet *redMatrix = [[NSMutableSet alloc] init];
                 [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:redMatrix];
                 [allredMatrix addObject: redMatrix];
                 
             }else if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"Orange"]) {
+                NSMutableSet *orangeMatrix = [[NSMutableSet alloc] init];
                 [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:orangeMatrix];
                 [allOrangeMatrix addObject: orangeMatrix];
                 
             }else if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"Purple"]) {
+                NSMutableSet *purpleMatrix = [[NSMutableSet alloc] init];
                 [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:purpleMatrix];
                 [allpurpleMatrix addObject: purpleMatrix];
                 
             }else if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"Green"]) {
+                NSMutableSet *greenMatrix = [[NSMutableSet alloc] init];
                 [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:greenMatrix];
                 [allgreenMatrix addObject: greenMatrix];
                 
             }else if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"Brown"]) {
+                NSMutableSet *brownMatrix = [[NSMutableSet alloc] init];
                 [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:brownMatrix];
                 [allbrownMatrix addObject: brownMatrix];
                 
             }else if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"Gray"]) {
+                NSMutableSet *grayMatrix = [[NSMutableSet alloc] init];
                 [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:grayMatrix];
                 [allgrayMatrix addObject: grayMatrix];
                 
             }else if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"White"]) {
+                NSMutableSet *whiteMatrix = [[NSMutableSet alloc] init];
                 [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:whiteMatrix];
                 [allwhiteMatrix addObject: whiteMatrix];
                 
             }else if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"Black"]) {
+                NSMutableSet *blackMatrix = [[NSMutableSet alloc] init];
                 [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:blackMatrix];
                 [allblackMatrix addObject: blackMatrix];
-                
             }
         }
     }
-    
-    [numberOfColorsMatrix addObject:allBlueMatrix];
-    [numberOfColorsMatrix addObject:allyellowMatrix];
-    [numberOfColorsMatrix addObject:allredMatrix];
-    [numberOfColorsMatrix addObject: allOrangeMatrix];
-    [numberOfColorsMatrix addObject: allpurpleMatrix];
-    [numberOfColorsMatrix addObject: allgreenMatrix];
-    [numberOfColorsMatrix addObject: allbrownMatrix];
-    [numberOfColorsMatrix addObject: allgrayMatrix];
-    [numberOfColorsMatrix addObject: allwhiteMatrix];
-    [numberOfColorsMatrix addObject: allblackMatrix];
-    
-    NSLog(@"Number of blobs total: %lu", (unsigned long)numberOfColorsMatrix.count-1);
     
     NSLog(@"Number of blue blobs: %lu", (unsigned long)allBlueMatrix.count);
     NSLog(@"Number of yellow blobs: %lu", (unsigned long)allyellowMatrix.count);
@@ -231,59 +220,64 @@
     NSLog(@"Number of white blobs: %lu", (unsigned long)allwhiteMatrix.count);
     NSLog(@"Number of black blobs: %lu", (unsigned long)allblackMatrix.count);
     
-    NSMutableArray *array = [NSMutableArray arrayWithObjects: allBlueMatrix, allyellowMatrix, allredMatrix, allOrangeMatrix, allpurpleMatrix, allgreenMatrix, allbrownMatrix, allgrayMatrix, allwhiteMatrix, allblackMatrix, nil];
+    NSOrderedSet *allColorsMatrix = [NSOrderedSet orderedSetWithObjects:allBlueMatrix, allyellowMatrix, allredMatrix, allOrangeMatrix, allpurpleMatrix, allgreenMatrix, allbrownMatrix, allgrayMatrix, allwhiteMatrix, allblackMatrix, nil];
     
-    uint32_t rnd = arc4random_uniform([array count]);
-    NSMutableSet *randomObject = [array objectAtIndex:rnd];
-    
-    while ([randomObject count] < 1) {
-        rnd = arc4random_uniform([array count]);
-        randomObject = [array objectAtIndex:rnd];
-        //TODO: prevent infinite loop if there's no colors found
+    if (uniqueColors.count == 1) {
+        answerMatrix = nil;
+        answerColor = @"Not Found";
+        return nil;
+    } else {
+        uint32_t rnd = arc4random_uniform((int)[allColorsMatrix count]);
+        NSMutableOrderedSet *randomColorMatrix = [allColorsMatrix objectAtIndex:rnd];
+        
+        switch (rnd) {
+            case 0:
+                answerColor = @"Blue";
+                break;
+            case 1:
+                answerColor = @"Yellow";
+                break;
+            case 2:
+                answerColor = @"Red";
+                break;
+            case 3:
+                answerColor = @"Orange";
+                break;
+            case 4:
+                answerColor = @"Purple";
+                break;
+            case 5:
+                answerColor = @"Green";
+                break;
+            case 6:
+                answerColor = @"Brown";
+                break;
+            case 7:
+                answerColor = @"Gray";
+                break;
+            case 8:
+                answerColor = @"White";
+                break;
+            case 9:
+                answerColor = @"Black";
+                break;
+                
+            default:
+                answerColor = @"Not Found";
+                break;
+        }
+        
+        //NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF[SIZE] > 9"]; //TODO: what to do if there's no blobs of > 9
+        //[randomObject filterUsingPredicate:pred];
+        
+        uint32_t rndm = arc4random_uniform((int)[randomColorMatrix count]);
+        NSMutableOrderedSet *randomAnswer = [randomColorMatrix objectAtIndex:rndm];
+        
+        answerMatrix = randomAnswer;
+        
+        return randomAnswer;
     }
-    
-    switch (rnd) {
-        case 0:
-            answerColor = @"Blue";
-            break;
-        case 1:
-            answerColor = @"Yellow";
-            break;
-        case 2:
-            answerColor = @"Red";
-            break;
-        case 3:
-            answerColor = @"Orange";
-            break;
-        case 4:
-            answerColor = @"Purple";
-            break;
-        case 5:
-            answerColor = @"Green";
-            break;
-        case 6:
-            answerColor = @"Brown";
-            break;
-        case 7:
-            answerColor = @"Gray";
-            break;
-        case 8:
-            answerColor = @"White";
-            break;
-        case 9:
-            answerColor = @"Black";
-            break;
-            
-        default:
-            answerColor = @"Not Found";
-            break;
-    }
-    
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF[SIZE] > 9"]; //TODO: what to do if there's no blobs of > 9
-    [randomObject filterUsingPredicate:pred];
-
-    answerMatrix = [randomObject anyObject]; //TODO: anyObject doesn't return a random object
-    return [randomObject anyObject];
+    return nil;
 }
 
 #pragma mark - Color Blob Methods

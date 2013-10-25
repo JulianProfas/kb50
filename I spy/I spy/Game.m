@@ -56,7 +56,7 @@ static Game *sharedGameManager = nil;
 }
 
 -(void)checkAnswer: (CGPoint)guess {
-    NSMutableSet *allAnswers = [currentPhoto answerMatrix];
+    NSMutableOrderedSet *allAnswers = [currentPhoto answerMatrix];
     
     if (![allAnswers containsObject:[NSValue valueWithCGPoint:guess]]) {
         //bad guess
