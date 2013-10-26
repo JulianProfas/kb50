@@ -97,7 +97,6 @@ static Game *sharedGameManager = nil;
 }
 
 -(void)startGame {
-    [self setAnswerLabel];
     [progressBar setTime:10.0f];
     [progressBar resetTimer];
     [progressBar startTimer];

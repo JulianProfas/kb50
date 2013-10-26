@@ -42,21 +42,24 @@
     dispatch_async(photoQueue, ^{
         
         [iSpyWithMyLittleEye setupGame];
-        
+        [iSpyWithMyLittleEye setAnswerLabel];
         dispatch_async(dispatch_get_main_queue(), ^{
-            
-            CGRect barFrame = CGRectMake(0,42,320,20); //todo: remove off screen counter, no need for the counter
-            progressBar = [[ISpyProgressView alloc] initWithTimerLabel:YES LabelPosition:UILabelRight Frame:&barFrame];
-            [iSpyWithMyLittleEye setProgressBar:progressBar];
-            [self.view addSubview:progressBar];
-            
-            scoreLabel.text = [NSString stringWithFormat:@"%d", [[Player sharedManager] score]];
-            presentedImage.image = [[iSpyWithMyLittleEye currentPhoto] pixelatedImage];
-            [progressBar setTime:10.0f];
-            
-            [iSpyWithMyLittleEye startGame];
-            
-            [spinner stopAnimating];
+            if ([navigationBar.topItem.title isEqualToString:@"Not Found"]) {
+                [spinner stopAnimating];
+                [self dismissViewControllerAnimated:YES completion:^ {}];
+            } else {
+                [spinner stopAnimating];
+                
+                CGRect barFrame = CGRectMake(0,42,320,20); //todo: remove off screen counter, no need for the counter
+                progressBar = [[ISpyProgressView alloc] initWithTimerLabel:YES LabelPosition:UILabelRight Frame:&barFrame];
+                [iSpyWithMyLittleEye setProgressBar:progressBar];
+                [self.view addSubview:progressBar];
+                
+                scoreLabel.text = [NSString stringWithFormat:@"%d", [[Player sharedManager] score]];
+                presentedImage.image = [[iSpyWithMyLittleEye currentPhoto] pixelatedImage];
+                
+                [iSpyWithMyLittleEye startGame];
+            }
         });
         
     });
