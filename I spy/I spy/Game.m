@@ -18,6 +18,7 @@
 @synthesize scoreLabel;
 @synthesize capturedImage;
 @synthesize navigationBar;
+@synthesize spinner;
 
 #define GOOD_GUESS 10
 #define BAD_GUESS 5
@@ -48,6 +49,9 @@ static Game *sharedGameManager = nil;
 
 -(void)setupGame {
     currentPhoto = [self takePicture];
+}
+
+-(void)setAnswerLabel {
     navigationBar.topItem.title = [NSString stringWithFormat:@"%@", [currentPhoto answerColor]];
 }
 
@@ -93,6 +97,7 @@ static Game *sharedGameManager = nil;
 }
 
 -(void)startGame {
+    [self setAnswerLabel];
     [progressBar setTime:10.0f];
     [progressBar resetTimer];
     [progressBar startTimer];
@@ -110,7 +115,9 @@ static Game *sharedGameManager = nil;
 }
 
 -(Photo *)takePicture {
-    return [[Photo alloc]initWithImage:capturedImage difficulty:@"hard"];
+    [spinner startAnimating];
+    
+    return [[Photo alloc]initWithImage:capturedImage difficulty:@"easy"];
 }
 
 #pragma mark - Score related Methods

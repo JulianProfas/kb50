@@ -19,6 +19,7 @@
 @synthesize scoreLabel;
 @synthesize navigationBar;
 @synthesize capturedImage;
+@synthesize spinner;
 
 #pragma standard iOS Methods
 
@@ -31,19 +32,36 @@
     [iSpyWithMyLittleEye setScoreLabel:scoreLabel];
     [iSpyWithMyLittleEye setNavigationBar:navigationBar];
     
-    [iSpyWithMyLittleEye setupGame];
+    spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    spinner.center = CGPointMake(160, 240);
+    spinner.hidesWhenStopped = YES;
+    [iSpyWithMyLittleEye setSpinner:spinner];
+    [self.view addSubview:spinner];
     
-    CGRect barFrame = CGRectMake(0,42,320,20); //todo: remove off screen counter, no need for the counter
-    progressBar = [[ISpyProgressView alloc] initWithTimerLabel:YES LabelPosition:UILabelRight Frame:&barFrame];
-    [iSpyWithMyLittleEye setProgressBar:progressBar];
-    [self.view addSubview:progressBar];
+    dispatch_queue_t photoQueue = dispatch_queue_create("loading", NULL);
+    dispatch_async(photoQueue, ^{
+        
+        [iSpyWithMyLittleEye setupGame];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            CGRect barFrame = CGRectMake(0,42,320,20); //todo: remove off screen counter, no need for the counter
+            progressBar = [[ISpyProgressView alloc] initWithTimerLabel:YES LabelPosition:UILabelRight Frame:&barFrame];
+            [iSpyWithMyLittleEye setProgressBar:progressBar];
+            [self.view addSubview:progressBar];
+            
+            scoreLabel.text = [NSString stringWithFormat:@"%d", [[Player sharedManager] score]];
+            presentedImage.image = [[iSpyWithMyLittleEye currentPhoto] pixelatedImage];
+            [progressBar setTime:10.0f];
+            
+            [iSpyWithMyLittleEye startGame];
+            
+            [spinner stopAnimating];
+        });
+        
+    });
     
-    scoreLabel.text = [NSString stringWithFormat:@"%d", [[Player sharedManager] score]];
-    presentedImage.image = [[iSpyWithMyLittleEye currentPhoto] pixelatedImage];
-    [progressBar setTime:10.0f];
     
-    
-    [iSpyWithMyLittleEye startGame];
 }
 
 - (BOOL)prefersStatusBarHidden

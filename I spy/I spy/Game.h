@@ -27,6 +27,7 @@
 @property (nonatomic, strong) UIImage *capturedImage;
 @property (nonatomic, retain) Photo *photo;
 @property (nonatomic, strong) UINavigationBar *navigationBar;
+@property (nonatomic, strong) UIActivityIndicatorView *spinner;
 
 #pragma mark - Game Singleton Methods
 + (Game*)sharedManager;
@@ -35,6 +36,7 @@
 
 #pragma mark - Game Class Methods
 -(void)setupGame;
+-(void)setAnswerLabel;
 -(void)highlightAnswer;
 -(void)checkAnswer: (CGPoint)guess;
 -(void)displayWinAlert;

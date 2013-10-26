@@ -27,7 +27,7 @@
         
         [self generateAnswerMatrix:difficulty];
         capturedImage = image;
-        //[self printAnswerSet];
+        [self printAnswerSet];
         return self;
     } else {
         return nil;
@@ -124,7 +124,7 @@
 }
 
 //todo: add prioritization of certain colors?
-//todo: tweak blob size & difficulty
+//todo: tweak blob size
 -(NSMutableOrderedSet *)generateAnswerMatrix:(NSString *)difficulty {
     NSMutableOrderedSet *allBlueMatrix = [[NSMutableOrderedSet alloc] init];
     NSMutableOrderedSet *allyellowMatrix = [[NSMutableOrderedSet alloc] init];
@@ -144,7 +144,7 @@
         }
     }
     
-    NSLog(@"Number of colors: %u", uniqueColors.count-1);
+    NSLog(@"Number of colors: %lu", (unsigned long)uniqueColors.count);
     NSLog(@"Colors: %@", uniqueColors);
     
     for (int x = 0; x<30; x++) {
@@ -152,59 +152,121 @@
             if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"Blue"]) {
                 NSMutableSet *blueMatrix = [[NSMutableSet alloc] init];
                 [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:blueMatrix];
-                /*if ([difficulty isEqualToString:@"hard"] && blueMatrix.count > 100) {
-                 //[allBlueMatrix addObject: blueMatrix];
-                 } else if ([difficulty isEqualToString:@"easy"] && blueMatrix.count > 100) {
-                 //[allBlueMatrix addObject: blueMatrix];
-                 }else if (blueMatrix.count > 100) { //normal difficulty
-                 //[allBlueMatrix addObject: blueMatrix];
-                 }*/
-                [allBlueMatrix addObject: blueMatrix];
+                if ([difficulty isEqualToString:@"hard"] && blueMatrix.count > 16) {
+                    NSLog(@"printing blue count %lu",(unsigned long)blueMatrix.count);
+                    [allBlueMatrix addObject: blueMatrix];
+                } else if ([difficulty isEqualToString:@"easy"] && blueMatrix.count > 64) {
+                    [allBlueMatrix addObject: blueMatrix];
+                }else if (blueMatrix.count > 32) { //normal difficulty
+                    [allBlueMatrix addObject: blueMatrix];
+                }
                 
             } else if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"Yellow"]) {
                 NSMutableSet *yellowMatrix = [[NSMutableSet alloc] init];
                 [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:yellowMatrix];
-                [allyellowMatrix addObject: yellowMatrix];
+                if ([difficulty isEqualToString:@"hard"] && yellowMatrix.count > 16) {
+                    [allyellowMatrix addObject: yellowMatrix];
+                } else if ([difficulty isEqualToString:@"easy"] && yellowMatrix.count > 64) {
+                    [allyellowMatrix addObject: yellowMatrix];
+                }else if (yellowMatrix.count > 32) { //normal difficulty
+                    [allyellowMatrix addObject: yellowMatrix];
+                }
                 
             } else if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"Red"]) {
                 NSMutableSet *redMatrix = [[NSMutableSet alloc] init];
                 [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:redMatrix];
-                [allredMatrix addObject: redMatrix];
+                
+                if ([difficulty isEqualToString:@"hard"] && redMatrix.count > 16) {
+                    [allredMatrix addObject: redMatrix];
+                } else if ([difficulty isEqualToString:@"easy"] && redMatrix.count > 64) {
+                    [allredMatrix addObject: redMatrix];
+                }else if (redMatrix.count > 32) { //normal difficulty
+                    [allredMatrix addObject: redMatrix];
+                }
                 
             }else if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"Orange"]) {
                 NSMutableSet *orangeMatrix = [[NSMutableSet alloc] init];
                 [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:orangeMatrix];
-                [allOrangeMatrix addObject: orangeMatrix];
+                
+                if ([difficulty isEqualToString:@"hard"] && orangeMatrix.count > 16) {
+                    [allOrangeMatrix addObject: orangeMatrix];
+                } else if ([difficulty isEqualToString:@"easy"] && orangeMatrix.count > 64) {
+                    [allOrangeMatrix addObject: orangeMatrix];
+                }else if (orangeMatrix.count > 32) { //normal difficulty
+                    [allOrangeMatrix addObject: orangeMatrix];
+                }
                 
             }else if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"Purple"]) {
                 NSMutableSet *purpleMatrix = [[NSMutableSet alloc] init];
                 [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:purpleMatrix];
-                [allpurpleMatrix addObject: purpleMatrix];
+                
+                if ([difficulty isEqualToString:@"hard"] && purpleMatrix.count > 16) {
+                    [allpurpleMatrix addObject: purpleMatrix];
+                } else if ([difficulty isEqualToString:@"easy"] && purpleMatrix.count > 64) {
+                    [allpurpleMatrix addObject: purpleMatrix];
+                }else if (purpleMatrix.count > 32) { //normal difficulty
+                    [allpurpleMatrix addObject: purpleMatrix];
+                }
                 
             }else if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"Green"]) {
                 NSMutableSet *greenMatrix = [[NSMutableSet alloc] init];
                 [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:greenMatrix];
-                [allgreenMatrix addObject: greenMatrix];
+                
+                if ([difficulty isEqualToString:@"hard"] && greenMatrix.count > 16) {
+                    [allgreenMatrix addObject: greenMatrix];
+                } else if ([difficulty isEqualToString:@"easy"] && greenMatrix.count > 64) {
+                    [allgreenMatrix addObject: greenMatrix];
+                }else if (greenMatrix.count > 32) { //normal difficulty
+                    [allgreenMatrix addObject: greenMatrix];
+                }
                 
             }else if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"Brown"]) {
                 NSMutableSet *brownMatrix = [[NSMutableSet alloc] init];
                 [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:brownMatrix];
-                [allbrownMatrix addObject: brownMatrix];
+                
+                if ([difficulty isEqualToString:@"hard"] && brownMatrix.count > 16) {
+                    [allbrownMatrix addObject: brownMatrix];
+                } else if ([difficulty isEqualToString:@"easy"] && brownMatrix.count > 64) {
+                    [allbrownMatrix addObject: brownMatrix];
+                }else if (brownMatrix.count > 32) { //normal difficulty
+                    [allbrownMatrix addObject: brownMatrix];
+                }
                 
             }else if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"Gray"]) {
                 NSMutableSet *grayMatrix = [[NSMutableSet alloc] init];
                 [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:grayMatrix];
-                [allgrayMatrix addObject: grayMatrix];
+                
+                if ([difficulty isEqualToString:@"hard"] && grayMatrix.count > 16) {
+                    [allgrayMatrix addObject: grayMatrix];
+                } else if ([difficulty isEqualToString:@"easy"] && grayMatrix.count > 64) {
+                    [allgrayMatrix addObject: grayMatrix];
+                }else if (grayMatrix.count > 32) { //normal difficulty
+                    [allgrayMatrix addObject: grayMatrix];
+                }
                 
             }else if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"White"]) {
                 NSMutableSet *whiteMatrix = [[NSMutableSet alloc] init];
                 [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:whiteMatrix];
-                [allwhiteMatrix addObject: whiteMatrix];
+                
+                if ([difficulty isEqualToString:@"hard"] && whiteMatrix.count > 16) {
+                    [allwhiteMatrix addObject: whiteMatrix];
+                } else if ([difficulty isEqualToString:@"easy"] && whiteMatrix.count > 64) {
+                    [allwhiteMatrix addObject: whiteMatrix];
+                }else if (whiteMatrix.count > 32) { //normal difficulty
+                    [allwhiteMatrix addObject: whiteMatrix];
+                }
                 
             }else if ([[[matrix objectAtIndex:x] objectAtIndex:y] isEqual: @"Black"]) {
                 NSMutableSet *blackMatrix = [[NSMutableSet alloc] init];
                 [self generateColorBlob:[[matrix objectAtIndex:x] objectAtIndex:y] xCoordinate:x yCoordinate:y matrix:blackMatrix];
-                [allblackMatrix addObject: blackMatrix];
+                
+                if ([difficulty isEqualToString:@"hard"] && blackMatrix.count > 16) {
+                    [allblackMatrix addObject: blackMatrix];
+                } else if ([difficulty isEqualToString:@"easy"] && blackMatrix.count > 64) {
+                    [allblackMatrix addObject: blackMatrix];
+                }else if (blackMatrix.count > 32) { //normal difficulty
+                    [allblackMatrix addObject: blackMatrix];
+                }
             }
         }
     }
@@ -220,14 +282,32 @@
     NSLog(@"Number of white blobs: %lu", (unsigned long)allwhiteMatrix.count);
     NSLog(@"Number of black blobs: %lu", (unsigned long)allblackMatrix.count);
     
-    NSOrderedSet *allColorsMatrix = [NSOrderedSet orderedSetWithObjects:allBlueMatrix, allyellowMatrix, allredMatrix, allOrangeMatrix, allpurpleMatrix, allgreenMatrix, allbrownMatrix, allgrayMatrix, allwhiteMatrix, allblackMatrix, nil];
+    NSArray *allColorsMatrix = [NSArray arrayWithObjects:allBlueMatrix, allyellowMatrix, allredMatrix, allOrangeMatrix, allpurpleMatrix, allgreenMatrix, allbrownMatrix, allgrayMatrix, allwhiteMatrix, allblackMatrix, nil];
     
-    if (uniqueColors.count == 1) {
+    if (([uniqueColors containsObject:@"None"] && uniqueColors.count < 2) || uniqueColors.count < 1) {
         answerMatrix = nil;
         answerColor = @"Not Found";
+        NSLog(@"########");
         return nil;
     } else {
-        uint32_t rnd = arc4random_uniform((int)[allColorsMatrix count]);
+        
+        uint32_t rnd;
+        
+        do {
+            rnd = arc4random_uniform((int)[allColorsMatrix count]);
+            NSLog(@"Randomizing number: %u", rnd);
+        }
+        while ((![uniqueColors containsObject:@"Blue"] && rnd == 0) ||
+               (![uniqueColors containsObject:@"Yellow"] && rnd == 1) ||
+               (![uniqueColors containsObject:@"Red"] && rnd == 2) ||
+               (![uniqueColors containsObject:@"Orange"] && rnd == 3) ||
+               (![uniqueColors containsObject:@"Purple"] && rnd == 4) ||
+               (![uniqueColors containsObject:@"Green"] && rnd == 5) ||
+               (![uniqueColors containsObject:@"Brown"] && rnd == 6) ||
+               (![uniqueColors containsObject:@"Gray"] && rnd == 7) ||
+               (![uniqueColors containsObject:@"White"] && rnd == 8) ||
+               (![uniqueColors containsObject:@"Black"] && rnd == 9));
+        
         NSMutableOrderedSet *randomColorMatrix = [allColorsMatrix objectAtIndex:rnd];
         
         switch (rnd) {

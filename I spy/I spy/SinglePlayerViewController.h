@@ -21,5 +21,6 @@
 @property (nonatomic) BOOL touchMoved;
 @property (nonatomic, strong) IBOutlet UICountingLabel *scoreLabel;
 @property (nonatomic, strong) UIImage *capturedImage;
+@property (nonatomic, strong) UIActivityIndicatorView *spinner;
 
 @end
