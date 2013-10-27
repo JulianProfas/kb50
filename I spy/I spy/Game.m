@@ -50,6 +50,7 @@ static Game *sharedGameManager = nil;
 
 -(void)setupGame {
     currentPhoto = [self takePicture];
+    [self setupAnswers];
 }
 
 -(void)setAnswerLabel {
@@ -96,7 +97,7 @@ static Game *sharedGameManager = nil;
                                                     message:@"You gained 10 seconds."
                                                    delegate:self
                                           cancelButtonTitle:nil
-                                          otherButtonTitles:@"Next round", nil];
+                                          otherButtonTitles:@"Next round", @"Replay photo", nil];
     [alert show];
 }
 
@@ -112,9 +113,9 @@ static Game *sharedGameManager = nil;
 }
 
 -(void)nextRound {
-    [progressBar stopTimer];
-    [self setupGame];
-    [self startGame];
+    //[progressBar stopTimer];
+    //[self setupGame];
+    //[self startGame];
 }
 
 -(Photo *)takePicture {
