@@ -28,6 +28,7 @@
 @property (nonatomic, retain) Photo *photo;
 @property (nonatomic, strong) UINavigationBar *navigationBar;
 @property (nonatomic, strong) UIActivityIndicatorView *spinner;
+@property (nonatomic, strong) NSMutableOrderedSet *allAnswers;
 
 #pragma mark - Game Singleton Methods
 + (Game*)sharedManager;

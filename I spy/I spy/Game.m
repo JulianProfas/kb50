@@ -19,6 +19,7 @@
 @synthesize capturedImage;
 @synthesize navigationBar;
 @synthesize spinner;
+@synthesize allAnswers;
 
 #define GOOD_GUESS 10
 #define BAD_GUESS 5
@@ -59,8 +60,11 @@ static Game *sharedGameManager = nil;
     //circle correct answer
 }
 
+-(void)setupAnswers {
+    allAnswers = [currentPhoto answerMatrix];
+}
+
 -(void)checkAnswer: (CGPoint)guess {
-    NSMutableOrderedSet *allAnswers = [currentPhoto answerMatrix];
     
     if (![allAnswers containsObject:[NSValue valueWithCGPoint:guess]]) {
         //bad guess
@@ -163,9 +167,21 @@ static Game *sharedGameManager = nil;
     return score;
 }
 
+- (void) replayPhoto
+{
+    [self setupAnswers];
+    [self setAnswerLabel];
+    [self startGame];
+}
+
 - (void)alertView:(UIAlertView *)theAlert clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    [self nextRound];
+    if ([[theAlert buttonTitleAtIndex:buttonIndex] isEqualToString:@"Next round"]) {
+        [self nextRound];
+    } else if ([[theAlert buttonTitleAtIndex:buttonIndex] isEqualToString:@"Replay photo"])
+    {
+        [self replayPhoto];
+    }
     //TODO: display correct color question again
     
     //NSLog(@"The %@ button was tapped.", [theAlert buttonTitleAtIndex:buttonIndex]);

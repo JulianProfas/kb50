@@ -40,10 +40,9 @@
     
     dispatch_queue_t photoQueue = dispatch_queue_create("loading", NULL);
     dispatch_async(photoQueue, ^{
-        
         [iSpyWithMyLittleEye setupGame];
-        [iSpyWithMyLittleEye setAnswerLabel];
         dispatch_async(dispatch_get_main_queue(), ^{
+            [iSpyWithMyLittleEye setAnswerLabel];
             if ([navigationBar.topItem.title isEqualToString:@"Not Found"]) {
                 [spinner stopAnimating];
                 [self dismissViewControllerAnimated:YES completion:^ {}];
