@@ -11,20 +11,26 @@
 #import <GPUImage/GPUImage.h>
 
 @interface Photo : NSObject <UIColoring>
-@property (strong, nonatomic) NSMutableArray *matrix;
-@property (strong, nonatomic) NSMutableSet *answerMatrix;
+@property (strong, nonatomic) NSMutableArray *colorMatrix;
+@property (strong, nonatomic) NSMutableOrderedSet *allAnswerSets;
+@property (strong, nonatomic) NSMutableSet *answerSet;
 @property UIImage *pixelatedImage;
 @property NSString *answerColor;
 @property UIImage *capturedImage;
 
 #pragma mark - Initialization Methods
-- (id)initWithImage:(UIImage *)image difficulty:(NSString *)difficulty;
+- (id) initWithImage:(UIImage *)image difficulty:(NSString *)difficulty;
 
 #pragma mark - Photo Class Methods
--(void)pixalateImage:(UIImage *)image;
--(NSMutableSet *)generateAnswerMatrix:(NSString *)difficulty;
+- (void) pixalateImage:(UIImage *)image;
+- (NSMutableOrderedSet *)generateAnswerSets:(NSString *)difficulty;
+- (NSMutableSet *) selectRandomAnswer: (NSMutableOrderedSet *)answerSets;
 
-#pragma mark - Recursion Methods
--(void)generateColorBlob:(NSString *)color xCoordinate:(int)x yCoordinate:(int)y matrix:(NSMutableSet *)matrix;
--(void) printAnswerSet;
+#pragma mark - Color Blob Methods
+- (void) generateColorBlob:(NSString *)color xCoordinate:(int)x yCoordinate:(int)y matrix:(NSMutableSet *)matrix;
+
+#pragma mark - Methods for Debugging
+- (void) printColors;
+- (void) printAnswerSet;
+
 @end

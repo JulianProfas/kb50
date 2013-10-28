@@ -19,7 +19,7 @@
 @synthesize capturedImage;
 @synthesize navigationBar;
 @synthesize spinner;
-@synthesize allAnswers;
+@synthesize answers;
 
 #define GOOD_GUESS 10
 #define BAD_GUESS 5
@@ -62,12 +62,12 @@ static Game *sharedGameManager = nil;
 }
 
 -(void)setupAnswers {
-    allAnswers = [currentPhoto answerMatrix];
+    answers = [currentPhoto answerSet];
 }
 
 -(void)checkAnswer: (CGPoint)guess {
     
-    if (![allAnswers containsObject:[NSValue valueWithCGPoint:guess]]) {
+    if (![answers containsObject:[NSValue valueWithCGPoint:guess]]) {
         //bad guess
         if(![progressBar decreaseTime:BAD_GUESS]){
             //[self gameOver];

@@ -9,6 +9,7 @@
 #import "SinglePlayerViewController.h"
 #import "Game.h"
 #import "Player.h"
+#import "Color.h"
 
 @interface SinglePlayerViewController ()
 @end
@@ -117,8 +118,10 @@
         Game *iSpyWithMyLittleEye = [Game sharedManager];
         Photo *currentPhoto = [iSpyWithMyLittleEye currentPhoto];
         
-        UIColor *selectedColor = [currentPhoto getPixelColor:(boxXcoordinate * squareWidth) + (squareWidth / 2) yCoordinate:(boxYcoordinate * squareWidth) + (squareWidth / 2)];
-        NSLog(@"color clicked on: %@", [currentPhoto getColorName:selectedColor]);
+        UIColor *selectedColor = [currentPhoto getPixelColor:currentPhoto.pixelatedImage xCoordinate:(boxXcoordinate * squareWidth) + (squareWidth / 2) yCoordinate:(boxYcoordinate * squareWidth) + (squareWidth / 2)];
+        
+        Color *color = [[Color alloc]initWithColor:selectedColor];
+        NSLog(@"color clicked on: %@", color.colorName);
         
         [iSpyWithMyLittleEye checkAnswer: guessCoordinates];
     }
