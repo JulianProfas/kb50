@@ -34,25 +34,25 @@
     [aColor getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
     //printf("Hue: %f. Saturation: %f. Brightness: %f.\n",hue,saturation,brightness);
     
-    if((hue > 0.51389 && hue < 0.7083) && saturation > 0.5 && brightness > 0.375){          //h185-255, s0.5, b3/8
+    if((hue > 0.51389 && hue < 0.667) && saturation > 0.75 && brightness > 0.75){          //h185-255, s0.5, b3/8
         return @"Blue"; //
-    } else if((hue > 0.10 && hue < 0.15) && saturation > 0.3 && brightness > 0.25){
+    } else if((hue > 0.1389 && hue < 0.167) && saturation > 0.75 && brightness > 0.75){
         return @"Yellow";
-    } else if((hue < 0.08 || hue > 0.94) && (saturation < 0.02 || saturation > 0.24) && brightness > 0.3){   //h340-10, s3/4, b1/2
+    } else if((hue < 0.01389 || hue > 0.9861) && saturation > 0.75 && brightness > 0.75){   //h340-10, s3/4, b1/2
         return @"Red";
-    } else if(hue > 0.05 && hue < 0.11 && saturation > 0.5 && brightness > 0.625){          //h20-40, s0.5, b5/8
+    } else if(hue > 0.0694 && hue < 0.083 && saturation > 0.75 && brightness > 0.75){          //h20-40, s0.5, b5/8
         return @"Orange";
-    }else if(hue > 0.7361 && hue < 0.9 && saturation > 0.5 && brightness > 0.28){           //h265-280, s0.5, b3/8
+    }else if(hue > 0.7083 && hue < 0.83 && saturation > 0.75 && brightness > 0.75){           //h265-280, s0.5, b3/8
         return @"Purple"; //
-    }else if(hue > 0.2 && hue < 0.45 && saturation > 0.5 && brightness > 0.25){             //tweak
+    }else if(hue > 0.1944 && hue < 0.431 && saturation > 0.75 && brightness > 0.75){             //tweak
         return @"Green";
-    }else if(hue >0.05 && hue < 0.12 && saturation > 0.75 && brightness > 0.25 && brightness < 0.63){
+    }else if(hue > 0.0694 && hue < 0.083 && saturation > 0.75 && (brightness > 0.25 && brightness < 0.60)){
         return @"Brown";
-    }else if(hue <= 1 && saturation == 0 && brightness > 0.25 && brightness < 0.9){
+    }else if(hue <= 1 && saturation == 0 && (brightness > 0.25 && brightness < 0.75)){
         return @"Gray";
-    }else if (hue <= 1 && saturation == 0 && brightness > 0.9){
+    }else if (hue <= 1 && saturation == 0 && brightness > 0.95){
         return @"White";
-    }else if (hue <= 1 && saturation <= 1 && brightness < 0.1){
+    }else if (hue <= 1 && saturation <= 1 && brightness < 0.05){
         return @"Black";
     } else {
         return @"none";

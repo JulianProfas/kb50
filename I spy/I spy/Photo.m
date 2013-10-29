@@ -23,7 +23,7 @@
 - (id) initWithImage:(UIImage *)image difficulty:(NSString *)difficulty {
     if ( self = [super init] ) {
         capturedImage = image;
-        [self pixalateImage:image];
+        pixelatedImage = [self pixalateImage:image];
         colorMatrix = [self generateColorMatrix:pixelatedImage fractionalWidthOfPixel:0.025f];
         [self printColors];
         
@@ -44,8 +44,8 @@
     double MatrixHeight = 1 / aFloat;
     double MatrixWidth = MatrixHeight * 3 / 4;
     
-    double squareWidth = 320 / MatrixWidth;
-    double squareHeight = 480 / MatrixHeight;
+    double squareWidth = image.size.width / MatrixWidth;
+    double squareHeight = image.size.height / MatrixHeight;
     
     NSMutableArray *matrix = [[NSMutableArray alloc] init];
     
@@ -83,10 +83,10 @@
 
 #pragma mark - Photo Class Methods
 
-- (void) pixalateImage:(UIImage *)image {
+- (UIImage *) pixalateImage:(UIImage *)image {
     GPUImageFilter *selectedFilter = [[GPUImagePixellateFilter alloc] init];
     [(GPUImagePixellateFilter *)selectedFilter setFractionalWidthOfAPixel:0.025f];
-    pixelatedImage = [selectedFilter imageByFilteringImage:image];
+    return [selectedFilter imageByFilteringImage:image];
 }
 
 - (NSMutableOrderedSet *) generateAnswerSets:(NSString *)difficulty {

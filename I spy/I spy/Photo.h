@@ -22,7 +22,7 @@
 - (id) initWithImage:(UIImage *)image difficulty:(NSString *)difficulty;
 
 #pragma mark - Photo Class Methods
-- (void) pixalateImage:(UIImage *)image;
+- (UIImage *) pixalateImage:(UIImage *)image;
 - (NSMutableOrderedSet *)generateAnswerSets:(NSString *)difficulty;
 - (NSMutableSet *) selectRandomAnswer: (NSMutableOrderedSet *)answerSets;
 

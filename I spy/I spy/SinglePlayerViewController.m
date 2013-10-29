@@ -117,12 +117,6 @@
         NSLog(@"Guess coordinates: %@", NSStringFromCGPoint(guessCoordinates));
         
         Game *iSpyWithMyLittleEye = [Game sharedManager];
-        Photo *currentPhoto = [iSpyWithMyLittleEye currentPhoto];
-        
-        UIColor *selectedColor = [currentPhoto getPixelColor:currentPhoto.pixelatedImage xCoordinate:(boxXcoordinate * squareWidth) + (squareWidth / 2) yCoordinate:(boxYcoordinate * squareWidth) + (squareWidth / 2)];
-        
-        Color *color = [[Color alloc]initWithColor:selectedColor];
-        NSLog(@"color clicked on: %@", color.colorName);
         
         if ([iSpyWithMyLittleEye checkAnswer: guessCoordinates]) {
             [self highlightAnswer];
