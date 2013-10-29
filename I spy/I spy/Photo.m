@@ -15,7 +15,7 @@
 @synthesize pixelatedImage;
 @synthesize allAnswerSets;
 @synthesize answerSet;
-@synthesize answzerColor;
+@synthesize answerColor;
 @synthesize capturedImage;
 
 #pragma mark - Initialization Methods
