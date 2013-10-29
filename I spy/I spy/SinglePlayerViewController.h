@@ -15,6 +15,7 @@
     ISpyProgressView *progressBar;
     UICountingLabel *scoreLabel;
     UIImage *capturedImage;
+    NSMutableSet *highlighted;
 }
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (weak, nonatomic) IBOutlet UIImageView *presentedImage;
@@ -22,5 +23,8 @@
 @property (nonatomic, strong) IBOutlet UICountingLabel *scoreLabel;
 @property (nonatomic, strong) UIImage *capturedImage;
 @property (nonatomic, strong) UIActivityIndicatorView *spinner;
+
+-(void)highlightAnswer;
+-(void)deHighlight;
 
 @end

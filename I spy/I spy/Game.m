@@ -10,6 +10,7 @@
 #import "Player.h"
 #import "ISpyProgressView.h"
 #import "Photo.h"
+#import "SinglePlayerViewController.h"
 
 @implementation Game
 @synthesize currentPlayer;
@@ -58,14 +59,13 @@ static Game *sharedGameManager = nil;
 }
 
 -(void)highlightAnswer {
-    //circle correct answer
 }
 
--(void)setupAnswers {
+- (void) setupAnswers {
     answers = [currentPhoto answerSet];
 }
 
--(void)checkAnswer: (CGPoint)guess {
+- (BOOL) checkAnswer: (CGPoint)guess {
     
     if (![answers containsObject:[NSValue valueWithCGPoint:guess]]) {
         //bad guess
@@ -76,6 +76,7 @@ static Game *sharedGameManager = nil;
             //temp:
             //[self highlightAnswer];
             //[self displayWinAlert];
+            return YES;
         }
     } else {
         //good guess
@@ -86,7 +87,9 @@ static Game *sharedGameManager = nil;
         
         [self highlightAnswer];
         [self displayWinAlert];
+        return YES;
     }
+    return NO;
 }
 
 -(void)displayWinAlert {

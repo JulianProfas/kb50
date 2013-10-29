@@ -15,7 +15,7 @@
 @synthesize pixelatedImage;
 @synthesize allAnswerSets;
 @synthesize answerSet;
-@synthesize answerColor;
+@synthesize answzerColor;
 @synthesize capturedImage;
 
 #pragma mark - Initialization Methods
@@ -201,6 +201,8 @@
 }
 
 - (void) printAnswerSet {
+    NSLog(@"Printing Number of answerSets (blobs) total: %lu", (unsigned long)allAnswerSets.count);
+    
     NSLog(@"Printing Answer Set: %@", answerSet);
     NSLog(@"Printing answer count: %lu", (unsigned long)answerSet.count);
 }

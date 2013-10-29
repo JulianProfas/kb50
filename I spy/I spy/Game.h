@@ -39,7 +39,7 @@
 -(void)setupGame;
 -(void)setAnswerLabel;
 -(void)highlightAnswer;
--(void)checkAnswer: (CGPoint)guess;
+-(BOOL)checkAnswer: (CGPoint)guess;
 -(void)displayWinAlert;
 -(void)startGame;
 -(void)gameOver;
