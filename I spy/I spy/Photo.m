@@ -41,11 +41,11 @@
 
 - (NSMutableArray *) generateColorMatrix: (UIImage *)image fractionalWidthOfPixel: (float)aFloat {
     
-    double MatrixHeight = 1 / aFloat;
-    double MatrixWidth = MatrixHeight * 3 / 4;
+    double MatrixHeight =  60;// 1 / aFloat;
+    double MatrixWidth = 40;//MatrixHeight * 3 / 4;
     
-    double squareWidth = image.size.width / MatrixWidth;
-    double squareHeight = image.size.height / MatrixHeight;
+    double squareWidth = 8;//image.size.width / MatrixWidth;
+    double squareHeight = 8;//image.size.height / MatrixHeight;
     
     NSMutableArray *matrix = [[NSMutableArray alloc] init];
     
@@ -120,11 +120,11 @@
                                 yCoordinate:y
                                      matrix:aBlob];
                     
-                    if ([difficulty isEqualToString:@"hard"] && aBlob.count > 32) {
+                    if ([difficulty isEqualToString:@"hard"] && aBlob.count > 10) {
                         [allAnsers addObject: aBlob];
-                    } else if ([difficulty isEqualToString:@"easy"] && aBlob.count > 128) {
+                    } else if ([difficulty isEqualToString:@"easy"] && aBlob.count > 18) {
                         [allAnsers addObject: aBlob];
-                    }else if (aBlob.count > 64) {   //defaults to normal difficulty
+                    }else if (aBlob.count > 14) {   //defaults to normal difficulty
                         [allAnsers addObject: aBlob];
                     }
                 }
@@ -138,6 +138,7 @@
     }
     
     if ([allAnsers count] > 0) {
+        NSLog(@"answers: %d", [allAnsers count]);
         return allAnsers;
     } else {
         answerColor = @"Colors aren't big enough to play, Please take a picture of a bigger colored object.";
@@ -191,8 +192,8 @@
 
 - (void) printColors {
     NSMutableSet *uniqueColors = [[NSMutableSet alloc] init];
-    for (int x = 0; x<30; x++) {
-        for (int y = 0; y<40; y++) {
+    for (int x = 0; x<40; x++) {
+        for (int y = 0; y<60; y++) {
                 [uniqueColors addObject:[[[colorMatrix objectAtIndex:x] objectAtIndex:y] colorName]];
         }
     }

@@ -57,7 +57,7 @@
                 [self.view addSubview:progressBar];
                 
                 scoreLabel.text = [NSString stringWithFormat:@"%d", [[Player sharedManager] score]];
-                presentedImage.image = [[iSpyWithMyLittleEye currentPhoto] capturedImage];
+                presentedImage.image = [[iSpyWithMyLittleEye currentPhoto] pixelatedImage];
                 
                 [iSpyWithMyLittleEye startGame];
             }
@@ -107,8 +107,8 @@
         double squareWidth = 320 / MatrixWidth;
         double squareHeight = 480 / MatrixHeight;
         
-        int boxXcoordinate = location.x / squareWidth;
-        int boxYcoordinate = location.y / squareHeight;
+        int boxXcoordinate = location.x / 8.0;
+        int boxYcoordinate = location.y / 8.0;
         
         NSLog(@"location.x: %f", location.x);
         NSLog(@"location.y: %f", location.y);
@@ -117,6 +117,13 @@
         NSLog(@"Guess coordinates: %@", NSStringFromCGPoint(guessCoordinates));
         
         Game *iSpyWithMyLittleEye = [Game sharedManager];
+        
+        Photo *myPhoto = [iSpyWithMyLittleEye currentPhoto];
+        if(boxYcoordinate < 60)
+        {
+            Color *myColor = [[myPhoto.colorMatrix objectAtIndex:boxXcoordinate] objectAtIndex:boxYcoordinate];
+            NSLog(@"%@", myColor.hsv);
+        }
         
         if ([iSpyWithMyLittleEye checkAnswer: guessCoordinates]) {
             [self highlightAnswer];
@@ -135,8 +142,8 @@
     double MatrixHeight = 1 / 0.025f;
     double MatrixWidth = MatrixHeight * 3 / 4;
     
-    double squareWidth = 320 / MatrixWidth;
-    double squareHeight = 480 / MatrixHeight;
+    double squareWidth = 8.0;//320 / MatrixWidth;
+    double squareHeight = 8.0;//480 / MatrixHeight;
     
     for(NSValue *value in [[Game sharedManager] answers]){
         HighlightView *highlight = [[HighlightView alloc] initWithFrame:CGRectMake(value.CGPointValue.x * squareWidth, value.CGPointValue.y * squareHeight, squareWidth, squareHeight)];

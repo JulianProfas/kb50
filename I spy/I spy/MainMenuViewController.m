@@ -47,7 +47,7 @@
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
-    capturedImage = chosenImage;
+    capturedImage = [self imageWithImage:chosenImage scaledToSize:CGSizeMake(320, 480)];
     
     [self dismissViewControllerAnimated:YES completion:^{
         [self performSegueWithIdentifier:@"gameSegue" sender:self];
@@ -57,6 +57,9 @@
 #pragma mark - Action Methods
 
 - (IBAction)takePicture:(id)sender {
+    //UIImage *chosenImage =  info[UIImagePickerControllerOriginalImage];//[self imageWithImage:[UIImage imageNamed:@"holi-colors_hd.jpg"] scaledToSize:CGSizeMake(320, 480)];// info[UIImagePickerControllerOriginalImage];
+    //capturedImage = chosenImage;
+    //[self performSegueWithIdentifier:@"gameSegue" sender:self];
     [self startCameraControllerFromViewController: self usingDelegate: self];
 }
 
@@ -88,6 +91,17 @@
     
     [controller presentViewController:cameraUI animated:YES completion:^{ }];
     return YES;
+}
+
+- (UIImage*)imageWithImage:(UIImage*)image
+              scaledToSize:(CGSize)newSize;
+{
+    UIGraphicsBeginImageContext( newSize );
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
 }
 
 #pragma mark - Segue Methods

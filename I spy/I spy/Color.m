@@ -11,6 +11,7 @@
 @implementation Color
 @synthesize colorName;
 @synthesize colorData;
+@synthesize hsv;
 
 #pragma mark - Initialization Methods
 
@@ -18,6 +19,7 @@
     if ( self = [super init] ) {
         colorData = aColor;
         colorName = [self getColorName:aColor];
+        hsv = [self fillStringWithHSV:aColor];
         return self;
     } else {
         return nil;
@@ -32,7 +34,7 @@
     CGFloat alpha;
     
     [aColor getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
-    //printf("Hue: %f. Saturation: %f. Brightness: %f.\n",hue,saturation,brightness);
+    printf("Hue: %f. Saturation: %f. Brightness: %f.\n", 360 * hue, 100 * saturation, 100 * brightness);
     
     if((hue > 0.51389 && hue < 0.667) && saturation > 0.75 && brightness > 0.75){          //h185-255, s0.5, b3/8
         return @"Blue"; //
@@ -57,5 +59,20 @@
     } else {
         return @"none";
     }
+}
+
+-(NSString *)fillStringWithHSV:(UIColor*)aColor{
+    CGFloat hue;
+    CGFloat saturation;
+    CGFloat brightness;
+    CGFloat alpha;
+    
+    [aColor getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
+    
+    int newHue = 360 * hue;
+    int newSatur = 100 * saturation;
+    int newBrightness = 100 * brightness;
+    
+    return [NSString stringWithFormat:@"Hue: %d Saturation: %d Brightness: %d", newHue, newSatur, newBrightness];
 }
 @end
