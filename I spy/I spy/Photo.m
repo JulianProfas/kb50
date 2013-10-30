@@ -25,7 +25,7 @@
         capturedImage = image;
         pixelatedImage = [self pixalateImage:image];
         colorMatrix = [self generateColorMatrix:pixelatedImage fractionalWidthOfPixel:0.025f];
-        [self printColors];
+        //[self printColors];
         
         allAnswerSets = [self generateAnswerSets:difficulty];
         answerSet = [self selectRandomAnswer:allAnswerSets];
@@ -95,30 +95,30 @@
     
     for (int x = 0; x<30; x++) {
         for (int y = 0; y<40; y++) {
-            [uniqueColors addObject:[[[colorMatrix objectAtIndex:x] objectAtIndex:y] colorName]];
+            NSString *colorName = [[[colorMatrix objectAtIndex:x] objectAtIndex:y] colorName];
+                [uniqueColors addObject:colorName];
+            [uniqueColors addObject: colorName];
         }
     }
+
+    if ([uniqueColors containsObject:@"none"]) {
+        [uniqueColors removeObject: @"none"];
+    }
+    
+    NSLog(@"Number of colors: %lu", (unsigned long)uniqueColors.count);
+    NSLog(@"Colors: %@", uniqueColors);
     
     for (int x = 0; x<30; x++) {
         for (int y = 0; y<40; y++) {
             NSMutableSet *aBlob = [[NSMutableSet alloc] init];
             
-            if ([uniqueColors containsObject:@"none"] && uniqueColors.count-1 == 0) {
-                //contains no colors
-                NSLog(@"contains no colors");
-                answerColor = @"No colors found. Please take a more colorful picture";
-                return nil;
-            } else if (![uniqueColors containsObject:@"none"] && uniqueColors.count == 0) {
-                //contains no colors
-                NSLog(@"contains no colors");
-                answerColor = @"No colors found. Please take a more colorful picture";
-                return nil;
-            } else {
-                [self generateColorBlob:[[[colorMatrix objectAtIndex:x] objectAtIndex:y] colorName]
-                            xCoordinate:x
-                            yCoordinate:y
-                                 matrix:aBlob];
-                
+            if (![uniqueColors count] == 0) {
+                for(NSString *color in uniqueColors) {
+                    [self generateColorBlob: color
+                                xCoordinate:x
+                                yCoordinate:y
+                                     matrix:aBlob];
+                }
                 if ([difficulty isEqualToString:@"hard"] && aBlob.count > 32) {
                     [allAnsers addObject: aBlob];
                 } else if ([difficulty isEqualToString:@"easy"] && aBlob.count > 128) {
@@ -127,6 +127,10 @@
                     [allAnsers addObject: aBlob];
                 }
                 
+            } else {
+                NSLog(@"contains no colors");
+                answerColor = @"No colors found. Please take a more colorful picture";
+                return nil;
             }
         }
     }
