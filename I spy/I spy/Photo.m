@@ -96,11 +96,11 @@
     for (int x = 0; x<30; x++) {
         for (int y = 0; y<40; y++) {
             NSString *colorName = [[[colorMatrix objectAtIndex:x] objectAtIndex:y] colorName];
-                [uniqueColors addObject:colorName];
+            [uniqueColors addObject:colorName];
             [uniqueColors addObject: colorName];
         }
     }
-
+    
     if ([uniqueColors containsObject:@"none"]) {
         [uniqueColors removeObject: @"none"];
     }
@@ -108,31 +108,33 @@
     NSLog(@"Number of colors: %lu", (unsigned long)uniqueColors.count);
     NSLog(@"Colors: %@", uniqueColors);
     
-    for (int x = 0; x<30; x++) {
-        for (int y = 0; y<40; y++) {
-            NSMutableSet *aBlob = [[NSMutableSet alloc] init];
+    if (![uniqueColors count] == 0) {
+        for(NSString *color in uniqueColors) {
             
-            if (![uniqueColors count] == 0) {
-                for(NSString *color in uniqueColors) {
+            for (int x = 0; x<30; x++) {
+                for (int y = 0; y<40; y++) {
+                    NSMutableSet *aBlob = [[NSMutableSet alloc] init];
+                    
                     [self generateColorBlob: color
                                 xCoordinate:x
                                 yCoordinate:y
                                      matrix:aBlob];
+                    
+                    if ([difficulty isEqualToString:@"hard"] && aBlob.count > 32) {
+                        [allAnsers addObject: aBlob];
+                    } else if ([difficulty isEqualToString:@"easy"] && aBlob.count > 128) {
+                        [allAnsers addObject: aBlob];
+                    }else if (aBlob.count > 64) {   //defaults to normal difficulty
+                        [allAnsers addObject: aBlob];
+                    }
                 }
-                if ([difficulty isEqualToString:@"hard"] && aBlob.count > 32) {
-                    [allAnsers addObject: aBlob];
-                } else if ([difficulty isEqualToString:@"easy"] && aBlob.count > 128) {
-                    [allAnsers addObject: aBlob];
-                }else if (aBlob.count > 64) {   //defaults to normal difficulty
-                    [allAnsers addObject: aBlob];
-                }
-                
-            } else {
-                NSLog(@"contains no colors");
-                answerColor = @"No colors found. Please take a more colorful picture";
-                return nil;
             }
+            
         }
+    } else {
+        NSLog(@"contains no colors");
+        answerColor = @"No colors found. Please take a more colorful picture";
+        return nil;
     }
     
     if ([allAnsers count] > 0) {
