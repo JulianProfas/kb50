@@ -49,23 +49,29 @@ static Game *sharedGameManager = nil;
 
 #pragma mark - Game Class Methods
 
--(void)setupGame {
+- (void)setupGame
+{
     currentPhoto = [self takePicture];
     [self setupAnswers];
 }
 
--(void)setAnswerLabel {
+- (void)setAnswerLabel
+{
     navigationBar.topItem.title = [NSString stringWithFormat:@"%@", [currentPhoto answerColor]];
 }
 
--(void)highlightAnswer {
+- (void)highlightAnswer
+{
+    
 }
 
-- (void) setupAnswers {
-    answers = [currentPhoto answerSet];
+- (void)setupAnswers
+{
+    answers = [currentPhoto selectRandomAnswer:currentPhoto.allAnswerSets];
 }
 
-- (BOOL) checkAnswer: (CGPoint)guess {
+- (BOOL)checkAnswer: (CGPoint)guess
+{
     
     if (![answers containsObject:[NSValue valueWithCGPoint:guess]]) {
         //bad guess
@@ -92,36 +98,41 @@ static Game *sharedGameManager = nil;
     return NO;
 }
 
--(void)displayWinAlert {
+- (void)displayWinAlert
+{
     [progressBar stopTimer];
     
     //display alert
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You've won the game!"
-                                                    message:@"You gained 10 seconds."
+                                                    message:@"Thank you for testing."
                                                    delegate:self
                                           cancelButtonTitle:nil
-                                          otherButtonTitles:@"Next round", @"Replay photo", nil];
+                                          otherButtonTitles:@"Replay photo", nil];
     [alert show];
 }
 
--(void)startGame {
-    [progressBar setTime:10.0f];
+- (void)startGame
+{
+    [progressBar setTime:60.0f];
     [progressBar resetTimer];
     [progressBar startTimer];
 }
 
--(void)gameOver {
+- (void)gameOver
+{
     [self highlightAnswer];
     [progressBar stopTimer];
 }
 
--(void)nextRound {
+- (void)nextRound
+{
     //[progressBar stopTimer];
     //[self setupGame];
     //[self startGame];
 }
 
--(Photo *)takePicture {
+- (Photo *)takePicture
+{
     [spinner startAnimating];
     
     return [[Photo alloc]initWithImage:capturedImage difficulty:@"easy"];
@@ -129,7 +140,8 @@ static Game *sharedGameManager = nil;
 
 #pragma mark - Score related Methods
 
--(void)updateScore {
+- (void)updateScore
+{
     int previousScore = [[Player sharedManager] score];
     [[Player sharedManager] setScore:[self getScoreByDifficulty]];
     
@@ -148,7 +160,7 @@ static Game *sharedGameManager = nil;
     //[label setText:[NSString stringWithFormat:@"Score : %d",[player score]]];
 }
 
--(int)getScoreByDifficulty
+- (int)getScoreByDifficulty
 {
     int difficulty = 0; //ophalen uit settings class
     int score = 0;
@@ -171,7 +183,7 @@ static Game *sharedGameManager = nil;
     return score;
 }
 
-- (void) replayPhoto
+- (void)replayPhoto
 {
     [self setupAnswers];
     [self setAnswerLabel];
@@ -186,9 +198,5 @@ static Game *sharedGameManager = nil;
     {
         [self replayPhoto];
     }
-    //TODO: display correct color question again
-    
-    //NSLog(@"The %@ button was tapped.", [theAlert buttonTitleAtIndex:buttonIndex]);
 }
-
 @end

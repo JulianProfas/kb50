@@ -51,21 +51,18 @@
             } else {
                 [spinner stopAnimating];
                 
-                CGRect barFrame = CGRectMake(0,42,320,20); //todo: remove off screen counter, no need for the counter
-                progressBar = [[ISpyProgressView alloc] initWithTimerLabel:YES LabelPosition:UILabelRight Frame:&barFrame];
+                CGRect barFrame = CGRectMake(0,42,320,20);
+                progressBar = [[ISpyProgressView alloc] initWithTimerLabel:NO LabelPosition:UILabelRight Frame:&barFrame];
                 [iSpyWithMyLittleEye setProgressBar:progressBar];
                 [self.view addSubview:progressBar];
                 
                 scoreLabel.text = [NSString stringWithFormat:@"%d", [[Player sharedManager] score]];
-                presentedImage.image = [[iSpyWithMyLittleEye currentPhoto] pixelatedImage];
+                presentedImage.image = [[iSpyWithMyLittleEye currentPhoto] capturedImage];
                 
                 [iSpyWithMyLittleEye startGame];
             }
         });
-        
     });
-    
-    
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -81,17 +78,22 @@
 
 #pragma mark - Touch Methods
 
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     touchMoved = NO;
 }
 
-- (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     touchMoved = YES;
 }
 
-- (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+static double const ISMatrixWidth = 40.0;
+static double const ISMatrixHeight = 60.0;
+static double const ISSquareWidth = 320;
+static double const ISSquareHeight = 480;
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [[event allTouches] anyObject];
     
@@ -101,14 +103,11 @@
         //location of where the player touched the screen
         CGPoint location = [touch locationInView:self.presentedImage];
         
-        double MatrixHeight = 1 / 0.025f;
-        double MatrixWidth = MatrixHeight * 3 / 4;
+        double squareWidth = ISSquareWidth / ISMatrixWidth;
+        double squareHeight = ISSquareHeight / ISMatrixHeight;
         
-        double squareWidth = 320 / MatrixWidth;
-        double squareHeight = 480 / MatrixHeight;
-        
-        int boxXcoordinate = location.x / 8.0;
-        int boxYcoordinate = location.y / 8.0;
+        int boxXcoordinate = location.x / squareWidth; //8.0
+        int boxYcoordinate = location.y / squareHeight; //8.0
         
         NSLog(@"location.x: %f", location.x);
         NSLog(@"location.y: %f", location.y);
@@ -119,7 +118,7 @@
         Game *iSpyWithMyLittleEye = [Game sharedManager];
         
         Photo *myPhoto = [iSpyWithMyLittleEye currentPhoto];
-        if(boxYcoordinate < 60)
+        if(boxYcoordinate < ISMatrixHeight)
         {
             Color *myColor = [[myPhoto.colorMatrix objectAtIndex:boxXcoordinate] objectAtIndex:boxYcoordinate];
             NSLog(@"%@", myColor.hsv);
@@ -131,19 +130,16 @@
     }
 }
 
-#pragma mark - Highlight Methods
+#pragma mark - Highlight Debug Methods
 
--(void)highlightAnswer
+- (void)highlightAnswer
 {
     if(highlighted == NULL){
         highlighted = [[NSMutableSet alloc] init];
     }
     
-    double MatrixHeight = 1 / 0.025f;
-    double MatrixWidth = MatrixHeight * 3 / 4;
-    
-    double squareWidth = 8.0;//320 / MatrixWidth;
-    double squareHeight = 8.0;//480 / MatrixHeight;
+    double squareWidth = ISSquareWidth / ISMatrixWidth;
+    double squareHeight = ISSquareHeight / ISMatrixHeight;
     
     for(NSValue *value in [[Game sharedManager] answers]){
         HighlightView *highlight = [[HighlightView alloc] initWithFrame:CGRectMake(value.CGPointValue.x * squareWidth, value.CGPointValue.y * squareHeight, squareWidth, squareHeight)];
@@ -154,10 +150,9 @@
         
         //printf("x: %d y: %d \n", (int)(value.CGPointValue.x * squareWidth), (int)(value.CGPointValue.y * squareHeight));
     }
-    
 }
 
--(void)deHighlight
+- (void)deHighlight:(id)sender
 {
     for (UIView *subview in [self.view subviews]) {
         for(HighlightView *view in highlighted){
@@ -166,7 +161,6 @@
             }
         }
     }
-    
     [highlighted removeAllObjects];
 }
 

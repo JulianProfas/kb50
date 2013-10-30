@@ -36,18 +36,18 @@
 - (id)copyWithZone:(NSZone *)zone;
 
 #pragma mark - Game Class Methods
--(void)setupGame;
--(void)setAnswerLabel;
--(void)highlightAnswer;
--(BOOL)checkAnswer: (CGPoint)guess;
--(void)displayWinAlert;
--(void)startGame;
--(void)gameOver;
--(void)nextRound;
--(Photo *)takePicture;
+- (void)setupGame;
+- (void)setAnswerLabel;
+- (void)highlightAnswer;
+- (BOOL)checkAnswer: (CGPoint)guess;
+- (void)displayWinAlert;
+- (void)startGame;
+- (void)gameOver;
+- (void)nextRound;
+- (Photo *)takePicture;
 
 #pragma mark - Score related Methods
--(void)updateScore;
--(int)getScoreByDifficulty;
+- (void)updateScore;
+- (int)getScoreByDifficulty;
 
 @end

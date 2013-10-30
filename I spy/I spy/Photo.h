@@ -19,18 +19,19 @@
 @property UIImage *capturedImage;
 
 #pragma mark - Initialization Methods
-- (id) initWithImage:(UIImage *)image difficulty:(NSString *)difficulty;
+- (id)initWithImage:(UIImage *)image difficulty:(NSString *)difficulty;
 
 #pragma mark - Photo Class Methods
-- (UIImage *) pixalateImage:(UIImage *)image;
+- (UIImage *)pixalateImage:(UIImage *)image;
+- (UIImage *)scaleImage:(UIImage*)image size:(CGSize)newSize;
 - (NSMutableOrderedSet *)generateAnswerSets:(NSString *)difficulty;
-- (NSMutableSet *) selectRandomAnswer: (NSMutableOrderedSet *)answerSets;
+- (NSMutableSet *)selectRandomAnswer: (NSMutableOrderedSet *)answerSets;
 
 #pragma mark - Color Blob Methods
-- (void) generateColorBlob:(NSString *)color xCoordinate:(int)x yCoordinate:(int)y matrix:(NSMutableSet *)matrix;
+- (void)generateColorBlob:(NSString *)color xCoordinate:(int)x yCoordinate:(int)y matrix:(NSMutableSet *)matrix;
 
 #pragma mark - Methods for Debugging
-- (void) printColors;
-- (void) printAnswerSet;
+- (void)printColors;
+- (void)printAnswerSet;
 
 @end

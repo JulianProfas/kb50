@@ -24,7 +24,8 @@
 @property (nonatomic, strong) UIImage *capturedImage;
 @property (nonatomic, strong) UIActivityIndicatorView *spinner;
 
--(void)highlightAnswer;
--(void)deHighlight;
+#pragma mark - Highlight Debug Methods
+- (void)highlightAnswer;
+-(void)deHighlight:(id)sender;
 
 @end

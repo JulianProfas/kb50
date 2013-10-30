@@ -25,11 +25,11 @@ typedef enum {
 @property (nonatomic) NSTimeInterval time;
 @property (nonatomic, assign) UILabelPosition labelPosition;
 
--(id) initWithTimerLabel:(bool)label LabelPosition:(UILabelPosition)_labelPosition Frame:(CGRect *)_frame;
--(void) startTimer;
--(void) stopTimer;
--(void) resetTimer;
--(void) setTime:(NSTimeInterval)setTime;
--(void) addTime:(float) addTime;
--(bool) decreaseTime:(float)decreaseTime;
+- (id)initWithTimerLabel:(bool)label LabelPosition:(UILabelPosition)_labelPosition Frame:(CGRect *)_frame;
+- (void)startTimer;
+- (void)stopTimer;
+- (void)resetTimer;
+- (void)setTime:(NSTimeInterval)setTime;
+- (void)addTime:(float) addTime;
+- (bool)decreaseTime:(float)decreaseTime;
 @end

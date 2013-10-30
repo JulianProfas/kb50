@@ -16,5 +16,6 @@
 #pragma mark - Initialization Methods
 - initWithColor:(UIColor *)aColor;
 
--(NSString *) fillStringWithHSV:(UIColor *)aColor;
+#pragma mark - Methods for debugging
+-(NSString *)fillStringWithHSV:(UIColor *)aColor;
 @end
