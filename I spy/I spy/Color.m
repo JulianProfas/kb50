@@ -61,13 +61,18 @@
     }
 }
 
+<<<<<<< HEAD
 -(NSString *)fillStringWithHSV:(UIColor*)aColor{
+=======
+-(NSString *) fillStringWithHSV:(UIColor *)aColor {
+>>>>>>> 1d3322d410d41146a0a752d88f37ee002ee3813c
     CGFloat hue;
     CGFloat saturation;
     CGFloat brightness;
     CGFloat alpha;
     
     [aColor getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
+<<<<<<< HEAD
     
     int newHue = 360 * hue;
     int newSatur = 100 * saturation;
@@ -75,4 +80,9 @@
     
     return [NSString stringWithFormat:@"Hue: %d Saturation: %d Brightness: %d", newHue, newSatur, newBrightness];
 }
+=======
+    return [NSString stringWithFormat:@"Hue: %f. Saturation: %f. Brightness: %f.\n",hue,saturation,brightness];
+}
+
+>>>>>>> 1d3322d410d41146a0a752d88f37ee002ee3813c
 @end
