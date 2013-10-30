@@ -9,9 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "ISpyProgressView.h"
 #import "UICountingLabel.h"
-#import "Constants.h"
-
-@class BLRView;
 
 @interface SinglePlayerViewController : UIViewController
 {
@@ -26,13 +23,8 @@
 @property (nonatomic, strong) IBOutlet UICountingLabel *scoreLabel;
 @property (nonatomic, strong) UIImage *capturedImage;
 @property (nonatomic, strong) UIActivityIndicatorView *spinner;
-@property(nonatomic, strong) BLRView *blrView;
-@property(nonatomic, assign) ViewDirection viewDirection;
-@property (strong, nonatomic) IBOutlet UIView *BlurView;
 
 -(void)highlightAnswer;
 -(void)deHighlight;
--(IBAction)toggleViewDirection:(id)sender;
--(void)viewWillDisappear:(BOOL)animated;
 
 @end

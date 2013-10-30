@@ -34,9 +34,6 @@
 		55F7D8791802CA680050876C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F7D8581802CA680050876C /* UIKit.framework */; };
 		55F7D8811802CA680050876C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55F7D87F1802CA680050876C /* InfoPlist.strings */; };
 		55F7D8831802CA680050876C /* I_spyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F7D8821802CA680050876C /* I_spyTests.m */; };
-		95E18AB9182116B6004A881A /* BLRView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E18AB4182116B6004A881A /* BLRView.m */; };
-		95E18ABA182116B6004A881A /* BLRView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95E18AB5182116B6004A881A /* BLRView.xib */; };
-		95E18ABB182116B6004A881A /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E18AB8182116B6004A881A /* UIImage+ImageEffects.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,12 +89,6 @@
 		55F7D87E1802CA680050876C /* I spyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "I spyTests-Info.plist"; sourceTree = "<group>"; };
 		55F7D8801802CA680050876C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55F7D8821802CA680050876C /* I_spyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = I_spyTests.m; sourceTree = "<group>"; };
-		95E18AB3182116B6004A881A /* BLRView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLRView.h; sourceTree = "<group>"; };
-		95E18AB4182116B6004A881A /* BLRView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLRView.m; sourceTree = "<group>"; };
-		95E18AB5182116B6004A881A /* BLRView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BLRView.xib; sourceTree = "<group>"; };
-		95E18AB7182116B6004A881A /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
-		95E18AB8182116B6004A881A /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
-		95E18AC018211957004A881A /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,8 +149,6 @@
 		55354D18181EF11C001F689B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				95E18AC018211957004A881A /* Constants.h */,
-				95E18AB2182116B6004A881A /* BLR */,
 				5547F8B6181718A8003A0E68 /* MainMenuViewController.h */,
 				5547F8B7181718A8003A0E68 /* MainMenuViewController.m */,
 				55F7D86C1802CA680050876C /* SinglePlayerViewController.h */,
@@ -257,26 +246,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		95E18AB2182116B6004A881A /* BLR */ = {
-			isa = PBXGroup;
-			children = (
-				95E18AB3182116B6004A881A /* BLRView.h */,
-				95E18AB4182116B6004A881A /* BLRView.m */,
-				95E18AB5182116B6004A881A /* BLRView.xib */,
-				95E18AB6182116B6004A881A /* Categories */,
-			);
-			path = BLR;
-			sourceTree = "<group>";
-		};
-		95E18AB6182116B6004A881A /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				95E18AB7182116B6004A881A /* UIImage+ImageEffects.h */,
-				95E18AB8182116B6004A881A /* UIImage+ImageEffects.m */,
-			);
-			path = Categories;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -325,14 +294,14 @@
 				ORGANIZATIONNAME = hhs;
 				TargetAttributes = {
 					55F7D8501802CA680050876C = {
-						DevelopmentTeam = QBUK5XNJ8F;
+						DevelopmentTeam = 3D726KTTX7;
 					};
 					55F7D8741802CA680050876C = {
 						TestTargetID = 55F7D8501802CA680050876C;
 					};
 				};
 			};
-			buildConfigurationList = 55F7D84C1802CA680050876C /* Build configuration list for PBXProject "I Spy" */;
+			buildConfigurationList = 55F7D84C1802CA680050876C /* Build configuration list for PBXProject "I spy" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -357,7 +326,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				55CB8CFB1811695400576A60 /* Main_iPhone.storyboard in Resources */,
-				95E18ABA182116B6004A881A /* BLRView.xib in Resources */,
 				55D925EF1816A19200BCADAE /* testLogo.png in Resources */,
 				55F7D8701802CA680050876C /* Images.xcassets in Resources */,
 				55354D15181EF0CC001F689B /* blobTest.png in Resources */,
@@ -381,14 +349,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				55CB8CEF181116BF00576A60 /* Photo.m in Sources */,
-				95E18ABB182116B6004A881A /* UIImage+ImageEffects.m in Sources */,
 				55E4E97C181470D5007EDC08 /* UICountingLabel.m in Sources */,
 				55F7D86E1802CA680050876C /* SinglePlayerViewController.m in Sources */,
 				55F7D8651802CA680050876C /* AppDelegate.m in Sources */,
 				5547F8B8181718A8003A0E68 /* MainMenuViewController.m in Sources */,
 				55D9524C1811B01F00F2647A /* Game.m in Sources */,
 				55E4E9791814709B007EDC08 /* ISpyProgressView.m in Sources */,
-				95E18AB9182116B6004A881A /* BLRView.m in Sources */,
 				55467509181E879B00DF295D /* Color.m in Sources */,
 				55508ADF181EE31A0057FBE1 /* HighlightView.m in Sources */,
 				55F7D8611802CA680050876C /* main.m in Sources */,
@@ -606,7 +572,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		55F7D84C1802CA680050876C /* Build configuration list for PBXProject "I Spy" */ = {
+		55F7D84C1802CA680050876C /* Build configuration list for PBXProject "I spy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				55F7D8841802CA680050876C /* Debug */,

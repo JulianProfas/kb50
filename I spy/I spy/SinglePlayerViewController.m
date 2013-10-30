@@ -11,7 +11,6 @@
 #import "Player.h"
 #import "Color.h"
 #import "HighlightView.h"
-#import "BLRView.h"
 
 @interface SinglePlayerViewController ()
 @end
@@ -23,7 +22,6 @@
 @synthesize navigationBar;
 @synthesize capturedImage;
 @synthesize spinner;
-@synthesize blrView;
 
 #pragma standard iOS Methods
 
@@ -67,14 +65,6 @@
         
     });
     
-    //Load BLRView with UITableView as background content
-    self.blrView = [BLRView load:self.view];
-    
-    //Change UITextView text color to white
-    self.blrView.textView.textColor = [UIColor whiteColor];
-    
-    //Add BLRView to main view
-    [self.view addSubview:self.blrView];
     
 }
 
@@ -172,44 +162,5 @@
     
     [highlighted removeAllObjects];
 }
-
-#pragma mark - BlurMenu Methods
-
--(IBAction)toggleViewDirection:(id)sender{
-    switch (self.viewDirection) {
-        case KShouldMoveDown: {
-            
-            //Static blur with dark color components
-            [self.blrView blurWithColor:[BLRColorComponents lightEffect]];
-            
-            //Slide down - drop down style
-            [self.blrView slideDown];
-            
-            self.viewDirection = KShouldMoveUp;
-            
-            break;
-        }
-            
-        case KShouldMoveUp: {
-            
-            //Slide up
-            [self.blrView slideUp];
-            
-            self.viewDirection = KShouldMoveDown;
-            
-            break;
-        }
-            
-        default:
-            break;
-    }
-}
-
--(void) viewWillDisappear:(BOOL) animated {
-    
-    //Remove BLRView
-    [self.blrView unload];
-}
-
 
 @end
