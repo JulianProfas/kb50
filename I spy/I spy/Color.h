@@ -11,9 +11,10 @@
 @interface Color : NSObject
 @property NSString *colorName;
 @property UIColor *colorData;
+@property NSString *hsv;
 
 #pragma mark - Initialization Methods
 - initWithColor:(UIColor *)aColor;
 
-- (NSString *)getColorName:(UIColor *)aColor;
+-(NSString *) fillStringWithHSV:(UIColor *)aColor;
 @end
