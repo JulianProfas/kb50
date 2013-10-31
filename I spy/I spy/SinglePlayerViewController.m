@@ -57,7 +57,7 @@
                 [self.view addSubview:progressBar];
                 
                 scoreLabel.text = [NSString stringWithFormat:@"%d", [[Player sharedManager] score]];
-                presentedImage.image = [[iSpyWithMyLittleEye currentPhoto] pixelatedImage];
+                presentedImage.image = [[iSpyWithMyLittleEye currentPhoto] capturedImage];
                 
                 [iSpyWithMyLittleEye startGame];
             }

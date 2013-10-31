@@ -14,6 +14,7 @@
 @property (strong, nonatomic) NSMutableArray *colorMatrix;
 @property (strong, nonatomic) NSMutableOrderedSet *allAnswerSets;
 @property (strong, nonatomic) NSMutableSet *answerSet;
+@property (strong, nonatomic) NSMutableSet *allCoordinates;
 @property UIImage *pixelatedImage;
 @property NSString *answerColor;
 @property UIImage *capturedImage;
@@ -32,5 +33,6 @@
 #pragma mark - Methods for Debugging
 - (void) printColors;
 - (void) printAnswerSet;
+- (void)printAllAnswerSets;
 
 @end
