@@ -25,7 +25,7 @@
         capturedImage = image;
         pixelatedImage = [self pixalateImage:image];
         colorMatrix = [self generateColorMatrix:pixelatedImage fractionalWidthOfPixel:0.025f];
-        //[self printColors];
+        [self printColors];
         
         allAnswerSets = [self generateAnswerSets:difficulty];
         answerSet = [self selectRandomAnswer:allAnswerSets];

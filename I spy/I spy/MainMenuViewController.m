@@ -48,6 +48,7 @@
 {
     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
     capturedImage = chosenImage;
+//    capturedImage = [UIImage imageNamed:[NSString stringWithFormat:@"IMG_0154.JPG"]];
     
     [self dismissViewControllerAnimated:YES completion:^{
         [self performSegueWithIdentifier:@"gameSegue" sender:self];

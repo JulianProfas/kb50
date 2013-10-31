@@ -113,6 +113,7 @@
         NSLog(@"location.x: %f", location.x);
         NSLog(@"location.y: %f", location.y);
         
+        
         CGPoint guessCoordinates = {boxXcoordinate, boxYcoordinate};
         NSLog(@"Guess coordinates: %@", NSStringFromCGPoint(guessCoordinates));
         
