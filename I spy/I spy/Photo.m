@@ -17,6 +17,7 @@
 @synthesize answerSet;
 @synthesize answerColor;
 @synthesize capturedImage;
+@synthesize allCoordinates;
 
 #pragma mark - Initialization Methods
 
@@ -30,6 +31,7 @@
         allAnswerSets = [self generateAnswerSets:difficulty];
         answerSet = [self selectRandomAnswer:allAnswerSets];
         [self printAnswerSet];
+        [self printAllAnswerSets];
         
         return self;
     } else {
@@ -91,13 +93,12 @@
 
 - (NSMutableOrderedSet *) generateAnswerSets:(NSString *)difficulty {
     NSMutableSet *uniqueColors = [[NSMutableSet alloc] init];
-    NSMutableOrderedSet *allAnsers = [[NSMutableOrderedSet alloc] init];
+    NSMutableOrderedSet *allAnswers = [[NSMutableOrderedSet alloc] init];
     
     for (int x = 0; x<40; x++) {
         for (int y = 0; y<60; y++) {
             NSString *colorName = [[[colorMatrix objectAtIndex:x] objectAtIndex:y] colorName];
             [uniqueColors addObject:colorName];
-            [uniqueColors addObject: colorName];
         }
     }
     
@@ -110,6 +111,7 @@
     
     if (![uniqueColors count] == 0) {
         for(NSString *color in uniqueColors) {
+            allCoordinates = [[NSMutableSet alloc] init];
             
             for (int x = 0; x<40; x++) {
                 for (int y = 0; y<60; y++) {
@@ -121,15 +123,15 @@
                                      matrix:aBlob];
                     
                     if ([difficulty isEqualToString:@"hard"] && aBlob.count > 10) {
-                        [allAnsers addObject: aBlob];
+                        [allAnswers addObject: aBlob];
                     } else if ([difficulty isEqualToString:@"easy"] && aBlob.count > 18) {
-                        [allAnsers addObject: aBlob];
+                        [allAnswers addObject: aBlob];
                     }else if (aBlob.count > 14) {   //defaults to normal difficulty
-                        [allAnsers addObject: aBlob];
+                        [allAnswers addObject: aBlob];
                     }
                 }
             }
-            
+            [allCoordinates removeAllObjects];
         }
     } else {
         NSLog(@"contains no colors");
@@ -137,9 +139,9 @@
         return nil;
     }
     
-    if ([allAnsers count] > 0) {
-        NSLog(@"answers: %d", [allAnsers count]);
-        return allAnsers;
+    if ([allAnswers count] > 0) {
+        NSLog(@"answers: %d", [allAnswers count]);
+        return allAnswers;
     } else {
         answerColor = @"Colors aren't big enough to play, Please take a picture of a bigger colored object.";
         return nil;
@@ -161,28 +163,38 @@
 #pragma mark - Color Blob Methods
 
 - (void) generateColorBlob:(NSString *)color xCoordinate:(int)x yCoordinate:(int)y matrix:(NSMutableSet *)matrix {
-    if (![color isEqualToString:@"none"]) {
-        if (x > 0 && [color isEqual: [[[colorMatrix objectAtIndex:x-1] objectAtIndex:y] colorName]] && ![matrix containsObject:[NSValue valueWithCGPoint:CGPointMake(x-1, y)]]) {
+    if (![allCoordinates containsObject:[NSValue valueWithCGPoint:CGPointMake(x, y)]]) {
+     [allCoordinates addObject:[NSValue valueWithCGPoint:CGPointMake(x, y)]];
+        
+        if (x > 0 &&
+            [color isEqual: [[[colorMatrix objectAtIndex:x-1] objectAtIndex:y] colorName]] &&
+            ![matrix containsObject:[NSValue valueWithCGPoint:CGPointMake(x-1, y)]])
+        {
             [matrix addObject: [NSValue valueWithCGPoint:CGPointMake(x-1, y)]];
-            
             [self generateColorBlob:color xCoordinate:x-1 yCoordinate:y matrix:matrix];
         }
         
-        if (x < 39 && [color isEqual: [[[colorMatrix objectAtIndex:x+1] objectAtIndex:y] colorName]] && ![matrix containsObject:[NSValue valueWithCGPoint:CGPointMake(x+1, y)]]) {
+        if (x < 39 &&
+            [color isEqual: [[[colorMatrix objectAtIndex:x+1] objectAtIndex:y] colorName]] &&
+            ![matrix containsObject:[NSValue valueWithCGPoint:CGPointMake(x+1, y)]])
+        {
             [matrix addObject: [NSValue valueWithCGPoint:CGPointMake(x+1, y)]];
-            
             [self generateColorBlob:color xCoordinate:x+1 yCoordinate:y matrix:matrix];
         }
         
-        if (y > 0 && [color isEqual: [[[colorMatrix objectAtIndex:x] objectAtIndex:y-1] colorName]] && ![matrix containsObject:[NSValue valueWithCGPoint:CGPointMake(x, y-1)]]) {
+        if (y > 0 &&
+            [color isEqual: [[[colorMatrix objectAtIndex:x] objectAtIndex:y-1] colorName]] &&
+            ![matrix containsObject:[NSValue valueWithCGPoint:CGPointMake(x, y-1)]])
+        {
             [matrix addObject: [NSValue valueWithCGPoint:CGPointMake(x, y-1)]];
-            
             [self generateColorBlob:color xCoordinate:x yCoordinate:y-1 matrix:matrix];
         }
         
-        if (y < 59 && [color isEqual: [[[colorMatrix objectAtIndex:x] objectAtIndex:y+1] colorName]] && ![matrix containsObject:[NSValue valueWithCGPoint:CGPointMake(x, y+1)]]) {
+        if (y < 59 &&
+            [color isEqual: [[[colorMatrix objectAtIndex:x] objectAtIndex:y+1] colorName]] &&
+            ![matrix containsObject:[NSValue valueWithCGPoint:CGPointMake(x, y+1)]])
+        {
             [matrix addObject: [NSValue valueWithCGPoint:CGPointMake(x, y+1)]];
-            
             [self generateColorBlob:color xCoordinate:x yCoordinate:y+1 matrix:matrix];
         }
     }
@@ -208,10 +220,13 @@
 }
 
 - (void) printAnswerSet {
-    NSLog(@"Printing Number of answerSets (blobs) total: %lu", (unsigned long)allAnswerSets.count);
-    
     NSLog(@"Printing Answer Set: %@", answerSet);
     NSLog(@"Printing answer count: %lu", (unsigned long)answerSet.count);
+}
+
+- (void)printAllAnswerSets {
+    NSLog(@"Printing answerSets (blobs): %@", allAnswerSets);
+    NSLog(@"Printing Number of answerSets (blobs) total: %lu", (unsigned long)allAnswerSets.count);
 }
 
 @end

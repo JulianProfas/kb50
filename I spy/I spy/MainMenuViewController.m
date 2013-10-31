@@ -47,6 +47,7 @@
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
+    
     capturedImage = [self imageWithImage:chosenImage scaledToSize:CGSizeMake(320, 480)];
     
     [self dismissViewControllerAnimated:YES completion:^{
@@ -90,6 +91,7 @@
     cameraUI.delegate = delegate;
     
     [controller presentViewController:cameraUI animated:YES completion:^{ }];
+    
     return YES;
 }
 
