@@ -93,8 +93,8 @@
     NSMutableSet *uniqueColors = [[NSMutableSet alloc] init];
     NSMutableOrderedSet *allAnsers = [[NSMutableOrderedSet alloc] init];
     
-    for (int x = 0; x<30; x++) {
-        for (int y = 0; y<40; y++) {
+    for (int x = 0; x<40; x++) {
+        for (int y = 0; y<60; y++) {
             NSString *colorName = [[[colorMatrix objectAtIndex:x] objectAtIndex:y] colorName];
             [uniqueColors addObject:colorName];
             [uniqueColors addObject: colorName];
@@ -111,8 +111,8 @@
     if (![uniqueColors count] == 0) {
         for(NSString *color in uniqueColors) {
             
-            for (int x = 0; x<30; x++) {
-                for (int y = 0; y<40; y++) {
+            for (int x = 0; x<40; x++) {
+                for (int y = 0; y<60; y++) {
                     NSMutableSet *aBlob = [[NSMutableSet alloc] init];
                     
                     [self generateColorBlob: color
@@ -168,7 +168,7 @@
             [self generateColorBlob:color xCoordinate:x-1 yCoordinate:y matrix:matrix];
         }
         
-        if (x < 29 && [color isEqual: [[[colorMatrix objectAtIndex:x+1] objectAtIndex:y] colorName]] && ![matrix containsObject:[NSValue valueWithCGPoint:CGPointMake(x+1, y)]]) {
+        if (x < 39 && [color isEqual: [[[colorMatrix objectAtIndex:x+1] objectAtIndex:y] colorName]] && ![matrix containsObject:[NSValue valueWithCGPoint:CGPointMake(x+1, y)]]) {
             [matrix addObject: [NSValue valueWithCGPoint:CGPointMake(x+1, y)]];
             
             [self generateColorBlob:color xCoordinate:x+1 yCoordinate:y matrix:matrix];
@@ -180,7 +180,7 @@
             [self generateColorBlob:color xCoordinate:x yCoordinate:y-1 matrix:matrix];
         }
         
-        if (y < 39 && [color isEqual: [[[colorMatrix objectAtIndex:x] objectAtIndex:y+1] colorName]] && ![matrix containsObject:[NSValue valueWithCGPoint:CGPointMake(x, y+1)]]) {
+        if (y < 59 && [color isEqual: [[[colorMatrix objectAtIndex:x] objectAtIndex:y+1] colorName]] && ![matrix containsObject:[NSValue valueWithCGPoint:CGPointMake(x, y+1)]]) {
             [matrix addObject: [NSValue valueWithCGPoint:CGPointMake(x, y+1)]];
             
             [self generateColorBlob:color xCoordinate:x yCoordinate:y+1 matrix:matrix];

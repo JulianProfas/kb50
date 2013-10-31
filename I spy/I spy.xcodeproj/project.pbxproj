@@ -34,7 +34,6 @@
 		55F7D8791802CA680050876C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F7D8581802CA680050876C /* UIKit.framework */; };
 		55F7D8811802CA680050876C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55F7D87F1802CA680050876C /* InfoPlist.strings */; };
 		55F7D8831802CA680050876C /* I_spyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F7D8821802CA680050876C /* I_spyTests.m */; };
-		D0F7E969182123C400ED8966 /* holi-colors_hd.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D0F7E968182123C400ED8966 /* holi-colors_hd.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,7 +89,6 @@
 		55F7D87E1802CA680050876C /* I spyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "I spyTests-Info.plist"; sourceTree = "<group>"; };
 		55F7D8801802CA680050876C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55F7D8821802CA680050876C /* I_spyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = I_spyTests.m; sourceTree = "<group>"; };
-		D0F7E968182123C400ED8966 /* holi-colors_hd.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "holi-colors_hd.jpg"; path = "../../../../Downloads/holi-colors_hd.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,7 +164,6 @@
 		55354D19181EFB02001F689B /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				D0F7E968182123C400ED8966 /* holi-colors_hd.jpg */,
 				55354D14181EF0CC001F689B /* blobTest.png */,
 				55D925EE1816A19200BCADAE /* testLogo.png */,
 			);
@@ -304,7 +301,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 55F7D84C1802CA680050876C /* Build configuration list for PBXProject "I Spy" */;
+			buildConfigurationList = 55F7D84C1802CA680050876C /* Build configuration list for PBXProject "I spy" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -329,7 +326,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				55CB8CFB1811695400576A60 /* Main_iPhone.storyboard in Resources */,
-				D0F7E969182123C400ED8966 /* holi-colors_hd.jpg in Resources */,
 				55D925EF1816A19200BCADAE /* testLogo.png in Resources */,
 				55F7D8701802CA680050876C /* Images.xcassets in Resources */,
 				55354D15181EF0CC001F689B /* blobTest.png in Resources */,
@@ -576,7 +572,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		55F7D84C1802CA680050876C /* Build configuration list for PBXProject "I Spy" */ = {
+		55F7D84C1802CA680050876C /* Build configuration list for PBXProject "I spy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				55F7D8841802CA680050876C /* Debug */,

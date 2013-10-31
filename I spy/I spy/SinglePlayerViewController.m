@@ -101,11 +101,11 @@
         //location of where the player touched the screen
         CGPoint location = [touch locationInView:self.presentedImage];
         
-        double MatrixHeight = 1 / 0.025f;
-        double MatrixWidth = MatrixHeight * 3 / 4;
+        //double MatrixHeight = 1 / 0.025f;
+        //double MatrixWidth = MatrixHeight * 3 / 4;
         
-        double squareWidth = 320 / MatrixWidth;
-        double squareHeight = 480 / MatrixHeight;
+        //double squareWidth = 320 / MatrixWidth;
+        //double squareHeight = 480 / MatrixHeight;
         
         int boxXcoordinate = location.x / 8.0;
         int boxYcoordinate = location.y / 8.0;
@@ -139,8 +139,8 @@
         highlighted = [[NSMutableSet alloc] init];
     }
     
-    double MatrixHeight = 1 / 0.025f;
-    double MatrixWidth = MatrixHeight * 3 / 4;
+    //double MatrixHeight = 1 / 0.025f;
+    //double MatrixWidth = MatrixHeight * 3 / 4;
     
     double squareWidth = 8.0;//320 / MatrixWidth;
     double squareHeight = 8.0;//480 / MatrixHeight;
