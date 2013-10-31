@@ -13,7 +13,7 @@
 @synthesize time;
 @synthesize labelPosition;
 
-- (id)initWithTimerLabel:(bool)label LabelPosition:(UILabelPosition)_labelPosition Frame:(CGRect *)_frame
+-(id) initWithTimerLabel:(bool)label LabelPosition:(UILabelPosition)_labelPosition Frame:(CGRect *)_frame
 {
     self = [super init];
     if(self){
@@ -32,7 +32,7 @@
     return self;
 }
 
-- (void)startTimer
+-(void)startTimer
 {
     if(!timer)
     {
@@ -41,7 +41,7 @@
     }
 }
 
-- (void)stopTimer
+-(void)stopTimer
 {
     if(timer != nil)
     {
@@ -50,7 +50,7 @@
     }
 }
 
-- (void)resetTimer
+-(void)resetTimer
 {
     time = initialTime;
     [self setProgress:1.0f animated:YES];
@@ -61,13 +61,13 @@
     }
 }
 
-- (void)setTime:(NSTimeInterval)setTime
+-(void)setTime:(NSTimeInterval)setTime
 {
     time = setTime;
     initialTime = setTime;
 }
 
-- (void)addTime:(float)addTime
+-(void)addTime:(float)addTime
 {
     adding = true;
     
@@ -88,7 +88,7 @@
     adding = false;
 }
 
-- (void)updateValue:(NSTimer*)timer
+-(void)updateValue:(NSTimer*)timer
 {
     if(!adding){
         float currentProgress = [self progress];
@@ -102,7 +102,7 @@
     }
 }
 
-- (bool)decreaseTime:(float)decreaseTime
+-(bool)decreaseTime:(float)decreaseTime
 {
     if(!adding){
         float currentProgress = [self progress] * time;
@@ -126,7 +126,7 @@
     return true;
 }
 
-- (void) initTimerLabel
+-(void) initTimerLabel
 {
     int x, y;
     

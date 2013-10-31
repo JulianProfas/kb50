@@ -40,15 +40,14 @@
 
 #pragma mark - Image Picker Controller Delegate Methods
 
-- (void)ImagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
+-(void)ImagePickerControllerDidCancel:(UIImagePickerController *)picker{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
-    capturedImage = chosenImage;
+    capturedImage = [self imageWithImage:chosenImage scaledToSize:CGSizeMake(320, 480)];
     
     [self dismissViewControllerAnimated:YES completion:^{
         [self performSegueWithIdentifier:@"gameSegue" sender:self];
@@ -57,20 +56,16 @@
 
 #pragma mark - Action Methods
 
-- (IBAction)takePicture:(id)sender
-{
-    //UIImage *chosenImage =  info[UIImagePickerControllerOriginalImage]
-    //[self imageWithImage:[UIImage imageNamed:@"holi-colors_hd.jpg"] scaledToSize:CGSizeMake(320, 480)];
-    // info[UIImagePickerControllerOriginalImage];
+- (IBAction)takePicture:(id)sender {
+    //UIImage *chosenImage =  info[UIImagePickerControllerOriginalImage];//[self imageWithImage:[UIImage imageNamed:@"holi-colors_hd.jpg"] scaledToSize:CGSizeMake(320, 480)];// info[UIImagePickerControllerOriginalImage];
     //capturedImage = chosenImage;
     //[self performSegueWithIdentifier:@"gameSegue" sender:self];
     [self startCameraControllerFromViewController: self usingDelegate: self];
 }
 
-- (BOOL)startCameraControllerFromViewController: (UIViewController*) controller
+- (BOOL) startCameraControllerFromViewController: (UIViewController*) controller
                                    usingDelegate: (id <UIImagePickerControllerDelegate,
-                                                   UINavigationControllerDelegate>) delegate
-{
+                                                   UINavigationControllerDelegate>) delegate {
     
     if (([UIImagePickerController isSourceTypeAvailable:
           UIImagePickerControllerSourceTypeCamera] == NO)
@@ -98,10 +93,20 @@
     return YES;
 }
 
+- (UIImage*)imageWithImage:(UIImage*)image
+              scaledToSize:(CGSize)newSize;
+{
+    UIGraphicsBeginImageContext( newSize );
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
 #pragma mark - Segue Methods
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"gameSegue"]) {
         SinglePlayerViewController *destinationViewController = segue.destinationViewController;
         destinationViewController.capturedImage = capturedImage;
