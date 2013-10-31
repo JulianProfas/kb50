@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ISpyProgressView.h"
 #import "UICountingLabel.h"
+#import "Game.h"
 
 @interface SinglePlayerViewController : UIViewController
 {
@@ -16,6 +17,8 @@
     UICountingLabel *scoreLabel;
     UIImage *capturedImage;
     NSMutableSet *highlighted;
+    NSTimer *gameLoopTimer;
+    Game *game;
 }
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (weak, nonatomic) IBOutlet UIImageView *presentedImage;

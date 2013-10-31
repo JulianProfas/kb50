@@ -57,10 +57,10 @@
 #pragma mark - Action Methods
 
 - (IBAction)takePicture:(id)sender {
-    //UIImage *chosenImage =  info[UIImagePickerControllerOriginalImage];//[self imageWithImage:[UIImage imageNamed:@"holi-colors_hd.jpg"] scaledToSize:CGSizeMake(320, 480)];// info[UIImagePickerControllerOriginalImage];
-    //capturedImage = chosenImage;
-    //[self performSegueWithIdentifier:@"gameSegue" sender:self];
-    [self startCameraControllerFromViewController: self usingDelegate: self];
+    UIImage *chosenImage =  [self imageWithImage:[UIImage imageNamed:@"holi-colors_hd.jpg"] scaledToSize:CGSizeMake(320, 480)];// info[UIImagePickerControllerOriginalImage];//info[UIImagePickerControllerOriginalImage];
+    capturedImage = chosenImage;
+    [self performSegueWithIdentifier:@"gameSegue" sender:self];
+    //[self startCameraControllerFromViewController: self usingDelegate: self];
 }
 
 - (BOOL) startCameraControllerFromViewController: (UIViewController*) controller

@@ -104,12 +104,13 @@
 
 -(bool)decreaseTime:(float)decreaseTime
 {
+    bool result = true;
     if(!adding){
         float currentProgress = [self progress] * time;
         
         if((currentProgress - decreaseTime)  <= 0)//GAME OVER
         {
-            return false;
+            result = false;
         }else
         {
             float progress = [self progress];
@@ -123,7 +124,7 @@
         }
     }
     
-    return true;
+    return result;
 }
 
 -(void) initTimerLabel

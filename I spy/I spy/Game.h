@@ -18,6 +18,7 @@
     UICountingLabel *scoreLabel;
     UIImage *capturedImage;
     UINavigationBar *navigationBar;
+    bool gameRunning;
 }
 
 @property (nonatomic, retain) Player *currentPlayer;
@@ -45,6 +46,7 @@
 -(void)gameOver;
 -(void)nextRound;
 -(Photo *)takePicture;
+-(bool)isRunning;
 
 #pragma mark - Score related Methods
 -(void)updateScore;

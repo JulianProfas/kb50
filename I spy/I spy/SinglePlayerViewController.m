@@ -30,6 +30,7 @@
     [super viewDidLoad];
 	
     Game *iSpyWithMyLittleEye = [Game sharedManager];
+    game = iSpyWithMyLittleEye;
     [iSpyWithMyLittleEye setCapturedImage:capturedImage];
     [iSpyWithMyLittleEye setScoreLabel:scoreLabel];
     [iSpyWithMyLittleEye setNavigationBar:navigationBar];
@@ -51,15 +52,18 @@
             } else {
                 [spinner stopAnimating];
                 
+                [Player sharedManager].score = 100;
                 CGRect barFrame = CGRectMake(0,42,320,20); //todo: remove off screen counter, no need for the counter
                 progressBar = [[ISpyProgressView alloc] initWithTimerLabel:YES LabelPosition:UILabelRight Frame:&barFrame];
                 [iSpyWithMyLittleEye setProgressBar:progressBar];
                 [self.view addSubview:progressBar];
                 
-                scoreLabel.text = [NSString stringWithFormat:@"%d", [[Player sharedManager] score]];
+                scoreLabel.text = [NSString stringWithFormat:@"Score %d", [[Player sharedManager] score]];
                 presentedImage.image = [[iSpyWithMyLittleEye currentPhoto] pixelatedImage];
                 
                 [iSpyWithMyLittleEye startGame];
+                
+                gameLoopTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(gameLoop) userInfo:nil repeats:YES];
             }
         });
         
@@ -137,6 +141,8 @@
 {
     if(highlighted == NULL){
         highlighted = [[NSMutableSet alloc] init];
+    }else{
+        [self deHighlight];
     }
     
     //double MatrixHeight = 1 / 0.025f;
@@ -168,6 +174,19 @@
     }
     
     [highlighted removeAllObjects];
+}
+
+
+-(void)gameLoop
+{
+    if(progressBar.progress <= 0){
+        if(game.isRunning){
+            [self deHighlight];
+        
+            [game gameOver];
+            [game displayWinAlert];
+        }
+    }
 }
 
 @end
