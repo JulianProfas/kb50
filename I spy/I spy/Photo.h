@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "UIColoring.h"
-#import <GPUImage/GPUImage.h>
 
 @interface Photo : NSObject <UIColoring>
 @property (strong, nonatomic) NSMutableArray *colorMatrix;

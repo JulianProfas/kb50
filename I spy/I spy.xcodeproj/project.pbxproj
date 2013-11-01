@@ -12,7 +12,6 @@
 		5547F8B518171362003A0E68 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5547F8B418171362003A0E68 /* MobileCoreServices.framework */; };
 		5547F8B8181718A8003A0E68 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5547F8B7181718A8003A0E68 /* MainMenuViewController.m */; };
 		55508ADF181EE31A0057FBE1 /* HighlightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55508ADE181EE31A0057FBE1 /* HighlightView.m */; };
-		555C3282181FC9BE00B1BA60 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55DF58651812B0FC00EFCC8A /* GPUImage.framework */; };
 		55CB8CEF181116BF00576A60 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 55CB8CEE181116BF00576A60 /* Photo.m */; };
 		55CB8CFB1811695400576A60 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55CB8CF91811695400576A60 /* Main_iPhone.storyboard */; };
 		55D925EF1816A19200BCADAE /* testLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 55D925EE1816A19200BCADAE /* testLogo.png */; };
@@ -34,6 +33,7 @@
 		55F7D8791802CA680050876C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F7D8581802CA680050876C /* UIKit.framework */; };
 		55F7D8811802CA680050876C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55F7D87F1802CA680050876C /* InfoPlist.strings */; };
 		55F7D8831802CA680050876C /* I_spyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F7D8821802CA680050876C /* I_spyTests.m */; };
+		8DD85F711823BC7B00BB9C15 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DD85F701823BC7B00BB9C15 /* GPUImage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +55,6 @@
 		5547F8B7181718A8003A0E68 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		55508ADD181EE31A0057FBE1 /* HighlightView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighlightView.h; sourceTree = "<group>"; };
 		55508ADE181EE31A0057FBE1 /* HighlightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighlightView.m; sourceTree = "<group>"; };
-		556220EE181770360025919B /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GPUImage.framework; path = "../../../Desktop/GPUImage-master/build/GPUImage.framework"; sourceTree = "<group>"; };
 		55CB8CED181116BF00576A60 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
 		55CB8CEE181116BF00576A60 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 		55CB8CF0181116DE00576A60 /* UIColoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColoring.h; sourceTree = "<group>"; };
@@ -66,7 +65,6 @@
 		55D9524A1811B01F00F2647A /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		55D9524B1811B01F00F2647A /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 		55DF585B18120DD900EFCC8A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = ../../../../../../../../../../Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		55DF58651812B0FC00EFCC8A /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GPUImage.framework; sourceTree = "<group>"; };
 		55E4E9771814709B007EDC08 /* ISpyProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISpyProgressView.h; path = ../ISpyProgressView.h; sourceTree = "<group>"; };
 		55E4E9781814709B007EDC08 /* ISpyProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISpyProgressView.m; path = ../ISpyProgressView.m; sourceTree = "<group>"; };
 		55E4E97A181470D5007EDC08 /* UICountingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UICountingLabel.h; path = ../UICountingLabel.h; sourceTree = "<group>"; };
@@ -89,6 +87,7 @@
 		55F7D87E1802CA680050876C /* I spyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "I spyTests-Info.plist"; sourceTree = "<group>"; };
 		55F7D8801802CA680050876C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55F7D8821802CA680050876C /* I_spyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = I_spyTests.m; sourceTree = "<group>"; };
+		8DD85F701823BC7B00BB9C15 /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GPUImage.framework; path = "../../Desktop/GPUImage-master/build/GPUImage.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				555C3282181FC9BE00B1BA60 /* GPUImage.framework in Frameworks */,
+				8DD85F711823BC7B00BB9C15 /* GPUImage.framework in Frameworks */,
 				5547F8B518171362003A0E68 /* MobileCoreServices.framework in Frameworks */,
 				55DF585C18120DD900EFCC8A /* QuartzCore.framework in Frameworks */,
 				55F7D8571802CA680050876C /* CoreGraphics.framework in Frameworks */,
@@ -192,9 +191,8 @@
 		55F7D8531802CA680050876C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				556220EE181770360025919B /* GPUImage.framework */,
+				8DD85F701823BC7B00BB9C15 /* GPUImage.framework */,
 				5547F8B418171362003A0E68 /* MobileCoreServices.framework */,
-				55DF58651812B0FC00EFCC8A /* GPUImage.framework */,
 				55DF585B18120DD900EFCC8A /* QuartzCore.framework */,
 				55F7D8541802CA680050876C /* Foundation.framework */,
 				55F7D8561802CA680050876C /* CoreGraphics.framework */,
@@ -301,7 +299,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 55F7D84C1802CA680050876C /* Build configuration list for PBXProject "I spy" */;
+			buildConfigurationList = 55F7D84C1802CA680050876C /* Build configuration list for PBXProject "I Spy" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -491,13 +489,16 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)",
-					"/Users/julianprofas/Desktop/GPUImage-master/build",
 					"/Users/julianprofas/repo/kb50/I\\ spy",
+					"/Users/Jordi/kb50/I\\ Spy",
+					"/Users/Jordi/Desktop/GPUImage-master/build",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(SRCROOT)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "I spy/I spy-Prefix.pch";
 				INFOPLIST_FILE = "I spy/I spy-Info.plist";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -516,10 +517,14 @@
 					"$(SRCROOT)",
 					"/Users/julianprofas/Desktop/GPUImage-master/build",
 					"/Users/julianprofas/repo/kb50/I\\ spy",
+					"/Users/Jordi/kb50/I\\ Spy",
+					"/Users/Jordi/Desktop/GPUImage-master/build",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "I spy/I spy-Prefix.pch";
 				INFOPLIST_FILE = "I spy/I spy-Info.plist";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -572,7 +577,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		55F7D84C1802CA680050876C /* Build configuration list for PBXProject "I spy" */ = {
+		55F7D84C1802CA680050876C /* Build configuration list for PBXProject "I Spy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				55F7D8841802CA680050876C /* Debug */,

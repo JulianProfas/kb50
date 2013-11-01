@@ -84,9 +84,10 @@
 #pragma mark - Photo Class Methods
 
 - (UIImage *) pixalateImage:(UIImage *)image {
-    GPUImageFilter *selectedFilter = [[GPUImagePixellateFilter alloc] init];
-    [(GPUImagePixellateFilter *)selectedFilter setFractionalWidthOfAPixel:0.025f];
-    return [selectedFilter imageByFilteringImage:image];
+//    GPUImageFilter *selectedFilter = [[GPUImagePixellateFilter alloc] init];
+//    [(GPUImagePixellateFilter *)selectedFilter setFractionalWidthOfAPixel:0.025f];
+//    return [selectedFilter imageByFilteringImage:image];
+    return nil;
 }
 
 - (NSMutableOrderedSet *) generateAnswerSets:(NSString *)difficulty {
