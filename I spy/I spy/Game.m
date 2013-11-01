@@ -76,7 +76,7 @@ static Game *sharedGameManager = nil;
             result = false;
         }else{
             [self gameOver];
-            [self displayWinAlert];
+            [self displayLoseAlert];
             result = true;        }
     } else {
         //good guess
@@ -102,6 +102,18 @@ static Game *sharedGameManager = nil;
                                                    delegate:self
                                           cancelButtonTitle:nil
                                           otherButtonTitles:@"Next round", @"Replay photo", nil];
+    [alert show];
+}
+
+-(void)displayLoseAlert {
+    [progressBar stopTimer];
+    
+    //display alert
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You've lost the game"
+                                                    message:@"Game over."
+                                                   delegate:self
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:nil];
     [alert show];
 }
 
