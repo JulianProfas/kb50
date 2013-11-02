@@ -9,12 +9,18 @@
 #import "MainMenuViewController.h"
 #import "SinglePlayerViewController.h"
 #import "UIView+Bounce.h"
+#import <iAd/iAd.h>
 
 @interface MainMenuViewController ()
 
 @end
 
 @implementation MainMenuViewController
+{
+    ADBannerView *_bannerView;
+    NSTimer *_timer;
+    CFTimeInterval _ticks;
+}
 @synthesize takePictureButton;
 @synthesize capturedImage;
 @synthesize myImageView;
@@ -24,7 +30,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
@@ -33,6 +39,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    _bannerView = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
+    [self.view addSubview:_bannerView];
+    _bannerView.delegate = self;
     
     if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
         // iOS 7
@@ -167,6 +176,22 @@
 -(void) SinglePlayerViewControllerDismissed:(NSString *)message
 {
     messageLabel.text = message;
+}
+
+#pragma mark iAd Delegate Methods
+
+-(void)bannerViewDidLoadAd:(ADBannerView *)banner {
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:1];
+    [banner setAlpha:1];
+    [UIView commitAnimations];
+}
+
+-(void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:1];
+    [banner setAlpha:0];
+    [UIView commitAnimations];
 }
 
 @end
