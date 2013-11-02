@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 hhs. All rights reserved.
 //
 
+#include <stdlib.h>
 #import "Photo.h"
 #import "Color.h"
-#include <stdlib.h>
 
 @implementation Photo
 @synthesize colorMatrix;
@@ -18,6 +18,11 @@
 @synthesize answerColor;
 @synthesize capturedImage;
 @synthesize allCoordinates;
+
+#define MATRIXWIDTH 40
+#define MATRIXHEIGHT 60
+#define SQUAREWIDTH 8
+#define SQUAREHEIGHT 8
 
 #pragma mark - Initialization Methods
 
@@ -44,23 +49,16 @@
 
 - (NSMutableArray *) generateColorMatrix: (UIImage *)image fractionalWidthOfPixel: (float)aFloat
 {
-    
-    double MatrixHeight =  60;// 1 / aFloat;
-    double MatrixWidth = 40;//MatrixHeight * 3 / 4;
-    
-    double squareWidth = 8;//image.size.width / MatrixWidth;
-    double squareHeight = 8;//image.size.height / MatrixHeight;
-    
     NSMutableArray *matrix = [[NSMutableArray alloc] init];
     
-    for(int x = 0; x < MatrixWidth; ++x)
+    for(int x = 0; x < MATRIXWIDTH; ++x)
     {
         NSMutableArray *column = [[NSMutableArray alloc] init];
         [matrix addObject:column];
-        for(int y = 0; y < MatrixHeight; ++y)
+        for(int y = 0; y < MATRIXHEIGHT; ++y)
         {
-            double centerXcoordinate = (x * squareWidth) + (squareWidth / 2);
-            double centerYcoordinate = (y * squareHeight) + (squareHeight / 2);
+            double centerXcoordinate = (x * SQUAREWIDTH) + (SQUAREWIDTH / 2);
+            double centerYcoordinate = (y * SQUAREHEIGHT) + (SQUAREHEIGHT / 2);
             
             UIColor *pixelColor = [self getPixelColor:image xCoordinate:centerXcoordinate yCoordinate:centerYcoordinate];
             Color *color = [[Color alloc]initWithColor:pixelColor];
@@ -100,8 +98,8 @@
     NSMutableSet *uniqueColors = [[NSMutableSet alloc] init];
     NSMutableOrderedSet *allAnswers = [[NSMutableOrderedSet alloc] init];
     
-    for (int x = 0; x<40; x++) {
-        for (int y = 0; y<60; y++) {
+    for (int x = 0; x<MATRIXWIDTH; x++) {
+        for (int y = 0; y<MATRIXHEIGHT; y++) {
             NSString *colorName = [[[colorMatrix objectAtIndex:x] objectAtIndex:y] colorName];
             [uniqueColors addObject:colorName];
         }
@@ -111,15 +109,12 @@
         [uniqueColors removeObject: @"none"];
     }
     
-    NSLog(@"Number of colors: %lu", (unsigned long)uniqueColors.count);
-    NSLog(@"Colors: %@", uniqueColors);
-    
     if (![uniqueColors count] == 0) {
         for(NSString *color in uniqueColors) {
             allCoordinates = [[NSMutableSet alloc] init];
             
-            for (int x = 0; x<40; x++) {
-                for (int y = 0; y<60; y++) {
+            for (int x = 0; x<MATRIXWIDTH; x++) {
+                for (int y = 0; y<MATRIXHEIGHT; y++) {
                     NSMutableSet *aBlob = [[NSMutableSet alloc] init];
                     
                     [self generateColorBlob: color
@@ -181,7 +176,7 @@
             [self generateColorBlob:color xCoordinate:x-1 yCoordinate:y matrix:matrix];
         }
         
-        if (x < 39 &&
+        if (x < MATRIXWIDTH-1 &&
             [color isEqual: [[[colorMatrix objectAtIndex:x+1] objectAtIndex:y] colorName]] &&
             ![matrix containsObject:[NSValue valueWithCGPoint:CGPointMake(x+1, y)]])
         {
@@ -197,7 +192,7 @@
             [self generateColorBlob:color xCoordinate:x yCoordinate:y-1 matrix:matrix];
         }
         
-        if (y < 59 &&
+        if (y < MATRIXHEIGHT-1 &&
             [color isEqual: [[[colorMatrix objectAtIndex:x] objectAtIndex:y+1] colorName]] &&
             ![matrix containsObject:[NSValue valueWithCGPoint:CGPointMake(x, y+1)]])
         {
@@ -212,17 +207,12 @@
 - (void) printColors
 {
     NSMutableSet *uniqueColors = [[NSMutableSet alloc] init];
-    for (int x = 0; x<40; x++) {
-        for (int y = 0; y<60; y++) {
-                [uniqueColors addObject:[[[colorMatrix objectAtIndex:x] objectAtIndex:y] colorName]];
+    for (int x = 0; x<MATRIXWIDTH; x++) {
+        for (int y = 0; y<MATRIXHEIGHT; y++) {
+            [uniqueColors addObject:[[[colorMatrix objectAtIndex:x] objectAtIndex:y] colorName]];
         }
     }
-    
-    if ([uniqueColors containsObject:@"none"]) {
-        NSLog(@"Number of colors: %lu", (unsigned long)uniqueColors.count-1);
-    } else {
-        NSLog(@"Number of colors: %lu", (unsigned long)uniqueColors.count);
-    }
+    NSLog(@"Number of colors: %lu", (unsigned long)uniqueColors.count);
     
     NSLog(@"Colors: %@", uniqueColors);
 }

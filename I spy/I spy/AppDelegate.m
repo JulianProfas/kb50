@@ -15,9 +15,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    //[self.window setTintColor:[UIColor redColor]];
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
-    //return YES;
     
     return YES;
 }

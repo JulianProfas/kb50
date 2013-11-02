@@ -8,16 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "Player.h"
+#import "Photo.h"
 #import "ISpyProgressView.h"
 
 @interface Game : NSObject
 {
     int numberOfAttempts;
-    Player *currentPlayer;
-    ISpyProgressView *progressBar;
-    UICountingLabel *scoreLabel;
-    UIImage *capturedImage;
-    UINavigationBar *navigationBar;
     bool gameRunning;
 }
 
@@ -39,9 +35,7 @@
 #pragma mark - Game Class Methods
 -(void)setupGame;
 -(void)setAnswerLabel;
--(void)highlightAnswer;
 -(BOOL)checkAnswer: (CGPoint)guess;
--(void)displayWinAlert;
 -(void)startGame;
 -(void)gameOver;
 -(void)nextRound;

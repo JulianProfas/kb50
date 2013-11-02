@@ -2,7 +2,7 @@
 //  main.m
 //  I spy
 //
-//  Created by Julian Profas on 10/7/13.
+//  Created by iOS team on 10/7/13.
 //  Copyright (c) 2013 hhs. All rights reserved.
 //
 

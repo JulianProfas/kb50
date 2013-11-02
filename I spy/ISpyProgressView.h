@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UICountingLabel.h"
+
 typedef enum {
     UILabelLeft,
     UILabelRight
@@ -15,7 +16,6 @@ typedef enum {
 
 @interface ISpyProgressView : UIProgressView
 {
-    NSTimeInterval time;
     NSTimeInterval initialTime;
     NSTimer *timer;
     UILabel *timerLabel;

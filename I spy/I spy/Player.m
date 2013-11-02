@@ -7,7 +7,6 @@
 //
 
 #import "Player.h"
-#import "Photo.h"
 
 @implementation Player
 @synthesize score;

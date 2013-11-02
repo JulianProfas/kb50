@@ -18,8 +18,6 @@
 @interface SinglePlayerViewController : UIViewController
 {
     ISpyProgressView *progressBar;
-    UICountingLabel *scoreLabel;
-    UIImage *capturedImage;
     NSMutableSet *highlighted;
     NSTimer *gameLoopTimer;
     Game *game;

@@ -9,10 +9,8 @@
 #import "MainMenuViewController.h"
 #import "SinglePlayerViewController.h"
 #import "UIView+Bounce.h"
-#import <iAd/iAd.h>
 
 @interface MainMenuViewController ()
-
 @end
 
 @implementation MainMenuViewController

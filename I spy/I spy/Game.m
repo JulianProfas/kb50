@@ -58,9 +58,6 @@ static Game *sharedGameManager = nil;
     navigationBar.topItem.title = [NSString stringWithFormat:@"%@", [currentPhoto answerColor]];
 }
 
--(void)highlightAnswer {
-}
-
 - (void) setupAnswers {
     answers = [currentPhoto answerSet];
 }
@@ -76,7 +73,6 @@ static Game *sharedGameManager = nil;
             result = false;
         }else{
             [self gameOver];
-            [self displayLoseAlert];
             result = true;        }
     } else {
         //good guess
@@ -84,37 +80,9 @@ static Game *sharedGameManager = nil;
         
         [self updateScore];
         [progressBar addTime:GOOD_GUESS];
-        
-        [self highlightAnswer];
-        [self displayWinAlert];
         result = true;
     }
-    
     return result;
-}
-
--(void)displayWinAlert {
-    [progressBar stopTimer];
-    
-    //display alert
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You've won the game!"
-//                                                    message:@"You gained 20 seconds."
-//                                                   delegate:self
-//                                          cancelButtonTitle:nil
-//                                          otherButtonTitles:@"Next round", @"Replay photo", nil];
-//    [alert show];
-}
-
--(void)displayLoseAlert {
-    [progressBar stopTimer];
-    
-    //display alert
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You've lost the game"
-//                                                    message:@"Game over."
-//                                                   delegate:self
-//                                          cancelButtonTitle:nil
-//                                          otherButtonTitles:nil];
-//    [alert show];
 }
 
 -(void)startGame {
@@ -126,7 +94,6 @@ static Game *sharedGameManager = nil;
 
 -(void)gameOver {
     gameRunning = false;
-    [self highlightAnswer];
     [progressBar stopTimer];
 }
 
@@ -184,26 +151,6 @@ static Game *sharedGameManager = nil;
     }
     
     return score;
-}
-
-- (void) replayPhoto
-{
-    [self setupAnswers];
-    [self setAnswerLabel];
-    [self startGame];
-}
-
-- (void)alertView:(UIAlertView *)theAlert clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if ([[theAlert buttonTitleAtIndex:buttonIndex] isEqualToString:@"Next round"]) {
-        [self nextRound];
-    } else if ([[theAlert buttonTitleAtIndex:buttonIndex] isEqualToString:@"Replay photo"])
-    {
-        [self replayPhoto];
-    }
-    //TODO: display correct color question again
-    
-    //NSLog(@"The %@ button was tapped.", [theAlert buttonTitleAtIndex:buttonIndex]);
 }
 
 -(bool)isRunning

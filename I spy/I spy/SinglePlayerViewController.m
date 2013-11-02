@@ -26,6 +26,11 @@
 @synthesize mainMenu;
 @synthesize notification;
 
+#define MATRIXWIDTH 40
+#define MATRIXHEIGHT 60
+#define SQUAREWIDTH 8
+#define SQUAREHEIGHT 8
+
 #pragma standard iOS Methods
 
 - (void)viewDidLoad
@@ -72,7 +77,7 @@
                 [self.view addSubview:progressBar];
                 
                 scoreLabel.text = [NSString stringWithFormat:@"Score %d", [[Player sharedManager] score]];
-                presentedImage.image = [[iSpyWithMyLittleEye currentPhoto] pixelatedImage];
+                presentedImage.image = [[iSpyWithMyLittleEye currentPhoto] capturedImage];
                 
                 [iSpyWithMyLittleEye startGame];
                 
@@ -112,28 +117,21 @@
     //check if the person tabbed or moved
     if(!touchMoved)
     {
-        //location of where the player touched the screen
         CGPoint location = [touch locationInView:self.presentedImage];
         
-        //double MatrixHeight = 1 / 0.025f;
-        //double MatrixWidth = MatrixHeight * 3 / 4;
+        int boxXcoordinate = location.x / SQUAREWIDTH;
+        int boxYcoordinate = location.y / SQUAREHEIGHT;
         
-        //double squareWidth = 320 / MatrixWidth;
-        //double squareHeight = 480 / MatrixHeight;
-        
-        int boxXcoordinate = location.x / 8.0;
-        int boxYcoordinate = location.y / 8.0;
-        
-        NSLog(@"location.x: %f", location.x);
-        NSLog(@"location.y: %f", location.y);
+        //NSLog(@"location.x: %f", location.x);
+        //NSLog(@"location.y: %f", location.y);
         
         CGPoint guessCoordinates = {boxXcoordinate, boxYcoordinate};
-        NSLog(@"Guess coordinates: %@", NSStringFromCGPoint(guessCoordinates));
+        //NSLog(@"Guess coordinates: %@", NSStringFromCGPoint(guessCoordinates));
         
         Game *iSpyWithMyLittleEye = [Game sharedManager];
         
         Photo *myPhoto = [iSpyWithMyLittleEye currentPhoto];
-        if(boxYcoordinate < 60)
+        if(boxYcoordinate < MATRIXHEIGHT)
         {
             Color *myColor = [[myPhoto.colorMatrix objectAtIndex:boxXcoordinate] objectAtIndex:boxYcoordinate];
             NSLog(@"%@", myColor.hsv);
@@ -162,12 +160,9 @@
     }else{
         [self deHighlight];
     }
-
-    double squareWidth = 8.0;
-    double squareHeight = 8.0;
     
     for(NSValue *value in [[Game sharedManager] answers]){
-        HighlightView *highlight = [[HighlightView alloc] initWithFrame:CGRectMake(value.CGPointValue.x * squareWidth, value.CGPointValue.y * squareHeight, squareWidth, squareHeight)];
+        HighlightView *highlight = [[HighlightView alloc] initWithFrame:CGRectMake(value.CGPointValue.x * SQUAREWIDTH, value.CGPointValue.y * SQUAREHEIGHT, SQUAREWIDTH, SQUAREHEIGHT)];
         highlight.backgroundColor = [UIColor colorWithRed:0.5 green:1.0 blue:0.5 alpha:0.50];
         
         [highlighted addObject:highlight];
@@ -194,7 +189,6 @@
             [self deHighlight];
         
             [game gameOver];
-            [game displayWinAlert];
             
             notification = @"Game Over";
             [progressBar removeFromSuperview];
@@ -213,13 +207,14 @@
     CGRect normalScreenPosition = CGRectMake(0, 0, 320, 568);
     [UIView animateWithDuration:0.5 animations:^{ mainMenu.frame = normalScreenPosition; } completion:^ (BOOL finished) {
         if (finished) {
-        
+            
             if([self.singlePlayerViewControllerDelegate respondsToSelector:@selector(SinglePlayerViewControllerDismissed:)])
             {
                 [self.singlePlayerViewControllerDelegate SinglePlayerViewControllerDismissed:notification];
             }
             [self dismissViewControllerAnimated:NO completion:^ { }];
-        } }];
+        }
+    }];
 }
 
 

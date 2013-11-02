@@ -7,13 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Photo.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 
 @interface Player : NSObject
-{
-    int score;
-}
 @property int score;
 
 #pragma mark - Player Singleton Methods

@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 hhs. All rights reserved.
 //
 
-#import "UIView+Bounce.h"
 #import <QuartzCore/QuartzCore.h>
+#import "UIView+Bounce.h"
 
 @implementation UIView (Bounce)
 
