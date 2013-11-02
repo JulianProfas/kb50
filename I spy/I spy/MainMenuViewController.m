@@ -18,6 +18,7 @@
 @synthesize takePictureButton;
 @synthesize capturedImage;
 @synthesize myImageView;
+@synthesize messageLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,12 +33,24 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
+        // iOS 7
+        [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
+    } else {
+        // iOS 6
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+    }
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
 
 #pragma mark - Image Picker Controller Delegate Methods
@@ -116,6 +129,7 @@
 {
     if ([segue.identifier isEqualToString:@"gameSegue"]) {
         SinglePlayerViewController *destinationViewController = segue.destinationViewController;
+        destinationViewController.singlePlayerViewControllerDelegate = self;
         destinationViewController.capturedImage = capturedImage;
     }
 }
@@ -148,6 +162,11 @@
             [UIView animateWithDuration:0.8 animations:^{ myImageView.frame = outOfScreenPosition; }];
         }
     }
+}
+
+-(void) SinglePlayerViewControllerDismissed:(NSString *)message
+{
+    messageLabel.text = message;
 }
 
 @end

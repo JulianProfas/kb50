@@ -22,6 +22,9 @@
 @synthesize navigationBar;
 @synthesize capturedImage;
 @synthesize spinner;
+@synthesize singlePlayerViewControllerDelegate;
+@synthesize mainMenu;
+@synthesize notification;
 
 #pragma standard iOS Methods
 
@@ -29,6 +32,9 @@
 {
     [super viewDidLoad];
 	
+    CGRect upperScreenPosition = CGRectMake(0, -568, 320, 568);
+    mainMenu.frame = upperScreenPosition;
+    
     Game *iSpyWithMyLittleEye = [Game sharedManager];
     game = iSpyWithMyLittleEye;
     [iSpyWithMyLittleEye setCapturedImage:capturedImage];
@@ -48,7 +54,14 @@
             [iSpyWithMyLittleEye setAnswerLabel];
             if ([navigationBar.topItem.title isEqualToString:@"Not Found"]) {
                 [spinner stopAnimating];
-                [self dismissViewControllerAnimated:YES completion:^ {}];
+                
+                notification = @"ERROR BLABLA";
+                [progressBar removeFromSuperview];
+                [NSTimer scheduledTimerWithTimeInterval:2.0
+                                                 target:self
+                                               selector:@selector(closeAnimation)
+                                               userInfo:nil
+                                                repeats:NO];
             } else {
                 [spinner stopAnimating];
                 
@@ -128,6 +141,14 @@
         
         if ([iSpyWithMyLittleEye checkAnswer: guessCoordinates]) {
             [self highlightAnswer];
+            
+            notification = @"You won the round";
+            [progressBar removeFromSuperview];
+            [NSTimer scheduledTimerWithTimeInterval:2.0
+                                             target:self
+                                           selector:@selector(closeAnimation)
+                                           userInfo:nil
+                                            repeats:NO];
         }
     }
 }
@@ -166,7 +187,6 @@
     [highlighted removeAllObjects];
 }
 
-
 -(void)gameLoop
 {
     if(progressBar.progress <= 0){
@@ -175,8 +195,32 @@
         
             [game gameOver];
             [game displayWinAlert];
+            
+            notification = @"Game Over";
+            [progressBar removeFromSuperview];
+            
+            [NSTimer scheduledTimerWithTimeInterval:2.0
+                                             target:self
+                                           selector:@selector(closeAnimation)
+                                           userInfo:nil
+                                            repeats:NO];
         }
     }
 }
+
+-(void)closeAnimation
+{
+    CGRect normalScreenPosition = CGRectMake(0, 0, 320, 568);
+    [UIView animateWithDuration:0.5 animations:^{ mainMenu.frame = normalScreenPosition; } completion:^ (BOOL finished) {
+        if (finished) {
+        
+            if([self.singlePlayerViewControllerDelegate respondsToSelector:@selector(SinglePlayerViewControllerDismissed:)])
+            {
+                [self.singlePlayerViewControllerDelegate SinglePlayerViewControllerDismissed:notification];
+            }
+            [self dismissViewControllerAnimated:NO completion:^ { }];
+        } }];
+}
+
 
 @end

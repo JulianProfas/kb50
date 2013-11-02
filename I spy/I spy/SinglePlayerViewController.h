@@ -11,6 +11,10 @@
 #import "UICountingLabel.h"
 #import "Game.h"
 
+@protocol SinglePlayerViewControllerDelegate <NSObject>
+-(void) SinglePlayerViewControllerDismissed:(NSString *)message;
+@end
+
 @interface SinglePlayerViewController : UIViewController
 {
     ISpyProgressView *progressBar;
@@ -26,8 +30,12 @@
 @property (nonatomic, strong) IBOutlet UICountingLabel *scoreLabel;
 @property (nonatomic, strong) UIImage *capturedImage;
 @property (nonatomic, strong) UIActivityIndicatorView *spinner;
+@property (nonatomic, assign) id <SinglePlayerViewControllerDelegate> singlePlayerViewControllerDelegate;
+@property (weak, nonatomic) IBOutlet UIImageView *mainMenu;
+@property (nonatomic, weak) NSString *notification;
 
 -(void)highlightAnswer;
 -(void)deHighlight;
+-(void)closeAnimation;
 
 @end

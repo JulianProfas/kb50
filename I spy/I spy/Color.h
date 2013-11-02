@@ -16,5 +16,6 @@
 #pragma mark - Initialization Methods
 - initWithColor:(UIColor *)aColor;
 
--(NSString *) fillStringWithHSV:(UIColor *)aColor;
+#pragma mark - Color Class Methods
+- (NSString *)getColorName:(UIColor *)aColor;
 @end

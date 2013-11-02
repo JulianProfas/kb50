@@ -97,24 +97,24 @@ static Game *sharedGameManager = nil;
     [progressBar stopTimer];
     
     //display alert
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You've won the game!"
-                                                    message:@"You gained 20 seconds."
-                                                   delegate:self
-                                          cancelButtonTitle:nil
-                                          otherButtonTitles:@"Next round", @"Replay photo", nil];
-    [alert show];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You've won the game!"
+//                                                    message:@"You gained 20 seconds."
+//                                                   delegate:self
+//                                          cancelButtonTitle:nil
+//                                          otherButtonTitles:@"Next round", @"Replay photo", nil];
+//    [alert show];
 }
 
 -(void)displayLoseAlert {
     [progressBar stopTimer];
     
     //display alert
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You've lost the game"
-                                                    message:@"Game over."
-                                                   delegate:self
-                                          cancelButtonTitle:nil
-                                          otherButtonTitles:nil];
-    [alert show];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You've lost the game"
+//                                                    message:@"Game over."
+//                                                   delegate:self
+//                                          cancelButtonTitle:nil
+//                                          otherButtonTitles:nil];
+//    [alert show];
 }
 
 -(void)startGame {
