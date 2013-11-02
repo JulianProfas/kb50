@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-typedef enum {
+typedef enum
+{
     UILabelCountingMethodEaseInOut,
     UILabelCountingMethodEaseIn,
     UILabelCountingMethodEaseOut,

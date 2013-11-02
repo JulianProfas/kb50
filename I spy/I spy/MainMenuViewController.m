@@ -17,7 +17,6 @@
 @implementation MainMenuViewController
 @synthesize takePictureButton;
 @synthesize capturedImage;
-@synthesize myView;
 @synthesize myImageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -43,7 +42,8 @@
 
 #pragma mark - Image Picker Controller Delegate Methods
 
--(void)ImagePickerControllerDidCancel:(UIImagePickerController *)picker{
+-(void)ImagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -60,7 +60,8 @@
 
 #pragma mark - Action Methods
 
-- (IBAction)takePicture {
+- (IBAction)takePicture
+{
     /*UIImage *chosenImage =  [self imageWithImage:[UIImage imageNamed:@"holi-colors_hd.jpg"] scaledToSize:CGSizeMake(320, 480)];
     capturedImage = chosenImage;
     [self performSegueWithIdentifier:@"gameSegue" sender:self];*/
@@ -70,7 +71,8 @@
 
 - (BOOL) startCameraControllerFromViewController: (UIViewController*) controller
                                    usingDelegate: (id <UIImagePickerControllerDelegate,
-                                                   UINavigationControllerDelegate>) delegate {
+                                                   UINavigationControllerDelegate>) delegate
+{
     
     if (([UIImagePickerController isSourceTypeAvailable:
           UIImagePickerControllerSourceTypeCamera] == NO)
@@ -84,9 +86,7 @@
     
     // Displays a control that allows the user to choose picture or
     // movie capture, if both are available:
-    cameraUI.mediaTypes =
-    [UIImagePickerController availableMediaTypesForSourceType:
-     UIImagePickerControllerSourceTypeCamera];
+    cameraUI.mediaTypes = [NSArray arrayWithObjects:(NSString *) kUTTypeImage, nil];
     
     // Hides the controls for moving & scaling pictures, or for
     // trimming movies. To instead show the controls, use YES.
@@ -112,7 +112,8 @@
 
 #pragma mark - Segue Methods
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
     if ([segue.identifier isEqualToString:@"gameSegue"]) {
         SinglePlayerViewController *destinationViewController = segue.destinationViewController;
         destinationViewController.capturedImage = capturedImage;
@@ -127,12 +128,10 @@
 - (IBAction)pan:(UIPanGestureRecognizer *)recognizer
 {
     CGPoint translation = [recognizer translationInView:self.view];
-    //NSLog(@"printing center x: %f", recognizer.view.center.x);
-    NSLog(@"printing center y: %f", recognizer.view.center.y);
+    //NSLog(@"printing center y: %f", recognizer.view.center.y);
     if (recognizer.view.center.y + translation.y < 284) {       //only allow upwards pans
         recognizer.view.center = CGPointMake(recognizer.view.center.x,
                                              recognizer.view.center.y + translation.y);
-        //recognizer.view.frame = CGRectMake(0, 0, 320, 568);;
     }
     
     [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];

@@ -15,7 +15,8 @@
 
 #pragma mark - Initialization Methods
 
-- initWithColor:(UIColor *)aColor {
+- initWithColor:(UIColor *)aColor
+{
     if ( self = [super init] ) {
         colorData = aColor;
         colorName = [self getColorName:aColor];
@@ -27,7 +28,8 @@
 }
 
 //TODO: tweak colors
-- (NSString *)getColorName:(UIColor *)aColor{
+- (NSString *)getColorName:(UIColor *)aColor
+{
     CGFloat hue;
     CGFloat saturation;
     CGFloat brightness;
@@ -61,7 +63,8 @@
     }
 }
 
--(NSString *) fillStringWithHSV:(UIColor *)aColor {
+-(NSString *) fillStringWithHSV:(UIColor *)aColor
+{
     CGFloat hue;
     CGFloat saturation;
     CGFloat brightness;

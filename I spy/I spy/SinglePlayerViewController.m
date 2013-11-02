@@ -66,10 +66,7 @@
                 gameLoopTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(gameLoop) userInfo:nil repeats:YES];
             }
         });
-        
     });
-    
-    
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -144,12 +141,9 @@
     }else{
         [self deHighlight];
     }
-    
-    //double MatrixHeight = 1 / 0.025f;
-    //double MatrixWidth = MatrixHeight * 3 / 4;
-    
-    double squareWidth = 8.0;//320 / MatrixWidth;
-    double squareHeight = 8.0;//480 / MatrixHeight;
+
+    double squareWidth = 8.0;
+    double squareHeight = 8.0;
     
     for(NSValue *value in [[Game sharedManager] answers]){
         HighlightView *highlight = [[HighlightView alloc] initWithFrame:CGRectMake(value.CGPointValue.x * squareWidth, value.CGPointValue.y * squareHeight, squareWidth, squareHeight)];
@@ -157,8 +151,6 @@
         
         [highlighted addObject:highlight];
         [presentedImage addSubview:highlight];
-        
-        //printf("x: %d y: %d \n", (int)(value.CGPointValue.x * squareWidth), (int)(value.CGPointValue.y * squareHeight));
     }
 }
 
@@ -171,7 +163,6 @@
             }
         }
     }
-    
     [highlighted removeAllObjects];
 }
 

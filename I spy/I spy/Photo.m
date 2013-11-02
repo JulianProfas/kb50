@@ -21,17 +21,18 @@
 
 #pragma mark - Initialization Methods
 
-- (id) initWithImage:(UIImage *)image difficulty:(NSString *)difficulty {
+- (id) initWithImage:(UIImage *)image difficulty:(NSString *)difficulty
+{
     if ( self = [super init] ) {
         capturedImage = image;
         pixelatedImage = [self pixalateImage:image];
         colorMatrix = [self generateColorMatrix:pixelatedImage fractionalWidthOfPixel:0.025f];
-        //[self printColors];
-        
         allAnswerSets = [self generateAnswerSets:difficulty];
         answerSet = [self selectRandomAnswer:allAnswerSets];
-        [self printAnswerSet];
-        [self printAllAnswerSets];
+        
+        //[self printColors];
+        //[self printAnswerSet];
+        //[self printAllAnswerSets];
         
         return self;
     } else {
@@ -41,7 +42,8 @@
 
 #pragma mark - UIColoring Protocol Methods
 
-- (NSMutableArray *) generateColorMatrix: (UIImage *)image fractionalWidthOfPixel: (float)aFloat {
+- (NSMutableArray *) generateColorMatrix: (UIImage *)image fractionalWidthOfPixel: (float)aFloat
+{
     
     double MatrixHeight =  60;// 1 / aFloat;
     double MatrixWidth = 40;//MatrixHeight * 3 / 4;
@@ -68,7 +70,8 @@
     return matrix;
 }
 
-- (UIColor *) getPixelColor: (UIImage *)image xCoordinate:(int)x yCoordinate:(int)y {
+- (UIColor *) getPixelColor: (UIImage *)image xCoordinate:(int)x yCoordinate:(int)y
+{
     CFDataRef pixelData = CGDataProviderCopyData(CGImageGetDataProvider(image.CGImage));
     const UInt8* data = CFDataGetBytePtr(pixelData);
     
@@ -85,13 +88,15 @@
 
 #pragma mark - Photo Class Methods
 
-- (UIImage *) pixalateImage:(UIImage *)image {
+- (UIImage *) pixalateImage:(UIImage *)image
+{
     GPUImageFilter *selectedFilter = [[GPUImagePixellateFilter alloc] init];
     [(GPUImagePixellateFilter *)selectedFilter setFractionalWidthOfAPixel:0.025f];
     return [selectedFilter imageByFilteringImage:image];
 }
 
-- (NSMutableOrderedSet *) generateAnswerSets:(NSString *)difficulty {
+- (NSMutableOrderedSet *) generateAnswerSets:(NSString *)difficulty
+{
     NSMutableSet *uniqueColors = [[NSMutableSet alloc] init];
     NSMutableOrderedSet *allAnswers = [[NSMutableOrderedSet alloc] init];
     
@@ -148,7 +153,8 @@
     }
 }
 
-- (NSMutableSet *) selectRandomAnswer: (NSMutableOrderedSet *)answerSets {
+- (NSMutableSet *) selectRandomAnswer: (NSMutableOrderedSet *)answerSets
+{
     uint32_t rndm = arc4random_uniform((int)[answerSets count]);
     NSMutableSet *aRandomBlob = [answerSets objectAtIndex:rndm];
     
@@ -162,7 +168,8 @@
 
 #pragma mark - Color Blob Methods
 
-- (void) generateColorBlob:(NSString *)color xCoordinate:(int)x yCoordinate:(int)y matrix:(NSMutableSet *)matrix {
+- (void) generateColorBlob:(NSString *)color xCoordinate:(int)x yCoordinate:(int)y matrix:(NSMutableSet *)matrix
+{
     if (![allCoordinates containsObject:[NSValue valueWithCGPoint:CGPointMake(x, y)]]) {
      [allCoordinates addObject:[NSValue valueWithCGPoint:CGPointMake(x, y)]];
         
@@ -202,7 +209,8 @@
 
 #pragma mark - Methods for Debugging
 
-- (void) printColors {
+- (void) printColors
+{
     NSMutableSet *uniqueColors = [[NSMutableSet alloc] init];
     for (int x = 0; x<40; x++) {
         for (int y = 0; y<60; y++) {
@@ -219,12 +227,14 @@
     NSLog(@"Colors: %@", uniqueColors);
 }
 
-- (void) printAnswerSet {
+- (void) printAnswerSet
+{
     NSLog(@"Printing Answer Set: %@", answerSet);
     NSLog(@"Printing answer count: %lu", (unsigned long)answerSet.count);
 }
 
-- (void)printAllAnswerSets {
+- (void)printAllAnswerSets
+{
     NSLog(@"Printing answerSets (blobs): %@", allAnswerSets);
     NSLog(@"Printing Number of answerSets (blobs) total: %lu", (unsigned long)allAnswerSets.count);
 }

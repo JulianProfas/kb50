@@ -12,8 +12,6 @@
 @interface MainMenuViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *takePictureButton;
 @property (strong, nonatomic) UIImage *capturedImage;
-
-@property (nonatomic, strong) UIView *myView;
 @property (weak, nonatomic) IBOutlet UIImageView *myImageView;
 
 @end
