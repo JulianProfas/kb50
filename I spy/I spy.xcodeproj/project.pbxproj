@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		55354D15181EF0CC001F689B /* blobTest.png in Resources */ = {isa = PBXBuildFile; fileRef = 55354D14181EF0CC001F689B /* blobTest.png */; };
 		55467509181E879B00DF295D /* Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 55467508181E879B00DF295D /* Color.m */; };
 		5547F8B518171362003A0E68 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5547F8B418171362003A0E68 /* MobileCoreServices.framework */; };
 		5547F8B8181718A8003A0E68 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5547F8B7181718A8003A0E68 /* MainMenuViewController.m */; };
@@ -15,12 +14,14 @@
 		555C3282181FC9BE00B1BA60 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55DF58651812B0FC00EFCC8A /* GPUImage.framework */; };
 		55CB8CEF181116BF00576A60 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 55CB8CEE181116BF00576A60 /* Photo.m */; };
 		55CB8CFB1811695400576A60 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55CB8CF91811695400576A60 /* Main_iPhone.storyboard */; };
-		55D925EF1816A19200BCADAE /* testLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 55D925EE1816A19200BCADAE /* testLogo.png */; };
 		55D952491811B00600F2647A /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D952481811B00600F2647A /* Player.m */; };
 		55D9524C1811B01F00F2647A /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D9524B1811B01F00F2647A /* Game.m */; };
 		55DF585C18120DD900EFCC8A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55DF585B18120DD900EFCC8A /* QuartzCore.framework */; };
 		55E4E9791814709B007EDC08 /* ISpyProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E4E9781814709B007EDC08 /* ISpyProgressView.m */; };
 		55E4E97C181470D5007EDC08 /* UICountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E4E97B181470D5007EDC08 /* UICountingLabel.m */; };
+		55EEE8E71825483200B73692 /* placeholderMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 55EEE8E61825483200B73692 /* placeholderMenu.png */; };
+		55EEE8E91825483E00B73692 /* cameraTransition.png in Resources */ = {isa = PBXBuildFile; fileRef = 55EEE8E81825483E00B73692 /* cameraTransition.png */; };
+		55EEE8EC1825496E00B73692 /* UIView+Bounce.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EEE8EB1825496E00B73692 /* UIView+Bounce.m */; };
 		55F7D8551802CA680050876C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F7D8541802CA680050876C /* Foundation.framework */; };
 		55F7D8571802CA680050876C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F7D8561802CA680050876C /* CoreGraphics.framework */; };
 		55F7D8591802CA680050876C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F7D8581802CA680050876C /* UIKit.framework */; };
@@ -47,7 +48,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		55354D14181EF0CC001F689B /* blobTest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blobTest.png; sourceTree = "<group>"; };
 		55467507181E879B00DF295D /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
 		55467508181E879B00DF295D /* Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Color.m; sourceTree = "<group>"; };
 		5547F8B418171362003A0E68 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -60,7 +60,6 @@
 		55CB8CEE181116BF00576A60 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 		55CB8CF0181116DE00576A60 /* UIColoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColoring.h; sourceTree = "<group>"; };
 		55CB8CFA1811695400576A60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		55D925EE1816A19200BCADAE /* testLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testLogo.png; sourceTree = "<group>"; };
 		55D952471811B00600F2647A /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		55D952481811B00600F2647A /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		55D9524A1811B01F00F2647A /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
@@ -71,6 +70,10 @@
 		55E4E9781814709B007EDC08 /* ISpyProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISpyProgressView.m; path = ../ISpyProgressView.m; sourceTree = "<group>"; };
 		55E4E97A181470D5007EDC08 /* UICountingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UICountingLabel.h; path = ../UICountingLabel.h; sourceTree = "<group>"; };
 		55E4E97B181470D5007EDC08 /* UICountingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UICountingLabel.m; path = ../UICountingLabel.m; sourceTree = "<group>"; };
+		55EEE8E61825483200B73692 /* placeholderMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholderMenu.png; sourceTree = "<group>"; };
+		55EEE8E81825483E00B73692 /* cameraTransition.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cameraTransition.png; sourceTree = "<group>"; };
+		55EEE8EA1825496E00B73692 /* UIView+Bounce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Bounce.h"; sourceTree = "<group>"; };
+		55EEE8EB1825496E00B73692 /* UIView+Bounce.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Bounce.m"; sourceTree = "<group>"; };
 		55F7D8511802CA680050876C /* I spy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "I spy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55F7D8541802CA680050876C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		55F7D8561802CA680050876C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -142,6 +145,8 @@
 				55508ADD181EE31A0057FBE1 /* HighlightView.h */,
 				55508ADE181EE31A0057FBE1 /* HighlightView.m */,
 				55CB8CF91811695400576A60 /* Main_iPhone.storyboard */,
+				55EEE8EA1825496E00B73692 /* UIView+Bounce.h */,
+				55EEE8EB1825496E00B73692 /* UIView+Bounce.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -161,13 +166,13 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
-		55354D19181EFB02001F689B /* Assets */ = {
+		55354D19181EFB02001F689B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				55354D14181EF0CC001F689B /* blobTest.png */,
-				55D925EE1816A19200BCADAE /* testLogo.png */,
+				55EEE8E81825483E00B73692 /* cameraTransition.png */,
+				55EEE8E61825483200B73692 /* placeholderMenu.png */,
 			);
-			name = Assets;
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		55F7D8481802CA680050876C = {
@@ -210,7 +215,7 @@
 				55354D16181EF10A001F689B /* Model */,
 				55354D17181EF115001F689B /* View */,
 				55354D18181EF11C001F689B /* Controller */,
-				55354D19181EFB02001F689B /* Assets */,
+				55354D19181EFB02001F689B /* Resources */,
 				55F7D86F1802CA680050876C /* Images.xcassets */,
 				55F7D85B1802CA680050876C /* Supporting Files */,
 			);
@@ -325,10 +330,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55EEE8E71825483200B73692 /* placeholderMenu.png in Resources */,
 				55CB8CFB1811695400576A60 /* Main_iPhone.storyboard in Resources */,
-				55D925EF1816A19200BCADAE /* testLogo.png in Resources */,
+				55EEE8E91825483E00B73692 /* cameraTransition.png in Resources */,
 				55F7D8701802CA680050876C /* Images.xcassets in Resources */,
-				55354D15181EF0CC001F689B /* blobTest.png in Resources */,
 				55F7D85F1802CA680050876C /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,6 +359,7 @@
 				55F7D8651802CA680050876C /* AppDelegate.m in Sources */,
 				5547F8B8181718A8003A0E68 /* MainMenuViewController.m in Sources */,
 				55D9524C1811B01F00F2647A /* Game.m in Sources */,
+				55EEE8EC1825496E00B73692 /* UIView+Bounce.m in Sources */,
 				55E4E9791814709B007EDC08 /* ISpyProgressView.m in Sources */,
 				55467509181E879B00DF295D /* Color.m in Sources */,
 				55508ADF181EE31A0057FBE1 /* HighlightView.m in Sources */,

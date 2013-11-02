@@ -2,7 +2,7 @@
 //  MainMenuViewController.h
 //  I spy
 //
-//  Created by Julian Profas on 10/22/13.
+//  Created by iOS Team on 10/22/13.
 //  Copyright (c) 2013 hhs. All rights reserved.
 //
 
@@ -12,5 +12,8 @@
 @interface MainMenuViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *takePictureButton;
 @property (strong, nonatomic) UIImage *capturedImage;
+
+@property (nonatomic, strong) UIView *myView;
+@property (weak, nonatomic) IBOutlet UIImageView *myImageView;
 
 @end

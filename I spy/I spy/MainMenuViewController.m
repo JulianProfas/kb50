@@ -2,12 +2,13 @@
 //  MainMenuViewController.m
 //  I spy
 //
-//  Created by Julian Profas on 10/22/13.
+//  Created by iOS Team on 10/22/13.
 //  Copyright (c) 2013 hhs. All rights reserved.
 //
 
 #import "MainMenuViewController.h"
 #import "SinglePlayerViewController.h"
+#import "UIView+Bounce.h"
 
 @interface MainMenuViewController ()
 
@@ -16,6 +17,8 @@
 @implementation MainMenuViewController
 @synthesize takePictureButton;
 @synthesize capturedImage;
+@synthesize myView;
+@synthesize myImageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -50,18 +53,19 @@
     
     capturedImage = [self imageWithImage:chosenImage scaledToSize:CGSizeMake(320, 480)];
     
-    [self dismissViewControllerAnimated:YES completion:^{
+    [self dismissViewControllerAnimated:NO completion:^{
         [self performSegueWithIdentifier:@"gameSegue" sender:self];
     }];
 }
 
 #pragma mark - Action Methods
 
-- (IBAction)takePicture:(id)sender {
-    UIImage *chosenImage =  [self imageWithImage:[UIImage imageNamed:@"holi-colors_hd.jpg"] scaledToSize:CGSizeMake(320, 480)];// info[UIImagePickerControllerOriginalImage];//info[UIImagePickerControllerOriginalImage];
+- (IBAction)takePicture {
+    /*UIImage *chosenImage =  [self imageWithImage:[UIImage imageNamed:@"holi-colors_hd.jpg"] scaledToSize:CGSizeMake(320, 480)];
     capturedImage = chosenImage;
-    [self performSegueWithIdentifier:@"gameSegue" sender:self];
-    //[self startCameraControllerFromViewController: self usingDelegate: self];
+    [self performSegueWithIdentifier:@"gameSegue" sender:self];*/
+    
+    [self startCameraControllerFromViewController: self usingDelegate: self];
 }
 
 - (BOOL) startCameraControllerFromViewController: (UIViewController*) controller
@@ -90,7 +94,7 @@
     
     cameraUI.delegate = delegate;
     
-    [controller presentViewController:cameraUI animated:YES completion:^{ }];
+    [controller presentViewController:cameraUI animated:NO completion:^{ }];
     
     return YES;
 }
@@ -112,6 +116,38 @@
     if ([segue.identifier isEqualToString:@"gameSegue"]) {
         SinglePlayerViewController *destinationViewController = segue.destinationViewController;
         destinationViewController.capturedImage = capturedImage;
+    }
+}
+
+- (IBAction)bounce:(id)sender
+{
+    [myImageView bounce:0.05f];
+}
+
+- (IBAction)pan:(UIPanGestureRecognizer *)recognizer
+{
+    CGPoint translation = [recognizer translationInView:self.view];
+    //NSLog(@"printing center x: %f", recognizer.view.center.x);
+    NSLog(@"printing center y: %f", recognizer.view.center.y);
+    if (recognizer.view.center.y + translation.y < 284) {       //only allow upwards pans
+        recognizer.view.center = CGPointMake(recognizer.view.center.x,
+                                             recognizer.view.center.y + translation.y);
+        //recognizer.view.frame = CGRectMake(0, 0, 320, 568);;
+    }
+    
+    [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
+    
+    if (recognizer.state == UIGestureRecognizerStateEnded) {
+        if (recognizer.view.center.y < 0) {           //open screen completely
+            CGRect outOfScreenPosition = CGRectMake(0, -568, 320, 568);
+            
+            [UIView animateWithDuration:0.8 animations:^{ myImageView.frame = outOfScreenPosition; } completion:^ (BOOL finished) {
+                if (finished) { [self takePicture]; } }];
+        } else if (recognizer.view.center.y <= 284){     //move back to closed position
+            CGRect outOfScreenPosition = CGRectMake(0, 0, 320, 568);
+            
+            [UIView animateWithDuration:0.8 animations:^{ myImageView.frame = outOfScreenPosition; }];
+        }
     }
 }
 

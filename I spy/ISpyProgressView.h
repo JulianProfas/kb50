@@ -2,8 +2,8 @@
 //  ISpyProgressView.h
 //  TimerProject
 //
-//  Created by justin on 10/15/13.
-//  Copyright (c) 2013 justin. All rights reserved.
+//  Created by iOS Team on 10/15/13.
+//  Copyright (c) 2013 hhs. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

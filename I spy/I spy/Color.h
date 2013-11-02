@@ -2,7 +2,7 @@
 //  Color.h
 //  I spy
 //
-//  Created by Julian Profas on 27/10/13.
+//  Created by iOS Team on 27/10/13.
 //  Copyright (c) 2013 hhs. All rights reserved.
 //
 

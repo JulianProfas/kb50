@@ -2,7 +2,7 @@
 //  AppDelegate.m
 //  I spy with my little eye something...
 //
-//  Created by Julian Profas on 10/7/13.
+//  Created by iOS Team on 10/7/13.
 //  Copyright (c) 2013 hhs. All rights reserved.
 //
 
