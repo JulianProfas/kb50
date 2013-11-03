@@ -11,7 +11,10 @@
 		5547F8B518171362003A0E68 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5547F8B418171362003A0E68 /* MobileCoreServices.framework */; };
 		5547F8B8181718A8003A0E68 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5547F8B7181718A8003A0E68 /* MainMenuViewController.m */; };
 		55508ADF181EE31A0057FBE1 /* HighlightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55508ADE181EE31A0057FBE1 /* HighlightView.m */; };
-		555C3282181FC9BE00B1BA60 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55DF58651812B0FC00EFCC8A /* GPUImage.framework */; };
+		558BF9FC1826797C00933620 /* mainmenu1.png in Resources */ = {isa = PBXBuildFile; fileRef = 558BF9F81826797C00933620 /* mainmenu1.png */; };
+		558BF9FD1826797C00933620 /* mainmenu2.png in Resources */ = {isa = PBXBuildFile; fileRef = 558BF9F91826797C00933620 /* mainmenu2.png */; };
+		558BF9FE1826797C00933620 /* mainmenu3.png in Resources */ = {isa = PBXBuildFile; fileRef = 558BF9FA1826797C00933620 /* mainmenu3.png */; };
+		558BF9FF1826797C00933620 /* mainmenu4.png in Resources */ = {isa = PBXBuildFile; fileRef = 558BF9FB1826797C00933620 /* mainmenu4.png */; };
 		55CB8CEF181116BF00576A60 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 55CB8CEE181116BF00576A60 /* Photo.m */; };
 		55CB8CFB1811695400576A60 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55CB8CF91811695400576A60 /* Main_iPhone.storyboard */; };
 		55D952491811B00600F2647A /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D952481811B00600F2647A /* Player.m */; };
@@ -19,7 +22,7 @@
 		55DF585C18120DD900EFCC8A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55DF585B18120DD900EFCC8A /* QuartzCore.framework */; };
 		55E4E9791814709B007EDC08 /* ISpyProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E4E9781814709B007EDC08 /* ISpyProgressView.m */; };
 		55E4E97C181470D5007EDC08 /* UICountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E4E97B181470D5007EDC08 /* UICountingLabel.m */; };
-		55EEE8E71825483200B73692 /* placeholderMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 55EEE8E61825483200B73692 /* placeholderMenu.png */; };
+		55EC44B618263B1800555843 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55DF58651812B0FC00EFCC8A /* GPUImage.framework */; };
 		55EEE8E91825483E00B73692 /* cameraTransition.png in Resources */ = {isa = PBXBuildFile; fileRef = 55EEE8E81825483E00B73692 /* cameraTransition.png */; };
 		55EEE8EC1825496E00B73692 /* UIView+Bounce.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EEE8EB1825496E00B73692 /* UIView+Bounce.m */; };
 		55F0C53B1825A589000D6909 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F0C53A1825A589000D6909 /* iAd.framework */; };
@@ -57,6 +60,10 @@
 		55508ADD181EE31A0057FBE1 /* HighlightView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighlightView.h; sourceTree = "<group>"; };
 		55508ADE181EE31A0057FBE1 /* HighlightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighlightView.m; sourceTree = "<group>"; };
 		556220EE181770360025919B /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GPUImage.framework; path = "../../../Desktop/GPUImage-master/build/GPUImage.framework"; sourceTree = "<group>"; };
+		558BF9F81826797C00933620 /* mainmenu1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainmenu1.png; sourceTree = "<group>"; };
+		558BF9F91826797C00933620 /* mainmenu2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainmenu2.png; sourceTree = "<group>"; };
+		558BF9FA1826797C00933620 /* mainmenu3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainmenu3.png; sourceTree = "<group>"; };
+		558BF9FB1826797C00933620 /* mainmenu4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainmenu4.png; sourceTree = "<group>"; };
 		55CB8CED181116BF00576A60 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
 		55CB8CEE181116BF00576A60 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 		55CB8CF0181116DE00576A60 /* UIColoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColoring.h; sourceTree = "<group>"; };
@@ -71,7 +78,6 @@
 		55E4E9781814709B007EDC08 /* ISpyProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISpyProgressView.m; path = ../ISpyProgressView.m; sourceTree = "<group>"; };
 		55E4E97A181470D5007EDC08 /* UICountingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UICountingLabel.h; path = ../UICountingLabel.h; sourceTree = "<group>"; };
 		55E4E97B181470D5007EDC08 /* UICountingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UICountingLabel.m; path = ../UICountingLabel.m; sourceTree = "<group>"; };
-		55EEE8E61825483200B73692 /* placeholderMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholderMenu.png; sourceTree = "<group>"; };
 		55EEE8E81825483E00B73692 /* cameraTransition.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cameraTransition.png; sourceTree = "<group>"; };
 		55EEE8EA1825496E00B73692 /* UIView+Bounce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Bounce.h"; sourceTree = "<group>"; };
 		55EEE8EB1825496E00B73692 /* UIView+Bounce.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Bounce.m"; sourceTree = "<group>"; };
@@ -101,8 +107,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55EC44B618263B1800555843 /* GPUImage.framework in Frameworks */,
 				55F0C53B1825A589000D6909 /* iAd.framework in Frameworks */,
-				555C3282181FC9BE00B1BA60 /* GPUImage.framework in Frameworks */,
 				5547F8B518171362003A0E68 /* MobileCoreServices.framework in Frameworks */,
 				55DF585C18120DD900EFCC8A /* QuartzCore.framework in Frameworks */,
 				55F7D8571802CA680050876C /* CoreGraphics.framework in Frameworks */,
@@ -172,8 +178,11 @@
 		55354D19181EFB02001F689B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				558BF9F81826797C00933620 /* mainmenu1.png */,
+				558BF9F91826797C00933620 /* mainmenu2.png */,
+				558BF9FA1826797C00933620 /* mainmenu3.png */,
+				558BF9FB1826797C00933620 /* mainmenu4.png */,
 				55EEE8E81825483E00B73692 /* cameraTransition.png */,
-				55EEE8E61825483200B73692 /* placeholderMenu.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -334,10 +343,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55EEE8E71825483200B73692 /* placeholderMenu.png in Resources */,
+				558BF9FE1826797C00933620 /* mainmenu3.png in Resources */,
 				55CB8CFB1811695400576A60 /* Main_iPhone.storyboard in Resources */,
 				55EEE8E91825483E00B73692 /* cameraTransition.png in Resources */,
 				55F7D8701802CA680050876C /* Images.xcassets in Resources */,
+				558BF9FD1826797C00933620 /* mainmenu2.png in Resources */,
+				558BF9FF1826797C00933620 /* mainmenu4.png in Resources */,
+				558BF9FC1826797C00933620 /* mainmenu1.png in Resources */,
 				55F7D85F1802CA680050876C /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -501,7 +513,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)",
-					"/Users/julianprofas/Desktop/GPUImage-master/build",
 					"/Users/julianprofas/repo/kb50/I\\ spy",
 				);
 				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(SRCROOT)";
@@ -524,7 +535,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)",
-					"/Users/julianprofas/Desktop/GPUImage-master/build",
 					"/Users/julianprofas/repo/kb50/I\\ spy",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

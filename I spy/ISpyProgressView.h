@@ -32,4 +32,5 @@ typedef enum {
 -(void) setTime:(NSTimeInterval)setTime;
 -(void) addTime:(float) addTime;
 -(bool) decreaseTime:(float)decreaseTime;
+
 @end

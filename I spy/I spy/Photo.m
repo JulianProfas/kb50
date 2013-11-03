@@ -31,7 +31,7 @@
     if ( self = [super init] ) {
         capturedImage = image;
         pixelatedImage = [self pixalateImage:image];
-        colorMatrix = [self generateColorMatrix:pixelatedImage fractionalWidthOfPixel:0.025f];
+        colorMatrix = [self generateColorMatrix:pixelatedImage];
         allAnswerSets = [self generateAnswerSets:difficulty];
         answerSet = [self selectRandomAnswer:allAnswerSets];
         
@@ -47,7 +47,7 @@
 
 #pragma mark - UIColoring Protocol Methods
 
-- (NSMutableArray *) generateColorMatrix: (UIImage *)image fractionalWidthOfPixel: (float)aFloat
+- (NSMutableArray *) generateColorMatrix: (UIImage *)image
 {
     NSMutableArray *matrix = [[NSMutableArray alloc] init];
     
@@ -105,8 +105,8 @@
         }
     }
     
-    if ([uniqueColors containsObject:@"none"]) {
-        [uniqueColors removeObject: @"none"];
+    if ([uniqueColors containsObject:@"loading..."]) {
+        [uniqueColors removeObject: @"loading..."];
     }
     
     if (![uniqueColors count] == 0) {
@@ -122,11 +122,11 @@
                                 yCoordinate:y
                                      matrix:aBlob];
                     
-                    if ([difficulty isEqualToString:@"hard"] && aBlob.count > 10) {
+                    if ([difficulty isEqualToString:@"hard"] && aBlob.count > 9) {
                         [allAnswers addObject: aBlob];
-                    } else if ([difficulty isEqualToString:@"easy"] && aBlob.count > 18) {
+                    } else if ([difficulty isEqualToString:@"easy"] && aBlob.count > 25) {
                         [allAnswers addObject: aBlob];
-                    }else if (aBlob.count > 14) {   //defaults to normal difficulty
+                    }else if (aBlob.count > 16) {   //defaults to normal difficulty
                         [allAnswers addObject: aBlob];
                     }
                 }
@@ -134,16 +134,15 @@
             [allCoordinates removeAllObjects];
         }
     } else {
-        NSLog(@"contains no colors");
-        answerColor = @"No colors found. Please take a more colorful picture";
+        NSLog(@"Picture contains no colors, Please take a more colorful picture");
         return nil;
     }
     
     if ([allAnswers count] > 0) {
-        NSLog(@"answers: %d", [allAnswers count]);
+        NSLog(@"answers: %lu", (unsigned long)[allAnswers count]);
         return allAnswers;
     } else {
-        answerColor = @"Colors aren't big enough to play, Please take a picture of a bigger colored object.";
+        NSLog(@"Colors aren't big enough to play, Please take a picture of a bigger colored object.");
         return nil;
     }
 }
@@ -213,7 +212,6 @@
         }
     }
     NSLog(@"Number of colors: %lu", (unsigned long)uniqueColors.count);
-    
     NSLog(@"Colors: %@", uniqueColors);
 }
 

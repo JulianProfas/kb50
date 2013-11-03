@@ -111,7 +111,6 @@
 
 -(void)countFrom:(float)startValue to:(float)endValue withDuration:(NSTimeInterval)duration
 {
-    
     self.easingRate = 3.0f;
     self.startingValue = startValue;
     self.destinationValue = endValue;
@@ -137,7 +136,6 @@
             self.counter = [[UILabelCounterEaseInOut alloc] init];
             break;
     }
-    
     self.counter.rate = 3.0f;
     
     NSTimer* timer = [NSTimer timerWithTimeInterval:(1.0f/30.0f) target:self selector:@selector(updateValue:) userInfo:nil repeats:YES];
@@ -160,7 +158,6 @@
     float percent = self.progress / self.totalTime;
     float updateVal =[self.counter update:percent];
     float value =  self.startingValue +  (updateVal * (self.destinationValue - self.startingValue));
-    
     
     if(self.formatBlock != nil)
     {

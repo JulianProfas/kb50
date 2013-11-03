@@ -10,7 +10,7 @@
 
 @protocol UIColoring
 
-- (NSMutableArray *)generateColorMatrix: (UIImage *)image fractionalWidthOfPixel: (float)aFloat;
+- (NSMutableArray *)generateColorMatrix: (UIImage *)image;
 - (UIColor *)getPixelColor: (UIImage *)image xCoordinate:(int)x yCoordinate:(int)y;
 
 @end

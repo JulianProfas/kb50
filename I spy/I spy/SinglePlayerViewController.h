@@ -12,15 +12,14 @@
 #import "Game.h"
 
 @protocol SinglePlayerViewControllerDelegate <NSObject>
--(void) SinglePlayerViewControllerDismissed:(NSString *)message;
+-(void) SinglePlayerViewControllerDismissed:(NSString *)message round:(int)round score:(int)score time:(int)time;
 @end
 
 @interface SinglePlayerViewController : UIViewController
 {
     ISpyProgressView *progressBar;
     NSMutableSet *highlighted;
-    NSTimer *gameLoopTimer;
-    Game *game;
+    NSTimer *timer;
 }
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (weak, nonatomic) IBOutlet UIImageView *presentedImage;
@@ -29,8 +28,9 @@
 @property (nonatomic, strong) UIImage *capturedImage;
 @property (nonatomic, strong) UIActivityIndicatorView *spinner;
 @property (nonatomic, assign) id <SinglePlayerViewControllerDelegate> singlePlayerViewControllerDelegate;
-@property (weak, nonatomic) IBOutlet UIImageView *mainMenu;
+@property (strong, nonatomic) IBOutlet UIImageView *mainMenu;
 @property (nonatomic, weak) NSString *notification;
+@property UIImage *myImage;
 
 -(void)highlightAnswer;
 -(void)deHighlight;

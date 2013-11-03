@@ -21,8 +21,11 @@
 @synthesize navigationBar;
 @synthesize spinner;
 @synthesize answers;
+@synthesize round;
+@synthesize time;
+@synthesize guessCounter;
 
-#define GOOD_GUESS 20
+#define GOOD_GUESS 30
 #define BAD_GUESS 5
 
 #pragma mark - Game Singleton Methods
@@ -31,7 +34,8 @@ static Game *sharedGameManager = nil;
 
 + (Game*)sharedManager
 {
-    if (sharedGameManager == nil) {
+    if (sharedGameManager == nil)
+    {
         sharedGameManager = [[super allocWithZone:NULL] init];
     }
     return sharedGameManager;
@@ -49,69 +53,57 @@ static Game *sharedGameManager = nil;
 
 #pragma mark - Game Class Methods
 
--(void)setupGame {
+-(void)setupGame
+{
     currentPhoto = [self takePicture];
-    [self setupAnswers];
 }
 
--(void)setAnswerLabel {
+-(void)setAnswerLabel
+{
+    answers = [currentPhoto answerSet];
     navigationBar.topItem.title = [NSString stringWithFormat:@"%@", [currentPhoto answerColor]];
 }
 
-- (void) setupAnswers {
-    answers = [currentPhoto answerSet];
-}
-
 - (BOOL) checkAnswer: (CGPoint)guess {
-    bool result;
-    
-    if (![answers containsObject:[NSValue valueWithCGPoint:guess]]) {
-        //bad guess
-        if([progressBar decreaseTime:BAD_GUESS]){
-            //[self gameOver];
-            //[self displayWinAlert];
-            result = false;
-        }else{
-            [self gameOver];
-            result = true;        }
-    } else {
+    if (![answers containsObject:[NSValue valueWithCGPoint:guess]])
+    {
+        NSLog(@"You've made a bad guess");
+        guessCounter--;
+    } else
+    {
         //good guess
         NSLog(@"You've won!");
         
         [self updateScore];
         [progressBar addTime:GOOD_GUESS];
-        result = true;
+        return true;
     }
-    return result;
+    return false;
 }
 
--(void)startGame {
-    gameRunning = true;
-    [progressBar setTime:30.0f];
+-(void)startGame
+{
+    [progressBar setTime:10.0f];
     [progressBar resetTimer];
     [progressBar startTimer];
+    guessCounter = 5;
 }
 
--(void)gameOver {
-    gameRunning = false;
+-(void)roundOver
+{
     [progressBar stopTimer];
 }
 
--(void)nextRound {
-    [progressBar stopTimer];
-    [self setupGame];
-    [self startGame];
-}
-
--(Photo *)takePicture {
+-(Photo *)takePicture
+{
     [spinner startAnimating];
-    
     return [[Photo alloc]initWithImage:capturedImage difficulty:@"easy"];
 }
 
 #pragma mark - Score related Methods
 
--(void)updateScore {
+-(void)updateScore
+{
     int previousScore = [[Player sharedManager] score];
     [[Player sharedManager] setScore:previousScore + [self getScoreByDifficulty]];
     
@@ -132,12 +124,12 @@ static Game *sharedGameManager = nil;
 
 -(int)getScoreByDifficulty
 {
-    int difficulty = 0; //ophalen uit settings class
+    int difficulty = 0;
     int score = 0;
     
     switch (difficulty) {
         case 0: //Easy
-            score = 100;
+            score = 20*guessCounter;
             break;
         case 1: //Medium
             score = 75;
@@ -151,11 +143,6 @@ static Game *sharedGameManager = nil;
     }
     
     return score;
-}
-
--(bool)isRunning
-{
-    return gameRunning;
 }
 
 @end

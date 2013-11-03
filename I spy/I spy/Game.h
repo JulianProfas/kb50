@@ -14,7 +14,9 @@
 @interface Game : NSObject
 {
     int numberOfAttempts;
-    bool gameRunning;
+    int time;
+    int round;
+    int guessCounter;
 }
 
 @property (nonatomic, retain) Player *currentPlayer;
@@ -26,6 +28,9 @@
 @property (nonatomic, strong) UINavigationBar *navigationBar;
 @property (nonatomic, strong) UIActivityIndicatorView *spinner;
 @property (nonatomic, strong) NSMutableSet *answers;
+@property int round;
+@property int time;
+@property int guessCounter;
 
 #pragma mark - Game Singleton Methods
 + (Game*)sharedManager;
@@ -37,10 +42,8 @@
 -(void)setAnswerLabel;
 -(BOOL)checkAnswer: (CGPoint)guess;
 -(void)startGame;
--(void)gameOver;
--(void)nextRound;
+-(void)roundOver;
 -(Photo *)takePicture;
--(bool)isRunning;
 
 #pragma mark - Score related Methods
 -(void)updateScore;

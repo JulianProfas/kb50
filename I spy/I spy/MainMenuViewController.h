@@ -12,10 +12,14 @@
 #import "SinglePlayerViewController.h"
 
 @interface MainMenuViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, SinglePlayerViewControllerDelegate, ADBannerViewDelegate>
-@property (nonatomic, weak) IBOutlet UIButton *takePictureButton;
 @property (nonatomic, strong) UIImage *capturedImage;
-@property (nonatomic, weak) IBOutlet UIImageView *myImageView;
-@property (weak, nonatomic) IBOutlet UILabel *messageLabel;
-@property (nonatomic, strong) IBOutlet UIView *contentView;
+@property (nonatomic, weak) IBOutlet UIImageView *mainMenu;
+@property (nonatomic, weak) IBOutlet UILabel *messageLabel;
+@property (weak, nonatomic) IBOutlet UILabel *roundLabel;
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UIView *animationView;
+
+- (void)setRandomBackground;
 
 @end

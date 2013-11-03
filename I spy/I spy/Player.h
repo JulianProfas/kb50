@@ -17,6 +17,4 @@
 + (id)allocWithZone:(NSZone *)zone;
 - (id)copyWithZone:(NSZone *)zone;
 
-
-
 @end

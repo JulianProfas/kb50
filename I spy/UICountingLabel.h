@@ -26,7 +26,6 @@ typedef NSString* (^UICountingLabelFormatBlock)(float value);
 @property (nonatomic, copy) UICountingLabelFormatBlock formatBlock;
 @property (nonatomic, copy) void (^completionBlock)();
 
-
 -(void)countFrom:(float)startValue to:(float)endValue;
 -(void)countFrom:(float)startValue to:(float)endValue withDuration:(NSTimeInterval)duration;
 @end

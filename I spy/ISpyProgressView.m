@@ -77,14 +77,12 @@
     if(totalTime > time){
         time +=  (addTime - (time - currentProgress * time));
     }
-    
     [self setProgress:currentProgress +=addTime / time animated:YES];
     
     if(labelTimerActive)
     {
         timerLabel.text = [NSString stringWithFormat:@"%.2f", [self progress] * time];
     }
-    
     adding = false;
 }
 
@@ -111,7 +109,7 @@
         if((currentProgress - decreaseTime)  <= 0)//GAME OVER
         {
             result = false;
-        }else
+        } else
         {
             float progress = [self progress];
             
@@ -142,7 +140,6 @@
             y = -4;
             break;
     }
-    
     CGRect labelFrame = CGRectMake(x, y, 30, 10);
     
     timerLabel = [[UILabel alloc] initWithFrame:labelFrame];
@@ -150,17 +147,6 @@
     [timerLabel setFont: [UIFont fontWithName:@"Arial" size:8.0]];
     
     [self addSubview:timerLabel];
-    
 }
-
-
-/*
- // Only override drawRect: if you perform custom drawing.
- // An empty implementation adversely affects performance during animation.
- - (void)drawRect:(CGRect)rect
- {
- // Drawing code
- }
- */
 
 @end

@@ -19,10 +19,13 @@
     NSTimer *_timer;
     CFTimeInterval _ticks;
 }
-@synthesize takePictureButton;
 @synthesize capturedImage;
-@synthesize myImageView;
+@synthesize mainMenu;
 @synthesize messageLabel;
+@synthesize roundLabel;
+@synthesize scoreLabel;
+@synthesize timeLabel;
+@synthesize animationView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,6 +40,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self setRandomBackground];
     _bannerView = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
     [self.view addSubview:_bannerView];
     _bannerView.delegate = self;
@@ -53,11 +57,37 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (BOOL)prefersStatusBarHidden {
     return YES;
+}
+
+#pragma mark - Main Menu Class Methods
+
+- (void)setRandomBackground
+{
+    NSInteger randomNumber =  arc4random_uniform(4);
+    UIImage *randomImage;
+    
+    switch (randomNumber) {
+        case 0:
+            randomImage = [UIImage imageNamed:@"mainmenu1.png"];
+            break;
+        case 1:
+            randomImage = [UIImage imageNamed:@"mainmenu2.png"];
+            break;
+        case 2:
+            randomImage = [UIImage imageNamed:@"mainmenu3.png"];
+            break;
+        case 3:
+            randomImage = [UIImage imageNamed:@"mainmenu4.png"];
+            break;
+        default:
+            break;
+    }
+    
+    mainMenu.image = randomImage;
 }
 
 #pragma mark - Image Picker Controller Delegate Methods
@@ -103,13 +133,7 @@
     
     UIImagePickerController *cameraUI = [[UIImagePickerController alloc] init];
     cameraUI.sourceType = UIImagePickerControllerSourceTypeCamera;
-    
-    // Displays a control that allows the user to choose picture or
-    // movie capture, if both are available:
     cameraUI.mediaTypes = [NSArray arrayWithObjects:(NSString *) kUTTypeImage, nil];
-    
-    // Hides the controls for moving & scaling pictures, or for
-    // trimming movies. To instead show the controls, use YES.
     cameraUI.allowsEditing = NO;
     
     cameraUI.delegate = delegate;
@@ -138,12 +162,13 @@
         SinglePlayerViewController *destinationViewController = segue.destinationViewController;
         destinationViewController.singlePlayerViewControllerDelegate = self;
         destinationViewController.capturedImage = capturedImage;
+        destinationViewController.myImage = mainMenu.image;
     }
 }
 
 - (IBAction)bounce:(id)sender
 {
-    [myImageView bounce:0.05f];
+    [animationView bounce:0.05f];
 }
 
 - (IBAction)pan:(UIPanGestureRecognizer *)recognizer
@@ -153,27 +178,34 @@
     if (recognizer.view.center.y + translation.y < 284) {       //only allow upwards pans
         recognizer.view.center = CGPointMake(recognizer.view.center.x,
                                              recognizer.view.center.y + translation.y);
+        [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
     }
-    
-    [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
-    
+
     if (recognizer.state == UIGestureRecognizerStateEnded) {
         if (recognizer.view.center.y < 0) {           //open screen completely
             CGRect outOfScreenPosition = CGRectMake(0, -568, 320, 568);
             
-            [UIView animateWithDuration:0.8 animations:^{ myImageView.frame = outOfScreenPosition; } completion:^ (BOOL finished) {
+            [UIView animateWithDuration:0.8 animations:^{ animationView.frame = outOfScreenPosition; } completion:^ (BOOL finished) {
                 if (finished) { [self takePicture]; } }];
         } else if (recognizer.view.center.y <= 284){     //move back to closed position
             CGRect outOfScreenPosition = CGRectMake(0, 0, 320, 568);
             
-            [UIView animateWithDuration:0.8 animations:^{ myImageView.frame = outOfScreenPosition; }];
+            [UIView animateWithDuration:0.8 animations:^{ animationView.frame = outOfScreenPosition; }];
         }
     }
 }
 
--(void) SinglePlayerViewControllerDismissed:(NSString *)message
+-(void) SinglePlayerViewControllerDismissed:(NSString *)message round:(int)round score:(int)score time:(int)time
 {
-    messageLabel.text = message;
+    if ([message isEqualToString:@"Please take a more colorful picture"]) {
+        messageLabel.text = message;
+    } else if ([message isEqualToString:@"Game Over"] && round == 1) {
+        messageLabel.text = message;
+    } else {
+        roundLabel.text = [NSString stringWithFormat:@"Round %d completed!",round];
+        scoreLabel.text = [NSString stringWithFormat:@"Score: %d Points",score];
+        timeLabel.text = [NSString stringWithFormat:@"+%d seconds",time];
+    }
 }
 
 #pragma mark iAd Delegate Methods

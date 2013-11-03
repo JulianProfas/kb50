@@ -64,8 +64,6 @@
     photo.colorMatrix = matrix;
     
     NSMutableOrderedSet *answerSet = [photo generateAnswerSets:@"easy"];
-    
-    
 }
 
 - (void)testExample

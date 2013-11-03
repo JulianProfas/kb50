@@ -59,7 +59,7 @@
     }else if (hue <= 1 && saturation <= 1 && brightness < 0.05){
         return @"Black";
     } else {
-        return @"none";
+        return @"loading...";
     }
 }
 
