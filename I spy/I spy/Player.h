@@ -13,8 +13,20 @@
 @property int score;
 
 #pragma mark - Player Singleton Methods
+/**
+    sharedManager method creates an instance of this class when it hasn't been created before and returns it to the caller
+ @return Player Returns the player class
+ */
 + (Player*)sharedManager;
+/**
+    Allocates only one instance of this class
+    @return returns an instance of this class
+ */
 + (id)allocWithZone:(NSZone *)zone;
+/**
+    Make a copy of this class
+    @return returns this class that has been allocated
+ */
 - (id)copyWithZone:(NSZone *)zone;
 
 @end
