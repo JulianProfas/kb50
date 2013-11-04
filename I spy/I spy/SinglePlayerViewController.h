@@ -32,8 +32,19 @@
 @property (nonatomic, weak) NSString *notification;
 @property UIImage *myImage;
 
+/**
+ Highlights the answer on the photo
+ */
 -(void)highlightAnswer;
+
+/**
+ Removes the highlight from the picture
+ */
 -(void)deHighlight;
+
+/**
+ Animates the menu swipe-down, and the opening of the main menu
+ */
 -(void)closeAnimation;
 
 @end

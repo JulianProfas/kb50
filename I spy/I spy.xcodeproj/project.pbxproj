@@ -6,6 +6,19 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		55C918FE1827AE3A00996D5D /* Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 55C919011827AE3A00996D5D /* Build configuration list for PBXAggregateTarget "Documentation" */;
+			buildPhases = (
+			);
+			dependencies = (
+			);
+			name = Documentation;
+			productName = Documentation;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		55467509181E879B00DF295D /* Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 55467508181E879B00DF295D /* Color.m */; };
 		5547F8B518171362003A0E68 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5547F8B418171362003A0E68 /* MobileCoreServices.framework */; };
@@ -15,6 +28,7 @@
 		558BF9FD1826797C00933620 /* mainmenu2.png in Resources */ = {isa = PBXBuildFile; fileRef = 558BF9F91826797C00933620 /* mainmenu2.png */; };
 		558BF9FE1826797C00933620 /* mainmenu3.png in Resources */ = {isa = PBXBuildFile; fileRef = 558BF9FA1826797C00933620 /* mainmenu3.png */; };
 		558BF9FF1826797C00933620 /* mainmenu4.png in Resources */ = {isa = PBXBuildFile; fileRef = 558BF9FB1826797C00933620 /* mainmenu4.png */; };
+		55AB1E541827E4C700FD09F6 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55DF58651812B0FC00EFCC8A /* GPUImage.framework */; };
 		55CB8CEF181116BF00576A60 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 55CB8CEE181116BF00576A60 /* Photo.m */; };
 		55CB8CFB1811695400576A60 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55CB8CF91811695400576A60 /* Main_iPhone.storyboard */; };
 		55D952491811B00600F2647A /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 55D952481811B00600F2647A /* Player.m */; };
@@ -22,7 +36,6 @@
 		55DF585C18120DD900EFCC8A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55DF585B18120DD900EFCC8A /* QuartzCore.framework */; };
 		55E4E9791814709B007EDC08 /* ISpyProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E4E9781814709B007EDC08 /* ISpyProgressView.m */; };
 		55E4E97C181470D5007EDC08 /* UICountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E4E97B181470D5007EDC08 /* UICountingLabel.m */; };
-		55EC44B618263B1800555843 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55DF58651812B0FC00EFCC8A /* GPUImage.framework */; };
 		55EEE8E91825483E00B73692 /* cameraTransition.png in Resources */ = {isa = PBXBuildFile; fileRef = 55EEE8E81825483E00B73692 /* cameraTransition.png */; };
 		55EEE8EC1825496E00B73692 /* UIView+Bounce.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EEE8EB1825496E00B73692 /* UIView+Bounce.m */; };
 		55F0C53B1825A589000D6909 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F0C53A1825A589000D6909 /* iAd.framework */; };
@@ -64,6 +77,7 @@
 		558BF9F91826797C00933620 /* mainmenu2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainmenu2.png; sourceTree = "<group>"; };
 		558BF9FA1826797C00933620 /* mainmenu3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainmenu3.png; sourceTree = "<group>"; };
 		558BF9FB1826797C00933620 /* mainmenu4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainmenu4.png; sourceTree = "<group>"; };
+		55C919031827AE9A00996D5D /* readme.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.markdown; sourceTree = "<group>"; };
 		55CB8CED181116BF00576A60 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
 		55CB8CEE181116BF00576A60 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 		55CB8CF0181116DE00576A60 /* UIColoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColoring.h; sourceTree = "<group>"; };
@@ -107,7 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55EC44B618263B1800555843 /* GPUImage.framework in Frameworks */,
+				55AB1E541827E4C700FD09F6 /* GPUImage.framework in Frameworks */,
 				55F0C53B1825A589000D6909 /* iAd.framework in Frameworks */,
 				5547F8B518171362003A0E68 /* MobileCoreServices.framework in Frameworks */,
 				55DF585C18120DD900EFCC8A /* QuartzCore.framework in Frameworks */,
@@ -190,6 +204,7 @@
 		55F7D8481802CA680050876C = {
 			isa = PBXGroup;
 			children = (
+				55C919031827AE9A00996D5D /* readme.markdown */,
 				55F7D85A1802CA680050876C /* I spy */,
 				55F7D87C1802CA680050876C /* I spyTests */,
 				55F7D8531802CA680050876C /* Frameworks */,
@@ -274,6 +289,7 @@
 				55F7D84D1802CA680050876C /* Sources */,
 				55F7D84E1802CA680050876C /* Frameworks */,
 				55F7D84F1802CA680050876C /* Resources */,
+				55C919021827AE6700996D5D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -334,6 +350,7 @@
 			targets = (
 				55F7D8501802CA680050876C /* I spy */,
 				55F7D8741802CA680050876C /* I spyTests */,
+				55C918FE1827AE3A00996D5D /* Documentation */,
 			);
 		};
 /* End PBXProject section */
@@ -363,6 +380,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		55C919021827AE6700996D5D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#appledoc Xcode script\n# Start constants\ntarget=\"iphoneos\";\n# End constants\n/usr/local/bin/appledoc \\\n--project-name \"${PROJECT_NAME}\" \\\n--project-company \"Simplicate\" \\\n--company-id \"com.simplicate\" \\\n--output \"~/Projects/Help/${PROJECT_NAME}\" \\\n--install-docset \\\n--logformat xcode \\\n--keep-undocumented-objects \\\n--keep-undocumented-members \\\n--keep-intermediate-files \\\n--no-repeat-first-par \\\n--no-warn-invalid-crossref \\\n--merge-categories \\\n--exit-threshold 2 \\\n--docset-platform-family iphoneos \\\n--ignore \"*.m\" \\\n--include \"${PROJECT_DIR}/${PROJECT_NAME}/Documentation/Images\" \\\n--ignore \"LoadableCategory.h\" \\\n--index-desc \"${PROJECT_DIR}/readme.markdown\" \\\n\"${PROJECT_DIR}/${PROJECT_NAME}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		55F7D84D1802CA680050876C /* Sources */ = {
@@ -430,6 +463,20 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		55C918FF1827AE3A00996D5D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		55C919001827AE3A00996D5D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		55F7D8841802CA680050876C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -512,8 +559,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SRCROOT)",
-					"/Users/julianprofas/repo/kb50/I\\ spy",
+					"<Multiple",
+					"values>",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks\n$(DEVELOPER_LIBRARY_DIR)/Frameworks\n$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(SDKROOT)/Developer/Library/Frameworks\n$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 				);
 				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(SRCROOT)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -534,8 +583,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SRCROOT)",
-					"/Users/julianprofas/repo/kb50/I\\ spy",
+					"<Multiple",
+					"values>",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks\n$(DEVELOPER_LIBRARY_DIR)/Frameworks\n$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(SDKROOT)/Developer/Library/Frameworks\n$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "I spy/I spy-Prefix.pch";
@@ -592,6 +643,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		55C919011827AE3A00996D5D /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55C918FF1827AE3A00996D5D /* Debug */,
+				55C919001827AE3A00996D5D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		55F7D84C1802CA680050876C /* Build configuration list for PBXProject "I spy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

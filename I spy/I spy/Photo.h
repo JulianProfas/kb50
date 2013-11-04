@@ -31,6 +31,8 @@
 - (void) generateColorBlob:(NSString *)color xCoordinate:(int)x yCoordinate:(int)y matrix:(NSMutableSet *)matrix;
 
 #pragma mark - Methods for Debugging
+/** Method for debugging purposes
+ */
 - (void) printColors;
 - (void) printAnswerSet;
 - (void)printAllAnswerSets;

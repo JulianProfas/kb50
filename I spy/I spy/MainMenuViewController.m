@@ -112,11 +112,11 @@
 
 - (IBAction)takePicture
 {
-    /*UIImage *chosenImage =  [self imageWithImage:[UIImage imageNamed:@"holi-colors_hd.jpg"] scaledToSize:CGSizeMake(320, 480)];
+    UIImage *chosenImage =  [self imageWithImage:[UIImage imageNamed:@"mainmenu1.png"] scaledToSize:CGSizeMake(320, 480)];
     capturedImage = chosenImage;
-    [self performSegueWithIdentifier:@"gameSegue" sender:self];*/
+    [self performSegueWithIdentifier:@"gameSegue" sender:self];
     
-    [self startCameraControllerFromViewController: self usingDelegate: self];
+    //[self startCameraControllerFromViewController: self usingDelegate: self];
 }
 
 - (BOOL) startCameraControllerFromViewController: (UIViewController*) controller

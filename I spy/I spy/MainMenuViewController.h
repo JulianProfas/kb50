@@ -20,6 +20,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIView *animationView;
 
+/**
+ Set a background for the menu randomly chosen from four images
+ */
 - (void)setRandomBackground;
 
 @end

@@ -73,7 +73,7 @@
                 
                 timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(checkTimer) userInfo:nil repeats:YES];
                 [iSpyWithMyLittleEye startGame];
-                //[self.view setUserInteractionEnabled:YES];
+                [self.view setUserInteractionEnabled:YES];
             }
         });
     });
@@ -133,7 +133,7 @@
         if ([iSpyWithMyLittleEye checkAnswer: guessCoordinates])
         {
             //[iSpyWithMyLittleEye roundOver];
-            //[self.view setUserInteractionEnabled:NO];
+            [self.view setUserInteractionEnabled:NO];
             NSLog(@"guessing something");
             [self highlightAnswer];
             
@@ -191,7 +191,7 @@
 {
     Game *iSpyWithMyLittleEye = [Game sharedManager];
     if(progressBar.progress <= 0){
-        //[self.view setUserInteractionEnabled:NO];
+        [self.view setUserInteractionEnabled:NO];
         
         [self highlightAnswer];
         
