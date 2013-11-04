@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface HighlightView : UIView
-
+- (id)initWithFrame:(CGRect)frame;
+- (void)drawRect:(CGRect)rect;
 @end
