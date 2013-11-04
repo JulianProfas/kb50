@@ -15,7 +15,7 @@
 #pragma mark - Player Singleton Methods
 /**
     sharedManager method creates an instance of this class when it hasn't been created before and returns it to the caller
- @return Player Returns the player class
+ @return Returns the player class
  */
 + (Player*)sharedManager;
 /**

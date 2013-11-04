@@ -15,7 +15,7 @@
 
 #pragma mark - Initialization Methods
 
-- initWithColor:(UIColor *)aColor
+-(id) initWithColor:(UIColor *)aColor
 {
     if ( self = [super init] ) {
         colorData = aColor;

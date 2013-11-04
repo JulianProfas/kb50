@@ -14,8 +14,20 @@
 @property NSString *hsv;
 
 #pragma mark - Initialization Methods
-- initWithColor:(UIColor *)aColor;
+/**
+    Initialisez the Color class with a given color.
+ @param aColor 
+            The color of this class
+ @return returns a instance of this class.
+ */
+-(id) initWithColor:(UIColor *)aColor;
 
 #pragma mark - Color Class Methods
+/**
+    This method returns the color name as a string. For example "blue".
+    @param aColor
+            The color object that will be used to return a color as a readable text
+    @return A string with the color name
+ */
 - (NSString *)getColorName:(UIColor *)aColor;
 @end
