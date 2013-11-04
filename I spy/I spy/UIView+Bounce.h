@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface UIView (Bounce)
-
+/**
+    Animates the bounce effect
+ @param bounceFactor 
+                How high the screen wil bounce up
+*/
 - (void)bounce:(float)bounceFactor;
 
 @end
