@@ -20,11 +20,13 @@
 + (Player*)sharedManager;
 /**
     Allocates only one instance of this class
-    @return returns an instance of this class
+ @param zone The current zone.
+ @return returns an instance of this class
  */
 + (id)allocWithZone:(NSZone *)zone;
 /**
     Make a copy of this class
+    @param zone The current zone.
     @return returns this class that has been allocated
  */
 - (id)copyWithZone:(NSZone *)zone;

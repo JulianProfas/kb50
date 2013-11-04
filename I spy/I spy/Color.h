@@ -15,7 +15,7 @@
 
 #pragma mark - Initialization Methods
 /**
-    Initialisez the Color class with a given color.
+    Initialises the Color class with a given color.
  @param aColor 
             The color of this class
  @return returns a instance of this class.

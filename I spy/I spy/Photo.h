@@ -65,25 +65,20 @@ This recursive method generates the color blobs. A color blob is collection of c
         The y coordniate of the color in the matrix
  @param matrix
         The matrix that contains all the colors.
- 
- @return Returns a void.
  */
 - (void) generateColorBlob:(NSString *)color xCoordinate:(int)x yCoordinate:(int)y matrix:(NSMutableSet *)matrix;
 
 #pragma mark - Methods for Debugging
 /**
     This method is used for debugging purposes. It prints all the color names to the output window.
- @return Returns a void.
  */
 - (void) printColors;
 /**
     This method is usssed for debugging purposes. It prints a answers set.
- @return Returns a void.
  */
 - (void) printAnswerSet;
 /**
     This method is used for debugging purposes. It prints all answers sets.
-    @return Returns a void.
  */
 - (void)printAllAnswerSets;
 
