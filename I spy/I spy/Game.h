@@ -26,7 +26,6 @@
 @property (nonatomic, strong) UIImage *capturedImage;
 @property (nonatomic, retain) Photo *photo;
 @property (nonatomic, strong) UINavigationBar *navigationBar;
-@property (nonatomic, strong) UIActivityIndicatorView *spinner;
 @property (nonatomic, strong) NSMutableSet *answers;
 @property int round;
 @property int time;

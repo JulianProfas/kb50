@@ -19,7 +19,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIView *animationView;
+@property (strong, nonatomic) UIImagePickerController *_imagePicker;
 
 - (void)setRandomBackground;
+- (UIImagePickerController *) imagePicker;
 
 @end

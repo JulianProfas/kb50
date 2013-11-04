@@ -312,14 +312,14 @@
 				ORGANIZATIONNAME = hhs;
 				TargetAttributes = {
 					55F7D8501802CA680050876C = {
-						DevelopmentTeam = QBUK5XNJ8F;
+						DevelopmentTeam = 3D726KTTX7;
 					};
 					55F7D8741802CA680050876C = {
 						TestTargetID = 55F7D8501802CA680050876C;
 					};
 				};
 			};
-			buildConfigurationList = 55F7D84C1802CA680050876C /* Build configuration list for PBXProject "I Spy" */;
+			buildConfigurationList = 55F7D84C1802CA680050876C /* Build configuration list for PBXProject "I spy" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -592,7 +592,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		55F7D84C1802CA680050876C /* Build configuration list for PBXProject "I Spy" */ = {
+		55F7D84C1802CA680050876C /* Build configuration list for PBXProject "I spy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				55F7D8841802CA680050876C /* Debug */,

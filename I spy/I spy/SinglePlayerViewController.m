@@ -21,7 +21,6 @@
 @synthesize scoreLabel;
 @synthesize navigationBar;
 @synthesize capturedImage;
-@synthesize spinner;
 @synthesize singlePlayerViewControllerDelegate;
 @synthesize mainMenu;
 @synthesize notification;
@@ -47,36 +46,24 @@
     [iSpyWithMyLittleEye setScoreLabel:scoreLabel];
     [iSpyWithMyLittleEye setNavigationBar:navigationBar];
     
-    spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    spinner.center = CGPointMake(160, 240);
-    spinner.hidesWhenStopped = YES;
-    [iSpyWithMyLittleEye setSpinner:spinner];
-    [self.view addSubview:spinner];
     
-    dispatch_queue_t photoQueue = dispatch_queue_create("loading", NULL);
-    dispatch_async(photoQueue, ^{
-        [iSpyWithMyLittleEye setupGame];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [iSpyWithMyLittleEye setAnswerLabel];
-            if ([navigationBar.topItem.title isEqualToString:@"loading..."]) {
-                [spinner stopAnimating];
-                notification = @"Please take a more colorful picture";
-                [self closeAnimation];
-            } else {
-                [spinner stopAnimating];
-                CGRect barFrame = CGRectMake(0,42,320,20);
-                progressBar = [[ISpyProgressView alloc] initWithTimerLabel:YES LabelPosition:UILabelRight Frame:&barFrame];
-                [iSpyWithMyLittleEye setProgressBar:progressBar];
-                [self.view addSubview:progressBar];
-                scoreLabel.text = [NSString stringWithFormat:@"Score %d", [[Player sharedManager] score]];
-                presentedImage.image = [[iSpyWithMyLittleEye currentPhoto] capturedImage];
-                
-                timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(checkTimer) userInfo:nil repeats:YES];
-                [iSpyWithMyLittleEye startGame];
-                //[self.view setUserInteractionEnabled:YES];
-            }
-        });
-    });
+    [iSpyWithMyLittleEye setupGame];
+    [iSpyWithMyLittleEye setAnswerLabel];
+    if ([navigationBar.topItem.title isEqualToString:@"loading..."]) {
+        notification = @"Please take a more colorful picture";
+        [self closeAnimation];
+    } else {
+        CGRect barFrame = CGRectMake(0,42,320,20);
+        progressBar = [[ISpyProgressView alloc] initWithTimerLabel:YES LabelPosition:UILabelRight Frame:&barFrame];
+        [iSpyWithMyLittleEye setProgressBar:progressBar];
+        [self.view addSubview:progressBar];
+        scoreLabel.text = [NSString stringWithFormat:@"Score %d", [[Player sharedManager] score]];
+        presentedImage.image = [[iSpyWithMyLittleEye currentPhoto] capturedImage];
+        
+        timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(checkTimer) userInfo:nil repeats:YES];
+        [iSpyWithMyLittleEye startGame];
+        [self.view setUserInteractionEnabled:YES];
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -132,8 +119,7 @@
         
         if ([iSpyWithMyLittleEye checkAnswer: guessCoordinates])
         {
-            //[iSpyWithMyLittleEye roundOver];
-            //[self.view setUserInteractionEnabled:NO];
+            [self.view setUserInteractionEnabled:NO];
             NSLog(@"guessing something");
             [self highlightAnswer];
             
@@ -191,7 +177,7 @@
 {
     Game *iSpyWithMyLittleEye = [Game sharedManager];
     if(progressBar.progress <= 0){
-        //[self.view setUserInteractionEnabled:NO];
+        [self.view setUserInteractionEnabled:NO];
         
         [self highlightAnswer];
         

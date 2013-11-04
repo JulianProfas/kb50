@@ -26,6 +26,7 @@
 @synthesize scoreLabel;
 @synthesize timeLabel;
 @synthesize animationView;
+@synthesize _imagePicker;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -112,11 +113,10 @@
 
 - (IBAction)takePicture
 {
-    /*UIImage *chosenImage =  [self imageWithImage:[UIImage imageNamed:@"holi-colors_hd.jpg"] scaledToSize:CGSizeMake(320, 480)];
-    capturedImage = chosenImage;
-    [self performSegueWithIdentifier:@"gameSegue" sender:self];*/
-    
-    [self startCameraControllerFromViewController: self usingDelegate: self];
+    if (self.imagePicker)
+    {
+        [self presentViewController:self.imagePicker animated:NO completion:^{}];
+    }
 }
 
 - (BOOL) startCameraControllerFromViewController: (UIViewController*) controller
@@ -130,17 +130,24 @@
         || (controller == nil))
         return NO;
     
-    
-    UIImagePickerController *cameraUI = [[UIImagePickerController alloc] init];
-    cameraUI.sourceType = UIImagePickerControllerSourceTypeCamera;
-    cameraUI.mediaTypes = [NSArray arrayWithObjects:(NSString *) kUTTypeImage, nil];
-    cameraUI.allowsEditing = NO;
-    
-    cameraUI.delegate = delegate;
-    
-    [controller presentViewController:cameraUI animated:NO completion:^{ }];
+    [self takePicture];
     
     return YES;
+}
+
+-(UIImagePickerController *) imagePicker{
+    if(!_imagePicker){
+        _imagePicker = [[UIImagePickerController alloc] init];
+        _imagePicker.delegate = self;
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
+            _imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        }
+        else{
+            _imagePicker.sourceType =UIImagePickerControllerSourceTypePhotoLibrary;
+        }
+        
+    }
+    return _imagePicker;
 }
 
 - (UIImage*)imageWithImage:(UIImage*)image

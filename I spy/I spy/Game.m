@@ -19,7 +19,6 @@
 @synthesize scoreLabel;
 @synthesize capturedImage;
 @synthesize navigationBar;
-@synthesize spinner;
 @synthesize answers;
 @synthesize round;
 @synthesize time;
@@ -96,7 +95,6 @@ static Game *sharedGameManager = nil;
 
 -(Photo *)takePicture
 {
-    [spinner startAnimating];
     return [[Photo alloc]initWithImage:capturedImage difficulty:@"easy"];
 }
 

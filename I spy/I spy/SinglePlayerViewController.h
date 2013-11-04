@@ -26,7 +26,6 @@
 @property (nonatomic) BOOL touchMoved;
 @property (nonatomic, strong) IBOutlet UICountingLabel *scoreLabel;
 @property (nonatomic, strong) UIImage *capturedImage;
-@property (nonatomic, strong) UIActivityIndicatorView *spinner;
 @property (nonatomic, assign) id <SinglePlayerViewControllerDelegate> singlePlayerViewControllerDelegate;
 @property (strong, nonatomic) IBOutlet UIImageView *mainMenu;
 @property (nonatomic, weak) NSString *notification;
