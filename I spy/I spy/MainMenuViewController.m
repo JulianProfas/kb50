@@ -182,22 +182,28 @@
 {
     CGPoint translation = [recognizer translationInView:self.view];
     //NSLog(@"printing center y: %f", recognizer.view.center.y);
-    if (recognizer.view.center.y + translation.y < 284) {       //only allow upwards pans
+    if (recognizer.view.center.y + translation.y < 284) { //only allow upwards pans
         recognizer.view.center = CGPointMake(recognizer.view.center.x,
                                              recognizer.view.center.y + translation.y);
         [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
     }
-
+    
     if (recognizer.state == UIGestureRecognizerStateEnded) {
-        if (recognizer.view.center.y < 0) {           //open screen completely
-            CGRect outOfScreenPosition = CGRectMake(0, -568, 320, 568);
-            
-            [UIView animateWithDuration:0.8 animations:^{ animationView.frame = outOfScreenPosition; } completion:^ (BOOL finished) {
+        CGFloat velocityY = [recognizer velocityInView:self.view].y;
+        
+        CGPoint endPosition = CGPointMake(160, -284);
+        NSTimeInterval duration = endPosition.y / velocityY;
+        
+        if (duration > 0.5){
+            duration = 0.5;
+        }
+        
+        if (recognizer.view.center.y <= 0 || velocityY < -500) { //open screen completely
+            [UIView animateWithDuration:duration animations:^{ animationView.center = endPosition; } completion:^ (BOOL finished) {
                 if (finished) { [self takePicture]; } }];
-        } else if (recognizer.view.center.y <= 284){     //move back to closed position
-            CGRect outOfScreenPosition = CGRectMake(0, 0, 320, 568);
-            
-            [UIView animateWithDuration:0.8 animations:^{ animationView.frame = outOfScreenPosition; }];
+        } else if (recognizer.view.center.y <= 284){ //move back to closed position
+            CGPoint startPosition = CGPointMake(160, 284);
+            [UIView animateWithDuration:0.5 animations:^{ animationView.center = startPosition; }];
         }
     }
 }
