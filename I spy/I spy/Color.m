@@ -20,6 +20,7 @@
     if ( self = [super init] ) {
         colorData = aColor;
         colorName = [self getColorName:aColor];
+        hsv = [self fillStringWithHSV:aColor];
         return self;
     } else {
         return nil;
@@ -36,7 +37,7 @@
     CGFloat alpha;
     
     [aColor getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
-    //printf("Hue: %f. Saturation: %f. Brightness: %f.\n", 360 * hue, 100 * saturation, 100 * brightness);
+    printf("Hue: %f. Saturation: %f. Brightness: %f.\n", 360 * hue, 100 * saturation, 100 * brightness);
     
     if((hue > 0.51389 && hue < 0.7167) && saturation > 0.54 && brightness > 0.25){          //DONE
         return @"Blue"; //
@@ -62,5 +63,22 @@
         return @"loading...";
     }
 }
+
+-(NSString *) fillStringWithHSV:(UIColor *)aColor
+{
+        CGFloat hue;
+        CGFloat saturation;
+        CGFloat brightness;
+        CGFloat alpha;
+    
+        [aColor getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
+    
+        int newHue = 360 * hue;
+        int newSatur = 100 * saturation;
+        int newBrightness = 100 * brightness;
+    
+        return [NSString stringWithFormat:@"Hue: %d Saturation: %d Brightness: %d", newHue, newSatur, newBrightness];
+    }
+
 
 @end

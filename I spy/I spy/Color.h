@@ -30,4 +30,6 @@
     @return A string with the color name
  */
 - (NSString *)getColorName:(UIColor *)aColor;
+
+-(NSString *) fillStringWithHSV:(UIColor *)aColor;
 @end

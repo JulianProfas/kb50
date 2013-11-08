@@ -211,12 +211,28 @@
 -(void) SinglePlayerViewControllerDismissed:(NSString *)message round:(int)round score:(int)score time:(int)time
 {
     if ([message isEqualToString:@"Please take a more colorful picture"]) {
+        messageLabel.hidden = NO;
         messageLabel.text = message;
+        scoreLabel.hidden = YES;
+        timeLabel.hidden = YES;
     } else if ([message isEqualToString:@"Game Over"] && round == 1) {
+        messageLabel.hidden = NO;
         messageLabel.text = message;
-    } else {
-        roundLabel.text = [NSString stringWithFormat:@"Round %d completed!",round];
+        scoreLabel.hidden = YES;
+        timeLabel.hidden = YES;
+    } else if ([message isEqualToString:@"Game Over"] && round != 1) {
+        messageLabel.hidden = NO;
+        messageLabel.text = message;
+        scoreLabel.hidden = NO;
         scoreLabel.text = [NSString stringWithFormat:@"Score: %d Points",score];
+        timeLabel.hidden = NO;
+        timeLabel.text = [NSString stringWithFormat:@"Highest round: %d",round-1];
+    } else {
+        messageLabel.hidden = NO;
+        messageLabel.text = [NSString stringWithFormat:@"Round %d completed!",round];
+        scoreLabel.hidden = NO;
+        scoreLabel.text = [NSString stringWithFormat:@"Score: %d Points",score];
+        timeLabel.hidden = NO;
         timeLabel.text = [NSString stringWithFormat:@"+%d seconds",time];
     }
 }

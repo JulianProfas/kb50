@@ -120,7 +120,6 @@
         if ([iSpyWithMyLittleEye checkAnswer: guessCoordinates])
         {
             [self.view setUserInteractionEnabled:NO];
-            NSLog(@"guessing something");
             [self highlightAnswer];
             
             iSpyWithMyLittleEye.time = 30;
@@ -175,15 +174,10 @@
 
 -(void)checkTimer
 {
-    Game *iSpyWithMyLittleEye = [Game sharedManager];
     if(progressBar.progress <= 0){
         [self.view setUserInteractionEnabled:NO];
         
         [self highlightAnswer];
-        
-        iSpyWithMyLittleEye.round = 1;
-        iSpyWithMyLittleEye.time = 0;
-        [Player sharedManager].score = 0;
         
         [timer invalidate];
         timer = nil;
@@ -202,8 +196,8 @@
     [self deHighlight];
     [progressBar removeFromSuperview];
     
-    CGRect normalScreenPosition = CGRectMake(0, 0, 320, 568);
-    [UIView animateWithDuration:0.5 animations:^{ mainMenu.frame = normalScreenPosition; } completion:^ (BOOL finished) {
+    CGPoint closedPosition = CGPointMake(160, 284);
+    [UIView animateWithDuration:0.5 animations:^{ mainMenu.center = closedPosition; } completion:^ (BOOL finished) {
         if (finished) {
             
             if([self.singlePlayerViewControllerDelegate respondsToSelector:@selector(SinglePlayerViewControllerDismissed:round:score:time:)])
@@ -215,6 +209,10 @@
                 Game *iSpyWithMyLittleEye = [Game sharedManager];
                 if ([notification isEqualToString:@"You won the round"]) {
                     iSpyWithMyLittleEye.round++;
+                } else if ([notification isEqualToString:@"Game Over"])
+                {
+                    iSpyWithMyLittleEye.round = 1;
+                    [Player sharedManager].score = 0;
                 }
                  }];
         }
